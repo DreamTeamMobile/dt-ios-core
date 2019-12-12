@@ -15,7 +15,7 @@
       location = "group:/Users/maximevtukh/DreamTeam/Apps/dt-ios-core/Source"
       name = "Source">
       <FileRef
-         location = "group:DT_Core_iOS.swift">
+         location = "group:/Users/maximevtukh/DreamTeam/Apps/dt-ios-core/Source/DT.Core.iOS.swift">
       </FileRef>
    </Group>
    <Group

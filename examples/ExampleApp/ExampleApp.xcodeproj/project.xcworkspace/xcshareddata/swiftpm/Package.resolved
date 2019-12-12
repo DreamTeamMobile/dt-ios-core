@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "DT.Core.iOS",
+        "repositoryURL": "https://github.com/DreamTeamMobile/dt-ios-core",
+        "state": {
+          "branch": "dev",
+          "revision": "d927f835432e27c881ac1a8747548809ea81bed6",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

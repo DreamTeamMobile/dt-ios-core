@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DT_Core_iOS
 
 class ViewController: UIViewController {
 

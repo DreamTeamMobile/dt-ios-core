@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		086FC42E23A20B5100BB1965 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 086FC42C23A20B5100BB1965 /* Main.storyboard */; };
 		086FC43023A20B5300BB1965 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 086FC42F23A20B5300BB1965 /* Assets.xcassets */; };
 		086FC43323A20B5300BB1965 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 086FC43123A20B5300BB1965 /* LaunchScreen.storyboard */; };
+		086FC43E23A212D800BB1965 /* DT.Core.iOS in Frameworks */ = {isa = PBXBuildFile; productRef = 086FC43D23A212D800BB1965 /* DT.Core.iOS */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				086FC43E23A212D800BB1965 /* DT.Core.iOS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = ExampleApp;
+			packageProductDependencies = (
+				086FC43D23A212D800BB1965 /* DT.Core.iOS */,
+			);
 			productName = ExampleApp;
 			productReference = 086FC42323A20B5100BB1965 /* ExampleApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,9 @@
 				Base,
 			);
 			mainGroup = 086FC41A23A20B5100BB1965;
+			packageReferences = (
+				086FC43C23A212D800BB1965 /* XCRemoteSwiftPackageReference "dt-ios-core" */,
+			);
 			productRefGroup = 086FC42423A20B5100BB1965 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -338,6 +346,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		086FC43C23A212D800BB1965 /* XCRemoteSwiftPackageReference "dt-ios-core" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DreamTeamMobile/dt-ios-core";
+			requirement = {
+				branch = dev;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		086FC43D23A212D800BB1965 /* DT.Core.iOS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 086FC43C23A212D800BB1965 /* XCRemoteSwiftPackageReference "dt-ios-core" */;
+			productName = DT.Core.iOS;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 086FC41B23A20B5100BB1965 /* Project object */;
 }

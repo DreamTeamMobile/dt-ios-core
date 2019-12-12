@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:"
+      name = "Deployment">
+      <FileRef
+         location = "group:Package.swift">
+      </FileRef>
+      <FileRef
+         location = "group:DT.Core.iOS.podspec">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:/Users/maximevtukh/DreamTeam/Apps/dt-ios-core/Source"
+      name = "Source">
+      <FileRef
+         location = "group:DT_Core_iOS.swift">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:Tests"
+      name = "Tests">
+      <Group
+         location = "group:DT.Core.iOSTests"
+         name = "DT.Core.iOSTests">
+         <FileRef
+            location = "group:DT_Core_iOSTests.swift">
+         </FileRef>
+         <FileRef
+            location = "group:XCTestManifests.swift">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:LinuxMain.swift">
+      </FileRef>
+   </Group>
+</Workspace>

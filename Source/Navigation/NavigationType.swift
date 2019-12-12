@@ -6,7 +6,7 @@
 
 import Foundation
 
-enum NavigationType {
+public enum NavigationType {
     case push
     case pushRoot
     case present

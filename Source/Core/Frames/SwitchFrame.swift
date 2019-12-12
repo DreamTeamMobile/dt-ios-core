@@ -7,7 +7,7 @@
 import Foundation
 import UIKit
 
-class SwitchFrame: NSObject {
+public class SwitchFrame: NSObject {
     
     // MARK: Fields
     
@@ -40,7 +40,7 @@ class SwitchFrame: NSObject {
     
 }
 
-extension SwitchFrame {
+public extension SwitchFrame {
         
     @objc func onValueChanged(_ sender: UISwitch) {
         self.isOn = sender.isOn

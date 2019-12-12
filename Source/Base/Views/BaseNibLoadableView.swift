@@ -6,7 +6,7 @@
 
 import UIKit
 
-class BaseNibLoadableView: UIView {
+public class BaseNibLoadableView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)

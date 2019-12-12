@@ -6,7 +6,7 @@
 
 import Foundation
 
-class InputFrame: NSObject {
+public class InputFrame: NSObject {
     
     // MARK: Properties
     

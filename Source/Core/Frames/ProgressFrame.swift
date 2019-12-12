@@ -6,7 +6,7 @@
 
 import Foundation
 
-class ProgressFrame: NSObject {
+public class ProgressFrame: NSObject {
  
     @Bindable(0) var currentProgress: Float
     

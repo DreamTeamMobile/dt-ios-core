@@ -6,7 +6,7 @@
 
 import UIKit
 
-class BindableSectionedTableViewSource<T> : NSObject, UITableViewDataSource, UITableViewDelegate {
+public class BindableSectionedTableViewSource<T> : NSObject, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: Fields
     

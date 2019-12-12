@@ -6,7 +6,7 @@
 
 import Foundation
 
-protocol ButtonProtocol {
+public protocol ButtonProtocol {
     
     var title: String { get set }
     
@@ -16,7 +16,7 @@ protocol ButtonProtocol {
     
 }
 
-class ButtonFrame: NSObject, ButtonProtocol {
+public class ButtonFrame: NSObject, ButtonProtocol {
     
     // MARK: Fields
     
@@ -52,7 +52,7 @@ class ButtonFrame: NSObject, ButtonProtocol {
     }
 }
 
-class TButtonFrame<T>: NSObject, ButtonProtocol {
+public class TButtonFrame<T>: NSObject, ButtonProtocol {
     
     // MARK: Fields
     

@@ -6,7 +6,7 @@
 
 import UIKit
 
-class BaseTabBarController<T: BViewModel>: UITabBarController, BaseViCoProtocol {
+public class BaseTabBarController<T: BViewModel>: UITabBarController, BaseViCoProtocol {
     
     private var isViewDidLoad = false
     

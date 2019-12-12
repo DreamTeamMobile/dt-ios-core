@@ -6,15 +6,19 @@
 
 import UIKit
 
-protocol BaseViCoProtocol {
+public protocol BaseViCoProtocol {
 
+    var router: RouterProtocol? { get set }
+    
     func setViewModel(viewModel: Any)
 
     func getViewModel() -> Any?
     
 }
 
-class BViewController: UIViewController, BaseViCoProtocol {
+public class BViewController: UIViewController, BaseViCoProtocol {
+    
+    var router: RouterProtocol?
     
     required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -173,13 +177,14 @@ class BViewController: UIViewController, BaseViCoProtocol {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.router?.setCurrentNavigationController(self.navigationController)
     }
     
 }
 
 // MARK: - BaseViewController
 
-class BaseViewController<T: BViewModel>: BViewController {
+public class BaseViewController<T: BViewModel>: BViewController {
 
     var viewModel: T?
 

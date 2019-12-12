@@ -7,7 +7,7 @@
 import Foundation
 
 @propertyWrapper
-class BindableEquatable<T: Equatable> {
+public class BindableEquatable<T: Equatable> {
 
     // MARK: Type aliases
     

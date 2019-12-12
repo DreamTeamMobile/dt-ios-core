@@ -6,7 +6,7 @@
 
 import UIKit
 
-class ViewFrame<T>: NSObject {
+public class ViewFrame<T>: NSObject {
 
     // MARK: Properties
 

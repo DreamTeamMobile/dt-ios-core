@@ -6,7 +6,7 @@
 
 import UIKit
 
-class BindableTableViewSource<T> : NSObject, UITableViewDataSource, UITableViewDelegate {
+public class BindableTableViewSource<T> : NSObject, UITableViewDataSource, UITableViewDelegate {
     
     // MARK: Fields
     

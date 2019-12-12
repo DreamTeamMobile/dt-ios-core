@@ -6,7 +6,7 @@
 
 import UIKit
 
-protocol RouterProtocol {
+public protocol RouterProtocol {
     
     func navigateTo<ViewModel: BViewModel>(vmType: ViewModel.Type, initObj: Any, navigationType: NavigationType)
     

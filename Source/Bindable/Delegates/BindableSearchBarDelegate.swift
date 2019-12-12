@@ -6,7 +6,7 @@
 
 import UIKit
 
-class BindableSearchBarDelegate: NSObject, UISearchBarDelegate {
+public class BindableSearchBarDelegate: NSObject, UISearchBarDelegate {
     
     // MARK: Fields
     

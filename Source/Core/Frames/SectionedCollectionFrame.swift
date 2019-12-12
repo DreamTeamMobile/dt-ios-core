@@ -6,7 +6,7 @@
 
 import Foundation
 
-class SectionedCollectionFrame<T>: NSObject {
+public class SectionedCollectionFrame<T>: NSObject {
     
     // MARK: Properties
     
@@ -39,7 +39,7 @@ class SectionedCollectionFrame<T>: NSObject {
     }
 }
 
-class Section<T> {
+public class Section<T> {
     
     var type: String
     

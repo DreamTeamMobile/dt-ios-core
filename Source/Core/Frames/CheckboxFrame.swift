@@ -6,7 +6,7 @@
 
 import Foundation
 
-class CheckboxFrame: NSObject {
+public class CheckboxFrame: NSObject {
     
     // MARK: Fields
     

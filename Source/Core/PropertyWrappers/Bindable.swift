@@ -7,7 +7,7 @@
 import Foundation
 
 @propertyWrapper
-class Bindable<T> {
+public class Bindable<T> {
 
     // MARK: Type aliases
     

@@ -6,7 +6,7 @@
 
 import Foundation
 
-protocol BaseVmProtocol: class {
+public protocol BaseVmProtocol: class {
 
     func initialize(initObject: Any)
 
@@ -22,7 +22,7 @@ protocol BaseVmProtocol: class {
     
 }
 
-class BViewModel: NSObject, BaseVmProtocol {
+public class BViewModel: NSObject, BaseVmProtocol {
 
     @Bindable(false)
     var isLoading: Bool
@@ -57,7 +57,7 @@ class BViewModel: NSObject, BaseVmProtocol {
 
 }
 
-class BaseViewModel<T>: BViewModel {
+public class BaseViewModel<T>: BViewModel {
     
     var initObject: T?
 

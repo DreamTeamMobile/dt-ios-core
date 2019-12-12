@@ -6,7 +6,7 @@
 
 import Foundation
 
-class PageIndicationFrame: NSObject {
+public class PageIndicationFrame: NSObject {
     
     // MARK: Properties
     

@@ -6,7 +6,7 @@
 
 import UIKit
 
-class Router: NSObject, RouterProtocol {
+public class Router: NSObject, RouterProtocol {
     
     private var currentNavigationController: UINavigationController?
     private var map = [String: UIViewController.Type]()
@@ -17,6 +17,7 @@ class Router: NSObject, RouterProtocol {
                 
         if let baseViCo = viewController as? BaseViCoProtocol {
             baseViCo.setViewModel(viewModel: viewModel)
+            baseViCo.router = self
         }
         
         viewModel.initialize(initObject: initObj)        

@@ -6,7 +6,7 @@
 
 import Foundation
 
-class CollectionFrame<T>: NSObject {
+public class CollectionFrame<T>: NSObject {
     
     // MARK: Properties
     

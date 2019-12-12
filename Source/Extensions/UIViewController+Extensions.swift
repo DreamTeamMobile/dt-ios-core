@@ -6,7 +6,7 @@
 
 import UIKit
 
-extension UIViewController {
+public extension UIViewController {
     
     class var nibName: String {
         return String(describing: self)

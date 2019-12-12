@@ -15,7 +15,7 @@ public class Router: NSObject, RouterProtocol {
         let viewController = viewType.init(nibName: viewType.nibName, bundle: nil)
         let viewModel = vmType.init()
                 
-        if let baseViCo = viewController as? BaseViCoProtocol {
+        if var baseViCo = viewController as? BaseViCoProtocol {
             baseViCo.setViewModel(viewModel: viewModel)
             baseViCo.router = self
         }
@@ -55,7 +55,7 @@ public class Router: NSObject, RouterProtocol {
     
     // MARK: Methods
     
-    func navigateTo<ViewModel: BViewModel>(vmType: ViewModel.Type, initObj: Any, navigationType: NavigationType) {
+    public func navigateTo<ViewModel: BViewModel>(vmType: ViewModel.Type, initObj: Any, navigationType: NavigationType) {
         DispatchQueue.main.async { [weak self] in
             guard let strongSelf = self else {
                 return
@@ -98,16 +98,16 @@ public class Router: NSObject, RouterProtocol {
         }
     }
 
-    func register<ViewController: UIViewController, ViewModel: BViewModel>(viewType: ViewController.Type, vmType: ViewModel.Type) {
+    public func register<ViewController: UIViewController, ViewModel: BViewModel>(viewType: ViewController.Type, vmType: ViewModel.Type) {
         self.map[vmType.description()] = viewType
     }
 
-    func get<ViewModel: BViewModel>(vmType: ViewModel.Type, initObj: Any) -> UIViewController {
+    public func get<ViewModel: BViewModel>(vmType: ViewModel.Type, initObj: Any) -> UIViewController {
         let viewType = self.map[vmType.description()]!
         return initViewController(viewType: viewType, vmType: vmType, initObj: initObj)
     }
 
-    func close<ViewModel: BViewModel>(vmType: ViewModel.Type, completion: (() -> Void)?) {
+    public func close<ViewModel: BViewModel>(vmType: ViewModel.Type, completion: (() -> Void)?) {
         guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
         
         if let presented = rootViewController.presentedViewController {
@@ -120,7 +120,7 @@ public class Router: NSObject, RouterProtocol {
         }
     }
 
-    func setCurrentNavigationController(_ navigationController: UINavigationController?) {
+    public func setCurrentNavigationController(_ navigationController: UINavigationController?) {
         if let nc = navigationController {
             self.currentNavigationController = nc
         }

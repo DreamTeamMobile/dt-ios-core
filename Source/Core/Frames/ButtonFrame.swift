@@ -24,13 +24,13 @@ public class ButtonFrame: NSObject, ButtonProtocol {
     
     // MARK: Properties
     
-    @Bindable("") var title: String
+    @Bindable("") public var title: String
     
-    @Bindable(false) var isSelected: Bool
+    @Bindable(false) public var isSelected: Bool
         
-    @Bindable(false) var isHidden: Bool
+    @Bindable(false) public var isHidden: Bool
     
-    @Bindable(true) var enabled: Bool
+    @Bindable(true) public var enabled: Bool
     
     // MARK: Init
     
@@ -47,7 +47,7 @@ public class ButtonFrame: NSObject, ButtonProtocol {
     
     // MARK: Methods
     
-    @objc func execute(_ parameter: AnyObject?) {
+    @objc public func execute(_ parameter: AnyObject?) {
         self.onExecute()
     }
 }
@@ -60,11 +60,11 @@ public class TButtonFrame<T>: NSObject, ButtonProtocol {
     
     // MARK: Properties
     
-    @Bindable("") var title: String
+    @Bindable("") public var title: String
     
-    @Bindable(false) var isSelected: Bool
+    @Bindable(false) public var isSelected: Bool
     
-    @Bindable(false) var isHidden: Bool
+    @Bindable(false) public var isHidden: Bool
         
     // MARK: Init
         
@@ -75,7 +75,7 @@ public class TButtonFrame<T>: NSObject, ButtonProtocol {
     
     // MARK: Methods
     
-    func execute(_ parameter: AnyObject?) {
+    public func execute(_ parameter: AnyObject?) {
         if let value = parameter as? T {
             self.onExecute(value)
         }

@@ -20,7 +20,7 @@ public class BaseCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         setup()
     }

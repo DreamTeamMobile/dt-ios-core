@@ -18,12 +18,12 @@ public class BaseView: UIView {
         commonInit()
     }
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         setup()
     }
 
-    func setup() {}
+    public func setup() {}
 }
 
 fileprivate extension BaseView {

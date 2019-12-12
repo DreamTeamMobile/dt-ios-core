@@ -21,13 +21,13 @@ public class BindableEquatable<T: Equatable> {
     
     private(set) var notifyOnEachChange: Bool
     
-    var wrappedValue: T {
+    public var wrappedValue: T {
         didSet {
             fire(oldValue)
         }
     }
 
-    var projectedValue : BindableEquatable {
+    public var projectedValue : BindableEquatable {
         self
     }
 

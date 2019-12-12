@@ -13,6 +13,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let temp = InputFrame()
         // Do any additional setup after loading the view.
     }
 

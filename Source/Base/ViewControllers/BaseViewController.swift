@@ -18,7 +18,7 @@ public protocol BaseViCoProtocol {
 
 public class BViewController: UIViewController, BaseViCoProtocol {
     
-    var router: RouterProtocol?
+    public var router: RouterProtocol?
     
     required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -36,11 +36,11 @@ public class BViewController: UIViewController, BaseViCoProtocol {
     
     // MARK: BaseViCoProtocol
 
-    func setViewModel(viewModel: Any) {
+    public func setViewModel(viewModel: Any) {
         
     }
     
-    func getViewModel() -> Any? {
+    public func getViewModel() -> Any? {
         return nil
     }
     
@@ -161,21 +161,21 @@ public class BViewController: UIViewController, BaseViCoProtocol {
     
     // MARK: Overrides
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         registerKeyboardObservers()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unregisterKeyboardObservers()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.router?.setCurrentNavigationController(self.navigationController)
     }
@@ -202,38 +202,38 @@ public class BaseViewController<T: BViewModel>: BViewController {
 
     // MARK: BaseViCoProtocol
 
-    override func setViewModel(viewModel: Any) {
+    override public func setViewModel(viewModel: Any) {
         self.viewModel = viewModel as? T
     }
     
-    override func getViewModel() -> Any? {
+    override public func getViewModel() -> Any? {
         return self.viewModel
     }
 
     // MARK: Overrides
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         bindLoadingState()
         self.viewModel?.start()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.viewModel?.viewAppearing()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.viewModel?.viewAppeared()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.viewModel?.viewDisappearing()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    override public func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.viewModel?.viewDisappeared()
     }

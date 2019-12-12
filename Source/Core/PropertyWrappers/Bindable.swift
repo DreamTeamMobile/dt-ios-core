@@ -19,13 +19,13 @@ public class Bindable<T> {
     
     // MARK: Properties
     
-    var wrappedValue: T {
+    public var wrappedValue: T {
         didSet {
             fire(oldValue)
         }
     }
 
-    var projectedValue : Bindable {
+    public var projectedValue : Bindable {
         self
     }
 

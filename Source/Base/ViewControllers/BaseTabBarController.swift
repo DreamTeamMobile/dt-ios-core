@@ -12,6 +12,8 @@ public class BaseTabBarController<T: BViewModel>: UITabBarController, BaseViCoPr
     
     var viewModel: T?
     
+    public var router: RouterProtocol?
+    
     required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.modalPresentationStyle = .fullScreen
@@ -27,40 +29,40 @@ public class BaseTabBarController<T: BViewModel>: UITabBarController, BaseViCoPr
     
     // MARK: BaseViCoProtocol
 
-    func setViewModel(viewModel: Any) {
+    public func setViewModel(viewModel: Any) {
         self.viewModel = viewModel as? T
         if isViewDidLoad {
             self.viewModel?.start()
         }
     }
     
-    func getViewModel() -> Any? {
+    public func getViewModel() -> Any? {
         return self.viewModel
     }
     
     // MARK: Overrides
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         self.isViewDidLoad = true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.viewModel?.viewAppearing()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.viewModel?.viewAppeared()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.viewModel?.viewDisappearing()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    override public func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.viewModel?.viewDisappeared()
     }

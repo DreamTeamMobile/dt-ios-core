@@ -31,27 +31,27 @@ public class BViewModel: NSObject, BaseVmProtocol {
         super.init()
     }
 
-    func initialize(initObject: Any) {
+    public func initialize(initObject: Any) {
 
     }
 
-    func start() {
+    public func start() {
         
     }
 
-    func viewAppearing() {
+    public func viewAppearing() {
         
     }
     
-    func viewAppeared() {
+    public func viewAppeared() {
         
     }
     
-    func viewDisappearing() {
+    public func viewDisappearing() {
         
     }
     
-    func viewDisappeared() {
+    public func viewDisappeared() {
         
     }
 
@@ -61,7 +61,7 @@ public class BaseViewModel<T>: BViewModel {
     
     var initObject: T?
 
-    override func initialize(initObject: Any) {
+    override public func initialize(initObject: Any) {
         self.initObject = initObject as? T
     }
 

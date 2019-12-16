@@ -10,13 +10,17 @@ open class BindableSectionedTableViewSource<T> : NSObject, UITableViewDataSource
     
     // MARK: Fields
     
-    let tableView: UITableView
+    public let tableView: UITableView
     
-    let tableFrame: SectionedCollectionFrame<T>
+    public let tableFrame: SectionedCollectionFrame<T>
     
-    let cellIdentifier: String
+    public let cellIdentifier: String
     
     // MARK: Init
+        
+    convenience init(tableView: UITableView, tableFrame: SectionedCollectionFrame<T>) {
+        self.init(tableView: tableView, tableFrame: tableFrame, cellIdentifier: "")
+    }
     
     init(tableView: UITableView, tableFrame: SectionedCollectionFrame<T>, cellIdentifier: String) {
         self.tableView = tableView
@@ -34,33 +38,33 @@ open class BindableSectionedTableViewSource<T> : NSObject, UITableViewDataSource
     
     // MARK: Methods
     
-    func getCellIdentifier(_ indexPath: IndexPath) -> String {
+    open func getCellIdentifier(_ indexPath: IndexPath) -> String {
         return self.cellIdentifier
     }
 
-    func getItemAt(_ indexPath: IndexPath) -> T {
+    open func getItemAt(_ indexPath: IndexPath) -> T {
         return getSectionAt(indexPath.section).items[indexPath.row]
     }
     
-    func getSectionAt(_ section: Int) -> Section<T> {
+    open func getSectionAt(_ section: Int) -> Section<T> {
         return self.tableFrame.itemsSource[section]
     }
     
-    func onItemsSourceChanged(_ oldItems: [Section<T>], _ newItems: [Section<T>]) {
+    open func onItemsSourceChanged(_ oldItems: [Section<T>], _ newItems: [Section<T>]) {
         self.tableView.reloadData()
     }
     
     // MARK: UITableViewDataSource implementation
     
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return getSectionAt(section).items.count
     }
     
-    public func numberOfSections(in tableView: UITableView) -> Int {
+    open func numberOfSections(in tableView: UITableView) -> Int {
         return self.tableFrame.itemsSource.count
     }
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: getCellIdentifier(indexPath), for: indexPath)
         if let bindable = cell as? BindableTableViewCell<T> {
             bindable.dataContext = getItemAt(indexPath)
@@ -68,48 +72,48 @@ open class BindableSectionedTableViewSource<T> : NSObject, UITableViewDataSource
         return cell
     }
     
-    public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    open func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         return nil
     }
     
-    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    open func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
     }
         
     // MARK: UITableViewDelegate implementation
     
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let section = getSectionAt(indexPath.section)
         let item = getItemAt(indexPath)
         self.tableFrame.onItemSelected(item: item, sectionType: section.type)
     }
     
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 0
     }
     
-    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
     
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
     
-    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return nil
     }
     
-    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return nil
     }
 
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    open func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
     }
 
-    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+    open func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
 
     }
     

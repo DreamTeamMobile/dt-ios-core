@@ -8,7 +8,7 @@ import UIKit
 
 open class BindableCollectionViewCell<Model>: BaseCollectionViewCell {
 
-    var dataContext: Model?
+    open var dataContext: Model?
 
 }
 

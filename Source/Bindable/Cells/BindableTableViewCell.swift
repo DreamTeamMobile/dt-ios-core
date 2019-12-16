@@ -8,6 +8,6 @@ import UIKit
 
 open class BindableTableViewCell<Model>: BaseTableViewCell {
     
-    var dataContext: Model?
+    open var dataContext: Model?
     
 }

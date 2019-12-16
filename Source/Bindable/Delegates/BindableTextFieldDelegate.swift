@@ -10,13 +10,13 @@ open class BindableTextFieldDelegate : NSObject, UITextFieldDelegate {
     
     // MARK: Fields
     
-    private let inputFrame: InputFrame
+    public let inputFrame: InputFrame
     
-    private let textField: UITextField
+    public let textField: UITextField
     
     // MARK: Properties
     
-    var onReturnExecute: (() -> Void)?
+    public var onReturnExecute: (() -> Void)?
     
     // MARK: Init
     
@@ -49,48 +49,48 @@ open class BindableTextFieldDelegate : NSObject, UITextFieldDelegate {
     // MARK: UITextFieldDelegate implementation
     
     /// return NO to disallow editing.
-    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+    open func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true
     }
 
     /// became first responder
-    public func textFieldDidBeginEditing(_ textField: UITextField) {
+    open func textFieldDidBeginEditing(_ textField: UITextField) {
         
     }
 
     /// return YES to allow editing to stop and to resign first responder status. NO to disallow the editing session to end
-    public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+    open func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
     }
 
     /// may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
-    public func textFieldDidEndEditing(_ textField: UITextField) {
+    open func textFieldDidEndEditing(_ textField: UITextField) {
         
     }
 
     /// if implemented, called in place of textFieldDidEndEditing:
     @available(iOS 10.0, *)
-    public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+    open func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         
     }
     
     /// return NO to not change text
-    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString text: String) -> Bool {
+    open func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString text: String) -> Bool {
         return self.inputFrame.shouldChangeCharactersIn(range: range, replacementString: text)
     }
     
     @available(iOS 13.0, *)
-    public func textFieldDidChangeSelection(_ textField: UITextField) {
+    open func textFieldDidChangeSelection(_ textField: UITextField) {
         
     }
     
     /// called when clear button pressed. return NO to ignore (no notifications)
-    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
+    open func textFieldShouldClear(_ textField: UITextField) -> Bool {
         return true
     }
 
     /// called when 'return' key pressed. return NO to ignore.
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         self.onReturnExecute?()
         return true

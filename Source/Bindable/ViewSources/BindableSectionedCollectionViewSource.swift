@@ -10,14 +10,18 @@ open class BindableSectionedCollectionViewSource<T> : NSObject, UICollectionView
 
     // MARK: Fields
 
-    let collectionView: UICollectionView
+    public let collectionView: UICollectionView
 
-    let collectionFrame: SectionedCollectionFrame<T>
+    public let collectionFrame: SectionedCollectionFrame<T>
 
-    let cellIdentifier: String
+    public let cellIdentifier: String
 
     // MARK: Init
-
+        
+    convenience init(collectionView: UICollectionView, collectionFrame: SectionedCollectionFrame<T>) {
+        self.init(collectionView: collectionView, collectionFrame: collectionFrame, cellIdentifier: "")
+    }
+    
     init(collectionView: UICollectionView, collectionFrame: SectionedCollectionFrame<T>, cellIdentifier: String) {
         self.collectionView = collectionView
         self.collectionFrame = collectionFrame
@@ -32,32 +36,36 @@ open class BindableSectionedCollectionViewSource<T> : NSObject, UICollectionView
         self.collectionFrame.$itemsSource.bindAndFire(onItemsSourceChanged)
     }
 
-    func getItemAt(_ indexPath: IndexPath) -> T {
+    // MARK: Methods
+
+    open func getItemAt(_ indexPath: IndexPath) -> T {
         return getSectionAt(indexPath.section).items[indexPath.item]
     }
 
-    func getSectionAt(_ section: Int) -> Section<T> {
+    open func getSectionAt(_ section: Int) -> Section<T> {
         return self.collectionFrame.itemsSource[section]
     }
 
-    // MARK: Methods
-
-    func onItemsSourceChanged(_ oldItems: [Section<T>], _ newItems: [Section<T>]) {
+    open func onItemsSourceChanged(_ oldItems: [Section<T>], _ newItems: [Section<T>]) {
         self.collectionView.reloadData()
+    }
+
+    open func getCellIdentifier(_ indexPath: IndexPath) -> String {
+        return self.cellIdentifier
     }
 
     // MARK: UICollectionViewDataSource implementation
 
-    public func numberOfSections(in collectionView: UICollectionView) -> Int {
+    open func numberOfSections(in collectionView: UICollectionView) -> Int {
         return self.collectionFrame.itemsSource.count
     }
 
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return getSectionAt(section).items.count
     }
 
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath)
+    open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: getCellIdentifier(indexPath), for: indexPath)
         if let bindable = cell as? BindableCollectionViewCell<T> {
             bindable.dataContext = getItemAt(indexPath)
         }
@@ -66,40 +74,40 @@ open class BindableSectionedCollectionViewSource<T> : NSObject, UICollectionView
 
     // MARK: UICollectionViewDelegate implementation
 
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let section = getSectionAt(indexPath.section)
         let item = getItemAt(indexPath)
         self.collectionFrame.onItemSelected(item: item, sectionType: section.type)
     }
 
-    public func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+    open func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
 
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    open func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
     }
 
-    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+    open func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
 
     }
 
     // MARK: UICollectionViewDelegateFlowLayout implementation
 
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return (collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize ?? .zero
     }
 
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return (collectionViewLayout as? UICollectionViewFlowLayout)?.sectionInset ?? .zero
     }
 
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return (collectionViewLayout as? UICollectionViewFlowLayout)?.minimumInteritemSpacing ?? 0.0
     }
 
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return (collectionViewLayout as? UICollectionViewFlowLayout)?.minimumLineSpacing ?? 0.0
     }
 

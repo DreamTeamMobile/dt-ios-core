@@ -18,7 +18,7 @@ open class BaseNibLoadableView: UIView {
         loadNib()
     }
 
-    func loadFromNib() -> UIView? {
+    open func loadFromNib() -> UIView? {
         let bundle = Bundle(for: type(of: self))
         let nibName = type(of: self).description().components(separatedBy: ".").last!
         if Bundle.main.path(forResource: nibName, ofType: "nib") != nil {

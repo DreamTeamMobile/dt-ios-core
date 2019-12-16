@@ -18,7 +18,7 @@ public protocol BaseViCoProtocol {
 
 open class BViewController: UIViewController, BaseViCoProtocol {
     
-    public var router: RouterProtocol?
+    open var router: RouterProtocol?
     
     required override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -36,25 +36,25 @@ open class BViewController: UIViewController, BaseViCoProtocol {
     
     // MARK: BaseViCoProtocol
 
-    public func setViewModel(viewModel: Any) {
+    open func setViewModel(viewModel: Any) {
         
     }
     
-    public func getViewModel() -> Any? {
+    open func getViewModel() -> Any? {
         return nil
     }
     
     // MARK: - Loader
     
-    var loaderBackgroundColor: UIColor {
+    open var loaderBackgroundColor: UIColor {
         get { return UIColor.black.withAlphaComponent(0.5) }
     }
     
-    var loaderColor: UIColor {
+    open var loaderColor: UIColor {
         get { return UIColor.white }
     }
 
-    func showLoader(animated: Bool = true) {
+    open func showLoader(animated: Bool = true) {
         let loaderView = self.loaderView()
         if loaderView.superview == nil {
             loaderView.translatesAutoresizingMaskIntoConstraints = false
@@ -80,7 +80,7 @@ open class BViewController: UIViewController, BaseViCoProtocol {
         }
     }
 
-    func hideLoader(animated: Bool = true) {
+    open func hideLoader(animated: Bool = true) {
         let loaderView = self.loaderView()
         if loaderView.superview != nil {
             if (animated) {
@@ -95,7 +95,7 @@ open class BViewController: UIViewController, BaseViCoProtocol {
         }
     }
 
-    func loaderView() -> UIView {
+    open func loaderView() -> UIView {
         let tag = 10001
         if let loaderView = view.viewWithTag(tag) {
             return loaderView
@@ -151,31 +151,31 @@ open class BViewController: UIViewController, BaseViCoProtocol {
         keyboardWillChangeFrame(keyboardHeight)
     }
 
-    func keyboardHeightDidChanged(_ height: CGFloat) {
+    open func keyboardHeightDidChanged(_ height: CGFloat) {
         
     }
 
-    func keyboardWillChangeFrame(_ height: CGFloat) {
+    open func keyboardWillChangeFrame(_ height: CGFloat) {
 
     }
     
     // MARK: Overrides
     
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    override public func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         registerKeyboardObservers()
     }
     
-    override public func viewWillDisappear(_ animated: Bool) {
+    override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unregisterKeyboardObservers()
     }
     
-    override public func viewDidAppear(_ animated: Bool) {
+    override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.router?.setCurrentNavigationController(self.navigationController)
     }
@@ -186,11 +186,11 @@ open class BViewController: UIViewController, BaseViCoProtocol {
 
 open class BaseViewController<T: BViewModel>: BViewController {
 
-    var viewModel: T?
+    open var viewModel: T?
 
     // MARK: Methods
         
-    func bindLoadingState() {
+    open func bindLoadingState() {
         self.viewModel?.$isLoading.bindAndFire { [weak self] old, new in
             if new {
                 self?.showLoader()
@@ -202,38 +202,38 @@ open class BaseViewController<T: BViewModel>: BViewController {
 
     // MARK: BaseViCoProtocol
 
-    override public func setViewModel(viewModel: Any) {
+    override open func setViewModel(viewModel: Any) {
         self.viewModel = viewModel as? T
     }
     
-    override public func getViewModel() -> Any? {
+    override open func getViewModel() -> Any? {
         return self.viewModel
     }
 
     // MARK: Overrides
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         bindLoadingState()
         self.viewModel?.start()
     }
     
-    override public func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.viewModel?.viewAppearing()
     }
     
-    override public func viewDidAppear(_ animated: Bool) {
+    override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.viewModel?.viewAppeared()
     }
     
-    override public func viewWillDisappear(_ animated: Bool) {
+    override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.viewModel?.viewDisappearing()
     }
     
-    override public func viewDidDisappear(_ animated: Bool) {
+    override open func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.viewModel?.viewDisappeared()
     }

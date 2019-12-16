@@ -29,40 +29,40 @@ open class BaseTabBarController<T: BViewModel>: UITabBarController, BaseViCoProt
     
     // MARK: BaseViCoProtocol
 
-    public func setViewModel(viewModel: Any) {
+    open func setViewModel(viewModel: Any) {
         self.viewModel = viewModel as? T
         if isViewDidLoad {
             self.viewModel?.start()
         }
     }
     
-    public func getViewModel() -> Any? {
+    open func getViewModel() -> Any? {
         return self.viewModel
     }
     
     // MARK: Overrides
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         self.isViewDidLoad = true
     }
     
-    override public func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.viewModel?.viewAppearing()
     }
     
-    override public func viewDidAppear(_ animated: Bool) {
+    override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.viewModel?.viewAppeared()
     }
     
-    override public func viewWillDisappear(_ animated: Bool) {
+    override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.viewModel?.viewDisappearing()
     }
     
-    override public func viewDidDisappear(_ animated: Bool) {
+    override open func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.viewModel?.viewDisappeared()
     }

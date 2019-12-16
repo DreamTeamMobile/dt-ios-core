@@ -20,11 +20,11 @@ open class BaseTableViewCell: UITableViewCell {
         }
     }
 
-    override public func awakeFromNib() {
+    override open func awakeFromNib() {
         super.awakeFromNib()
         setup()
     }
 
-    func setup() { }
+    open func setup() { }
 
 }

@@ -17,7 +17,8 @@ class MainViewModel: BaseViewModel<MainInitObject> {
     // MARK: Init
     
     required init() {
-        self.searchAndTable = ButtonFrame(onExecute: self.onSearchAndTableExecute)
+        self.searchAndTable = ButtonFrame()
+        let t = SearchFrame()
     }
     
     // MARK: Private methods

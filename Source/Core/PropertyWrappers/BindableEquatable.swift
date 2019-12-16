@@ -11,7 +11,7 @@ public class BindableEquatable<T: Equatable> {
 
     // MARK: Type aliases
     
-    typealias Listener = (_ oldValue: T, _ newValue: T) -> ()
+    public typealias Listener = (_ oldValue: T, _ newValue: T) -> ()
     
     // MARK: Fields
     

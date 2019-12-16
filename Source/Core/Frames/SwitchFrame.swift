@@ -43,7 +43,7 @@ public class SwitchFrame: NSObject {
 
 public extension SwitchFrame {
         
-    @objc public func onValueChanged(_ sender: UISwitch) {
+    @objc func onValueChanged(_ sender: UISwitch) {
         self.isOn = sender.isOn
     }
     

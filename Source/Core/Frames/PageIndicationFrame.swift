@@ -10,19 +10,22 @@ public class PageIndicationFrame: NSObject {
     
     // MARK: Properties
     
-    @Bindable(0) var currentPage: Int {
+    @Bindable(0)
+    public var currentPage: Int {
         didSet {
             print("currentPage: \(currentPage)")
         }
     }
     
-    @Bindable(0) var pagesCount: Int {
+    @Bindable(0)
+    public var pagesCount: Int {
         didSet {
             print("pagesCount: \(pagesCount)")
         }
     }
     
-    @Bindable(0) var pageProgress: Float {
+    @Bindable(0)
+    public var pageProgress: Float {
         didSet {
             print("pageProgress: \(pageProgress)")
         }

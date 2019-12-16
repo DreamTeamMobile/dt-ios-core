@@ -14,7 +14,8 @@ public class CheckboxFrame: NSObject {
     
     // MARK: Properties
     
-    @BindableEquatable(false, false) var isSelected: Bool {
+    @BindableEquatable(false, false)
+    public var isSelected: Bool {
         didSet {
             if oldValue != self.isSelected {
                 self.valueChanged(self.isSelected)
@@ -22,20 +23,21 @@ public class CheckboxFrame: NSObject {
         }
     }
     
-    @Bindable("") var text: String
+    @Bindable("")
+    public var text: String
         
     // MARK: Init
     
     // MARK: Init
     
-    init(value: Bool) {
+    public init(value: Bool) {
         self.valueChanged = { _ in }
         super.init()
         self.text = ""
         self.isSelected = value
     }
     
-    init(value: Bool, onValueChanged: @escaping (Bool) -> Void) {
+    public init(value: Bool, onValueChanged: @escaping (Bool) -> Void) {
         self.valueChanged = { _ in }
         super.init()
         self.text = ""
@@ -45,7 +47,7 @@ public class CheckboxFrame: NSObject {
     
     // MARK: Methods
     
-    func toggle() {
+    public func toggle() {
         self.isSelected = !self.isSelected
     }
 }

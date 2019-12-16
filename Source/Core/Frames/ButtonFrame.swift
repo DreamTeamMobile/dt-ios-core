@@ -34,12 +34,12 @@ public class ButtonFrame: NSObject, ButtonProtocol {
     
     // MARK: Init
     
-    convenience init(title: String, onExecute: @escaping () -> Void) {
+    convenience public init(title: String, onExecute: @escaping () -> Void) {
         self.init(onExecute: onExecute)
         self.title = title
     }
         
-    init(onExecute: @escaping () -> Void) {
+    public init(onExecute: @escaping () -> Void) {
         self.onExecute = onExecute
         super.init()
         self.title = ""
@@ -68,7 +68,7 @@ public class TButtonFrame<T>: NSObject, ButtonProtocol {
         
     // MARK: Init
         
-    init(onExecute: @escaping (T) -> Void) {
+    public init(onExecute: @escaping (T) -> Void) {
         self.onExecute = onExecute
         super.init()
     }

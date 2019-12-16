@@ -2,7 +2,6 @@
 //  SceneDelegate.swift
 //  ExampleApp
 //
-//  Created by Максим Евтух on 12.12.2019.
 //  Copyright © 2019 DreamTeam Apps. All rights reserved.
 //
 

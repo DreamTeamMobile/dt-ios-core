@@ -7,21 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		082389E123A75EE80080EE8B /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082389E023A75EE80080EE8B /* App.swift */; };
+		082389E623A75F500080EE8B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082389E523A75F500080EE8B /* MainViewModel.swift */; };
+		082389E823A75F5E0080EE8B /* MainInitObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082389E723A75F5E0080EE8B /* MainInitObject.swift */; };
+		082389EA23A75F6B0080EE8B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082389E923A75F6B0080EE8B /* MainViewController.swift */; };
+		082389F223A764AC0080EE8B /* Guise in Frameworks */ = {isa = PBXBuildFile; productRef = 082389F123A764AC0080EE8B /* Guise */; };
+		082389F423A7680B0080EE8B /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082389F323A7680B0080EE8B /* MainViewController.xib */; };
 		086FC42723A20B5100BB1965 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086FC42623A20B5100BB1965 /* AppDelegate.swift */; };
-		086FC42923A20B5100BB1965 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086FC42823A20B5100BB1965 /* SceneDelegate.swift */; };
-		086FC42B23A20B5100BB1965 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086FC42A23A20B5100BB1965 /* ViewController.swift */; };
-		086FC42E23A20B5100BB1965 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 086FC42C23A20B5100BB1965 /* Main.storyboard */; };
 		086FC43023A20B5300BB1965 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 086FC42F23A20B5300BB1965 /* Assets.xcassets */; };
 		086FC43323A20B5300BB1965 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 086FC43123A20B5300BB1965 /* LaunchScreen.storyboard */; };
 		086FC43E23A212D800BB1965 /* DT.Core.iOS in Frameworks */ = {isa = PBXBuildFile; productRef = 086FC43D23A212D800BB1965 /* DT.Core.iOS */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		082389E023A75EE80080EE8B /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		082389E523A75F500080EE8B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		082389E723A75F5E0080EE8B /* MainInitObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInitObject.swift; sourceTree = "<group>"; };
+		082389E923A75F6B0080EE8B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		082389F323A7680B0080EE8B /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		086FC42323A20B5100BB1965 /* ExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		086FC42623A20B5100BB1965 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		086FC42823A20B5100BB1965 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		086FC42A23A20B5100BB1965 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		086FC42D23A20B5100BB1965 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		086FC42F23A20B5300BB1965 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		086FC43223A20B5300BB1965 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		086FC43423A20B5300BB1965 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -32,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				082389F223A764AC0080EE8B /* Guise in Frameworks */,
 				086FC43E23A212D800BB1965 /* DT.Core.iOS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -39,6 +45,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		082389E223A75EF70080EE8B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				082389E323A75F350080EE8B /* Main */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		082389E323A75F350080EE8B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				082389E423A75F3E0080EE8B /* Core */,
+				082389E923A75F6B0080EE8B /* MainViewController.swift */,
+				082389F323A7680B0080EE8B /* MainViewController.xib */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		082389E423A75F3E0080EE8B /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				082389E723A75F5E0080EE8B /* MainInitObject.swift */,
+				082389E523A75F500080EE8B /* MainViewModel.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		086FC41A23A20B5100BB1965 = {
 			isa = PBXGroup;
 			children = (
@@ -58,13 +91,12 @@
 		086FC42523A20B5100BB1965 /* ExampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				082389E223A75EF70080EE8B /* Views */,
+				086FC43423A20B5300BB1965 /* Info.plist */,
+				082389E023A75EE80080EE8B /* App.swift */,
 				086FC42623A20B5100BB1965 /* AppDelegate.swift */,
-				086FC42823A20B5100BB1965 /* SceneDelegate.swift */,
-				086FC42A23A20B5100BB1965 /* ViewController.swift */,
-				086FC42C23A20B5100BB1965 /* Main.storyboard */,
 				086FC42F23A20B5300BB1965 /* Assets.xcassets */,
 				086FC43123A20B5300BB1965 /* LaunchScreen.storyboard */,
-				086FC43423A20B5300BB1965 /* Info.plist */,
 			);
 			path = ExampleApp;
 			sourceTree = "<group>";
@@ -87,6 +119,7 @@
 			name = ExampleApp;
 			packageProductDependencies = (
 				086FC43D23A212D800BB1965 /* DT.Core.iOS */,
+				082389F123A764AC0080EE8B /* Guise */,
 			);
 			productName = ExampleApp;
 			productReference = 086FC42323A20B5100BB1965 /* ExampleApp.app */;
@@ -118,6 +151,7 @@
 			mainGroup = 086FC41A23A20B5100BB1965;
 			packageReferences = (
 				086FC43C23A212D800BB1965 /* XCRemoteSwiftPackageReference "dt-ios-core" */,
+				082389F023A764AC0080EE8B /* XCRemoteSwiftPackageReference "Guise" */,
 			);
 			productRefGroup = 086FC42423A20B5100BB1965 /* Products */;
 			projectDirPath = "";
@@ -134,8 +168,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				086FC43323A20B5300BB1965 /* LaunchScreen.storyboard in Resources */,
+				082389F423A7680B0080EE8B /* MainViewController.xib in Resources */,
 				086FC43023A20B5300BB1965 /* Assets.xcassets in Resources */,
-				086FC42E23A20B5100BB1965 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,23 +180,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				086FC42B23A20B5100BB1965 /* ViewController.swift in Sources */,
+				082389E123A75EE80080EE8B /* App.swift in Sources */,
 				086FC42723A20B5100BB1965 /* AppDelegate.swift in Sources */,
-				086FC42923A20B5100BB1965 /* SceneDelegate.swift in Sources */,
+				082389E623A75F500080EE8B /* MainViewModel.swift in Sources */,
+				082389E823A75F5E0080EE8B /* MainInitObject.swift in Sources */,
+				082389EA23A75F6B0080EE8B /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		086FC42C23A20B5100BB1965 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				086FC42D23A20B5100BB1965 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		086FC43123A20B5300BB1965 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -348,6 +376,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		082389F023A764AC0080EE8B /* XCRemoteSwiftPackageReference "Guise" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Prosumma/Guise";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		086FC43C23A212D800BB1965 /* XCRemoteSwiftPackageReference "dt-ios-core" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/DreamTeamMobile/dt-ios-core";
@@ -359,6 +395,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		082389F123A764AC0080EE8B /* Guise */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 082389F023A764AC0080EE8B /* XCRemoteSwiftPackageReference "Guise" */;
+			productName = Guise;
+		};
 		086FC43D23A212D800BB1965 /* DT.Core.iOS */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 086FC43C23A212D800BB1965 /* XCRemoteSwiftPackageReference "dt-ios-core" */;

@@ -6,7 +6,16 @@
         "repositoryURL": "https://github.com/DreamTeamMobile/dt-ios-core",
         "state": {
           "branch": "dev",
-          "revision": "b35b2a7aa31765bb3e1bb7357c02d6c21925279f",
+          "revision": "fa6bb445edf231c3d9144b20f9cffda2767d6e20",
+          "version": null
+        }
+      },
+      {
+        "package": "Guise",
+        "repositoryURL": "https://github.com/Prosumma/Guise",
+        "state": {
+          "branch": "master",
+          "revision": "a9000c437e92fa4b9784c4ffb9355ef754aae6bc",
           "version": null
         }
       }

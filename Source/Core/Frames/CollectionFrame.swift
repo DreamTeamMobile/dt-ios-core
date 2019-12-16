@@ -12,7 +12,8 @@ public class CollectionFrame<T>: NSObject {
     
     @Bindable(false) private(set) var isEmpty: Bool
     
-    @Bindable([T]()) var itemsSource: [T] {
+    @Bindable([T]())
+    public var itemsSource: [T] {
         didSet {
             self.isEmpty = self.itemsSource.isEmpty
         }
@@ -24,19 +25,19 @@ public class CollectionFrame<T>: NSObject {
     
     // MARK: Init
     
-    required override init() {
+    required override public init() {
         self.handleItemSelection = { _ in }
         super.init()
     }
     
-    init(itemSelection: @escaping (T) -> Void) {
+    public init(itemSelection: @escaping (T) -> Void) {
         self.handleItemSelection = itemSelection
         super.init()
     }
     
     // MARK: Methods
     
-    func onItemSelected(item: T) {
+    public func onItemSelected(item: T) {
         self.handleItemSelection(item)
     }
 }

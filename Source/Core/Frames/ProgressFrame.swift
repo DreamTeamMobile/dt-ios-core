@@ -8,10 +8,13 @@ import Foundation
 
 public class ProgressFrame: NSObject {
  
-    @Bindable(0) var currentProgress: Float
+    @Bindable(0)
+    public var currentProgress: Float
     
-    @Bindable(0) var minProgress: Float
+    @Bindable(0)
+    public var minProgress: Float
     
-    @Bindable(1) var maxProgress: Float
+    @Bindable(1)
+    public var maxProgress: Float
     
 }

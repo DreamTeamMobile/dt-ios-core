@@ -33,18 +33,18 @@ public class BindableEquatable<T: Equatable> {
 
     // MARK: Init
     
-    convenience init(_ v: T) {
+    convenience public init(_ v: T) {
         self.init(v, true)
     }
     
-    init (_ v: T, _ notifyOnEachChange: Bool) {
+    public init (_ v: T, _ notifyOnEachChange: Bool) {
         self.wrappedValue = v
         self.notifyOnEachChange = notifyOnEachChange
     }
     
     // MARK: Methods
         
-    func fire(_ oldValue: T) {
+    public func fire(_ oldValue: T) {
         let value = wrappedValue
         if let action = self.listener {
             if self.notifyOnEachChange || (!self.notifyOnEachChange && oldValue != value) {
@@ -53,11 +53,11 @@ public class BindableEquatable<T: Equatable> {
         }
     }
     
-    func bind(_ listener: Listener?) {
+    public func bind(_ listener: Listener?) {
         self.listener = listener
     }
 
-    func bindAndFire(_ listener: Listener?) {
+    public func bindAndFire(_ listener: Listener?) {
         self.listener = listener
         fire(self.wrappedValue)
     }

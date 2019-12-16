@@ -18,9 +18,9 @@ public class SearchFrame: NSObject {
     
     // MARK: Properties
     
-    var searchOnEveryTextChanging = false
+    public var searchOnEveryTextChanging = false
     
-    var searchText: String = "" {
+    public var searchText: String = "" {
         didSet {
             if searchOnEveryTextChanging {
                 self.searchingHandler(self.searchText)
@@ -36,7 +36,7 @@ public class SearchFrame: NSObject {
     
     // MARK: Init
     
-    init(searchingHandler: @escaping (String) -> Void, cancellationHandler: @escaping () -> Void, clearingHandler: @escaping () -> Void) {
+    public init(searchingHandler: @escaping (String) -> Void, cancellationHandler: @escaping () -> Void, clearingHandler: @escaping () -> Void) {
         self.searchingHandler = searchingHandler
         self.cancellationHandler = cancellationHandler
         self.clearingHandler = clearingHandler

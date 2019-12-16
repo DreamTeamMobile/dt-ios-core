@@ -15,7 +15,8 @@ public class SwitchFrame: NSObject {
     
     // MARK: Properties
     
-    @BindableEquatable(false, false) var isOn: Bool {
+    @BindableEquatable(false, false)
+    public var isOn: Bool {
         didSet {
             if oldValue != self.isOn {
                 self.valueChanged(self.isOn)
@@ -25,13 +26,13 @@ public class SwitchFrame: NSObject {
     
     // MARK: Init
     
-    init(value: Bool) {
+    public init(value: Bool) {
         self.valueChanged = { _ in }
         super.init()
         self.isOn = value
     }
     
-    init(value: Bool, onValueChanged: @escaping (Bool) -> Void) {
+    public init(value: Bool, onValueChanged: @escaping (Bool) -> Void) {
         self.valueChanged = { _ in }
         super.init()
         self.isOn = value
@@ -42,7 +43,7 @@ public class SwitchFrame: NSObject {
 
 public extension SwitchFrame {
         
-    @objc func onValueChanged(_ sender: UISwitch) {
+    @objc public func onValueChanged(_ sender: UISwitch) {
         self.isOn = sender.isOn
     }
     

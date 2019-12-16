@@ -10,25 +10,26 @@ public class InputFrame: NSObject {
     
     // MARK: Properties
     
-    @BindableEquatable("", false) var text: String {
+    @BindableEquatable("", false)
+    public var text: String {
         didSet {
             self.onTextChanged?(self.text)
         }
     }
     
-    var maxTextLength: Int? = nil
+    public var maxTextLength: Int? = nil
     
-    var onTextChanged: ((String) -> Void)?
+    public var onTextChanged: ((String) -> Void)?
     
-    var textValidator: ((String) -> Bool)?
+    public var textValidator: ((String) -> Bool)?
     
     // MARK: Init
     
-    override init() {
+    override public init() {
         
     }
     
-    init(onTextChanged: ((String) -> Void)?, textValidator: ((String) -> Bool)?) {
+    public init(onTextChanged: ((String) -> Void)?, textValidator: ((String) -> Bool)?) {
         self.onTextChanged = onTextChanged
         self.textValidator = textValidator
     }
@@ -50,7 +51,7 @@ public class InputFrame: NSObject {
     
     // MARK: Methods
     
-    func shouldChangeCharactersIn(range: NSRange, replacementString text: String) -> Bool {
+    public func shouldChangeCharactersIn(range: NSRange, replacementString text: String) -> Bool {
         let currentText = self.text
         var newText = getNewText(range, currentText, text)
         

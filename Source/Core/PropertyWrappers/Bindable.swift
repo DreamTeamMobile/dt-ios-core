@@ -31,7 +31,7 @@ public class Bindable<T> {
 
     // MARK: Init
     
-    init(_ v: T) {
+    public init(_ v: T) {
         self.wrappedValue = v
     }
     
@@ -41,18 +41,18 @@ public class Bindable<T> {
     
     // MARK: Methods
         
-    func fire(_ oldValue: T) {
+    public func fire(_ oldValue: T) {
         let value = wrappedValue
         DispatchQueue.main.async {[weak self] in
             self?.listener?(oldValue, value)
         }
     }
     
-    func bind(_ listener: Listener?) {
+    public func bind(_ listener: Listener?) {
         self.listener = listener
     }
 
-    func bindAndFire(_ listener: Listener?) {
+    public func bindAndFire(_ listener: Listener?) {
         self.listener = listener
         fire(self.wrappedValue)
     }

@@ -7,23 +7,40 @@
 
 import Foundation
 import DT_Core_iOS
+import Guise
 
 class MainViewModel: BaseViewModel<MainInitObject> {
     
     // MARK: Properties
     
-    private(set) var searchAndTable: ButtonFrame!
+    private(set) var searchAndTableButton: ButtonFrame!
+    
+    private(set) var inputButton: ButtonFrame!
+    
+    // MARK: Dependencies
+    
+    private let router: RouterProtocol
     
     // MARK: Init
     
-    required init() {
-        self.searchAndTable = ButtonFrame()
-        let t = SearchFrame()
+    convenience required init() {
+        self.init(router: Guise.resolve()!)
+    }
+    
+    required init(router: RouterProtocol) {
+        self.router = router
+        super.init()
+        self.searchAndTableButton = ButtonFrame(onExecute: self.onSearchAndTableExecute)
+        self.inputButton = ButtonFrame(onExecute: self.onInputExecute)
     }
     
     // MARK: Private methods
     
     private func onSearchAndTableExecute() {
         
+    }
+    
+    private func onInputExecute() {
+        self.router.navigateTo(vmType: InputViewModel.self, initObj: InputInitObj(), navigationType: .push)
     }
 }

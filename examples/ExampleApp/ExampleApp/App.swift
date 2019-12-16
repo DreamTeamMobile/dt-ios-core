@@ -12,6 +12,7 @@ import DT_Core_iOS
 class App {
     
     private static func registerDependencies() {
+        
     }
     
     private static func registerRouting() {

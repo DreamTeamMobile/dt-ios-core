@@ -6,7 +6,7 @@
 
 import UIKit
 
-public class BindableTextFieldDelegate : NSObject, UITextFieldDelegate {
+open class BindableTextFieldDelegate : NSObject, UITextFieldDelegate {
     
     // MARK: Fields
     

@@ -10,6 +10,6 @@ public class ViewFrame<T>: NSObject {
 
     // MARK: Properties
 
-    @Bindable(nil) var source: T
+    @Bindable(nil) var source: T?
 
 }

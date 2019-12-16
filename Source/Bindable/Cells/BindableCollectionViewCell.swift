@@ -6,7 +6,7 @@
 
 import UIKit
 
-public class BindableCollectionViewCell<Model>: BaseCollectionViewCell {
+open class BindableCollectionViewCell<Model>: BaseCollectionViewCell {
 
     var dataContext: Model?
 

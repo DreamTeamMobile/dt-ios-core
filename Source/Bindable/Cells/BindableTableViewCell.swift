@@ -6,7 +6,7 @@
 
 import UIKit
 
-public class BindableTableViewCell<Model>: BaseTableViewCell {
+open class BindableTableViewCell<Model>: BaseTableViewCell {
     
     var dataContext: Model?
     

@@ -6,7 +6,7 @@
 
 import UIKit
 
-public class BaseTabBarController<T: BViewModel>: UITabBarController, BaseViCoProtocol {
+open class BaseTabBarController<T: BViewModel>: UITabBarController, BaseViCoProtocol {
     
     private var isViewDidLoad = false
     
@@ -14,12 +14,12 @@ public class BaseTabBarController<T: BViewModel>: UITabBarController, BaseViCoPr
     
     public var router: RouterProtocol?
     
-    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    required override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.modalPresentationStyle = .fullScreen
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 

@@ -22,12 +22,12 @@ public protocol BaseVmProtocol: class {
     
 }
 
-public class BViewModel: NSObject, BaseVmProtocol {
+open class BViewModel: NSObject, BaseVmProtocol {
 
     @Bindable(false)
     var isLoading: Bool
 
-    required override init() {
+    required override public init() {
         super.init()
     }
 
@@ -57,7 +57,7 @@ public class BViewModel: NSObject, BaseVmProtocol {
 
 }
 
-public class BaseViewModel<T>: BViewModel {
+open class BaseViewModel<T>: BViewModel {
     
     var initObject: T?
 

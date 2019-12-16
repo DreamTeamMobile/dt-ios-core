@@ -9,11 +9,19 @@
 import UIKit
 import DT_Core_iOS
 
-class ViewController: UIViewController {
+struct InitObject {
+    
+}
+
+class ViewModel: BaseViewModel<InitObject> {
+    
+}
+
+class ViewController: BaseViewController<ViewModel> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let temp = InputFrame()
+        
         // Do any additional setup after loading the view.
     }
 

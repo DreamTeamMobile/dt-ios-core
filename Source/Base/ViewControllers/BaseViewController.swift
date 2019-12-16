@@ -16,16 +16,16 @@ public protocol BaseViCoProtocol {
     
 }
 
-public class BViewController: UIViewController, BaseViCoProtocol {
+open class BViewController: UIViewController, BaseViCoProtocol {
     
     public var router: RouterProtocol?
     
-    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    required override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.modalPresentationStyle = .fullScreen
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.modalPresentationStyle = .fullScreen
     }
@@ -184,7 +184,7 @@ public class BViewController: UIViewController, BaseViCoProtocol {
 
 // MARK: - BaseViewController
 
-public class BaseViewController<T: BViewModel>: BViewController {
+open class BaseViewController<T: BViewModel>: BViewController {
 
     var viewModel: T?
 

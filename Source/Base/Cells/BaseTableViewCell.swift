@@ -6,7 +6,7 @@
 
 import UIKit
 
-public class BaseTableViewCell: UITableViewCell {
+open class BaseTableViewCell: UITableViewCell {
 
     class var identifier: String {
         get {

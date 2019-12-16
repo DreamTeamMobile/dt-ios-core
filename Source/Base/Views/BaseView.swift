@@ -6,14 +6,14 @@
 
 import UIKit
 
-public class BaseView: UIView {
+open class BaseView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }

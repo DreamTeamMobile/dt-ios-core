@@ -6,7 +6,7 @@
 
 import UIKit
 
-public class BaseCollectionViewCell: UICollectionViewCell {
+open class BaseCollectionViewCell: UICollectionViewCell {
 
     class var identifier: String {
         get {

@@ -18,11 +18,11 @@ open class BindableCollectionViewSource<T> : NSObject, UICollectionViewDataSourc
 
     // MARK: Init
     
-    convenience init(collectionView: UICollectionView, collectionFrame: CollectionFrame<T>) {
+    convenience public init(collectionView: UICollectionView, collectionFrame: CollectionFrame<T>) {
         self.init(collectionView: collectionView, collectionFrame: collectionFrame, cellIdentifier: "")
     }
 
-    init(collectionView: UICollectionView, collectionFrame: CollectionFrame<T>, cellIdentifier: String) {
+    public init(collectionView: UICollectionView, collectionFrame: CollectionFrame<T>, cellIdentifier: String) {
         self.collectionView = collectionView
         self.collectionFrame = collectionFrame
         self.cellIdentifier = cellIdentifier

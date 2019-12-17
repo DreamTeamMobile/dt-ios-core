@@ -20,7 +20,7 @@ open class BindableTextFieldDelegate : NSObject, UITextFieldDelegate {
     
     // MARK: Init
     
-    init(inputFrame: InputFrame, textField: UITextField) {
+    public init(inputFrame: InputFrame, textField: UITextField) {
         self.inputFrame = inputFrame
         self.textField = textField
         super.init()

@@ -18,11 +18,11 @@ open class BindableTableViewSource<T> : NSObject, UITableViewDataSource, UITable
     
     // MARK: Init
         
-    convenience init(tableView: UITableView, tableFrame: CollectionFrame<T>) {
+    convenience public init(tableView: UITableView, tableFrame: CollectionFrame<T>) {
         self.init(tableView: tableView, tableFrame: tableFrame, cellIdentifier: "")
     }
     
-    init(tableView: UITableView, tableFrame: CollectionFrame<T>, cellIdentifier: String) {
+    public init(tableView: UITableView, tableFrame: CollectionFrame<T>, cellIdentifier: String) {
         self.tableView = tableView
         self.tableFrame = tableFrame
         self.cellIdentifier = cellIdentifier

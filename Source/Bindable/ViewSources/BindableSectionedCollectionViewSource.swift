@@ -18,11 +18,11 @@ open class BindableSectionedCollectionViewSource<T> : NSObject, UICollectionView
 
     // MARK: Init
         
-    convenience init(collectionView: UICollectionView, collectionFrame: SectionedCollectionFrame<T>) {
+    convenience public init(collectionView: UICollectionView, collectionFrame: SectionedCollectionFrame<T>) {
         self.init(collectionView: collectionView, collectionFrame: collectionFrame, cellIdentifier: "")
     }
     
-    init(collectionView: UICollectionView, collectionFrame: SectionedCollectionFrame<T>, cellIdentifier: String) {
+    public init(collectionView: UICollectionView, collectionFrame: SectionedCollectionFrame<T>, cellIdentifier: String) {
         self.collectionView = collectionView
         self.collectionFrame = collectionFrame
         self.cellIdentifier = cellIdentifier

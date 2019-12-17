@@ -18,11 +18,11 @@ open class BindableSectionedTableViewSource<T> : NSObject, UITableViewDataSource
     
     // MARK: Init
         
-    convenience init(tableView: UITableView, tableFrame: SectionedCollectionFrame<T>) {
+    convenience public init(tableView: UITableView, tableFrame: SectionedCollectionFrame<T>) {
         self.init(tableView: tableView, tableFrame: tableFrame, cellIdentifier: "")
     }
     
-    init(tableView: UITableView, tableFrame: SectionedCollectionFrame<T>, cellIdentifier: String) {
+    public init(tableView: UITableView, tableFrame: SectionedCollectionFrame<T>, cellIdentifier: String) {
         self.tableView = tableView
         self.tableFrame = tableFrame
         self.cellIdentifier = cellIdentifier

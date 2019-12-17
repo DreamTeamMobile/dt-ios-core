@@ -14,7 +14,7 @@ open class BindableSearchBarDelegate: NSObject, UISearchBarDelegate {
     
     // MARK: Init
     
-    init(searchFrame: SearchFrame) {
+    public init(searchFrame: SearchFrame) {
         self.searchFrame = searchFrame
         super.init()
     }

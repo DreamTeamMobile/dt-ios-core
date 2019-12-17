@@ -9,6 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="ExampleApp" customModuleProvider="target">
             <connections>
+                <outlet property="inputBtn" destination="DsS-QS-MVH" id="vV5-1E-Fp4"/>
+                <outlet property="searchAndTableBtn" destination="fQY-T5-PJb" id="vGJ-PT-wBP"/>
                 <outlet property="view" destination="iN0-l3-epB" id="r6Y-jw-b53"/>
             </connections>
         </placeholder>
@@ -16,7 +18,48 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J4L-hV-kf7">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6HH-hA-US8">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQY-T5-PJb">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="48" id="Xoo-PL-Sw6"/>
+                                    </constraints>
+                                    <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="Search and table view"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsS-QS-MVH">
+                                    <rect key="frame" x="0.0" y="48" width="414" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="48" id="QA5-w8-exU"/>
+                                    </constraints>
+                                    <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="Input and switch"/>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="6HH-hA-US8" firstAttribute="centerX" secondItem="J4L-hV-kf7" secondAttribute="centerX" id="8pG-y2-KpD"/>
+                        <constraint firstItem="6HH-hA-US8" firstAttribute="leading" secondItem="J4L-hV-kf7" secondAttribute="leading" id="Cge-7T-jrO"/>
+                        <constraint firstItem="6HH-hA-US8" firstAttribute="top" secondItem="J4L-hV-kf7" secondAttribute="top" id="KwC-wi-i9b"/>
+                        <constraint firstAttribute="trailing" secondItem="6HH-hA-US8" secondAttribute="trailing" id="Vdi-SF-wjh"/>
+                        <constraint firstAttribute="bottom" secondItem="6HH-hA-US8" secondAttribute="bottom" id="Z1U-32-Np1"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="J4L-hV-kf7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="BzU-Nj-ozq"/>
+                <constraint firstItem="J4L-hV-kf7" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="GEG-wh-Pfm"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="J4L-hV-kf7" secondAttribute="trailing" id="Hxf-WU-tIP"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="J4L-hV-kf7" secondAttribute="bottom" id="fec-PP-kyv"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="139" y="154"/>
         </view>

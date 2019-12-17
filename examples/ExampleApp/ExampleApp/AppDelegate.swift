@@ -19,13 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func changeRootViewController(to vc: UIViewController) {
-        if let window = UIApplication.shared.keyWindow {
-            window.rootViewController = vc
-        } else {
-            let window = UIWindow(frame: UIScreen.main.bounds)
-            window.rootViewController = vc
-            window.makeKeyAndVisible()
-        }
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        let navCon = UINavigationController(rootViewController: vc)
+        window.rootViewController = navCon
+        window.makeKeyAndVisible()
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

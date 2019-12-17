@@ -14,7 +14,7 @@ class InputViewModel: BaseViewModel<InputInitObj> {
     
     private(set) var inputFrame: InputFrame!
     
-    private(set) var checkboxFrame: CheckboxFrame!
+    private(set) var switchFrame: SwitchFrame!
     
     private(set) var buttonFrame: ButtonFrame!
     
@@ -23,13 +23,14 @@ class InputViewModel: BaseViewModel<InputInitObj> {
     required init() {
         super.init()
         self.inputFrame = InputFrame(onTextChanged: self.onTextChanged, textValidator: nil)
-        self.checkboxFrame = CheckboxFrame(value: false, onValueChanged: self.onValueChanged)
+        self.switchFrame = SwitchFrame(value: false, onValueChanged: self.onValueChanged)
+        self.buttonFrame = ButtonFrame(onExecute: self.onButtonExecute)
     }
     
     // MARK: Private methods
     
     private func updateButton() {
-        self.buttonFrame.enabled = !self.inputFrame.text.isEmpty && self.checkboxFrame.isSelected
+        self.buttonFrame.enabled = !self.inputFrame.text.isEmpty && self.switchFrame.isOn
     }
     
     private func onTextChanged(_ text: String) {
@@ -38,5 +39,9 @@ class InputViewModel: BaseViewModel<InputInitObj> {
     
     private func onValueChanged(_ value: Bool) {
         updateButton()
+    }
+    
+    private func onButtonExecute() {
+        
     }
 }

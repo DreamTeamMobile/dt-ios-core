@@ -9,6 +9,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InputViewController" customModule="ExampleApp" customModuleProvider="target">
             <connections>
+                <outlet property="button" destination="YlN-BQ-gdx" id="H8s-wL-UkD"/>
+                <outlet property="switch" destination="VFF-PA-9ph" id="iZd-sl-elP"/>
+                <outlet property="switchControl" destination="VFF-PA-9ph" id="4Ls-6V-JCa"/>
+                <outlet property="textField" destination="rIu-vp-fEv" id="mHb-Tb-jPD"/>
                 <outlet property="view" destination="iN0-l3-epB" id="yZF-0M-spE"/>
             </connections>
         </placeholder>
@@ -16,7 +20,46 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type something" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rIu-vp-fEv">
+                    <rect key="frame" x="16" y="76" width="382" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the switch to enable button" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1SX-Rd-gkt">
+                    <rect key="frame" x="16" y="134" width="204" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VFF-PA-9ph">
+                    <rect key="frame" x="349" y="127" width="51" height="31"/>
+                </switch>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YlN-BQ-gdx">
+                    <rect key="frame" x="16" y="782" width="382" height="48"/>
+                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="KRv-Fv-J9c"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="1SX-Rd-gkt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="0Qp-Tv-nkg"/>
+                <constraint firstItem="YlN-BQ-gdx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="6Tj-zp-T04"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="YlN-BQ-gdx" secondAttribute="bottom" constant="32" id="A5n-Dg-HRh"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="VFF-PA-9ph" secondAttribute="trailing" constant="16" id="FZI-hP-L2h"/>
+                <constraint firstItem="VFF-PA-9ph" firstAttribute="centerY" secondItem="1SX-Rd-gkt" secondAttribute="centerY" id="Kfk-dA-Pew"/>
+                <constraint firstItem="rIu-vp-fEv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="NLV-o5-FhO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YlN-BQ-gdx" secondAttribute="trailing" constant="16" id="ezy-eX-Dqi"/>
+                <constraint firstItem="rIu-vp-fEv" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="32" id="gkT-Xe-0Cf"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="rIu-vp-fEv" secondAttribute="trailing" constant="16" id="lcM-2V-C8R"/>
+                <constraint firstItem="1SX-Rd-gkt" firstAttribute="top" secondItem="rIu-vp-fEv" secondAttribute="bottom" constant="24" id="u94-an-jCo"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="139" y="154"/>
         </view>

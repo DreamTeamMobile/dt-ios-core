@@ -44,4 +44,11 @@ class InputViewModel: BaseViewModel<InputInitObj> {
     private func onButtonExecute() {
         
     }
+    
+    // MARK: Overrides
+    
+    override func start() {
+        super.start()
+        updateButton()
+    }
 }

@@ -21,6 +21,18 @@
 		086FC43023A20B5300BB1965 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 086FC42F23A20B5300BB1965 /* Assets.xcassets */; };
 		086FC43323A20B5300BB1965 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 086FC43123A20B5300BB1965 /* LaunchScreen.storyboard */; };
 		086FC43E23A212D800BB1965 /* DT.Core.iOS in Frameworks */ = {isa = PBXBuildFile; productRef = 086FC43D23A212D800BB1965 /* DT.Core.iOS */; };
+		08CB62C023A9FB090058C212 /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CB62BF23A9FB090058C212 /* TableViewModel.swift */; };
+		08CB62C223A9FB130058C212 /* TableInitObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CB62C123A9FB130058C212 /* TableInitObject.swift */; };
+		08CB62C523A9FB750058C212 /* TableItemVm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CB62C423A9FB750058C212 /* TableItemVm.swift */; };
+		08CB62C823A9FC6D0058C212 /* TableProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CB62C723A9FC6D0058C212 /* TableProviderProtocol.swift */; };
+		08CB62CA23AA00E80058C212 /* TableProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CB62C923AA00E80058C212 /* TableProvider.swift */; };
+		08CB62CD23AA026A0058C212 /* Fakery in Frameworks */ = {isa = PBXBuildFile; productRef = 08CB62CC23AA026A0058C212 /* Fakery */; };
+		08CB62CF23AA03EA0058C212 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CB62CE23AA03EA0058C212 /* TableViewController.swift */; };
+		08CB62D123AA04010058C212 /* TableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08CB62D023AA04010058C212 /* TableViewController.xib */; };
+		08CB62D623AA06E10058C212 /* TableViewSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CB62D523AA06E10058C212 /* TableViewSource.swift */; };
+		08CB62D923AA079F0058C212 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CB62D823AA079F0058C212 /* TableViewCell.swift */; };
+		08CB62DB23AA08C50058C212 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08CB62DA23AA08C50058C212 /* TableViewCell.xib */; };
+		08CB62DD23AA0A2A0058C212 /* en.json in Resources */ = {isa = PBXBuildFile; fileRef = 08CB62DC23AA0A2A0058C212 /* en.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +50,17 @@
 		086FC42F23A20B5300BB1965 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		086FC43223A20B5300BB1965 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		086FC43423A20B5300BB1965 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08CB62BF23A9FB090058C212 /* TableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
+		08CB62C123A9FB130058C212 /* TableInitObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableInitObject.swift; sourceTree = "<group>"; };
+		08CB62C423A9FB750058C212 /* TableItemVm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableItemVm.swift; sourceTree = "<group>"; };
+		08CB62C723A9FC6D0058C212 /* TableProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableProviderProtocol.swift; sourceTree = "<group>"; };
+		08CB62C923AA00E80058C212 /* TableProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableProvider.swift; sourceTree = "<group>"; };
+		08CB62CE23AA03EA0058C212 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		08CB62D023AA04010058C212 /* TableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewController.xib; sourceTree = "<group>"; };
+		08CB62D523AA06E10058C212 /* TableViewSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSource.swift; sourceTree = "<group>"; };
+		08CB62D823AA079F0058C212 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		08CB62DA23AA08C50058C212 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		08CB62DC23AA0A2A0058C212 /* en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = en.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +70,7 @@
 			files = (
 				082389F223A764AC0080EE8B /* Guise in Frameworks */,
 				086FC43E23A212D800BB1965 /* DT.Core.iOS in Frameworks */,
+				08CB62CD23AA026A0058C212 /* Fakery in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +119,11 @@
 		082389F623A7730F0080EE8B /* Table */ = {
 			isa = PBXGroup;
 			children = (
+				08CB62D723AA07960058C212 /* Cells */,
+				08CB62BE23A9FAB40058C212 /* Core */,
+				08CB62CE23AA03EA0058C212 /* TableViewController.swift */,
+				08CB62D023AA04010058C212 /* TableViewController.xib */,
+				08CB62D523AA06E10058C212 /* TableViewSource.swift */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -127,6 +156,7 @@
 		086FC42523A20B5100BB1965 /* ExampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				08CB62DE23AA0A3E0058C212 /* Resources */,
 				082389E223A75EF70080EE8B /* Views */,
 				086FC43423A20B5300BB1965 /* Info.plist */,
 				082389E023A75EE80080EE8B /* App.swift */,
@@ -135,6 +165,51 @@
 				086FC43123A20B5300BB1965 /* LaunchScreen.storyboard */,
 			);
 			path = ExampleApp;
+			sourceTree = "<group>";
+		};
+		08CB62BE23A9FAB40058C212 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				08CB62C623A9FC380058C212 /* Providers */,
+				08CB62C323A9FB700058C212 /* Items */,
+				08CB62BF23A9FB090058C212 /* TableViewModel.swift */,
+				08CB62C123A9FB130058C212 /* TableInitObject.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		08CB62C323A9FB700058C212 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				08CB62C423A9FB750058C212 /* TableItemVm.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		08CB62C623A9FC380058C212 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				08CB62C723A9FC6D0058C212 /* TableProviderProtocol.swift */,
+				08CB62C923AA00E80058C212 /* TableProvider.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		08CB62D723AA07960058C212 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				08CB62D823AA079F0058C212 /* TableViewCell.swift */,
+				08CB62DA23AA08C50058C212 /* TableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		08CB62DE23AA0A3E0058C212 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				08CB62DC23AA0A2A0058C212 /* en.json */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +231,7 @@
 			packageProductDependencies = (
 				086FC43D23A212D800BB1965 /* DT.Core.iOS */,
 				082389F123A764AC0080EE8B /* Guise */,
+				08CB62CC23AA026A0058C212 /* Fakery */,
 			);
 			productName = ExampleApp;
 			productReference = 086FC42323A20B5100BB1965 /* ExampleApp.app */;
@@ -188,6 +264,7 @@
 			packageReferences = (
 				086FC43C23A212D800BB1965 /* XCRemoteSwiftPackageReference "dt-ios-core" */,
 				082389F023A764AC0080EE8B /* XCRemoteSwiftPackageReference "Guise" */,
+				08CB62CB23AA026A0058C212 /* XCRemoteSwiftPackageReference "Fakery" */,
 			);
 			productRefGroup = 086FC42423A20B5100BB1965 /* Products */;
 			projectDirPath = "";
@@ -204,9 +281,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				086FC43323A20B5300BB1965 /* LaunchScreen.storyboard in Resources */,
+				08CB62DB23AA08C50058C212 /* TableViewCell.xib in Resources */,
 				082389F423A7680B0080EE8B /* MainViewController.xib in Resources */,
 				086FC43023A20B5300BB1965 /* Assets.xcassets in Resources */,
+				08CB62D123AA04010058C212 /* TableViewController.xib in Resources */,
 				082389FF23A773C20080EE8B /* InputViewController.xib in Resources */,
+				08CB62DD23AA0A2A0058C212 /* en.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,11 +298,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				082389F923A7732B0080EE8B /* InputInitObj.swift in Sources */,
+				08CB62D923AA079F0058C212 /* TableViewCell.swift in Sources */,
+				08CB62CF23AA03EA0058C212 /* TableViewController.swift in Sources */,
+				08CB62C523A9FB750058C212 /* TableItemVm.swift in Sources */,
 				082389E123A75EE80080EE8B /* App.swift in Sources */,
+				08CB62C823A9FC6D0058C212 /* TableProviderProtocol.swift in Sources */,
 				086FC42723A20B5100BB1965 /* AppDelegate.swift in Sources */,
 				082389FD23A773A30080EE8B /* InputViewController.swift in Sources */,
 				082389E623A75F500080EE8B /* MainViewModel.swift in Sources */,
+				08CB62D623AA06E10058C212 /* TableViewSource.swift in Sources */,
 				082389E823A75F5E0080EE8B /* MainInitObject.swift in Sources */,
+				08CB62C023A9FB090058C212 /* TableViewModel.swift in Sources */,
+				08CB62CA23AA00E80058C212 /* TableProvider.swift in Sources */,
+				08CB62C223A9FB130058C212 /* TableInitObject.swift in Sources */,
 				082389FB23A773480080EE8B /* InputViewModel.swift in Sources */,
 				082389EA23A75F6B0080EE8B /* MainViewController.swift in Sources */,
 			);
@@ -432,6 +520,14 @@
 				kind = branch;
 			};
 		};
+		08CB62CB23AA026A0058C212 /* XCRemoteSwiftPackageReference "Fakery" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vadymmarkov/Fakery";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -444,6 +540,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 086FC43C23A212D800BB1965 /* XCRemoteSwiftPackageReference "dt-ios-core" */;
 			productName = DT.Core.iOS;
+		};
+		08CB62CC23AA026A0058C212 /* Fakery */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08CB62CB23AA026A0058C212 /* XCRemoteSwiftPackageReference "Fakery" */;
+			productName = Fakery;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

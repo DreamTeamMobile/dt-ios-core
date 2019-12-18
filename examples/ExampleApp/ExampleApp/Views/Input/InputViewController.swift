@@ -34,7 +34,8 @@ class InputViewController: BaseViewController<InputViewModel> {
         self.textFieldDelegate = BindableTextFieldDelegate(inputFrame: viewModel.inputFrame, textField: self.textField)
         self.textField.delegate = self.textFieldDelegate
         
-        viewModel.switchFrame.$isOn.bindAndFire { [weak self] oldValue, newValue in
+        self.switchControl.isOn = viewModel.switchFrame.$isOn.wrappedValue
+        viewModel.switchFrame.$isOn.bind { [weak self] oldValue, newValue in
             self?.switchControl.isOn = newValue
         }
         
@@ -42,6 +43,15 @@ class InputViewController: BaseViewController<InputViewModel> {
             self?.button.isEnabled = newValue
         }
         self.button.addTarget(viewModel.buttonFrame, action: #selector(viewModel.buttonFrame.execute(_:)), for: .touchUpInside)
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func switch_onValueChanged(_ sender: Any) {
+        guard let viewModel = self.viewModel else {
+            return
+        }
+        viewModel.switchFrame.isOn = self.switchControl.isOn
     }
     
 }

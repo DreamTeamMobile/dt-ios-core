@@ -37,7 +37,7 @@ class MainViewModel: BaseViewModel<MainInitObject> {
     // MARK: Private methods
     
     private func onSearchAndTableExecute() {
-        
+        self.router.navigateTo(vmType: TableViewModel.self, initObj: TableInitObject(), navigationType: .push)
     }
     
     private func onInputExecute() {

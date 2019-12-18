@@ -13,4 +13,9 @@ This repository will be really helpful in MVVM architecture because it contains:
 
 ## How?
 
-_// TODO_
+See the ExampleApp project for getting help with start working with this library.
+
+The example includes some basic things:
+
+* how to work with a collection and searching elements inside
+* how to work with text fields and validation

@@ -10,7 +10,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InputViewController" customModule="ExampleApp" customModuleProvider="target">
             <connections>
                 <outlet property="button" destination="YlN-BQ-gdx" id="H8s-wL-UkD"/>
-                <outlet property="switch" destination="VFF-PA-9ph" id="iZd-sl-elP"/>
                 <outlet property="switchControl" destination="VFF-PA-9ph" id="4Ls-6V-JCa"/>
                 <outlet property="textField" destination="rIu-vp-fEv" id="mHb-Tb-jPD"/>
                 <outlet property="view" destination="iN0-l3-epB" id="yZF-0M-spE"/>
@@ -34,6 +33,9 @@
                 </label>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VFF-PA-9ph">
                     <rect key="frame" x="349" y="127" width="51" height="31"/>
+                    <connections>
+                        <action selector="switch_onValueChanged:" destination="-1" eventType="valueChanged" id="YMh-uM-6s0"/>
+                    </connections>
                 </switch>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YlN-BQ-gdx">
                     <rect key="frame" x="16" y="782" width="382" height="48"/>
@@ -41,9 +43,12 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="KRv-Fv-J9c"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                     <state key="normal" title="Button">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="disabled">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     </state>
                 </button>
             </subviews>

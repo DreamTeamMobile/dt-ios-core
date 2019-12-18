@@ -12,6 +12,8 @@ import DT_Core_iOS
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var window: UIWindow?
+    
     private func updateRootViewController() {
         let router: RouterProtocol = Guise.resolve()!
         let viCo = router.get(vmType: MainViewModel.self, initObj: MainInitObject())
@@ -23,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navCon = UINavigationController(rootViewController: vc)
         window.rootViewController = navCon
         window.makeKeyAndVisible()
+        self.window = window
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

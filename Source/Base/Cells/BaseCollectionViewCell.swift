@@ -8,13 +8,13 @@ import UIKit
 
 open class BaseCollectionViewCell: UICollectionViewCell {
 
-    class var identifier: String {
+    class public var identifier: String {
         get {
             return String(describing: self)
         }
     }
 
-    class var nib: UINib {
+    class public var nib: UINib {
         get {
             return UINib(nibName: self.identifier, bundle: nil)
         }

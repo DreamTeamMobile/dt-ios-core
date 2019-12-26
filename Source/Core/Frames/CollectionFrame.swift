@@ -6,11 +6,12 @@
 
 import Foundation
 
-public class CollectionFrame<T>: NSObject {
+public class CollectionFrame<T>: Frame {
     
     // MARK: Properties
     
-    @Bindable(false) private(set) var isEmpty: Bool
+    @Bindable(false)
+    public private(set) var isEmpty: Bool
     
     @Bindable([T]())
     public var itemsSource: [T] {

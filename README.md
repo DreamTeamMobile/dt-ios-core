@@ -13,7 +13,7 @@ This repository will be really helpful in MVVM architecture because it contains:
 
 ## How?
 
-See the [ExampleApp](/Examples/README.md) project for getting help with start working with this library.
+See the [ExampleApp](/examples/README.md) project for getting help with start working with this library.
 
 The example includes some basic things:
 

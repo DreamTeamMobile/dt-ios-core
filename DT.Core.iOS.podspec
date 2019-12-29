@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.source = { :git => 'https://github.com/DreamTeamMobile/dt-ios-core.git', :tag => s.version }
   s.documentation_url = 'https://github.com/DreamTeamMobile/dt-ios-core/blob/master/README.md'
 
-  s.ios.deployment_target = '12.0'
+  s.ios.deployment_target = '11.0'
 
   s.swift_versions = ['5.0', '5.1']
 

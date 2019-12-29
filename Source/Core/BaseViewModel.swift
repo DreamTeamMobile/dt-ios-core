@@ -25,7 +25,7 @@ public protocol BaseVmProtocol: class {
 open class BViewModel: NSObject, BaseVmProtocol {
 
     @Bindable(false)
-    var isLoading: Bool
+    open var isLoading: Bool
 
     required override public init() {
         super.init()
@@ -61,7 +61,7 @@ open class BaseViewModel<T>: BViewModel {
     
     open var initObject: T?
 
-    override public func initialize(initObject: Any) {
+    override open func initialize(initObject: Any) {
         self.initObject = initObject as? T
     }
 

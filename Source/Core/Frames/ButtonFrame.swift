@@ -16,7 +16,7 @@ public protocol ButtonProtocol {
     
 }
 
-public class ButtonFrame: NSObject, ButtonProtocol {
+public class ButtonFrame: Frame, ButtonProtocol {
     
     // MARK: Fields
     
@@ -27,9 +27,7 @@ public class ButtonFrame: NSObject, ButtonProtocol {
     @Bindable("") public var title: String
     
     @Bindable(false) public var isSelected: Bool
-        
-    @Bindable(false) public var isHidden: Bool
-    
+            
     @Bindable(true) public var enabled: Bool
     
     // MARK: Init
@@ -52,7 +50,7 @@ public class ButtonFrame: NSObject, ButtonProtocol {
     }
 }
 
-public class TButtonFrame<T>: NSObject, ButtonProtocol {
+public class TButtonFrame<T>: Frame, ButtonProtocol {
     
     // MARK: Fields
     
@@ -63,9 +61,7 @@ public class TButtonFrame<T>: NSObject, ButtonProtocol {
     @Bindable("") public var title: String
     
     @Bindable(false) public var isSelected: Bool
-    
-    @Bindable(false) public var isHidden: Bool
-        
+            
     // MARK: Init
         
     public init(onExecute: @escaping (T) -> Void) {

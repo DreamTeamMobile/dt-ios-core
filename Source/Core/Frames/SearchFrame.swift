@@ -6,7 +6,7 @@
 
 import Foundation
 
-public class SearchFrame: NSObject {
+public class SearchFrame: Frame {
     
     // MARK: Fields
     

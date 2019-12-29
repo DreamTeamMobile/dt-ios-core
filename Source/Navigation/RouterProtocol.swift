@@ -8,7 +8,7 @@ import UIKit
 
 public protocol RouterProtocol {
     
-    func navigateTo<ViewModel: BViewModel>(vmType: ViewModel.Type, initObj: Any, navigationType: NavigationType)
+    func navigateTo<ViewModel: BViewModel>(vmType: ViewModel.Type, initObj: Any, navigationType: NavigationType, completion: (() -> Void)?)
     
     func register<ViewController: UIViewController, ViewModel: BViewModel>(viewType: ViewController.Type, vmType: ViewModel.Type)
     
@@ -17,4 +17,9 @@ public protocol RouterProtocol {
     func setCurrentNavigationController(_ navigationController: UINavigationController?)
     
     func close<ViewModel: BViewModel>(vmType: ViewModel.Type, completion: (() -> Void)?)
+    
+    func resolveRequestedTransactions()
+    
+    func requestNavigation<ViewModel: BViewModel>(vmType: ViewModel.Type, initObj: Any, navigationType: NavigationType)
+    
 }

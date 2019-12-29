@@ -7,7 +7,7 @@
 import Foundation
 import UIKit
 
-public class SwitchFrame: NSObject {
+public class SwitchFrame: Frame {
     
     // MARK: Fields
     

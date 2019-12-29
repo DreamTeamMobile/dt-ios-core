@@ -6,12 +6,19 @@
 
 import Foundation
 
-public class SectionedCollectionFrame<T>: NSObject {
+public class SectionedCollectionFrame<T>: Frame {
     
     // MARK: Properties
     
+    @Bindable(false)
+    public private(set) var isEmpty: Bool
+    
     @Bindable([Section<T>]())
-    public var itemsSource: [Section<T>]
+    public var itemsSource: [Section<T>] {
+        didSet {
+            self.isEmpty = self.itemsSource.isEmpty
+        }
+    }
     
     // MARK: Actions
     

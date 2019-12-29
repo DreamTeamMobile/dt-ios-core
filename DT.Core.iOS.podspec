@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'DT.Core.iOS'
-  s.version = '1.0.0'
+  s.version = '1.0.1'
   s.license = 'MIT'
   s.summary = 'The set of extensions, frames, sources and other things that could be useful in iOS app development.'
   s.homepage = 'https://github.com/DreamTeamMobile/dt-ios-core'

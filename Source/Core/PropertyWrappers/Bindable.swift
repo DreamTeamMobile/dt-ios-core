@@ -59,6 +59,6 @@ public class Bindable<T> {
 
 }
 
-func bind<T>(_ value: T) -> Bindable<T> {
+public func bind<T>(_ value: T) -> Bindable<T> {
     return Bindable<T>(value)
 }

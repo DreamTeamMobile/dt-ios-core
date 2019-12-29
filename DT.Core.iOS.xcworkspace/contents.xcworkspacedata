@@ -12,11 +12,176 @@
       </FileRef>
    </Group>
    <Group
-      location = "group:/Users/maximevtukh/DreamTeam/Apps/dt-ios-core/Source"
+      location = "group:Source"
       name = "Source">
-      <FileRef
-         location = "group:/Users/maximevtukh/DreamTeam/Apps/dt-ios-core/Source/DT.Core.iOS.swift">
-      </FileRef>
+      <Group
+         location = "group:Core"
+         name = "Core">
+         <Group
+            location = "group:PropertyWrappers"
+            name = "PropertyWrappers">
+            <FileRef
+               location = "group:Bindable.swift">
+            </FileRef>
+            <FileRef
+               location = "group:BindableEquatable.swift">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:BaseViewModel.swift">
+         </FileRef>
+         <Group
+            location = "group:Frames"
+            name = "Frames">
+            <FileRef
+               location = "group:CheckboxFrame.swift">
+            </FileRef>
+            <FileRef
+               location = "group:ProgressFrame.swift">
+            </FileRef>
+            <FileRef
+               location = "group:CollectionFrame.swift">
+            </FileRef>
+            <FileRef
+               location = "group:SearchFrame.swift">
+            </FileRef>
+            <FileRef
+               location = "group:InputFrame.swift">
+            </FileRef>
+            <FileRef
+               location = "group:PageIndicationFrame.swift">
+            </FileRef>
+            <FileRef
+               location = "group:SwitchFrame.swift">
+            </FileRef>
+            <FileRef
+               location = "group:SectionedCollectionFrame.swift">
+            </FileRef>
+            <FileRef
+               location = "group:LabelFrame.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Frame.swift">
+            </FileRef>
+            <FileRef
+               location = "group:ButtonFrame.swift">
+            </FileRef>
+            <FileRef
+               location = "group:ViewFrame.swift">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:Navigation"
+         name = "Navigation">
+         <Group
+            location = "group:Models"
+            name = "Models">
+            <FileRef
+               location = "group:Transaction.swift">
+            </FileRef>
+            <FileRef
+               location = "group:NavigationType.swift">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:Router.swift">
+         </FileRef>
+         <FileRef
+            location = "group:RouterProtocol.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Extensions"
+         name = "Extensions">
+         <FileRef
+            location = "group:UIViewController+Extensions.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Bindable"
+         name = "Bindable">
+         <Group
+            location = "group:Cells"
+            name = "Cells">
+            <FileRef
+               location = "group:BindableCollectionViewCell.swift">
+            </FileRef>
+            <FileRef
+               location = "group:BindableTableViewCell.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:ViewSources"
+            name = "ViewSources">
+            <FileRef
+               location = "group:BindableCollectionViewSource.swift">
+            </FileRef>
+            <FileRef
+               location = "group:BindableSectionedCollectionViewSource.swift">
+            </FileRef>
+            <FileRef
+               location = "group:BindableSectionedTableViewSource.swift">
+            </FileRef>
+            <FileRef
+               location = "group:BindableTableViewSource.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:Extensions"
+            name = "Extensions">
+            <FileRef
+               location = "group:BindableButton+Extensions.swift">
+            </FileRef>
+            <FileRef
+               location = "group:BindableLabel+Extensions.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:Delegates"
+            name = "Delegates">
+            <FileRef
+               location = "group:BindableTextFieldDelegate.swift">
+            </FileRef>
+            <FileRef
+               location = "group:BindableSearchBarDelegate.swift">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:Base"
+         name = "Base">
+         <Group
+            location = "group:Cells"
+            name = "Cells">
+            <FileRef
+               location = "group:BaseTableViewCell.swift">
+            </FileRef>
+            <FileRef
+               location = "group:BaseCollectionViewCell.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:ViewControllers"
+            name = "ViewControllers">
+            <FileRef
+               location = "group:BaseTabBarController.swift">
+            </FileRef>
+            <FileRef
+               location = "group:BaseViewController.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:Views"
+            name = "Views">
+            <FileRef
+               location = "group:BaseNibLoadableView.swift">
+            </FileRef>
+            <FileRef
+               location = "group:BaseView.swift">
+            </FileRef>
+         </Group>
+      </Group>
    </Group>
    <Group
       location = "group:Tests"

@@ -15,8 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     private func updateRootViewController() {
-        let router: RouterProtocol = Guise.resolve()!
-        let viCo = router.get(vmType: MainViewModel.self, initObj: MainInitObject())
+        let provider: RoutingProviderProtocol = Guise.resolve()!
+        let holder: NavigationControllerHolderProtocol = Guise.resolve()!
+        let viCo = provider.get(vmType: MainViewModel.self, initObj: MainInitObject())
+        if var baseViCo = (viCo as? BaseViCoProtocol) {
+            baseViCo.navigationControllerHolder = holder
+        }
         changeRootViewController(to: viCo)
     }
     

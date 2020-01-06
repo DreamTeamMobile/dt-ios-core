@@ -37,10 +37,10 @@ class MainViewModel: BaseViewModel<MainInitObject> {
     // MARK: Private methods
     
     private func onSearchAndTableExecute() {
-        self.router.navigateTo(vmType: TableViewModel.self, initObj: TableInitObject(), navigationType: .push)
+        self.router.navigateTo(vmType: TableViewModel.self, initObj: TableInitObject(), navigationType: .push, completion: nil)
     }
     
     private func onInputExecute() {
-        self.router.navigateTo(vmType: InputViewModel.self, initObj: InputInitObj(), navigationType: .push)
+        self.router.navigateTo(vmType: InputViewModel.self, initObj: InputInitObj(), navigationType: .push, completion: nil)
     }
 }

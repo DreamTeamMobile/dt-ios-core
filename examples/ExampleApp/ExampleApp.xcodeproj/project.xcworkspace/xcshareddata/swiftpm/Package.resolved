@@ -24,7 +24,7 @@
         "repositoryURL": "https://github.com/DreamTeamMobile/dt-ios-core",
         "state": {
           "branch": "dev",
-          "revision": "f500cd5c11781d8b52e94ce7fd8e8c8578b6f856",
+          "revision": "566fcb37d02b64d444bed0733587b79ff0b38243",
           "version": null
         }
       },
@@ -33,7 +33,7 @@
         "repositoryURL": "https://github.com/vadymmarkov/Fakery",
         "state": {
           "branch": "master",
-          "revision": "162a31bbf0fbe7c7bd214bdad40def896124e6db",
+          "revision": "dee8a8cf71f654faf2851553ec26534fdc4e0ce0",
           "version": null
         }
       },
@@ -51,8 +51,8 @@
         "repositoryURL": "https://github.com/Quick/Nimble.git",
         "state": {
           "branch": null,
-          "revision": "6abeb3f5c03beba2b9e4dbe20886e773b5b629b6",
-          "version": "8.0.4"
+          "revision": "b02b00b30b6353632aa4a5fb6124f8147f7140c0",
+          "version": "8.0.5"
         }
       },
       {

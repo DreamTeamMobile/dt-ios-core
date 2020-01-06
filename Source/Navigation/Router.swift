@@ -6,7 +6,7 @@
 
 import UIKit
 
-public class Router: NSObject, RouterProtocol {
+public class Router: NSObject, RouterProtocol, RoutingProviderProtocol, NavigationControllerHolderProtocol {
     
     private var currentNavigationController: UINavigationController?
     private var map = [String: UIViewController.Type]()
@@ -19,7 +19,7 @@ public class Router: NSObject, RouterProtocol {
         
         if var baseViCo = viewController as? BaseViCoProtocol {
             baseViCo.setViewModel(viewModel: viewModel)
-            baseViCo.router = self
+            baseViCo.navigationControllerHolder = self
         }
 
         return viewController
@@ -53,7 +53,7 @@ public class Router: NSObject, RouterProtocol {
         return viewController
     }
     
-    // MARK: Methods
+    // MARK: RouterProtocol implementation
     
     public func navigateTo<ViewModel: BViewModel>(vmType: ViewModel.Type, initObj: Any, navigationType: NavigationType, completion: (() -> Void)? = nil) {
         DispatchQueue.main.async { [weak self] in
@@ -107,16 +107,7 @@ public class Router: NSObject, RouterProtocol {
             }
         }
     }
-
-    public func register<ViewController: UIViewController, ViewModel: BViewModel>(viewType: ViewController.Type, vmType: ViewModel.Type) {
-        self.map[vmType.description()] = viewType
-    }
-
-    public func get<ViewModel: BViewModel>(vmType: ViewModel.Type, initObj: Any) -> UIViewController {
-        let viewType = self.map[vmType.description()]!
-        return initViewController(viewType: viewType, vmType: vmType, initObj: initObj)
-    }
-
+    
     public func close<ViewModel: BViewModel>(vmType: ViewModel.Type, completion: (() -> Void)?) {
         guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
         
@@ -129,25 +120,43 @@ public class Router: NSObject, RouterProtocol {
             self.currentNavigationController?.popViewController(animated: true)
         }
     }
+    
+    public func requestNavigation<ViewModel: BViewModel>(vmType: ViewModel.Type, initObj: Any, navigationType: NavigationType) {
+        self.requestedTransactions.append(Transaction(vmType: vmType, initObj: initObj, navigationType: navigationType))
+    }
+    
+    public func resolveRequestedNavigations() {
+        if let transaction = self.requestedTransactions.first {
+            self.requestedTransactions.removeFirst()
+            DispatchQueue.main.async {
+                self.navigateTo(vmType: transaction.vmType, initObj: transaction.initObj, navigationType: transaction.navigationType) {
+                    self.resolveRequestedNavigations()
+                }
+            }
+        }
+    }
+    
+    // MARK: RoutingProviderProtocol implementation
+    
+    public func register<ViewController: UIViewController, ViewModel: BViewModel>(viewType: ViewController.Type, vmType: ViewModel.Type) {
+        self.map[vmType.description()] = viewType
+    }
 
+    public func get<ViewModel: BViewModel>(vmType: ViewModel.Type, initObj: Any) -> UIViewController {
+        let viewType = self.map[vmType.description()]!
+        return initViewController(viewType: viewType, vmType: vmType, initObj: initObj)
+    }
+    
+    // MARK: NavigationControllerHolderProtocol implementation
+    
     public func setCurrentNavigationController(_ navigationController: UINavigationController?) {
         if let nc = navigationController {
             self.currentNavigationController = nc
         }
     }
     
-    public func resolveRequestedTransactions() {
-        if let transaction = self.requestedTransactions.first {
-            self.requestedTransactions.removeFirst()
-            DispatchQueue.main.async {
-                self.navigateTo(vmType: transaction.vmType, initObj: transaction.initObj, navigationType: transaction.navigationType) {
-                    self.resolveRequestedTransactions()
-                }
-            }
-        }
+    public func getCurrentNavigationController() -> UINavigationController? {
+        return self.currentNavigationController
     }
     
-    public func requestNavigation<ViewModel: BViewModel>(vmType: ViewModel.Type, initObj: Any, navigationType: NavigationType) {
-        self.requestedTransactions.append(Transaction(vmType: vmType, initObj: initObj, navigationType: navigationType))
-    }
 }

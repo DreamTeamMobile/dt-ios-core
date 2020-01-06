@@ -10,9 +10,9 @@ open class BaseTabBarController<T: BViewModel>: UITabBarController, BaseViCoProt
     
     private var isViewDidLoad = false
     
-    var viewModel: T?
+    open var viewModel: T?
     
-    public var router: RouterProtocol?
+    open var navigationControllerHolder: NavigationControllerHolderProtocol?
     
     required override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)

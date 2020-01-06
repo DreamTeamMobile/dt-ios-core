@@ -6,23 +6,23 @@
 
 import UIKit
 
-public class Router: NSObject, RouterProtocol, RoutingProviderProtocol, NavigationControllerHolderProtocol {
+public class Router: NSObject, RouterProtocol {
     
-    private var currentNavigationController: UINavigationController?
-    private var map = [String: UIViewController.Type]()
+    // MARK: Properties
+    
     private var requestedTransactions = [Transaction]()
-
-    fileprivate func initViewController<ViewController: UIViewController, ViewModel: BViewModel>(viewType: ViewController.Type, vmType: ViewModel.Type, initObj: Any) -> UIViewController {
-        let viewController = viewType.init(nibName: viewType.nibName, bundle: nil)
-        let viewModel = vmType.init()
-        viewModel.initialize(initObject: initObj)
-        
-        if var baseViCo = viewController as? BaseViCoProtocol {
-            baseViCo.setViewModel(viewModel: viewModel)
-            baseViCo.navigationControllerHolder = self
-        }
-
-        return viewController
+    
+    // MARK: Dependencies
+    
+    private let routingProvider: RoutingProviderProtocol
+    
+    private let holder: NavigationControllerHolderProtocol
+    
+    // MARK: Init
+    
+    public init(routingProvider: RoutingProviderProtocol, holder: NavigationControllerHolderProtocol) {
+        self.routingProvider = routingProvider
+        self.holder = holder
     }
 
     // MARK: Private methods
@@ -61,48 +61,49 @@ public class Router: NSObject, RouterProtocol, RoutingProviderProtocol, Navigati
                 return
             }
             
-            if let viewType = strongSelf.map[vmType.description()] {
-                switch navigationType {
-                case .present:
-                    let viewController = strongSelf.initViewController(viewType: viewType, vmType: vmType, initObj: initObj)
-                    strongSelf.present(vc: viewController, completion: completion)
-                case .presentInNav:
-                    let viewController = strongSelf.initViewController(viewType: viewType, vmType: vmType, initObj: initObj)
-                    let navViCo = UINavigationController(rootViewController: viewController)
-                    navViCo.modalPresentationStyle = viewController.modalPresentationStyle
-                    navViCo.modalTransitionStyle = viewController.modalTransitionStyle
-                    strongSelf.present(vc: navViCo)
-                case .push:
-                    let viewController = strongSelf.initViewController(viewType: viewType, vmType: vmType, initObj: initObj)
-                    strongSelf.currentNavigationController?.pushViewController(viewController, animated: true)
+            let viewController = strongSelf.routingProvider.get(vmType: vmType, initObj: initObj)
+            if var baseViCo = (viewController as? BaseViCoProtocol) {
+                baseViCo.navigationControllerHolder = strongSelf.holder
+            }
+            
+            switch navigationType {
+            case .present:
+                strongSelf.present(vc: viewController, completion: completion)
+            case .presentInNav:
+                let navViCo = UINavigationController(rootViewController: viewController)
+                navViCo.modalPresentationStyle = viewController.modalPresentationStyle
+                navViCo.modalTransitionStyle = viewController.modalTransitionStyle
+                strongSelf.present(vc: navViCo)
+            case .push:
+                strongSelf.holder.getCurrentNavigationController()?.pushViewController(viewController, animated: true)
+                completion?()
+            case .pushRoot:
+                if let navCon = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                    navCon.pushViewController(viewController, animated: true)
                     completion?()
-                case .pushRoot:
-                    if let navCon = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
-                        let viewController = strongSelf.initViewController(viewType: viewType, vmType: vmType, initObj: initObj)
-                        navCon.pushViewController(viewController, animated: true)
+                }
+            case .changeRoot:
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+                UIApplication.shared.keyWindow?.makeKeyAndVisible()
+                completion?()
+            case .switchTab:
+                if let tabController = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController
+                {
+                    if let navigationController = tabController.viewControllers?.first(where: {
+                        let rootViCo = ($0 as? UINavigationController)?.viewControllers.first ?? $0
+                        if let baseViCo = rootViCo as? BaseViCoProtocol, let viewModel = baseViCo.getViewModel() {
+                            return type(of: viewModel) == vmType
+                        }
+                        return false
+                    }) as? UINavigationController
+                    {
+                        navigationController.popToRootViewController(animated: false)
+                        if let viCo = navigationController.topViewController as? BaseViewController<ViewModel> {
+                            viCo.viewModel?.initialize(initObject: initObj)
+                        }
+                        tabController.selectedViewController = navigationController
                         completion?()
                     }
-                case .switchTab:
-                    if let tabController = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController
-                    {
-                        if let navigationController = tabController.viewControllers?.first(where: {
-                            let rootViCo = ($0 as? UINavigationController)?.viewControllers.first ?? $0
-                            return type(of: rootViCo) == viewType
-                        }) as? UINavigationController
-                        {
-                            navigationController.popToRootViewController(animated: false)
-                            if let viCo = navigationController.topViewController as? BaseViewController<ViewModel> {
-                                viCo.viewModel?.initialize(initObject: initObj)
-                            }
-                            tabController.selectedViewController = navigationController
-                            completion?()
-                        }
-                    }
-                case .changeRoot:
-                    let viewController = strongSelf.initViewController(viewType: viewType, vmType: vmType, initObj: initObj)
-                    UIApplication.shared.keyWindow?.rootViewController = viewController
-                    UIApplication.shared.keyWindow?.makeKeyAndVisible()
-                    completion?()
                 }
             }
         }
@@ -117,7 +118,7 @@ public class Router: NSObject, RouterProtocol, RoutingProviderProtocol, Navigati
                 completion?()
             }
         } else {
-            self.currentNavigationController?.popViewController(animated: true)
+            self.holder.getCurrentNavigationController()?.popViewController(animated: true)
         }
     }
     
@@ -134,29 +135,6 @@ public class Router: NSObject, RouterProtocol, RoutingProviderProtocol, Navigati
                 }
             }
         }
-    }
-    
-    // MARK: RoutingProviderProtocol implementation
-    
-    public func register<ViewController: UIViewController, ViewModel: BViewModel>(viewType: ViewController.Type, vmType: ViewModel.Type) {
-        self.map[vmType.description()] = viewType
-    }
-
-    public func get<ViewModel: BViewModel>(vmType: ViewModel.Type, initObj: Any) -> UIViewController {
-        let viewType = self.map[vmType.description()]!
-        return initViewController(viewType: viewType, vmType: vmType, initObj: initObj)
-    }
-    
-    // MARK: NavigationControllerHolderProtocol implementation
-    
-    public func setCurrentNavigationController(_ navigationController: UINavigationController?) {
-        if let nc = navigationController {
-            self.currentNavigationController = nc
-        }
-    }
-    
-    public func getCurrentNavigationController() -> UINavigationController? {
-        return self.currentNavigationController
     }
     
 }

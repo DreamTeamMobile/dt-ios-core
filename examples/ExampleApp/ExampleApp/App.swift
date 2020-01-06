@@ -12,15 +12,17 @@ import DT_Core_iOS
 class App {
     
     private static func registerDependencies() {
-        Guise.register(instance: Router() as RouterProtocol)
+        Guise.register(instance: RoutingProvider() as RoutingProviderProtocol)
+        Guise.register(instance: NavigationControllerHolder() as NavigationControllerHolderProtocol)
+        Guise.register(instance: Router(routingProvider: Guise.resolve()!, holder: Guise.resolve()!) as RouterProtocol)
         Guise.register(instance: TableProvider() as TableProviderProtocol)
     }
     
     private static func registerRouting() {
-        let router: RouterProtocol = Guise.resolve()!
-        router.register(viewType: MainViewController.self, vmType: MainViewModel.self)
-        router.register(viewType: InputViewController.self, vmType: InputViewModel.self)
-        router.register(viewType: TableViewController.self, vmType: TableViewModel.self)
+        let provider: RoutingProviderProtocol = Guise.resolve()!
+        provider.register(viewType: MainViewController.self, vmType: MainViewModel.self)
+        provider.register(viewType: InputViewController.self, vmType: InputViewModel.self)
+        provider.register(viewType: TableViewController.self, vmType: TableViewModel.self)
     }
     
     static func registerAppDependencies() {

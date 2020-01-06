@@ -6,7 +6,7 @@
 
 import UIKit
 
-class RoutingProvider: NSObject, RoutingProviderProtocol {
+public class RoutingProvider: NSObject, RoutingProviderProtocol {
     
     // MARK: Properties
     

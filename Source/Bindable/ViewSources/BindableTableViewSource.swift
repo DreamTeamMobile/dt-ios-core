@@ -68,8 +68,16 @@ open class BindableTableViewSource<T> : NSObject, UITableViewDataSource, UITable
         return cell
     }
     
+    open func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    open func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+    
     open func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        return nil
+        return [UITableViewRowAction]()
     }
         
     // MARK: UITableViewDelegate implementation

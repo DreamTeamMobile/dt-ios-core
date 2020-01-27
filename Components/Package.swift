@@ -22,20 +22,20 @@ extension Target {
 }
 
 let package = Package(
-    name: "DT.Core.iOS",
+    name: "Components",
     platforms: [
         .iOS(.v12)
     ],
     products: [
-        .library(name: "DT.Core.iOS", targets: ["DT.Core.iOS"]),
+        .library(
+            name: "Components",
+            targets: ["Components"]),
     ],
-    dependencies: [
-        .package(path: "Commons"),
-        .package(path: "Components")
-    ],
+    dependencies: [],
     targets: [
-        .target(name: "DT.Core.iOS",
-                dependencies: ["Commons","Components"],
-                path: "Sources")
+        .target(
+            name: "Components",
+            sources: ["Device"]
+        )
     ]
 )

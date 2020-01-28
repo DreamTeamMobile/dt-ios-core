@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import DT_Core_iOS
+import DTCoreCommons
 import Guise
 
 class TableViewModel: BaseViewModel<TableInitObject> {

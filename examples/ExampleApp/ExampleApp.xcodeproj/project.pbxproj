@@ -17,6 +17,8 @@
 		082389FB23A773480080EE8B /* InputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082389FA23A773480080EE8B /* InputViewModel.swift */; };
 		082389FD23A773A30080EE8B /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082389FC23A773A30080EE8B /* InputViewController.swift */; };
 		082389FF23A773C20080EE8B /* InputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 082389FE23A773C20080EE8B /* InputViewController.xib */; };
+		0848931723E02A6200A5A7D7 /* DTCoreCommons in Frameworks */ = {isa = PBXBuildFile; productRef = 0848931623E02A6200A5A7D7 /* DTCoreCommons */; };
+		0848931923E02A6200A5A7D7 /* DTCoreComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 0848931823E02A6200A5A7D7 /* DTCoreComponents */; };
 		086FC42723A20B5100BB1965 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086FC42623A20B5100BB1965 /* AppDelegate.swift */; };
 		086FC43023A20B5300BB1965 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 086FC42F23A20B5300BB1965 /* Assets.xcassets */; };
 		086FC43323A20B5300BB1965 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 086FC43123A20B5300BB1965 /* LaunchScreen.storyboard */; };
@@ -69,6 +71,8 @@
 			files = (
 				082389F223A764AC0080EE8B /* Guise in Frameworks */,
 				08CB62CD23AA026A0058C212 /* Fakery in Frameworks */,
+				0848931723E02A6200A5A7D7 /* DTCoreCommons in Frameworks */,
+				0848931923E02A6200A5A7D7 /* DTCoreComponents in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +241,8 @@
 			packageProductDependencies = (
 				082389F123A764AC0080EE8B /* Guise */,
 				08CB62CC23AA026A0058C212 /* Fakery */,
+				0848931623E02A6200A5A7D7 /* DTCoreCommons */,
+				0848931823E02A6200A5A7D7 /* DTCoreComponents */,
 			);
 			productName = ExampleApp;
 			productReference = 086FC42323A20B5100BB1965 /* ExampleApp.app */;
@@ -269,6 +275,7 @@
 			packageReferences = (
 				082389F023A764AC0080EE8B /* XCRemoteSwiftPackageReference "Guise" */,
 				08CB62CB23AA026A0058C212 /* XCRemoteSwiftPackageReference "Fakery" */,
+				0848931123E0276700A5A7D7 /* XCRemoteSwiftPackageReference "dt-ios-core" */,
 			);
 			productRefGroup = 086FC42423A20B5100BB1965 /* Products */;
 			projectDirPath = "";
@@ -516,6 +523,14 @@
 				kind = branch;
 			};
 		};
+		0848931123E0276700A5A7D7 /* XCRemoteSwiftPackageReference "dt-ios-core" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "file:///Users/maximevtukh/DreamTeam/Apps/dt-ios-core";
+			requirement = {
+				branch = "feature/extend-with-components";
+				kind = branch;
+			};
+		};
 		08CB62CB23AA026A0058C212 /* XCRemoteSwiftPackageReference "Fakery" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/vadymmarkov/Fakery";
@@ -531,6 +546,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 082389F023A764AC0080EE8B /* XCRemoteSwiftPackageReference "Guise" */;
 			productName = Guise;
+		};
+		0848931623E02A6200A5A7D7 /* DTCoreCommons */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0848931123E0276700A5A7D7 /* XCRemoteSwiftPackageReference "dt-ios-core" */;
+			productName = DTCoreCommons;
+		};
+		0848931823E02A6200A5A7D7 /* DTCoreComponents */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0848931123E0276700A5A7D7 /* XCRemoteSwiftPackageReference "dt-ios-core" */;
+			productName = DTCoreComponents;
 		};
 		08CB62CC23AA026A0058C212 /* Fakery */ = {
 			isa = XCSwiftPackageProductDependency;

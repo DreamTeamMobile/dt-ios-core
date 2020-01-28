@@ -20,6 +20,15 @@
         }
       },
       {
+        "package": "DT.Core.iOS",
+        "repositoryURL": "/Users/maximevtukh/DreamTeam/Apps/dt-ios-core",
+        "state": {
+          "branch": "feature/extend-with-components",
+          "revision": "575a0349400823ae69594e53c5a871dc2a6b941d",
+          "version": null
+        }
+      },
+      {
         "package": "Fakery",
         "repositoryURL": "https://github.com/vadymmarkov/Fakery",
         "state": {
@@ -33,7 +42,7 @@
         "repositoryURL": "https://github.com/Prosumma/Guise",
         "state": {
           "branch": "master",
-          "revision": "a9000c437e92fa4b9784c4ffb9355ef754aae6bc",
+          "revision": "9e26732d1484fadedaaf3c1556df828df89d9d38",
           "version": null
         }
       },

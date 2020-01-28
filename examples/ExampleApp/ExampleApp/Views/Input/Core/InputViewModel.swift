@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import DT_Core_iOS
+import DTCoreCommons
 
 class InputViewModel: BaseViewModel<InputInitObj> {
     

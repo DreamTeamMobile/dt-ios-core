@@ -7,7 +7,7 @@
 
 import UIKit
 import Guise
-import DT_Core_iOS
+import DTCoreCommons
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

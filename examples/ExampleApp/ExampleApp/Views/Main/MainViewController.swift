@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import DT_Core_iOS
+import DTCoreCommons
 
 class MainViewController: BaseViewController<MainViewModel> {
     

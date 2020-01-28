@@ -10,10 +10,10 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Commons",
+            name: "DTCoreCommons",
             targets: ["Commons"]),
         .library(
-            name: "Components",
+            name: "DTCoreComponents",
             targets: ["Components"])
     ],
     targets: [

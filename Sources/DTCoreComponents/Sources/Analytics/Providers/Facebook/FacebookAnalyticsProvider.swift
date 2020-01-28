@@ -8,7 +8,7 @@ import Foundation
 import FBSDKCoreKit
 import StoreKit
 
-public class FacebookAnalyticsProvider: AnalyticsProviderProtocol {
+public class FacebookAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
 
     public func logEvent(_ event: String) {
         self.logEvent(event: event, parameters: nil)

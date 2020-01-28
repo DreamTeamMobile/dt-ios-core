@@ -20,15 +20,6 @@
         }
       },
       {
-        "package": "DT.Core.iOS",
-        "repositoryURL": "https://github.com/DreamTeamMobile/dt-ios-core",
-        "state": {
-          "branch": "dev",
-          "revision": "39d9b5d7c59cf3022fb63758aee3b1c03bdc4ed6",
-          "version": null
-        }
-      },
-      {
         "package": "Fakery",
         "repositoryURL": "https://github.com/vadymmarkov/Fakery",
         "state": {

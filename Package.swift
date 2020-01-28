@@ -10,23 +10,17 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "DT.Core.iOS",
-            targets: ["DT.Core.iOS"])
-    ],
-    dependencies: [
-        .package(path: "Sources/Commons"),
-        .package(path: "Sources/Components"),
+            name: "Commons",
+            targets: ["Commons"]),
+        .library(
+            name: "Components",
+            targets: ["Components"])
     ],
     targets: [
         .target(
-            name: "DT.Core.iOS",
-            dependencies: [
-                "Commons",
-                "Analytics",
-                "Device",
-                "Extensions",
-                "Interaction"
-            ],
-            path: "Sources")
+            name: "Commons"),
+        .target(
+            name: "Components",
+            exclude: ["Sources/Analytics/Providers", "Sources/RemoteConfig"])
     ]
 )

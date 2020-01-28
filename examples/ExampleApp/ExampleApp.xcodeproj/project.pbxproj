@@ -20,7 +20,6 @@
 		086FC42723A20B5100BB1965 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086FC42623A20B5100BB1965 /* AppDelegate.swift */; };
 		086FC43023A20B5300BB1965 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 086FC42F23A20B5300BB1965 /* Assets.xcassets */; };
 		086FC43323A20B5300BB1965 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 086FC43123A20B5300BB1965 /* LaunchScreen.storyboard */; };
-		086FC43E23A212D800BB1965 /* DT.Core.iOS in Frameworks */ = {isa = PBXBuildFile; productRef = 086FC43D23A212D800BB1965 /* DT.Core.iOS */; };
 		08CB62C023A9FB090058C212 /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CB62BF23A9FB090058C212 /* TableViewModel.swift */; };
 		08CB62C223A9FB130058C212 /* TableInitObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CB62C123A9FB130058C212 /* TableInitObject.swift */; };
 		08CB62C523A9FB750058C212 /* TableItemVm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CB62C423A9FB750058C212 /* TableItemVm.swift */; };
@@ -69,7 +68,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				082389F223A764AC0080EE8B /* Guise in Frameworks */,
-				086FC43E23A212D800BB1965 /* DT.Core.iOS in Frameworks */,
 				08CB62CD23AA026A0058C212 /* Fakery in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,11 +135,19 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		0848930623E0209600A5A7D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		086FC41A23A20B5100BB1965 = {
 			isa = PBXGroup;
 			children = (
 				086FC42523A20B5100BB1965 /* ExampleApp */,
 				086FC42423A20B5100BB1965 /* Products */,
+				0848930623E0209600A5A7D7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -229,7 +235,6 @@
 			);
 			name = ExampleApp;
 			packageProductDependencies = (
-				086FC43D23A212D800BB1965 /* DT.Core.iOS */,
 				082389F123A764AC0080EE8B /* Guise */,
 				08CB62CC23AA026A0058C212 /* Fakery */,
 			);
@@ -262,7 +267,6 @@
 			);
 			mainGroup = 086FC41A23A20B5100BB1965;
 			packageReferences = (
-				086FC43C23A212D800BB1965 /* XCRemoteSwiftPackageReference "dt-ios-core" */,
 				082389F023A764AC0080EE8B /* XCRemoteSwiftPackageReference "Guise" */,
 				08CB62CB23AA026A0058C212 /* XCRemoteSwiftPackageReference "Fakery" */,
 			);
@@ -512,14 +516,6 @@
 				kind = branch;
 			};
 		};
-		086FC43C23A212D800BB1965 /* XCRemoteSwiftPackageReference "dt-ios-core" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/DreamTeamMobile/dt-ios-core";
-			requirement = {
-				branch = "feature/extend-with-components";
-				kind = branch;
-			};
-		};
 		08CB62CB23AA026A0058C212 /* XCRemoteSwiftPackageReference "Fakery" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/vadymmarkov/Fakery";
@@ -535,11 +531,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 082389F023A764AC0080EE8B /* XCRemoteSwiftPackageReference "Guise" */;
 			productName = Guise;
-		};
-		086FC43D23A212D800BB1965 /* DT.Core.iOS */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 086FC43C23A212D800BB1965 /* XCRemoteSwiftPackageReference "dt-ios-core" */;
-			productName = DT.Core.iOS;
 		};
 		08CB62CC23AA026A0058C212 /* Fakery */ = {
 			isa = XCSwiftPackageProductDependency;

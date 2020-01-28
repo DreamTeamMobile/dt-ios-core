@@ -8,7 +8,7 @@ import Foundation
 import KeychainAccess
 
 @propertyWrapper
-struct KeychainWrapper<T: LosslessStringConvertible> {
+public struct KeychainWrapper<T: LosslessStringConvertible> {
     
     let key: String
     let defaultValue: T

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import DTCoreCommons
+import DTCore
 import Guise
 
 class MainViewModel: BaseViewModel<MainInitObject> {

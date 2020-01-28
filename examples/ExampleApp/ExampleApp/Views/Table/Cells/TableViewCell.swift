@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import DTCoreCommons
+import DTCore
 
 class TableViewCell: BindableTableViewCell<TableItemVm> {
     

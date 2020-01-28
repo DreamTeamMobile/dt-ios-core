@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import DTCoreCommons
+import DTCore
 
 class InputViewController: BaseViewController<InputViewModel> {
     

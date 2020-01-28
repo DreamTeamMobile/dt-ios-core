@@ -24,8 +24,17 @@
         "repositoryURL": "/Users/maximevtukh/DreamTeam/Apps/dt-ios-core",
         "state": {
           "branch": "feature/extend-with-components",
-          "revision": "575a0349400823ae69594e53c5a871dc2a6b941d",
+          "revision": "8c594b29fdc34a1ce610f18da552c8e85ec467fe",
           "version": null
+        }
+      },
+      {
+        "package": "Facebook",
+        "repositoryURL": "https://github.com/facebook/facebook-ios-sdk.git",
+        "state": {
+          "branch": null,
+          "revision": "634f95aed56f8b77a82a4f73ebc4c1975408dff4",
+          "version": "5.15.0"
         }
       },
       {
@@ -47,6 +56,15 @@
         }
       },
       {
+        "package": "KeychainAccess",
+        "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
+        "state": {
+          "branch": null,
+          "revision": "b920ad7df3c73189dcdd4aa05c540849b2010dbf",
+          "version": "4.1.0"
+        }
+      },
+      {
         "package": "Nimble",
         "repositoryURL": "https://github.com/Quick/Nimble.git",
         "state": {
@@ -62,6 +80,15 @@
           "branch": null,
           "revision": "33682c2f6230c60614861dfc61df267e11a1602f",
           "version": "2.2.0"
+        }
+      },
+      {
+        "package": "TPInAppReceipt",
+        "repositoryURL": "https://github.com/tikhop/TPInAppReceipt.git",
+        "state": {
+          "branch": null,
+          "revision": "a10347ae5dcafbacc36b418bf4a87b9eba742650",
+          "version": "2.3.3"
         }
       }
     ]

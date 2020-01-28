@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import DT_Core_iOS
+import DTCore
 
 class TableViewController: BaseViewController<TableViewModel> {
     

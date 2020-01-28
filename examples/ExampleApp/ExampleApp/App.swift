@@ -7,7 +7,8 @@
 
 import Foundation
 import Guise
-import DT_Core_iOS
+import DTCore
+import DTCoreComponents
 
 class App {
     
@@ -16,6 +17,8 @@ class App {
         Guise.register(instance: NavigationControllerHolder() as NavigationControllerHolderProtocol)
         Guise.register(instance: Router(routingProvider: Guise.resolve()!, holder: Guise.resolve()!) as RouterProtocol)
         Guise.register(instance: TableProvider() as TableProviderProtocol)
+        
+        Guise.register(instance: AlertManager() as AlertProtocol)
     }
     
     private static func registerRouting() {

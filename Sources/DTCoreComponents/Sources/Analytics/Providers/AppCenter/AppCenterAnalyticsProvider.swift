@@ -8,7 +8,7 @@ import Foundation
 import AppCenterAnalytics
 import StoreKit
 
-public class AppCenterAnalyricsProvider: AnalyticsProviderProtocol {
+public class AppCenterAnalyricsProvider: NSObject, AnalyticsProviderProtocol {
 
     public func logEvent(_ event: String) {
         self.logEvent(event: event, parameters: nil)

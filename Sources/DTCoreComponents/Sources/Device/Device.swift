@@ -8,7 +8,7 @@ import UIKit
 
 public class Device: NSObject {
     
-    class var current: DeviceModel {
+    public class var current: DeviceModel {
         get {
             if UIDevice.current.userInterfaceIdiom == .phone {
                 switch UIScreen.main.nativeBounds.height {
@@ -38,7 +38,7 @@ public class Device: NSObject {
         }
     }
         
-    class var devicesGroup: DevicesGroup {
+    public class var devicesGroup: DevicesGroup {
         switch self.current {
         case .iPhoneSE:
             return .small
@@ -54,7 +54,7 @@ public class Device: NSObject {
         }
     }
     
-    class func deviceName(modelName: String) -> String {
+    public class func deviceName(modelName: String) -> String {
         return devicesDictionary[modelName] ?? modelName
     }
     

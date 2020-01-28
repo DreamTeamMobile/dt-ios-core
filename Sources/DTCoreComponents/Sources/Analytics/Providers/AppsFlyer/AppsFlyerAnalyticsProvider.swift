@@ -8,7 +8,7 @@ import Foundation
 import StoreKit
 import AppsFlyerLib
 
-public class AppsFlyerAnalyticsProvider: AnalyticsProviderProtocol {
+public class AppsFlyerAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
 
     public func logEvent(_ event: String) {
         self.logEvent(event: event, parameters: nil)

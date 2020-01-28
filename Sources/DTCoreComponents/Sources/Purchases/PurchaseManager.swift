@@ -25,7 +25,7 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
     
     fileprivate var hasValidReceipt = false
     
-    init(secret: String) {
+    public init(secret: String) {
         self.purchasesSecret = secret
         self.productIdentifiers = Set<String>()
         self.nonConsumableIdentifiers = Set<String>()

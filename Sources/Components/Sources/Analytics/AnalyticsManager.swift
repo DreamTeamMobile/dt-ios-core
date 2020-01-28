@@ -23,7 +23,7 @@ class AnalyticsManager: NSObject, AnalyticsManagerProtocol {
     
     func logEvent(event: String, parameters: [String: Any]?) {
         for item in getProviders() {
-            item.logEvent(eventType: eventType, parameters: parameters)
+            item.logEvent(event: event, parameters: parameters)
         }
     }
     

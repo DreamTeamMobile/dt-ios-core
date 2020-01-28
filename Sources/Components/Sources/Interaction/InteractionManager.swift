@@ -102,7 +102,7 @@ App version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "") 
 
 extension InteractionManager: MFMailComposeViewControllerDelegate {
     
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+    public func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
     }
     

@@ -64,11 +64,11 @@ public extension UIColor {
         return img!
     }
     
-    static func colorWithDynamicProvider(named colorName: String, _ alternative: UIColor) -> UIColor {
+    static func colorWithDynamicProvider(named colorName: String, alternative: UIColor, isDarkThemeEnabled: Bool) -> UIColor {
         if #available(iOS 13.0, *) {
             return UIColor { (traitCollection) -> UIColor in
                 var color: UIColor? = nil
-                if traitCollection.userInterfaceStyle == .dark || UserDefaultsConfig.isDarkThemeEnabled {
+                if traitCollection.userInterfaceStyle == .dark || isDarkThemeEnabled {
                     color = UIColor(named: colorName, in: nil, compatibleWith: UITraitCollection(userInterfaceStyle: .dark))
                 } else {
                     color = UIColor(named: colorName, in: nil, compatibleWith: traitCollection)
@@ -79,10 +79,10 @@ public extension UIColor {
         return UIColor(named: colorName) ?? alternative
     }
     
-    static func colorWithDynamicProvider(light: UIColor, dark: UIColor) -> UIColor {
+    static func colorWithDynamicProvider(light: UIColor, dark: UIColor, isDarkThemeEnabled: Bool) -> UIColor {
         if #available(iOS 13.0, *) {
             return UIColor { (traitCollection) -> UIColor in
-                if traitCollection.userInterfaceStyle == .dark || UserDefaultsConfig.isDarkThemeEnabled {
+                if traitCollection.userInterfaceStyle == .dark || isDarkThemeEnabled {
                     return dark
                 }
                 return light

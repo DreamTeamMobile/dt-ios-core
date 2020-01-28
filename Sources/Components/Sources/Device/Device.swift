@@ -49,6 +49,8 @@ class Device: NSObject {
         case .iPhoneXMax: fallthrough
         case .iPhoneXr:
             return .large
+        case .unknown:
+            return .large
         }
     }
     

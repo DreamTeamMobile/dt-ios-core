@@ -8,10 +8,10 @@ import UIKit
 
 public extension UIImage {
     
-    static func imageWithDynamicProvider(named imageName: String) -> UIImage {
+    static func imageWithDynamicProvider(named imageName: String, isDarkThemeEnabled: Bool) -> UIImage {
         if #available(iOS 13.0, *) {
             var image = UIImage()
-            if UIApplication.shared.keyWindow?.rootViewController?.traitCollection.userInterfaceStyle == .dark || UserDefaultsConfig.isDarkThemeEnabled {
+            if UIApplication.shared.keyWindow?.rootViewController?.traitCollection.userInterfaceStyle == .dark || isDarkThemeEnabled {
                 image = UIImage(named: imageName, in: nil, compatibleWith: UITraitCollection(userInterfaceStyle: .dark))!
             } else {
                 image = UIImage(named: imageName, in: nil, compatibleWith: UITraitCollection(userInterfaceStyle: .light))!
@@ -21,9 +21,9 @@ public extension UIImage {
         return UIImage(named: imageName)!
     }
     
-    static func imageWithDynamicProvider(light: UIImage, dark: UIImage) -> UIImage {
+    static func imageWithDynamicProvider(light: UIImage, dark: UIImage, isDarkThemeEnabled: Bool) -> UIImage {
         if #available(iOS 13.0, *) {
-            if UIApplication.shared.keyWindow?.overrideUserInterfaceStyle == .dark || UserDefaultsConfig.isDarkThemeEnabled {
+            if UIApplication.shared.keyWindow?.overrideUserInterfaceStyle == .dark || isDarkThemeEnabled {
                 return dark
             }
             return light

@@ -11,16 +11,17 @@ let package = Package(
     products: [
         .library(
             name: "DTCoreCommons",
-            targets: ["Commons"]),
+            targets: ["DTCoreCommons"]),
         .library(
             name: "DTCoreComponents",
-            targets: ["Components"])
+            targets: ["DTCoreComponents"])
     ],
     targets: [
         .target(
-            name: "Commons"),
+            name: "DTCoreCommons"),
         .target(
-            name: "Components",
-            exclude: ["Sources/Analytics/Providers", "Sources/RemoteConfig"])
+            name: "DTCoreComponents",
+            exclude: ["Sources/Analytics/Providers", "Sources/RemoteConfig"]
+        )
     ]
 )

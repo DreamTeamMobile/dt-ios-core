@@ -10,17 +10,29 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "DT.Core.iOS",
-            targets: ["DT.Core.iOS"]),
+            name: "DTCore",
+            targets: ["DTCore"]),
+        .library(
+            name: "DTCoreComponents",
+            targets: ["DTCoreComponents"])
+    ],
+    dependencies: [
+        .package(url: "https://github.com/kishikawakatsumi/KeychainAccess.git", from: "4.1.0"),
+        .package(url: "https://github.com/tikhop/TPInAppReceipt.git", from: "2.3.3"),
+        .package(url: "https://github.com/facebook/facebook-ios-sdk.git", from: "5.15.0")
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
-            name: "DT.Core.iOS",
-            path: "Source"),
-        .testTarget(
-            name: "DT.Core.iOSTests",
-            dependencies: ["DT.Core.iOS"]),
+            name: "DTCore"),
+        .target(
+            name: "DTCoreComponents",
+            dependencies: ["KeychainAccess", "TPInAppReceipt", "FacebookCore"],
+            exclude: [
+                "Sources/Analytics/Providers/AppCenter",
+                "Sources/Analytics/Providers/AppsFlyer",
+                "Sources/Analytics/Providers/Firebase",
+                "Sources/RemoteConfig"
+            ]
+        )
     ]
 )

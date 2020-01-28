@@ -40,6 +40,13 @@ dependencies: [
 ]
 ```
 
+### Cocoapods
+
+```
+pod 'DTCore'
+pod 'DTCoreComponents'
+```
+
 ## License
 
 DT.Core.iOS is released under the MIT license. [See LICENSE](LICENSE) for details.

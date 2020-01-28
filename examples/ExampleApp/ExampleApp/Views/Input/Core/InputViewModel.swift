@@ -6,7 +6,9 @@
 //
 
 import Foundation
-import DT_Core_iOS
+import DTCore
+import DTCoreComponents
+import Guise
 
 class InputViewModel: BaseViewModel<InputInitObj> {
     
@@ -18,9 +20,18 @@ class InputViewModel: BaseViewModel<InputInitObj> {
     
     private(set) var buttonFrame: ButtonFrame!
     
+    // MARK: Dependencies
+    
+    private let alertManager: AlertProtocol
+    
     // MARK: Init
     
-    required init() {
+    required convenience init() {
+        self.init(alertManager: Guise.resolve()!)
+    }
+    
+    init(alertManager: AlertProtocol) {
+        self.alertManager = alertManager
         super.init()
         self.inputFrame = InputFrame(onTextChanged: self.onTextChanged, textValidator: nil)
         self.switchFrame = SwitchFrame(value: false, onValueChanged: self.onValueChanged)
@@ -42,7 +53,7 @@ class InputViewModel: BaseViewModel<InputInitObj> {
     }
     
     private func onButtonExecute() {
-        
+        self.alertManager.showAlert(message: "Success", predicate: nil)
     }
     
     // MARK: Overrides

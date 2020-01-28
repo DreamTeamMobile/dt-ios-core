@@ -6,7 +6,7 @@
 
 import Foundation
 
-var devicesDictionary: [String : String] = {
+public var devicesDictionary: [String : String] = {
     return [ "i386" : "iPhone Simulator",
     "x86_64" : "iPhone Simulator",
     "iPhone1,1" : "iPhone",

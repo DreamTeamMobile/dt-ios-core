@@ -6,7 +6,7 @@
 
 import UIKit
 
-extension CGFloat {
+public extension CGFloat {
     
     func isSeModel(_ value: CGFloat) -> CGFloat {
         return Device.current == .iPhoneSE ? value : self

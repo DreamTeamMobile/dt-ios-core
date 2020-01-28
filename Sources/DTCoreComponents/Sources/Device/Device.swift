@@ -6,7 +6,7 @@
 
 import UIKit
 
-class Device: NSObject {
+public class Device: NSObject {
     
     class var current: DeviceModel {
         get {

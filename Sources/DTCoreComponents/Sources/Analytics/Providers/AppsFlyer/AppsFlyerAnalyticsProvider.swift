@@ -8,24 +8,22 @@ import Foundation
 import StoreKit
 import AppsFlyerLib
 
-class AppsFlyerAnalyticsProvider: AnalyticsProviderProtocol {
+public class AppsFlyerAnalyticsProvider: AnalyticsProviderProtocol {
 
-    static let shared = AppsFlyerAnalyticsProvider()
-
-    func logEvent(_ event: String) {
-        self.logEvent(eventType: event, parameters: nil)
+    public func logEvent(_ event: String) {
+        self.logEvent(event: event, parameters: nil)
     }
 
-    func logEvent(event: String, parameters: [String : Any]?) {
+    public func logEvent(event: String, parameters: [String : Any]?) {
         let params: [String: String] = parameters as? [String : String] ?? [:]
         AppsFlyerTracker.shared().trackEvent(event, withValues: params)
     }
 
-    func logPurchase(product: SKProduct, event: String) {
+    public func logPurchase(product: SKProduct, event: String) {
         self.logPurchase(product: product, event: event, parameters: nil)
     }
 
-    func logPurchase(product: SKProduct, event: String, parameters: [String : Any]?) {
+    public func logPurchase(product: SKProduct, event: String, parameters: [String : Any]?) {
         var params = parameters ?? [String: Any]()
         
         params["productId"] = product.productIdentifier

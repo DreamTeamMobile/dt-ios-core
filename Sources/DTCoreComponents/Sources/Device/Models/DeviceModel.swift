@@ -6,7 +6,7 @@
 
 import Foundation
 
-enum DeviceModel {
+public enum DeviceModel {
     case unknown
     
     /**

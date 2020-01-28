@@ -7,7 +7,7 @@
 import Foundation
 import StoreKit
 
-class AnalyticsManager: NSObject, AnalyticsManagerProtocol {
+public class AnalyticsManager: NSObject, AnalyticsManagerProtocol {
         
     private var providers = [AnalyticsLazyRef]()
     
@@ -15,31 +15,31 @@ class AnalyticsManager: NSObject, AnalyticsManagerProtocol {
         return providers.count > 0 ? providers.map({ $0.value }) : [AnalyticsProviderProtocol]()
     }
     
-    func logEvent(_ event: String) {
+    public func logEvent(_ event: String) {
         for item in getProviders() {
             item.logEvent(event)
         }
     }
     
-    func logEvent(event: String, parameters: [String: Any]?) {
+    public func logEvent(event: String, parameters: [String: Any]?) {
         for item in getProviders() {
             item.logEvent(event: event, parameters: parameters)
         }
     }
     
-    func logPurchase(product: SKProduct, event: String) {
+    public func logPurchase(product: SKProduct, event: String) {
         for item in getProviders() {
             item.logPurchase(product: product, event: event)
         }
     }
     
-    func logPurchase(product: SKProduct, event: String, parameters: [String: Any]?) {
+    public func logPurchase(product: SKProduct, event: String, parameters: [String: Any]?) {
         for item in getProviders() {
             item.logPurchase(product: product, event: event, parameters: parameters)
         }
     }
     
-    func registerProvider(_ action: @escaping () -> AnalyticsProviderProtocol) {
+    public func registerProvider(_ action: @escaping () -> AnalyticsProviderProtocol) {
         providers.append(AnalyticsLazyRef(action: action))
     }
     

@@ -7,7 +7,7 @@
 import Foundation
 import StoreKit
 
-protocol AnalyticsProviderProtocol: class {
+public protocol AnalyticsProviderProtocol: class {
     
     func logEvent(_ event: String)
     

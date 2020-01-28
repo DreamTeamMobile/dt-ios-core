@@ -7,7 +7,7 @@
 import Foundation
 import FirebaseRemoteConfig
 
-public class RemoteConfigManager: NSObject, RemoteConfigProtocol {
+open class RemoteConfigManager: NSObject, RemoteConfigProtocol {
         
     public var expirationTimeoutInSeconds: TimeInterval = 300 // 5 minutes
         

@@ -10,18 +10,29 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "DTCoreCommons",
-            targets: ["DTCoreCommons"]),
+            name: "DTCore",
+            targets: ["DTCore"]),
         .library(
             name: "DTCoreComponents",
             targets: ["DTCoreComponents"])
     ],
+    dependencies: [
+        .package(url: "https://github.com/kishikawakatsumi/KeychainAccess.git", from: "4.1.0"),
+        .package(url: "https://github.com/tikhop/TPInAppReceipt.git", from: "2.3.3"),
+        .package(url: "https://github.com/facebook/facebook-ios-sdk.git", from: "5.15.0")
+    ],
     targets: [
         .target(
-            name: "DTCoreCommons"),
+            name: "DTCore"),
         .target(
             name: "DTCoreComponents",
-            exclude: ["Sources/Analytics/Providers", "Sources/RemoteConfig"]
+            dependencies: ["KeychainAccess", "TPInAppReceipt", "FacebookCore"],
+            exclude: [
+                "Sources/Analytics/Providers/AppCenter",
+                "Sources/Analytics/Providers/AppsFlyer",
+                "Sources/Analytics/Providers/Firebase",
+                "Sources/RemoteConfig"
+            ]
         )
     ]
 )

@@ -6,7 +6,7 @@
 
 import StoreKit
 
-protocol AnalyticsManagerProtocol: AnalyticsProviderProtocol {
+public protocol AnalyticsManagerProtocol: AnalyticsProviderProtocol {
         
     func registerProvider(_ action: @escaping () -> AnalyticsProviderProtocol)
     

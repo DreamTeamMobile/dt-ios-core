@@ -6,7 +6,7 @@
 
 import Foundation
 
-enum DevicesGroup {
+public enum DevicesGroup {
     
     /**
     iPhone 5/5S/5C/SE

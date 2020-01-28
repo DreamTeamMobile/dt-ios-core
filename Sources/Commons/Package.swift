@@ -3,24 +3,6 @@
 
 import PackageDescription
 
-extension Target {
-    static func target(name: String,
-                       sources: [String],
-                       dependencies: [Target.Dependency] = [])
-        -> Target {
-            return .target(name: name,
-                           dependencies: dependencies,
-                           path: "Sources",
-                           exclude: [],
-                           sources: sources,
-                           publicHeadersPath: nil,
-                           cSettings: nil,
-                           cxxSettings: nil,
-                           swiftSettings: nil,
-                           linkerSettings: nil)
-        }
-}
-
 let package = Package(
     name: "Commons",
     platforms: [
@@ -35,7 +17,7 @@ let package = Package(
     targets: [
         .target(
             name: "Commons",
-            sources: ["Base", "Bindable", "Core", "Extensions", "Navigation"]
+            path: "Sources"
         )
     ]
 )

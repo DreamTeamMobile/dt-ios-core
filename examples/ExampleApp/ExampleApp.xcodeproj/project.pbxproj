@@ -516,7 +516,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/DreamTeamMobile/dt-ios-core";
 			requirement = {
-				branch = dev;
+				branch = "feature/extend-with-components";
 				kind = branch;
 			};
 		};

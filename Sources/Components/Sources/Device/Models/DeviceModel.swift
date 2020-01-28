@@ -1,9 +1,7 @@
 //
-//  Device.swift
-//  stickercreator
+//  DeviceModel.swift
 //
-//  Created by Максим Евтух on 19/06/2019.
-//  Copyright © 2019 DreamTeam. All rights reserved.
+//  Copyright © 2019 DreamTeamMobile. All rights reserved.
 //
 
 import Foundation

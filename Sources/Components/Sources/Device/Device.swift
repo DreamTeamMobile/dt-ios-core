@@ -1,12 +1,9 @@
 //
 //  Device.swift
-//  stickercreator
 //
-//  Created by Максим Евтух on 19/06/2019.
-//  Copyright © 2019 DreamTeam. All rights reserved.
+//  Copyright © 2019 DreamTeamMobile. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class Device: NSObject {
@@ -43,11 +40,12 @@ class Device: NSObject {
         
     class var devicesGroup: DevicesGroup {
         switch self.current {
-        case .iPhoneSE
+        case .iPhoneSE:
             return .small
         case .iPhone: fallthrough
         case .iPhoneX:
             return .normal
+        case .iPhonePlus: fallthrough
         case .iPhoneXMax: fallthrough
         case .iPhoneXr:
             return .large
@@ -57,4 +55,5 @@ class Device: NSObject {
     class func deviceName(modelName: String) -> String {
         return devicesDictionary[modelName] ?? modelName
     }
+    
 }

@@ -1,9 +1,7 @@
 //
 //  DevicesList.swift
-//  TranslateMeFree
 //
-//  Created by Максим Евтух on 31.10.2019.
-//  Copyright © 2019 Google. All rights reserved.
+//  Copyright © 2019 DreamTeamMobile. All rights reserved.
 //
 
 import Foundation

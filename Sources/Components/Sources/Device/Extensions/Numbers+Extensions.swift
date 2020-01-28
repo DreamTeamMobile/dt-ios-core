@@ -1,9 +1,7 @@
 //
-//  CGFloat_Extensions.swift
-//  Speech Keyboard
+//  Numbers+Extensions.swift
 //
-//  Created by Максим Евтух on 23.10.2019.
-//  Copyright © 2019 Google. All rights reserved.
+//  Copyright © 2019 DreamTeamMobile. All rights reserved.
 //
 
 import UIKit
@@ -32,6 +30,18 @@ extension CGFloat {
     
     func isXmaxModel(_ value: CGFloat) -> CGFloat {
         return Device.current == .iPhoneXMax ? value : self
+    }
+    
+    func isSmall(_ value: CGFloat) -> CGFloat {
+        return Device.devicesGroup == .small ? value : self
+    }
+    
+    func isNormal(_ value: CGFloat) -> CGFloat {
+        return Device.devicesGroup == .normal ? value : self
+    }
+    
+    func isLarge(_ value: CGFloat) -> CGFloat {
+        return Device.devicesGroup == .large ? value : self
     }
     
 }

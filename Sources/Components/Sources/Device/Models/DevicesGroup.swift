@@ -1,8 +1,6 @@
 //
-//  DeviceType.swift
-//  fitnesslab
+//  DevicesGroup.swift
 //
-//  Created by Максим Евтух on 07.11.2019.
 //  Copyright © 2019 DreamTeamMobile. All rights reserved.
 //
 

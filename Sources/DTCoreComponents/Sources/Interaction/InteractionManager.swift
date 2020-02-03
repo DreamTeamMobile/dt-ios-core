@@ -9,6 +9,8 @@ import MessageUI
 
 public class InteractionManager: NSObject, InteractionProtocol {
         
+    // MARK: Properties
+    
     var emailSubject: String {
         get {
             return (Bundle.main.infoDictionary?["CFBundleName"] as? String) ?? ""
@@ -28,6 +30,27 @@ App version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "") 
 """
             }
         }
+    
+    // MARK: Private methods
+        
+    private func getLastPresentedControllerFor(_ viewController: UIViewController) -> UIViewController {
+        if let presented = viewController.presentedViewController {
+            return getLastPresentedControllerFor(presented)
+        }
+        
+        return viewController
+    }
+    
+    private func present(controller: UIViewController) {
+        guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
+        let viewController = getLastPresentedControllerFor(rootViewController)
+        
+        DispatchQueue.main.async {
+            viewController.present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: Methods
     
     public func copyToClipboard(_ text: String) {
         UIPasteboard.general.string = text
@@ -67,8 +90,7 @@ App version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "") 
             mailComposerVC.setToRecipients([email])
             mailComposerVC.setSubject(subject)
             mailComposerVC.setMessageBody(body, isHTML: false)
-            
-            UIApplication.shared.keyWindow?.rootViewController?.present(mailComposerVC, animated: true, completion: nil)
+            self.present(controller: mailComposerVC)
         }
     }
     
@@ -79,8 +101,7 @@ App version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "") 
             mailComposerVC.setToRecipients([email])
             mailComposerVC.setSubject(self.emailSubject)
             mailComposerVC.setMessageBody(self.emailBody, isHTML: false)
-            
-            UIApplication.shared.keyWindow?.rootViewController?.present(mailComposerVC, animated: true, completion: nil)
+            present(controller: mailComposerVC)
         }
     }
     

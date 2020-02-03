@@ -12,20 +12,29 @@ open class AlertManager: NSObject, AlertProtocol {
     
     private var pickerViewSource: PickerViewSource?
         
+    // MARK: Private methods
+        
+    private func getLastPresentedControllerFor(_ viewController: UIViewController) -> UIViewController {
+        if let presented = viewController.presentedViewController {
+            return getLastPresentedControllerFor(presented)
+        }
+        
+        return viewController
+    }
+    
     // MARK: Methods
     
-    public func present(viewController: UIViewController, alertPredicate: @escaping () -> UIViewController) {
+    public func present(alertPredicate: @escaping () -> UIViewController) {
+        guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
+        let viewController = getLastPresentedControllerFor(rootViewController)
+        
         DispatchQueue.main.async {
             viewController.present(alertPredicate(), animated: true, completion: nil)
         }
     }
     
     public func showAlert(message: String, predicate: (() -> Void)? = nil) {
-        guard let viewController = UIApplication.shared.keyWindow?.rootViewController else {
-            return
-        }
-        
-        present(viewController: viewController, alertPredicate: {
+        present(alertPredicate: {
             let alert = UIAlertController.init(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction.init(title: AlertLocale.ok.localized, style: UIAlertAction.Style.default, handler: { alertAction -> Void in
                 predicate?()
@@ -35,11 +44,7 @@ open class AlertManager: NSObject, AlertProtocol {
     }
     
     public func showConfirm(title: String, message: String, isDestructive: Bool?, predicate: @escaping () -> Void) {
-        guard let viewController = UIApplication.shared.keyWindow?.rootViewController else {
-            return
-        }
-        
-        present(viewController: viewController, alertPredicate: {
+        present(alertPredicate: {
             let alert = UIAlertController.init(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction.init(title: AlertLocale.cancel.localized, style: UIAlertAction.Style.cancel, handler: nil))
             
@@ -53,11 +58,7 @@ open class AlertManager: NSObject, AlertProtocol {
     }
     
     public func showActionSheet(title: String?, message: String?, options: [(String, Bool)], predicate: @escaping (String) -> Void) {
-        guard let viewController = UIApplication.shared.keyWindow?.rootViewController else {
-            return
-        }
-        
-        present(viewController: viewController, alertPredicate: {
+        present(alertPredicate: {
             let alert = UIAlertController.init(title: title, message: message, preferredStyle: .actionSheet)
             
             for option in options {
@@ -73,11 +74,7 @@ open class AlertManager: NSObject, AlertProtocol {
     }
     
     public func showTimePickerActionSheet(title: String?, message: String?, initialDate: Date?, predicate: @escaping (Date?) -> Void) {
-        guard let viewController = UIApplication.shared.keyWindow?.rootViewController else {
-            return
-        }
-        
-        present(viewController: viewController, alertPredicate: {
+        present(alertPredicate: {
             let alert = UIAlertController.init(title: title, message: message, preferredStyle: .actionSheet)
                         
             let datePicker = UIDatePicker()

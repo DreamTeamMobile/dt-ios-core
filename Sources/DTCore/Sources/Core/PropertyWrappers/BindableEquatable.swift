@@ -42,15 +42,21 @@ public class BindableEquatable<T: Equatable> {
         self.notifyOnEachChange = notifyOnEachChange
     }
     
-    // MARK: Methods
-        
-    public func fire(_ oldValue: T) {
+    // MARK: Private methods
+    
+    private func _fire(_ oldValue: T, force: Bool) {
         let value = wrappedValue
         if let action = self.listener {
-            if self.notifyOnEachChange || (!self.notifyOnEachChange && oldValue != value) {
+            if self.notifyOnEachChange || oldValue != value || force {
                 DispatchQueue.main.async { action(oldValue, value) }
             }
         }
+    }
+    
+    // MARK: Methods
+        
+    public func fire(_ oldValue: T) {
+        _fire(oldValue, force: false)
     }
     
     public func bind(_ listener: Listener?) {
@@ -59,7 +65,7 @@ public class BindableEquatable<T: Equatable> {
 
     public func bindAndFire(_ listener: Listener?) {
         self.listener = listener
-        fire(self.wrappedValue)
+        _fire(self.wrappedValue, force: true)
     }
 
 }

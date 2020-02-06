@@ -12,6 +12,8 @@ public protocol InteractionProtocol {
     
     func shareText(_ text: String)
     
+    func share(_ activityItems: [Any])
+    
     func openUrl(_ link: String) -> Bool
         
     func createEmail(email: String) -> Bool

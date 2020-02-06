@@ -58,7 +58,12 @@ App version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "") 
     
     public func shareText(_ text: String) {
         let vc = UIActivityViewController(activityItems: [text], applicationActivities: nil)
-        UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil)
+        present(controller: vc)
+    }
+    
+    public func share(_ activityItems: [Any]) {
+        let vc = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        present(controller: vc)
     }
     
     public func openUrl(_ link: String) -> Bool {

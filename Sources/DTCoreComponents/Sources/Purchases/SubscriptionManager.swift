@@ -74,7 +74,7 @@ public class SubscriptionManager: NSObject, SubscriptionManagerProtocol {
                 } else if enableSecondCheck && !strongSelf.wasCheckedOnce {
                     strongSelf.wasCheckedOnce = true
                     strongSelf.restorePurchases {[weak self] (success, error) in
-                        self?.checkSubscription()
+                        self?.checkSubscription(enableSecondCheck: false, completion: completion)
                     }
                 } else {
                     strongSelf.wasCheckedOnce = false

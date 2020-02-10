@@ -8,7 +8,7 @@ import UIKit
 
 open class BaseNibLoadableView: UIView {
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
     }
@@ -16,6 +16,16 @@ open class BaseNibLoadableView: UIView {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         loadNib()
+    }
+    
+    open func loadNib() {
+        if self.subviews.count == 0 {
+            if let contentView = loadFromNib() {
+                addSubview(contentView)
+                contentView.frame = self.bounds
+                contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+            }
+        }
     }
 
     open func loadFromNib() -> UIView? {
@@ -26,20 +36,6 @@ open class BaseNibLoadableView: UIView {
             return nib.instantiate(withOwner: self, options: nil).first as? UIView
         } else {
             return nil
-        }
-    }
-    
-}
-
-private extension BaseNibLoadableView {
-    
-    func loadNib() {
-        if self.subviews.count == 0 {
-            if let contentView = loadFromNib() {
-                addSubview(contentView)
-                contentView.frame = self.bounds
-                contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-            }
         }
     }
     

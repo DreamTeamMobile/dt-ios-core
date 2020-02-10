@@ -8,7 +8,7 @@ import UIKit
 
 open class BaseView: UIView {
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
@@ -24,11 +24,8 @@ open class BaseView: UIView {
     }
 
     open func setup() {}
-}
-
-fileprivate extension BaseView {
-
-    func commonInit() {
+    
+    open func commonInit() {
         guard subviews.count == 0, let contentView = loadFromNib() else { return }
         contentView.translatesAutoresizingMaskIntoConstraints = false
         self.clipsToBounds = true
@@ -40,7 +37,7 @@ fileprivate extension BaseView {
         NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
     }
 
-    func loadFromNib() -> UIView? {
+    open func loadFromNib() -> UIView? {
         let bundle = Bundle(for: type(of: self))
         let nibName = type(of: self).description().components(separatedBy: ".").last ?? ""
         if Bundle.main.path(forResource: nibName, ofType: "nib") != nil {
@@ -50,5 +47,4 @@ fileprivate extension BaseView {
             return nil
         }
     }
-
 }

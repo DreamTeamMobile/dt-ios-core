@@ -14,7 +14,7 @@ open class AlertManager: NSObject, AlertProtocol {
     
     // MARK: Properties
     
-    var tintColor: UIColor = UIView.appearance().tintColor
+    open var tintColor: UIColor = UIView.appearance().tintColor
         
     // MARK: Private methods
         

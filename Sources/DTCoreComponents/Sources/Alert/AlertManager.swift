@@ -11,6 +11,10 @@ open class AlertManager: NSObject, AlertProtocol {
     // MARK: Fields
     
     private var pickerViewSource: PickerViewSource?
+    
+    // MARK: Properties
+    
+    var tintColor: UIColor = UIView.appearance().tintColor
         
     // MARK: Private methods
         
@@ -67,7 +71,7 @@ open class AlertManager: NSObject, AlertProtocol {
             
             alert.addAction(UIAlertAction(title: AlertLocale.cancel.localized, style: .cancel, handler: nil))
             
-            alert.view.tintColor = UIView.appearance().tintColor
+            alert.view.tintColor = self.tintColor
             
             return alert
         })
@@ -112,7 +116,7 @@ open class AlertManager: NSObject, AlertProtocol {
             }
                         
             alert.view.addSubview(datePicker)
-            alert.view.tintColor = UIView.appearance().tintColor
+            alert.view.tintColor = self.tintColor
             
             datePicker.topAnchor.constraint(equalTo: alert.view.topAnchor, constant: 10).isActive = true
             datePicker.rightAnchor.constraint(equalTo: alert.view.rightAnchor, constant: 0).isActive = true

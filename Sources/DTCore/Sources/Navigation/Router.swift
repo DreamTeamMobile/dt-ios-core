@@ -73,7 +73,7 @@ public class Router: NSObject, RouterProtocol {
                 let navViCo = UINavigationController(rootViewController: viewController)
                 navViCo.modalPresentationStyle = viewController.modalPresentationStyle
                 navViCo.modalTransitionStyle = viewController.modalTransitionStyle
-                strongSelf.present(vc: navViCo)
+                strongSelf.present(vc: navViCo, completion: completion)
             case .push:
                 strongSelf.holder.getCurrentNavigationController()?.pushViewController(viewController, animated: true)
                 completion?()
@@ -119,6 +119,7 @@ public class Router: NSObject, RouterProtocol {
             }
         } else {
             self.holder.getCurrentNavigationController()?.popViewController(animated: true)
+            completion?()
         }
     }
     

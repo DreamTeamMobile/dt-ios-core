@@ -45,13 +45,19 @@ public class CollectionFrame<T>: Frame {
     }
 }
 
-public struct CollectionActionFrame<T> {
+public class CollectionActionFrame<T>: Frame {
         
     public let type: ActionType
     
     public let title: String
     
     public let action: (T) -> Void
+    
+    public init(type: ActionType, title: String, action: @escaping (T) -> Void) {
+        self.type = type
+        self.title = title
+        self.action = action
+    }
     
     public enum ActionType {
         case normal

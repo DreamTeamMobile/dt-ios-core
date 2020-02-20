@@ -20,6 +20,8 @@ public class CollectionFrame<T>: Frame {
         }
     }
     
+    public var actions: [CollectionActionFrame<T>]?
+    
     // MARK: Actions
     
     private let handleItemSelection: (T) -> Void
@@ -40,5 +42,19 @@ public class CollectionFrame<T>: Frame {
     
     public func onItemSelected(item: T) {
         self.handleItemSelection(item)
+    }
+}
+
+public struct CollectionActionFrame<T> {
+        
+    public let type: ActionType
+    
+    public let title: String
+    
+    public let action: (T) -> Void
+    
+    public enum ActionType {
+        case normal
+        case destructive
     }
 }

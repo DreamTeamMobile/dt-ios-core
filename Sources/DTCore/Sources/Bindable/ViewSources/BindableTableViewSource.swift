@@ -76,8 +76,32 @@ open class BindableTableViewSource<T> : NSObject, UITableViewDataSource, UITable
         return .none
     }
     
+    open func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+    }
+    
     open func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        if let actions = self.tableFrame.actions {
+            return actions.map { act in
+                UITableViewRowAction(
+                    style: act.type == .normal ? .normal : .destructive,
+                    title: act.title,
+                    handler: { [weak self] action, indexPath in
+                        guard let strongSelf = self else { return }
+                        let item = strongSelf.getItemAt(indexPath)
+                        act.action(item)
+                })
+            }
+        }
         return [UITableViewRowAction]()
+    }
+    
+    open func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    open func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
     }
         
     // MARK: UITableViewDelegate implementation
@@ -92,6 +116,22 @@ open class BindableTableViewSource<T> : NSObject, UITableViewDataSource, UITable
         return 0
     }
 
+    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+
+    open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
+    open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return nil
+    }
+
+    open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
+    }
+    
     open func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
     }

@@ -6,19 +6,7 @@
 
 import Foundation
 
-public class SectionedCollectionFrame<T>: Frame {
-    
-    // MARK: Properties
-    
-    @Bindable(false)
-    public private(set) var isEmpty: Bool
-    
-    @Bindable([Section<T>]())
-    public var itemsSource: [Section<T>] {
-        didSet {
-            self.isEmpty = self.itemsSource.isEmpty
-        }
-    }
+public class SectionedCollectionFrame<T>: CollectionFrame<Section<T>> {
     
     // MARK: Actions
     
@@ -26,7 +14,7 @@ public class SectionedCollectionFrame<T>: Frame {
     
     // MARK: Init
     
-    required override public init() {
+    required public init() {
         self.handleItemSelection = { _, _ in }
         super.init()
     }

@@ -80,8 +80,33 @@ open class BindableSectionedTableViewSource<T> : NSObject, UITableViewDataSource
         return .none
     }
     
+    open func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+    }
+    
     open func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        if let actions = self.tableFrame.actions {
+            return actions.map { act in
+                UITableViewRowAction(
+                    style: act.type == .normal ? .normal : .destructive,
+                    title: act.title,
+                    handler: { [weak self] action, indexPath in
+                        guard let strongSelf = self else { return }
+                        let section = strongSelf.getSectionAt(indexPath.section)
+                        let item = section.items[indexPath.row]
+                        act.action(Section<T>(type: section.type, items: [item]))
+                })
+            }
+        }
         return [UITableViewRowAction]()
+    }
+    
+    open func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    open func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
     }
         
     // MARK: UITableViewDelegate implementation

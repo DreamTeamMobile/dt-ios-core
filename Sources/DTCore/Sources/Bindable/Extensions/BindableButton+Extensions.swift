@@ -21,6 +21,7 @@ extension UIButton {
         frame.$isSelected.bindAndFire { oldValue, newValue in
             self.isSelected = newValue
         }
+        self.removeTarget(nil, action: nil, for: .touchUpInside)
         self.addTarget(frame, action: #selector(frame.execute), for: .touchUpInside)
     }
     

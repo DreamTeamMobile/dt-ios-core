@@ -13,19 +13,26 @@ open class RemoteConfigManager: NSObject, RemoteConfigProtocol {
         
     // MARK: Methods
     
-    public func getSettings<T: Decodable>(version: String, suffix: String? = nil) -> T {
+    public func getSettings<T: Decodable>(key: String, version: String, suffix: String? = nil) -> T {
         let remoteConfig = RemoteConfig.remoteConfig()
-        var key = String(describing: T.self).firstLowercased()
+        var fullKey = key
         if let s = suffix {
-            key = key + s
+            fullKey = fullKey + s
         }
-        var settings: T = deserialize(from: defaultConfig(from: key) ?? "", to: T.self)!
-        if let stringValue = (remoteConfig.configValue(forKey: "\(key)_\(version)").stringValue) {
+        var settings: T = deserialize(from: defaultConfig(from: fullKey) ?? "", to: T.self)!
+        if let stringValue = (remoteConfig.configValue(forKey: "\(fullKey)_\(version)").stringValue) {
             if let model = deserialize(from: stringValue, to: T.self) {
                 settings = model
             }
         }
         return settings
+    }
+    
+    public func getSettings<T: Decodable>(version: String, suffix: String? = nil) -> T {
+        return self.getSettings(
+            key: String(describing: T.self).firstLowercased(),
+            version: version,
+            suffix: suffix)
     }
     
     public func fetch(with completion: (() -> Void)?) {

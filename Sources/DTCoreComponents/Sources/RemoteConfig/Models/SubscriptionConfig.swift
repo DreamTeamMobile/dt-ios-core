@@ -9,8 +9,8 @@
 import Foundation
 
 open class SubscriptionConfig : Codable {
-    let isEnabled: Bool
-    let id: String
-    let which: Int?
-    let specialId: String?
+    public let isEnabled: Bool
+    public let id: String
+    public let which: Int?
+    public let specialId: String?
 }

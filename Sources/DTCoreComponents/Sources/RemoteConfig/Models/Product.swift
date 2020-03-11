@@ -10,16 +10,16 @@ import Foundation
 
 open class Product : Codable {
     
-    let id: String
-    let productId: String
-    let title: [String: String]?
-    let subtitle: [String: String]?
-    let price: Price?
-    let trial: [String: String]?
-    let promotion: [String: String]?
+    public let id: String
+    public let productId: String
+    public let title: [String: String]?
+    public let subtitle: [String: String]?
+    public let price: Price?
+    public let trial: [String: String]?
+    public let promotion: [String: String]?
     
     struct Price : Codable {
-        let normal: [String: String]
-        let trial: [String: String]?
+        public let normal: [String: String]
+        public let trial: [String: String]?
     }
 }

@@ -10,21 +10,21 @@ import Foundation
 
 open class Control : Codable {
     
-    let text: [String: String]?
+    public let text: [String: String]?
 
-    let theme: Theme?
+    public let theme: Theme?
     
     open class Theme : Codable {
 
-        let tintColor: Color?
+        public let tintColor: Color?
 
-        let delay: Int?
+        public let delay: Int?
 
         open class Color : Codable {
 
-            let any: String
+            public let any: String
 
-            let dark: String?
+            public let dark: String?
 
         }
         

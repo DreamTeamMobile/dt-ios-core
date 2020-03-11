@@ -10,6 +10,6 @@ import Foundation
 
 open class AchievementsConfig : Codable {
     
-    let items: [ [String: String] ]
+    public let items: [ [String: String] ]
     
 }

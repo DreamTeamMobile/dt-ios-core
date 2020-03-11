@@ -9,11 +9,11 @@
 import Foundation
 
 open class LimitsConfig : Codable {
-    let items: [LimitItem]
+    public let items: [LimitItem]
 }
 
 open class LimitItem : Codable {
-    let action: String
-    let limit: Int?
+    public let action: String
+    public let limit: Int?
 }
 

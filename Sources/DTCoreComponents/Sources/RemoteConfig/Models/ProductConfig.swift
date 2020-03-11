@@ -9,6 +9,6 @@
 import Foundation
 
 open class ProductConfig : Codable {
-    let id: String
-    let selected: Bool
+    public let id: String
+    public let selected: Bool
 }

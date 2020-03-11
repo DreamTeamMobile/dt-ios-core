@@ -10,19 +10,19 @@ import Foundation
 
 open class ConfigModel {    
     
-    let subscrIntro: SubscriptionConfig
+    public let subscrIntro: SubscriptionConfig
     
-    let subscrLaunch: SubscriptionConfig
+    public let subscrLaunch: SubscriptionConfig
     
-    let subscrLimit: SubscriptionConfig
+    public let subscrLimit: SubscriptionConfig
     
-    let products: [Product]
+    public let products: [Product]
     
-    let subscrScreens: [SubscriptionScreen]
+    public let subscrScreens: [SubscriptionScreen]
     
-    let limitsConfig: LimitsConfig
+    public let limitsConfig: LimitsConfig
     
-    init(subscrIntro: SubscriptionConfig, subscrLaunch: SubscriptionConfig, subscrLimit: SubscriptionConfig, products: [Product], subscrScreens: [SubscriptionScreen], limitsConfig: LimitsConfig) {
+    public init(subscrIntro: SubscriptionConfig, subscrLaunch: SubscriptionConfig, subscrLimit: SubscriptionConfig, products: [Product], subscrScreens: [SubscriptionScreen], limitsConfig: LimitsConfig) {
         self.subscrIntro = subscrIntro
         self.subscrLaunch = subscrLaunch
         self.subscrLimit = subscrLimit

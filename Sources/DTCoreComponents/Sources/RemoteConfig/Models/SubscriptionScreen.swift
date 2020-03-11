@@ -10,14 +10,14 @@ import Foundation
 
 open class SubscriptionScreen : Codable {
     
-    let id: String
-    let type: String
-    let title: Control
-    let subtitle: Control?
-    let desc: Control?
-    let achievements: AchievementsConfig
-    let button: Control
-    let closeButton: Control
-    let products: [ProductConfig]
+    public let id: String
+    public let type: String
+    public let title: Control
+    public let subtitle: Control?
+    public let desc: Control?
+    public let achievements: AchievementsConfig
+    public let button: Control
+    public let closeButton: Control
+    public let products: [ProductConfig]
     
 }

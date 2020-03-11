@@ -35,7 +35,7 @@ public class AppsFlyerAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
         AppsFlyerTracker.shared().trackEvent(AFEventSubscribe, withValues: [
             AFEventParamContentId: product.productIdentifier,
             AFEventParamRevenue: product.price.stringValue,
-            AFEventParamCurrency: product.priceLocale.currencyCode ?? ""
+            AFEventParamCurrency: (product.priceLocale.currencyCode ?? "")
         ])
     }
     

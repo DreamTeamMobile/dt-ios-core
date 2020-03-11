@@ -18,7 +18,7 @@ open class Product : Codable {
     public let trial: [String: String]?
     public let promotion: [String: String]?
     
-    struct Price : Codable {
+    open class Price : Codable {
         public let normal: [String: String]
         public let trial: [String: String]?
     }

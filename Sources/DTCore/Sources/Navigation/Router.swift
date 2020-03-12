@@ -53,6 +53,21 @@ public class Router: NSObject, RouterProtocol {
         return viewController
     }
     
+    private func popViewController<ViewModel: BViewModel>(naviCon: UINavigationController, vmType: ViewModel.Type, completion: (() -> Void)?) {
+        for i in 0 ..< naviCon.children.count {
+            let viCo = naviCon.children[i]
+            if let bViCo = viCo as? BaseViCoProtocol,
+                let _ = bViCo.getViewModel() as? ViewModel {
+                if i == naviCon.children.count - 1 {
+                    naviCon.popViewController(animated: true)
+                } else {
+                    viCo.removeFromParent()
+                }
+                completion?()
+            }
+        }
+    }
+    
     // MARK: RouterProtocol implementation
     
     public func navigateTo<ViewModel: BViewModel>(vmType: ViewModel.Type, initObj: Any, navigationType: NavigationType, completion: (() -> Void)? = nil) {
@@ -114,12 +129,15 @@ public class Router: NSObject, RouterProtocol {
         
         if let presented = rootViewController.presentedViewController {
             let lastPresented = getLastPresentedControllerFor(presented, vmType)
-            lastPresented.dismiss(animated: true) {
-                completion?()
+            if let naviCon = lastPresented as? UINavigationController {
+                popViewController(naviCon: naviCon, vmType: vmType, completion: completion)
+            } else {
+                lastPresented.dismiss(animated: true) {
+                    completion?()
+                }
             }
-        } else {
-            self.holder.getCurrentNavigationController()?.popViewController(animated: true)
-            completion?()
+        } else if let naviCon = self.holder.getCurrentNavigationController() {
+            popViewController(naviCon: naviCon, vmType: vmType, completion: completion)
         }
     }
     

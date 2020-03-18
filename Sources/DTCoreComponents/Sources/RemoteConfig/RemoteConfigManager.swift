@@ -20,7 +20,7 @@ open class RemoteConfigManager: NSObject, RemoteConfigProtocol {
             fullKey = fullKey + s
         }
         var settings: T = deserialize(from: defaultConfig(from: fullKey) ?? "", to: T.self)!
-        if let stringValue = (remoteConfig.configValue(forKey: "\(fullKey)_\(version)").stringValue) {
+        if let stringValue = (remoteConfig.configValue(forKey: version.isEmpty ? fullKey : "\(fullKey)_\(version)").stringValue) {
             if let model = deserialize(from: stringValue, to: T.self) {
                 settings = model
             }

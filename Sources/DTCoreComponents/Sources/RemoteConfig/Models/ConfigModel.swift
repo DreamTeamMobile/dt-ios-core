@@ -1,8 +1,6 @@
 //
 //  ConfigModel.swift
-//  fitnesslab
 //
-//  Created by Максим Евтух on 28.11.2019.
 //  Copyright © 2019 DreamTeamMobile. All rights reserved.
 //
 
@@ -22,13 +20,19 @@ open class ConfigModel {
     
     public let limitsConfig: LimitsConfig
     
-    public init(subscrIntro: SubscriptionConfig, subscrLaunch: SubscriptionConfig, subscrLimit: SubscriptionConfig, products: [Product], subscrScreens: [SubscriptionScreen], limitsConfig: LimitsConfig) {
+    public let welcomeConfig: WelcomeConfig?
+    
+    public let welcomeScreens: [SubscriptionScreen]?
+    
+    public init(subscrIntro: SubscriptionConfig, subscrLaunch: SubscriptionConfig, subscrLimit: SubscriptionConfig, products: [Product], subscrScreens: [SubscriptionScreen], limitsConfig: LimitsConfig, welcomeConfig: WelcomeConfig?, welcomeScreens: [SubscriptionScreen]?) {
         self.subscrIntro = subscrIntro
         self.subscrLaunch = subscrLaunch
         self.subscrLimit = subscrLimit
         self.products = products
         self.subscrScreens = subscrScreens
         self.limitsConfig = limitsConfig
+        self.welcomeConfig = welcomeConfig
+        self.welcomeScreens = welcomeScreens
     }
     
 }

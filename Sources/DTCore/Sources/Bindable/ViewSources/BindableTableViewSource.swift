@@ -132,6 +132,10 @@ open class BindableTableViewSource<T> : NSObject, UITableViewDataSource, UITable
         return nil
     }
     
+    open func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     open func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
     }

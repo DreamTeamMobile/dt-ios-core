@@ -138,6 +138,10 @@ open class BindableSectionedTableViewSource<T> : NSObject, UITableViewDataSource
         return nil
     }
 
+    open func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     open func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
     }

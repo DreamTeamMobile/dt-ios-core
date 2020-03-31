@@ -10,10 +10,11 @@ public extension Locale {
     
     static var currentLanguage: String {
         get {
-            if let language = preferredLanguages.first, let code = Locale(identifier: language).languageCode {
-                if let _ = Bundle.main.path(forResource: code, ofType: "lproj") {
-                    return language
-                }
+            if let language = preferredLanguages.first,
+               let code = Locale(identifier: language).languageCode,
+               let _ = Bundle.main.path(forResource: language, ofType: "lproj")
+            {
+                return language
             }
             return "en-US"
         }
@@ -21,10 +22,11 @@ public extension Locale {
     
     static var currentLanguageCode: String {
         get {
-            if let language = preferredLanguages.first {
-                if let code = Locale(identifier: language).languageCode, let _ = Bundle.main.path(forResource: code, ofType: "lproj") {
-                    return code
-                }
+            if let language = preferredLanguages.first,
+               let code = Locale(identifier: language).languageCode,
+               let _ = Bundle.main.path(forResource: language, ofType: "lproj")
+            {
+                return code
             }
             return "en"
         }

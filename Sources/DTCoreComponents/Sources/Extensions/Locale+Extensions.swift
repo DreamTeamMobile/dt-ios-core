@@ -12,7 +12,7 @@ public extension Locale {
         get {
             if let language = preferredLanguages.first,
                let code = Locale(identifier: language).languageCode,
-               let _ = Bundle.main.path(forResource: language, ofType: "lproj")
+               let _ = Bundle.main.path(forResource: language, ofType: "lproj") ?? Bundle.main.path(forResource: code, ofType: "lproj")
             {
                 return language
             }
@@ -24,7 +24,7 @@ public extension Locale {
         get {
             if let language = preferredLanguages.first,
                let code = Locale(identifier: language).languageCode,
-               let _ = Bundle.main.path(forResource: language, ofType: "lproj")
+               let _ = Bundle.main.path(forResource: language, ofType: "lproj") ?? Bundle.main.path(forResource: code, ofType: "lproj")
             {
                 return code
             }

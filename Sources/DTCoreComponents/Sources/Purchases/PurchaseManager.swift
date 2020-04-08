@@ -215,7 +215,9 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                                 completion(true, nil)
                                 return
                             }
-                        } else if let receipt = jsonResponse["receipt"] as? [String: AnyObject] {
+                        }
+                        
+                        if let receipt = jsonResponse["receipt"] as? [String: AnyObject] {
                             if let inApps = receipt["in_app"] as? NSArray {
                                 if let inApp = inApps.first(where: { (element) -> Bool in
                                         if let iap = element as? [String: AnyObject], let product_id = iap["product_id"] as? String {

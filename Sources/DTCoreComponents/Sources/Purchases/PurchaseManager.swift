@@ -208,6 +208,15 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                         
                         // MARK: non-consumable validation
                         
+                        if let latestReceipt = jsonResponse["latest_receipt"] as? String, let data = Data(base64Encoded: latestReceipt), let receipt = try? InAppReceipt.receipt(from: data) {
+                            if let purchaseId = nonConsumableIdentifiers?.first(where: { receipt.containsPurchase(ofProductIdentifier: $0) }) {
+                                print("Found non-consumable purchase \(purchaseId)")
+                                os_log("6.Status: VALID. Found non-consumable purchase", log: OSLog.default, type: .info)
+                                completion(true, nil)
+                                return
+                            }
+                        }
+                        
                         if let receipt = jsonResponse["receipt"] as? [String: AnyObject] {
                             if let inApps = receipt["in_app"] as? NSArray {
                                 if let inApp = inApps.first(where: { (element) -> Bool in

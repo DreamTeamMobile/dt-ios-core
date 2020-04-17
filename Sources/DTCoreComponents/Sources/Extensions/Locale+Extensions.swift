@@ -10,25 +10,41 @@ public extension Locale {
     
     static var currentLanguage: String {
         get {
-            if let language = preferredLanguages.first,
-               let code = Locale(identifier: language).languageCode,
-               let _ = Bundle.main.path(forResource: language, ofType: "lproj") ?? Bundle.main.path(forResource: code, ofType: "lproj")
-            {
+            let defaultLanguage = "en-US"
+            
+            guard let language = preferredLanguages.first else { return defaultLanguage }
+            let locale = Locale(identifier: language)
+            
+            guard let code = locale.languageCode else { return defaultLanguage }
+            
+            if let _ = Bundle.main.path(forResource: language, ofType: "lproj") ?? Bundle.main.path(forResource: code, ofType: "lproj") {
+                return language
+            } else if let scriptCode = locale.scriptCode,
+                let _ = Bundle.main.path(forResource: "\(code)-\(scriptCode)", ofType: "lproj") {
                 return language
             }
-            return "en-US"
+            
+            return defaultLanguage
         }
     }
     
     static var currentLanguageCode: String {
         get {
-            if let language = preferredLanguages.first,
-               let code = Locale(identifier: language).languageCode,
-               let _ = Bundle.main.path(forResource: language, ofType: "lproj") ?? Bundle.main.path(forResource: code, ofType: "lproj")
-            {
+            let defaultCode = "en"
+            
+            guard let language = preferredLanguages.first else { return defaultCode }
+            let locale = Locale(identifier: language)
+            
+            guard let code = locale.languageCode else { return defaultCode }
+            
+            if let _ = Bundle.main.path(forResource: language, ofType: "lproj") ?? Bundle.main.path(forResource: code, ofType: "lproj") {
+                return code
+            } else if let scriptCode = locale.scriptCode,
+                let _ = Bundle.main.path(forResource: "\(code)-\(scriptCode)", ofType: "lproj") {
                 return code
             }
-            return "en"
+            
+            return defaultCode
         }
     }
     

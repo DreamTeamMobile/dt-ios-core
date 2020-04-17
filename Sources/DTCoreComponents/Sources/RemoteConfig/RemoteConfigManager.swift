@@ -49,6 +49,18 @@ open class RemoteConfigManager: NSObject, RemoteConfigProtocol {
         })
     }
     
+    public func fetchAndActivate(with completion: (() -> Void)?) {
+        let remoteConfig = RemoteConfig.remoteConfig()
+        remoteConfig.fetchAndActivate { (status, error) in
+            if (error == nil && status != .error) {
+                completion?()
+            } else if let e = error {
+                print(e)
+                completion?()
+            }
+        }
+    }
+    
 }
 
 private extension RemoteConfigManager {

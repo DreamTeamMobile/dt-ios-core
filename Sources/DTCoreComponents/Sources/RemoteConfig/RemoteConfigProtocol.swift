@@ -16,4 +16,6 @@ public protocol RemoteConfigProtocol {
     
     func fetch(with completion: (() -> Void)?)
     
+    func fetchAndActivate(with completion: (() -> Void)?)
+    
 }

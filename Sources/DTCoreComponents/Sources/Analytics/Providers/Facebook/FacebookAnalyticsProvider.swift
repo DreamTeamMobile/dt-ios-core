@@ -4,8 +4,8 @@
 //  Copyright © 2019 DreamTeamMobile. All rights reserved.
 //
 
-import Foundation
 import FBSDKCoreKit
+import Foundation
 import StoreKit
 
 public class FacebookAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
@@ -14,15 +14,15 @@ public class FacebookAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
         self.logEvent(event: event, parameters: nil)
     }
 
-    public func logEvent(event: String, parameters: [String : Any]?) {
+    public func logEvent(event: String, parameters: [String: Any]?) {
         AppEvents.logEvent(AppEvents.Name(rawValue: event), parameters: parameters ?? [:])
     }
 
-    public func logPurchase(product: SKProduct, event: String) {
-        self.logPurchase(product: product, event: event, parameters: nil)
+    public func logPurchaseEvent(product: SKProduct, event: String) {
+        self.logPurchaseEvent(product: product, event: event, parameters: nil)
     }
 
-    public func logPurchase(product: SKProduct, event: String, parameters: [String : Any]?) {
+    public func logPurchaseEvent(product: SKProduct, event: String, parameters: [String: Any]?) {
         var params = parameters ?? [String: Any]()
 
         params["productId"] = product.productIdentifier
@@ -30,8 +30,20 @@ public class FacebookAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
         params["currency"] = product.priceLocale.currencyCode ?? ""
 
         AppEvents.logEvent(AppEvents.Name(rawValue: event), parameters: params)
-        
-        AppEvents.logPurchase(Double(truncating: product.price), currency: product.priceLocale.currencyCode ?? "", parameters: ["productId" : product.productIdentifier])
     }
-    
+
+    public func logSubscription(product: SKProduct) {
+        self.logSubscription(product: product, parameters: nil)
+    }
+
+    public func logSubscription(product: SKProduct, parameters: [String: Any]?) {
+        var params = parameters ?? [String: Any]()
+        params["productId"] = product.productIdentifier
+        AppEvents.logPurchase(
+            Double(truncating: product.price),
+            currency: product.priceLocale.currencyCode ?? "",
+            parameters: params
+        )
+    }
+
 }

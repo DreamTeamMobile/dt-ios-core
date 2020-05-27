@@ -19,11 +19,11 @@ public class AppsFlyerAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
         AppsFlyerTracker.shared().trackEvent(event, withValues: params)
     }
 
-    public func logPurchase(product: SKProduct, event: String) {
-        self.logPurchase(product: product, event: event, parameters: nil)
+    public func logPurchaseEvent(product: SKProduct, event: String) {
+        self.logPurchaseEvent(product: product, event: event, parameters: nil)
     }
 
-    public func logPurchase(product: SKProduct, event: String, parameters: [String : Any]?) {
+    public func logPurchaseEvent(product: SKProduct, event: String, parameters: [String : Any]?) {
         var params = parameters ?? [String: Any]()
         
         params["productId"] = product.productIdentifier
@@ -31,12 +31,30 @@ public class AppsFlyerAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
         params["currency"] = product.priceLocale.currencyCode ?? ""
 
         AppsFlyerTracker.shared().trackEvent(event, withValues: params)
+    }
+    
+    public func logSubscription(product: SKProduct) {
+        self.logSubscription(product: product, parameters: nil)
+    }
+
+    public func logSubscription(product: SKProduct, parameters: [String: Any]?) {
+        var params = parameters ?? [String: Any]()
         
-        AppsFlyerTracker.shared().trackEvent(AFEventSubscribe, withValues: [
-            AFEventParamContentId: product.productIdentifier,
-            AFEventParamRevenue: product.price.stringValue,
-            AFEventParamCurrency: (product.priceLocale.currencyCode ?? "")
-        ])
+        params[AFEventParamContentId] = product.productIdentifier
+        params[AFEventParamRevenue] = product.price.stringValue
+        params[AFEventParamCurrency] = (product.priceLocale.currencyCode ?? "")!
+        
+        AppsFlyerTracker.shared().trackEvent(AFEventSubscribe, withValues: params)
+    }
+    
+    public func logPurchase(product: SKProduct, parameters: [String: Any]?) {
+        var params = parameters ?? [String: Any]()
+        
+        params[AFEventParamContentId] = product.productIdentifier
+        params[AFEventParamRevenue] = product.price.stringValue
+        params[AFEventParamCurrency] = (product.priceLocale.currencyCode ?? "")!
+        
+        AppsFlyerTracker.shared().trackEvent(AFEventPurchase, withValues: params)
     }
     
 }

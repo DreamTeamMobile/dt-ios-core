@@ -10,4 +10,6 @@ public protocol AnalyticsManagerProtocol: AnalyticsProviderProtocol {
         
     func registerProvider(_ action: @escaping () -> AnalyticsProviderProtocol)
     
+    func getProviders() -> [AnalyticsProviderProtocol]
+    
 }

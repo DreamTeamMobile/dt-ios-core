@@ -18,11 +18,11 @@ public class FirebaseAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
         Analytics.logEvent(event.replacingOccurrences(of: ".", with: "_"), parameters: parameters)
     }
     
-    public func logPurchase(product: SKProduct, event: String) {
-        self.logPurchase(product: product, event: event, parameters: nil)
+    public func logPurchaseEvent(product: SKProduct, event: String) {
+        self.logPurchaseEvent(product: product, event: event, parameters: nil)
     }
         
-    public func logPurchase(product: SKProduct, event: String, parameters: [String: Any]?) {
+    public func logPurchaseEvent(product: SKProduct, event: String, parameters: [String: Any]?) {
         var params = parameters ?? [String: Any]()
         
         params["productId"] = product.productIdentifier
@@ -32,4 +32,11 @@ public class FirebaseAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
         Analytics.logEvent(event, parameters: params)
     }
  
+    public func logSubscription(product: SKProduct) {
+        self.logSubscription(product: product, parameters: nil)
+    }
+
+    public func logSubscription(product: SKProduct, parameters: [String: Any]?) {
+        // nothing here because Firebase tracks purchases automatically
+    }
 }

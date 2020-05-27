@@ -13,8 +13,12 @@ public protocol AnalyticsProviderProtocol: class {
     
     func logEvent(event: String, parameters: [String: Any]?)
     
-    func logPurchase(product: SKProduct, event: String)
+    func logPurchaseEvent(product: SKProduct, event: String)
     
-    func logPurchase(product: SKProduct, event: String, parameters: [String: Any]?)
+    func logPurchaseEvent(product: SKProduct, event: String, parameters: [String: Any]?)
+    
+    func logSubscription(product: SKProduct)
+    
+    func logSubscription(product: SKProduct, parameters: [String: Any]?)
     
 }

@@ -38,6 +38,20 @@ public class FacebookAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
 
     public func logSubscription(product: SKProduct, parameters: [String: Any]?) {
         var params = parameters ?? [String: Any]()
+
+        params["productId"] = product.productIdentifier
+        params["price"] = product.price.stringValue
+        params["currency"] = product.priceLocale.currencyCode ?? ""
+
+        AppEvents.logEvent(AppEvents.Name(rawValue: "Subscribe"), parameters: params)
+    }
+    
+    public func logPurchase(product: SKProduct) {
+        self.logPurchase(product: product, parameters: nil)
+    }
+    
+    public func logPurchase(product: SKProduct, parameters: [String : Any]?) {
+        var params = parameters ?? [String: Any]()
         params["productId"] = product.productIdentifier
         AppEvents.logPurchase(
             Double(truncating: product.price),

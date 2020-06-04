@@ -21,4 +21,8 @@ public protocol AnalyticsProviderProtocol: class {
     
     func logSubscription(product: SKProduct, parameters: [String: Any]?)
     
+    func logPurchase(product: SKProduct)
+    
+    func logPurchase(product: SKProduct, parameters: [String: Any]?)
+    
 }

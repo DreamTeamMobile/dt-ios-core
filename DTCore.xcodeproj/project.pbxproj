@@ -103,6 +103,7 @@
 		002B8ECF247E59700075D255 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002B8E9C247E59700075D255 /* AnalyticsManager.swift */; };
 		002B8ED4247E59BF0075D255 /* DTCoreComponents.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 002B8ED2247E59BF0075D255 /* DTCoreComponents.podspec */; };
 		002B8ED5247E59BF0075D255 /* DTCore.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 002B8ED3247E59BF0075D255 /* DTCore.podspec */; };
+		00885A952488AFD9001C578B /* AnalyticsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00885A942488AFD9001C578B /* AnalyticsType.swift */; };
 		E6428E416BF327E37F9F2226 /* Pods_DTCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775702B053C3FF445A5F8831 /* Pods_DTCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -205,6 +206,7 @@
 		002B8E9C247E59700075D255 /* AnalyticsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		002B8ED2247E59BF0075D255 /* DTCoreComponents.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DTCoreComponents.podspec; sourceTree = "<group>"; };
 		002B8ED3247E59BF0075D255 /* DTCore.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DTCore.podspec; sourceTree = "<group>"; };
+		00885A942488AFD9001C578B /* AnalyticsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsType.swift; sourceTree = "<group>"; };
 		0E58200075F867B40E9302F3 /* Pods-DTCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DTCore.release.xcconfig"; path = "Target Support Files/Pods-DTCore/Pods-DTCore.release.xcconfig"; sourceTree = "<group>"; };
 		371A4B485531A90955FA8784 /* Pods-DTCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DTCore.debug.xcconfig"; path = "Target Support Files/Pods-DTCore/Pods-DTCore.debug.xcconfig"; sourceTree = "<group>"; };
 		775702B053C3FF445A5F8831 /* Pods_DTCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DTCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -637,6 +639,7 @@
 			isa = PBXGroup;
 			children = (
 				002B8E99247E59700075D255 /* AnalyticsLazyRef.swift */,
+				00885A942488AFD9001C578B /* AnalyticsType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -664,7 +667,6 @@
 				371A4B485531A90955FA8784 /* Pods-DTCore.debug.xcconfig */,
 				0E58200075F867B40E9302F3 /* Pods-DTCore.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -829,6 +831,7 @@
 				002B8EB6247E59700075D255 /* UIView+Extensions.swift in Sources */,
 				002B8E40247E595E0075D255 /* RoutingProviderProtocol.swift in Sources */,
 				002B8EB5247E59700075D255 /* Int+Extensions.swift in Sources */,
+				00885A952488AFD9001C578B /* AnalyticsType.swift in Sources */,
 				002B8E4D247E595E0075D255 /* BindableTextFieldDelegate.swift in Sources */,
 				002B8EC0247E59700075D255 /* KeychainWrapper.swift in Sources */,
 				002B8E51247E595E0075D255 /* BaseTabBarController.swift in Sources */,

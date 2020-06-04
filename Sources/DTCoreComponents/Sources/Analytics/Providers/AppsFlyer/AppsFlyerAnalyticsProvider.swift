@@ -47,6 +47,10 @@ public class AppsFlyerAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
         AppsFlyerTracker.shared().trackEvent(AFEventSubscribe, withValues: params)
     }
     
+    public func logPurchase(product: SKProduct) {
+        self.logPurchase(product: product, parameters: nil)
+    }
+    
     public func logPurchase(product: SKProduct, parameters: [String: Any]?) {
         var params = parameters ?? [String: Any]()
         

@@ -8,8 +8,8 @@ import Foundation
 import AppCenterAnalytics
 import StoreKit
 
-public class AppCenterAnalyricsProvider: NSObject, AnalyticsProviderProtocol {
-
+public class AppCenterAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
+    
     public func logEvent(_ event: String) {
         self.logEvent(event: event, parameters: nil)
     }
@@ -37,6 +37,14 @@ public class AppCenterAnalyricsProvider: NSObject, AnalyticsProviderProtocol {
     }
 
     public func logSubscription(product: SKProduct, parameters: [String: Any]?) {
+        // nothing here because AppCenter tracks subscription automatically
+    }
+    
+    public func logPurchase(product: SKProduct) {
+        self.logPurchase(product: product, parameters: nil)
+    }
+    
+    public func logPurchase(product: SKProduct, parameters: [String : Any]?) {
         // nothing here because AppCenter tracks purchases automatically
     }
 

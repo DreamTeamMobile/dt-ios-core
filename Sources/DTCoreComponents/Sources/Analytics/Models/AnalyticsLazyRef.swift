@@ -13,8 +13,11 @@ class AnalyticsLazyRef {
     }()
     
     private let action: () -> AnalyticsProviderProtocol
+    
+    let type: AnalyticsType
 
-    init(action: @escaping () -> AnalyticsProviderProtocol) {
+    init(type: AnalyticsType, action: @escaping () -> AnalyticsProviderProtocol) {
+        self.type = type
         self.action = action
     }
 }

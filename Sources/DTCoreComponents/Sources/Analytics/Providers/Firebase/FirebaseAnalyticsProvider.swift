@@ -37,6 +37,14 @@ public class FirebaseAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
     }
 
     public func logSubscription(product: SKProduct, parameters: [String: Any]?) {
+        // nothing here because Firebase tracks subscription automatically
+    }
+    
+    public func logPurchase(product: SKProduct) {
+        self.logPurchase(product: product, parameters: nil)
+    }
+    
+    public func logPurchase(product: SKProduct, parameters: [String : Any]?) {
         // nothing here because Firebase tracks purchases automatically
     }
 }

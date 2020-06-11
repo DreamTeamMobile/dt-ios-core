@@ -19,7 +19,7 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
     var nonConsumableIdentifiers: Set<String>?
     var productsRequest: SKProductsRequest?
     
-    var completionHandler: ((_ success: Bool, _ products: [SKProduct]?) -> Void)?
+    var completionHandler: ((_ products: [SKProduct]?, _ error: Error?) -> Void)?
     
     var purchasedProductIdentifiers = Set<String>()
     
@@ -287,7 +287,7 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
     /**
      Request products from Apple
      */
-    public func requestProducts(_ completionHandler: @escaping (_ success:Bool, _ products:[SKProduct]?) -> Void) {
+    public func requestProducts(_ completionHandler: @escaping (_ products: [SKProduct]?, _ error: Error?) -> Void) {
         self.completionHandler = completionHandler
         
         print("Requesting Products")
@@ -298,7 +298,8 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
             productsRequest?.start()
         } else {
             print("No productIdentifiers")
-            completionHandler(false, nil)
+            completionHandler(nil, nil)
+            self.completionHandler = nil
         }
     }
     
@@ -447,21 +448,20 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
             print("Found product: \(skProduct.productIdentifier) - \(skProduct.localizedTitle) - \(skProduct.price) - \(skProduct.priceLocale)")
         }
         
-        if let completionHandler = completionHandler {
-            completionHandler(true, skProducts)
+        if let completionHandler = self.completionHandler {
+            completionHandler(skProducts, nil)
         }
         
-        completionHandler = nil
-        
+        self.completionHandler = nil
     }
     
     public func request(_ request: SKRequest, didFailWithError error: Error) {
         print("Failed to load list of products!")
         productsRequest = nil
-        if let completionHandler = completionHandler {
-            completionHandler(false, nil)
+        if let completionHandler = self.completionHandler {
+            completionHandler(nil, error)
         }
-        completionHandler = nil
+        self.completionHandler = nil
     }
     
     //MARK: - Helpers

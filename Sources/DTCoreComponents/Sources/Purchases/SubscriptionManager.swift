@@ -35,20 +35,20 @@ public class SubscriptionManager: NSObject, SubscriptionManagerProtocol {
     
     // MARK: Methods
     
-    public func loadProducts(completion: (([SKProduct]) -> Void)? = nil) {
+    public func loadProducts(completion: ((_ products: [SKProduct]?, _ error: Error?) -> Void)? = nil) {
         self.purchaseManager.addProducts(Set(self.productIds))
-        self.purchaseManager.requestProducts {[weak self] (success, skProducts) in
+        self.purchaseManager.requestProducts {[weak self] skProducts, error in
             guard let strongSelf = self else { return }
             
-            if success, let products = skProducts {
+            if let products = skProducts {
                 strongSelf.productsLoaded = true
                 strongSelf.products = products
                 strongSelf.checkSubscription(enableSecondCheck: true)
                 
-                completion?(products)
-                
                 NotificationCenter.default.post(name: SubscriptionManager.productsLoadedNotificationName, object: nil)
             }
+            
+            completion?(skProducts, error)
         }
     }
     

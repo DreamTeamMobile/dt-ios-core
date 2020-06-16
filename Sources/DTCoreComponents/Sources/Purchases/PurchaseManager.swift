@@ -240,18 +240,27 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                         // MARK: autorenewable subscriptions verification
                         
                         if let array = (jsonResponse["pending_renewal_info"] as? [[String: AnyObject]]) {
-                            var valid = false
-                            if let _ = array.first(where: { (dict) -> Bool in
-                                let expirationIntent = dict["expiration_intent"] as? String
-                                return expirationIntent == nil
-                            }) {
-                                valid = true
-                                os_log("7.Active: TRUE", log: OSLog.default, type: .info)
-                            } else {
-                                valid = false
-                                os_log("7.Active: FALSE", log: OSLog.default, type: .info)
-                            }
-                            completion(valid, nil)
+                            let activeSubscription = array.first(where: { (dict) -> Bool in
+                                // checking active subscription
+                                // https://developer.apple.com/documentation/appstorereceipts/expiration_intent
+                                guard let expirationIntent = dict["expiration_intent"] as? String else {
+                                    return true
+                                }
+                                
+                                // checking subscription in billing retry period
+                                // https://developer.apple.com/documentation/appstorereceipts/is_in_billing_retry_period
+                                let isInBillingRetryPeriod = dict["is_in_billing_retry_period"] as? String
+                                if expirationIntent == "2" && isInBillingRetryPeriod == "1" {
+                                    return true
+                                }
+                                
+                                return false
+                            })
+                            activeSubscription != nil
+                                ? os_log("7.Active: TRUE", log: OSLog.default, type: .info)
+                                : os_log("7.Active: FALSE", log: OSLog.default, type: .info)
+                            
+                            completion(activeSubscription != nil, nil)
                         } else {
                             os_log("7.Active: TRUE", log: OSLog.default, type: .info)
                             completion(true, nil)

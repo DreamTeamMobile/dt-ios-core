@@ -92,6 +92,10 @@ open class BindableSectionedCollectionViewSource<T> : NSObject, UICollectionView
     open func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
 
     }
+    
+    open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+    }
 
     // MARK: UICollectionViewDelegateFlowLayout implementation
 

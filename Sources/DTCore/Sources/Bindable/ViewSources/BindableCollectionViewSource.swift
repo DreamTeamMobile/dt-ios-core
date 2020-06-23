@@ -110,4 +110,8 @@ open class BindableCollectionViewSource<T> : NSObject, UICollectionViewDataSourc
 
     }
     
+    open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+    }
+    
 }

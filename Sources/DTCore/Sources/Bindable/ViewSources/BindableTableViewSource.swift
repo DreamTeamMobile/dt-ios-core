@@ -144,4 +144,8 @@ open class BindableTableViewSource<T> : NSObject, UITableViewDataSource, UITable
 
     }
     
+    open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+    }
+    
 }

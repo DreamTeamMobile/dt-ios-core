@@ -150,4 +150,8 @@ open class BindableSectionedTableViewSource<T> : NSObject, UITableViewDataSource
 
     }
     
+    open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+    }
+    
 }

@@ -6,23 +6,23 @@
 
 import UIKit
 
-open class BindableSectionedCollectionViewSource<T> : NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+open class BindableSectionedCollectionViewSource<ItemType, SectionType> : NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     // MARK: Fields
 
     public let collectionView: UICollectionView
 
-    public let collectionFrame: SectionedCollectionFrame<T>
+    public let collectionFrame: SectionedCollectionFrame<ItemType, SectionType>
 
     public let cellIdentifier: String
 
     // MARK: Init
         
-    convenience public init(collectionView: UICollectionView, collectionFrame: SectionedCollectionFrame<T>) {
+    convenience public init(collectionView: UICollectionView, collectionFrame: SectionedCollectionFrame<ItemType, SectionType>) {
         self.init(collectionView: collectionView, collectionFrame: collectionFrame, cellIdentifier: "")
     }
     
-    public init(collectionView: UICollectionView, collectionFrame: SectionedCollectionFrame<T>, cellIdentifier: String) {
+    public init(collectionView: UICollectionView, collectionFrame: SectionedCollectionFrame<ItemType, SectionType>, cellIdentifier: String) {
         self.collectionView = collectionView
         self.collectionFrame = collectionFrame
         self.cellIdentifier = cellIdentifier
@@ -38,15 +38,15 @@ open class BindableSectionedCollectionViewSource<T> : NSObject, UICollectionView
 
     // MARK: Methods
 
-    open func getItemAt(_ indexPath: IndexPath) -> T {
-        return getSectionAt(indexPath.section).items[indexPath.item]
+    open func getItemAt(_ indexPath: IndexPath) -> ItemType {
+        return getSectionAt(indexPath.section).itemsSource[indexPath.item]
     }
 
-    open func getSectionAt(_ section: Int) -> Section<T> {
+    open func getSectionAt(_ section: Int) -> Section<ItemType, SectionType> {
         return self.collectionFrame.itemsSource[section]
     }
 
-    open func onItemsSourceChanged(_ oldItems: [Section<T>], _ newItems: [Section<T>]) {
+    open func onItemsSourceChanged(_ oldItems: [Section<ItemType, SectionType>], _ newItems: [Section<ItemType, SectionType>]) {
         self.collectionView.reloadData()
     }
 
@@ -61,12 +61,12 @@ open class BindableSectionedCollectionViewSource<T> : NSObject, UICollectionView
     }
 
     open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return getSectionAt(section).items.count
+        return getSectionAt(section).itemsSource.count
     }
 
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: getCellIdentifier(indexPath), for: indexPath)
-        if let bindable = cell as? BindableCollectionViewCell<T> {
+        if let bindable = cell as? BindableCollectionViewCell<ItemType> {
             bindable.dataContext = getItemAt(indexPath)
         }
         return cell

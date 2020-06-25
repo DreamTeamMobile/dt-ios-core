@@ -6,11 +6,11 @@
 
 import Foundation
 
-public class SectionedCollectionFrame<T>: CollectionFrame<Section<T>> {
+public class SectionedCollectionFrame<ItemType, SectionType>: CollectionFrame<Section<ItemType, SectionType>> {
     
     // MARK: Actions
     
-    private let handleItemSelection: (T, String) -> Void
+    private let handleItemSelection: (ItemType, SectionType) -> Void
     
     // MARK: Init
     
@@ -19,31 +19,22 @@ public class SectionedCollectionFrame<T>: CollectionFrame<Section<T>> {
         super.init()
     }
     
-    public init(itemSelection: @escaping (T, String) -> Void) {
+    public init(itemSelection: @escaping (ItemType, SectionType) -> Void) {
         self.handleItemSelection = itemSelection
         super.init()
     }
     
     // MARK: Methods
     
-    public func onItemSelected(item: T, sectionType: String) {
+    public func onItemSelected(item: ItemType, sectionType: SectionType) {
         self.handleItemSelection(item, sectionType)
     }
     
-    public func setItemsSource(_ itemsSource: [(String, [T])]) {
-        self.itemsSource = itemsSource.map({ Section<T>(type: $0.0, items: $0.1) })
+    public func setItemsSource(_ itemsSource: [(SectionType, [ItemType])]) {
+        self.itemsSource = itemsSource.map {
+            let section = Section<ItemType, SectionType>(type: $0.0, items: $0.1)
+            section.handleItemSelection = self.handleItemSelection
+            return section
+        }
     }
-}
-
-public class Section<T> {
-    
-    public var type: String
-    
-    public var items: [T]
-    
-    public init(type: String, items: [T]) {
-        self.type = type
-        self.items = items
-    }
-    
 }

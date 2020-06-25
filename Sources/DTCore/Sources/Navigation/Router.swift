@@ -108,8 +108,12 @@ public class Router: NSObject, RouterProtocol {
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 UIApplication.shared.keyWindow?.makeKeyAndVisible()
                 completion?()
+            case .changeRootInNav:
+                UIApplication.shared.keyWindow?.rootViewController = UINavigationController(rootViewController: viewController)
+                UIApplication.shared.keyWindow?.makeKeyAndVisible()
+                completion?()
             case .switchTab:
-                if let tabController = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController
+                if let tabController = (UIApplication.shared.keyWindow?.rootViewController as? UITabBarController) ?? (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController)?.topViewController as? UITabBarController
                 {
                     if let navigationController = tabController.viewControllers?.first(where: {
                         let rootViCo = ($0 as? UINavigationController)?.viewControllers.first ?? $0

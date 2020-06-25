@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0006800524A4E487005148DA /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0006800424A4E487005148DA /* Section.swift */; };
 		002B8E29247E595E0075D255 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002B8DEB247E595D0075D255 /* Bindable.swift */; };
 		002B8E2A247E595E0075D255 /* BindableEquatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002B8DEC247E595D0075D255 /* BindableEquatable.swift */; };
 		002B8E2B247E595E0075D255 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002B8DED247E595D0075D255 /* BaseViewModel.swift */; };
@@ -108,6 +109,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0006800424A4E487005148DA /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		002B8DDC247E591B0075D255 /* DTCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DTCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		002B8DE0247E591B0075D255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		002B8DEB247E595D0075D255 /* Bindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
@@ -224,6 +226,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0006800324A4E46D005148DA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0006800424A4E487005148DA /* Section.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		002B8DD2247E591B0075D255 = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +298,7 @@
 		002B8DEE247E595D0075D255 /* Frames */ = {
 			isa = PBXGroup;
 			children = (
+				0006800324A4E46D005148DA /* Models */,
 				002B8DEF247E595D0075D255 /* CheckboxFrame.swift */,
 				002B8DF0247E595D0075D255 /* ProgressFrame.swift */,
 				002B8DF1247E595D0075D255 /* CollectionFrame.swift */,
@@ -869,6 +880,7 @@
 				002B8EA2247E59700075D255 /* SubscriptionManagerProtocol.swift in Sources */,
 				002B8EBC247E59700075D255 /* Sequence+Extensions.swift in Sources */,
 				002B8EC1247E59700075D255 /* DeviceModel.swift in Sources */,
+				0006800524A4E487005148DA /* Section.swift in Sources */,
 				002B8EAC247E59700075D255 /* ProductConfig.swift in Sources */,
 				002B8EA0247E59700075D255 /* UserDefaultsWrapper.swift in Sources */,
 			);
@@ -928,7 +940,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -985,7 +997,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

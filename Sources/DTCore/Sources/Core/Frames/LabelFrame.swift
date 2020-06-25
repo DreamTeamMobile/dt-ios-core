@@ -12,4 +12,13 @@ public class LabelFrame: Frame {
     @BindableEquatable("", false)
     public var text: String
     
+    override init() {
+        super.init()
+    }
+    
+    convenience init(text: String) {
+        self.init()
+        self.text = text
+    }
+    
 }

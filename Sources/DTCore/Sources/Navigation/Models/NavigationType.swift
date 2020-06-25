@@ -12,5 +12,6 @@ public enum NavigationType {
     case present
     case switchTab
     case changeRoot
+    case changeRootInNav
     case presentInNav
 }

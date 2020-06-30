@@ -39,7 +39,7 @@ open class RemoteConfigManager: NSObject, RemoteConfigProtocol {
         let remoteConfig = RemoteConfig.remoteConfig()
         remoteConfig.fetch(withExpirationDuration: expirationTimeoutInSeconds, completionHandler: { (status, error) in
             if (error == nil && status == RemoteConfigFetchStatus.success) {
-                RemoteConfig.remoteConfig().activate { (error) in
+                RemoteConfig.remoteConfig().activate { (changed, error) in
                     completion?()
                 }
             } else if let e = error {

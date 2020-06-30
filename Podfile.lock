@@ -1,0 +1,167 @@
+PODS:
+  - AppCenter (3.3.0):
+    - AppCenter/Analytics (= 3.3.0)
+    - AppCenter/Crashes (= 3.3.0)
+  - AppCenter/Analytics (3.3.0):
+    - AppCenter/Core
+  - AppCenter/Core (3.3.0)
+  - AppCenter/Crashes (3.3.0):
+    - AppCenter/Core
+  - AppsFlyerFramework (5.4.0)
+  - FBSDKCoreKit (7.1.1):
+    - FBSDKCoreKit/Basics (= 7.1.1)
+    - FBSDKCoreKit/Core (= 7.1.1)
+  - FBSDKCoreKit/Basics (7.1.1)
+  - FBSDKCoreKit/Core (7.1.1):
+    - FBSDKCoreKit/Basics
+  - Firebase/Analytics (6.27.0):
+    - Firebase/Core
+  - Firebase/Core (6.27.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 6.6.1)
+  - Firebase/CoreOnly (6.27.0):
+    - FirebaseCore (= 6.8.0)
+  - Firebase/RemoteConfig (6.27.0):
+    - Firebase/CoreOnly
+    - FirebaseRemoteConfig (~> 4.6.0)
+  - FirebaseABTesting (3.3.0):
+    - FirebaseCore (~> 6.8)
+    - Protobuf (>= 3.9.2, ~> 3.9)
+  - FirebaseAnalytics (6.6.1):
+    - FirebaseCore (~> 6.8)
+    - FirebaseInstallations (~> 1.4)
+    - GoogleAppMeasurement (= 6.6.1)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (~> 1.30905.0)
+  - FirebaseCore (6.8.0):
+    - FirebaseCoreDiagnostics (~> 1.3)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Logger (~> 6.5)
+  - FirebaseCoreDiagnostics (1.4.0):
+    - GoogleDataTransportCCTSupport (~> 3.1)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Logger (~> 6.5)
+    - nanopb (~> 1.30905.0)
+  - FirebaseInstallations (1.4.0):
+    - FirebaseCore (~> 6.8)
+    - GoogleUtilities/Environment (~> 6.6)
+    - GoogleUtilities/UserDefaults (~> 6.6)
+    - PromisesObjC (~> 1.2)
+  - FirebaseRemoteConfig (4.6.0):
+    - FirebaseABTesting (~> 3.1)
+    - FirebaseCore (~> 6.8)
+    - FirebaseInstallations (~> 1.1)
+    - GoogleUtilities/Environment (~> 6.2)
+    - "GoogleUtilities/NSData+zlib (~> 6.2)"
+  - GoogleAppMeasurement (6.6.1):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (~> 1.30905.0)
+  - GoogleDataTransport (6.2.1)
+  - GoogleDataTransportCCTSupport (3.2.0):
+    - GoogleDataTransport (~> 6.1)
+    - nanopb (~> 1.30905.0)
+  - GoogleUtilities/AppDelegateSwizzler (6.6.0):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (6.6.0):
+    - PromisesObjC (~> 1.2)
+  - GoogleUtilities/Logger (6.6.0):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (6.6.0):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (6.6.0):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (6.6.0)"
+  - GoogleUtilities/Reachability (6.6.0):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (6.6.0):
+    - GoogleUtilities/Logger
+  - KeychainAccess (4.2.0)
+  - nanopb (1.30905.0):
+    - nanopb/decode (= 1.30905.0)
+    - nanopb/encode (= 1.30905.0)
+  - nanopb/decode (1.30905.0)
+  - nanopb/encode (1.30905.0)
+  - PromisesObjC (1.2.9)
+  - Protobuf (3.12.0)
+  - Singular-SDK (9.3.0)
+  - TPInAppReceipt (2.6)
+  - YandexMobileMetrica (3.9.4):
+    - YandexMobileMetrica/Static (= 3.9.4)
+  - YandexMobileMetrica/Static (3.9.4):
+    - YandexMobileMetrica/Static/Core (= 3.9.4)
+    - YandexMobileMetrica/Static/Crashes (= 3.9.4)
+  - YandexMobileMetrica/Static/Core (3.9.4)
+  - YandexMobileMetrica/Static/Crashes (3.9.4):
+    - YandexMobileMetrica/Static/Core
+
+DEPENDENCIES:
+  - AppCenter
+  - AppsFlyerFramework
+  - FBSDKCoreKit
+  - Firebase/Analytics
+  - Firebase/RemoteConfig
+  - KeychainAccess
+  - Singular-SDK
+  - TPInAppReceipt
+  - YandexMobileMetrica
+
+SPEC REPOS:
+  trunk:
+    - AppCenter
+    - AppsFlyerFramework
+    - FBSDKCoreKit
+    - Firebase
+    - FirebaseABTesting
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseCoreDiagnostics
+    - FirebaseInstallations
+    - FirebaseRemoteConfig
+    - GoogleAppMeasurement
+    - GoogleDataTransport
+    - GoogleDataTransportCCTSupport
+    - GoogleUtilities
+    - KeychainAccess
+    - nanopb
+    - PromisesObjC
+    - Protobuf
+    - Singular-SDK
+    - TPInAppReceipt
+    - YandexMobileMetrica
+
+SPEC CHECKSUMS:
+  AppCenter: 976294db3f288d82204afc6ad71790d71be249ac
+  AppsFlyerFramework: 0253602f146ec07652543fe6f143d27086a695c3
+  FBSDKCoreKit: b46507dc8b8cefed31d644e74d7cc30e2a715ef8
+  Firebase: fc4cbf6f1592636431821ef9a3c557e4dfd9f268
+  FirebaseABTesting: b7f8b6c8c9398e98bb30c4195f697b5b73a330d0
+  FirebaseAnalytics: 0ea640473474f036cabbc2576e20c2d63671c92f
+  FirebaseCore: feda061cb1ee6d8ad4824f4a4a8ffbcfe284f595
+  FirebaseCoreDiagnostics: 4505e4d4009b1d93f605088ee7d7764d5f0d1c84
+  FirebaseInstallations: 293f567159b6d66d1c990f13bb868066096c94ec
+  FirebaseRemoteConfig: 63ae9d14848e645c7f070daa6af89265be48f803
+  GoogleAppMeasurement: 2fd5c5a56c069db635c8e7b92d4809a9591d0a69
+  GoogleDataTransport: 9a8a16f79feffc7f42096743de2a7c4815e84020
+  GoogleDataTransportCCTSupport: 489c1265d2c85b68187a83a911913d190012158d
+  GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
+  KeychainAccess: 3f760109aa99b05d0f231e28b22642da7153e38a
+  nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
+  PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
+  Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
+  Singular-SDK: 880af6e639ece4a3359275c3bcc58e455517e701
+  TPInAppReceipt: 24335d4b3f9d032ff62ac7aed0ca7b6b780811cf
+  YandexMobileMetrica: 1030df2959c886a7be3bc3d274eb54c8e86afd6f
+
+PODFILE CHECKSUM: 0e1245639d8ecb2e7872db46e8cc670942e37612
+
+COCOAPODS: 1.9.2

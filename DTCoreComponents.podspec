@@ -21,6 +21,7 @@ Pod::Spec.new do |s|
   s.dependency 'FBSDKCoreKit'
   s.dependency 'Firebase/Analytics'
   s.dependency 'YandexMobileMetrica'
+  s.dependency 'Singular-SDK'
   
   s.dependency 'Firebase/RemoteConfig'
   s.dependency 'KeychainAccess'

@@ -13,5 +13,6 @@ target 'DTCore' do
   pod 'KeychainAccess'
   pod 'TPInAppReceipt'
   pod 'YandexMobileMetrica'
+  pod 'Singular-SDK'
 
 end

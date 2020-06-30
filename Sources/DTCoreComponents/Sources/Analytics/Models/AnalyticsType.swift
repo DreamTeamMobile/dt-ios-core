@@ -13,4 +13,6 @@ public enum AnalyticsType {
     case facebook
     case appsFlyer
     case appCenter
+    case appMetrica
+    case singular
 }

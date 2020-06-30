@@ -12,5 +12,7 @@ target 'DTCore' do
   pod 'Firebase/RemoteConfig'
   pod 'KeychainAccess'
   pod 'TPInAppReceipt'
+  pod 'YandexMobileMetrica'
+  pod 'Singular-SDK'
 
 end

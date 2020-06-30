@@ -14,7 +14,7 @@ public class SingularAnalyticsProvider: AnalyticsProviderProtocol {
 
     private var apiKey: String = ""
 
-    private func initialize(apiKey: String, secret: String) {
+    public func initialize(apiKey: String, secret: String) {
         Singular.startSession(apiKey, withKey: secret)
     }
 

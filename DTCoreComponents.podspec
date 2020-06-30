@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'DTCoreComponents'
-  s.version = '1.3.2'
+  s.version = '1.3.2.1'
   s.license = 'MIT'
   s.summary = 'The set of extensions, frames, sources and other things that could be useful in iOS app development.'
   s.homepage = 'https://github.com/DreamTeamMobile/dt-ios-core'
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
 
   s.swift_versions = ['5.0', '5.1']
 
-  s.source_files = 'Sources/DTCoreComponents/**/*.swift'
+  s.source_files = 'Sources/DTCoreComponents/**/*.{swift,h}'
   
   s.dependency 'AppCenter'
   s.dependency 'AppsFlyerFramework'

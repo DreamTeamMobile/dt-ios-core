@@ -27,8 +27,6 @@ public class AnalyticsManager: NSObject, AnalyticsManagerProtocol {
             return AnalyticsLazyRef(type: type, action: { AppCenterAnalyticsProvider() })
         case .appMetrica:
             return AnalyticsLazyRef(type: type, action: { AppMetricaAnalyticsProvider() })
-        case .singular:
-            return AnalyticsLazyRef(type: type, action: { SingularAnalyticsProvider() })
         }
     }
     

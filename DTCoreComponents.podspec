@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'DTCoreComponents'
-  s.version = '1.3.2.1'
+  s.version = '1.3.2.2'
   s.license = 'MIT'
   s.summary = 'The set of extensions, frames, sources and other things that could be useful in iOS app development.'
   s.homepage = 'https://github.com/DreamTeamMobile/dt-ios-core'
@@ -21,7 +21,6 @@ Pod::Spec.new do |s|
   s.dependency 'FBSDKCoreKit'
   s.dependency 'Firebase/Analytics'
   s.dependency 'YandexMobileMetrica'
-  s.dependency 'Singular-SDK'
   
   s.dependency 'Firebase/RemoteConfig'
   s.dependency 'KeychainAccess'

@@ -14,5 +14,4 @@ public enum AnalyticsType {
     case appsFlyer
     case appCenter
     case appMetrica
-    case singular
 }

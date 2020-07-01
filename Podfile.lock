@@ -93,7 +93,6 @@ PODS:
   - nanopb/encode (1.30905.0)
   - PromisesObjC (1.2.9)
   - Protobuf (3.12.0)
-  - Singular-SDK (9.3.0)
   - TPInAppReceipt (2.6)
   - YandexMobileMetrica (3.9.4):
     - YandexMobileMetrica/Static (= 3.9.4)
@@ -111,7 +110,6 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/RemoteConfig
   - KeychainAccess
-  - Singular-SDK
   - TPInAppReceipt
   - YandexMobileMetrica
 
@@ -135,7 +133,6 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - Protobuf
-    - Singular-SDK
     - TPInAppReceipt
     - YandexMobileMetrica
 
@@ -158,10 +155,9 @@ SPEC CHECKSUMS:
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
-  Singular-SDK: 880af6e639ece4a3359275c3bcc58e455517e701
   TPInAppReceipt: 24335d4b3f9d032ff62ac7aed0ca7b6b780811cf
   YandexMobileMetrica: 1030df2959c886a7be3bc3d274eb54c8e86afd6f
 
-PODFILE CHECKSUM: 0e1245639d8ecb2e7872db46e8cc670942e37612
+PODFILE CHECKSUM: 869d67c9c576010bdc872c29362ed02e56e23eb0
 
 COCOAPODS: 1.9.2

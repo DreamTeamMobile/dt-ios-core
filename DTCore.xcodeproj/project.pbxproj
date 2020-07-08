@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -104,6 +104,7 @@
 		002B8ECF247E59700075D255 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002B8E9C247E59700075D255 /* AnalyticsManager.swift */; };
 		002B8ED4247E59BF0075D255 /* DTCoreComponents.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 002B8ED2247E59BF0075D255 /* DTCoreComponents.podspec */; };
 		002B8ED5247E59BF0075D255 /* DTCore.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 002B8ED3247E59BF0075D255 /* DTCore.podspec */; };
+		006CA5CA24B5E7F300F31733 /* PurchasesControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006CA5C924B5E7F300F31733 /* PurchasesControl.swift */; };
 		00885A952488AFD9001C578B /* AnalyticsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00885A942488AFD9001C578B /* AnalyticsType.swift */; };
 		00CB397524AB0A3100AFA1EB /* AppMetricaAnalyticsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CB397424AB0A3100AFA1EB /* AppMetricaAnalyticsProvider.swift */; };
 		E6428E416BF327E37F9F2226 /* Pods_DTCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 775702B053C3FF445A5F8831 /* Pods_DTCore.framework */; };
@@ -209,6 +210,7 @@
 		002B8E9C247E59700075D255 /* AnalyticsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		002B8ED2247E59BF0075D255 /* DTCoreComponents.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DTCoreComponents.podspec; sourceTree = "<group>"; };
 		002B8ED3247E59BF0075D255 /* DTCore.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DTCore.podspec; sourceTree = "<group>"; };
+		006CA5C924B5E7F300F31733 /* PurchasesControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesControl.swift; sourceTree = "<group>"; };
 		00885A942488AFD9001C578B /* AnalyticsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsType.swift; sourceTree = "<group>"; };
 		00CB397424AB0A3100AFA1EB /* AppMetricaAnalyticsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMetricaAnalyticsProvider.swift; sourceTree = "<group>"; };
 		0E58200075F867B40E9302F3 /* Pods-DTCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DTCore.release.xcconfig"; path = "Target Support Files/Pods-DTCore/Pods-DTCore.release.xcconfig"; sourceTree = "<group>"; };
@@ -517,6 +519,7 @@
 				002B8E6D247E59700075D255 /* SubscriptionScreen.swift */,
 				002B8E6E247E59700075D255 /* LimitsConfig.swift */,
 				002B8E6F247E59700075D255 /* ConfigModel.swift */,
+				006CA5C924B5E7F300F31733 /* PurchasesControl.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -826,6 +829,7 @@
 				002B8E4E247E595E0075D255 /* BindableSearchBarDelegate.swift in Sources */,
 				002B8EAD247E59700075D255 /* Product.swift in Sources */,
 				002B8EA6247E59700075D255 /* AlertProtocol.swift in Sources */,
+				006CA5CA24B5E7F300F31733 /* PurchasesControl.swift in Sources */,
 				002B8EBE247E59700075D255 /* Date+Extensions.swift in Sources */,
 				002B8E3F247E595E0075D255 /* RouterProtocol.swift in Sources */,
 				002B8ECC247E59700075D255 /* AnalyticsLazyRef.swift in Sources */,

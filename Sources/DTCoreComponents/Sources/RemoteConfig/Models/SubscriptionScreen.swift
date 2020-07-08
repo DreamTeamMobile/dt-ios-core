@@ -17,5 +17,6 @@ open class SubscriptionScreen : Codable {
     public let button: Control
     public let closeButton: Control
     public let products: [ProductConfig]
+    public let purchases: PurchasesControl?
     
 }

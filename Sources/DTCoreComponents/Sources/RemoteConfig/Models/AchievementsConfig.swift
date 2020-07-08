@@ -10,4 +10,6 @@ open class AchievementsConfig : Codable {
     
     public let items: [ [String: String] ]
     
+    public let theme: Control.Theme?
+    
 }

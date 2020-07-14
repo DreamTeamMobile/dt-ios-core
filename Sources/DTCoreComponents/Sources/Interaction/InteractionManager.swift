@@ -66,6 +66,12 @@ App version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "") 
         present(controller: vc)
     }
     
+    public func share(_ activityItems: [Any], completion: UIActivityViewController.CompletionWithItemsHandler?) {
+        let vc = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        vc.completionWithItemsHandler = completion
+        present(controller: vc)
+    }
+    
     public func openUrl(_ link: String) -> Bool {
         if let url = URL(string: link) {
             if (UIApplication.shared.canOpenURL(url)) {

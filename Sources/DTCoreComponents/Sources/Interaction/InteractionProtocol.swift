@@ -4,7 +4,7 @@
 //  Copyright © 2019 DreamTeamMobile. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public protocol InteractionProtocol {
     
@@ -13,6 +13,8 @@ public protocol InteractionProtocol {
     func shareText(_ text: String)
     
     func share(_ activityItems: [Any])
+    
+    func share(_ activityItems: [Any], completion: UIActivityViewController.CompletionWithItemsHandler?)
     
     func openUrl(_ link: String) -> Bool
         

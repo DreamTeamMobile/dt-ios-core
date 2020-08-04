@@ -350,14 +350,14 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
     fileprivate func completeTransaction(_ transaction: SKPaymentTransaction) {
         print("Complete Transaction...")
         
-        provideContentForProductIdentifier(transaction.payment.productIdentifier)
+        provideContentForProductIdentifier(transaction.payment.productIdentifier, isRestore: false)
         SKPaymentQueue.default().finishTransaction(transaction)
     }
     
     fileprivate func restoreTransaction(_ transaction: SKPaymentTransaction) {
         print("Restore Transaction...")
         
-        provideContentForProductIdentifier(transaction.original?.payment.productIdentifier)
+        provideContentForProductIdentifier(transaction.original?.payment.productIdentifier, isRestore: true)
         SKPaymentQueue.default().finishTransaction(transaction)
     }
     
@@ -372,14 +372,14 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
         purchaseCompletion = nil
     }
     
-    fileprivate func provideContentForProductIdentifier(_ productIdentifier: String?) {
+    fileprivate func provideContentForProductIdentifier(_ productIdentifier: String?, isRestore: Bool) {
         if let prodId = productIdentifier {
             purchasedProductIdentifiers.insert(prodId)
             
             UserDefaults.standard.set(true, forKey: prodId)
             UserDefaults.standard.synchronize()
             
-            if let pc = purchaseCompletion {
+            if !isRestore, let pc = purchaseCompletion {
                 pc(productIdentifier, nil)
             }
             
@@ -431,7 +431,7 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                     productIdentifier = transaction.payment.productIdentifier;
                 }
                 
-                provideContentForProductIdentifier(productIdentifier)
+                provideContentForProductIdentifier(productIdentifier, isRestore: true)
                 break
             default:
                 break

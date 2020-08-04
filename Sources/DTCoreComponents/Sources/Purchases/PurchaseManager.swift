@@ -381,9 +381,8 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
             
             if !isRestore, let pc = purchaseCompletion {
                 pc(productIdentifier, nil)
+                purchaseCompletion = nil
             }
-            
-            purchaseCompletion = nil
         }
     }
     

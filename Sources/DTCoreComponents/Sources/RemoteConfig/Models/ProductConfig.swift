@@ -9,4 +9,9 @@ import Foundation
 open class ProductConfig : Codable {
     public let id: String
     public let selected: Bool
+    
+    public init(id: String, selected: Bool) {
+        self.id = id
+        self.selected = selected
+    }
 }

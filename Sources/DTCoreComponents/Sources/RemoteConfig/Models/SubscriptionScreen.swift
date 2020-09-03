@@ -7,16 +7,27 @@
 import Foundation
 
 open class SubscriptionScreen : Codable {
-    
     public let id: String
     public let type: String
-    public let title: Control
+    public let title: Control?
     public let subtitle: Control?
     public let desc: Control?
-    public let achievements: AchievementsConfig
+    public let achievements: AchievementsConfig?
     public let button: Control
     public let closeButton: Control
     public let products: [ProductConfig]
     public let purchases: PurchasesControl?
     
+    public init(id: String, type: String, title: Control?, subtitle: Control?, desc: Control?, achievements: AchievementsConfig?, button: Control, closeButton: Control, products: [ProductConfig], purchases: PurchasesControl?) {
+        self.id = id
+        self.type = type
+        self.title = title
+        self.subtitle = subtitle
+        self.desc = desc
+        self.achievements = achievements
+        self.button = button
+        self.closeButton = closeButton
+        self.products = products
+        self.purchases = purchases
+    }
 }

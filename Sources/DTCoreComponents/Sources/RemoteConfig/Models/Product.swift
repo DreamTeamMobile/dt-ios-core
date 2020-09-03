@@ -16,8 +16,23 @@ open class Product : Codable {
     public let trial: [String: String]?
     public let promotion: [String: String]?
     
+    public init(id: String, productId: String, title: [String : String]?, subtitle: [String : String]?, price: Product.Price?, trial: [String : String]?, promotion: [String : String]?) {
+        self.id = id
+        self.productId = productId
+        self.title = title
+        self.subtitle = subtitle
+        self.price = price
+        self.trial = trial
+        self.promotion = promotion
+    }
+    
     open class Price : Codable {
         public let normal: [String: String]
         public let trial: [String: String]?
+        
+        public init(normal: [String : String], trial: [String : String]?) {
+            self.normal = normal
+            self.trial = trial
+        }
     }
 }

@@ -16,7 +16,7 @@ public class AppsFlyerAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
 
     public func logEvent(event: String, parameters: [String : Any]?) {
         let params: [String: String] = parameters as? [String : String] ?? [:]
-        AppsFlyerTracker.shared().trackEvent(event, withValues: params)
+        AppsFlyerLib.shared().logEvent(event, withValues: params)
     }
 
     public func logPurchaseEvent(product: SKProduct, event: String) {
@@ -30,7 +30,7 @@ public class AppsFlyerAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
         params["price"] = product.price.stringValue
         params["currency"] = product.priceLocale.currencyCode ?? ""
 
-        AppsFlyerTracker.shared().trackEvent(event, withValues: params)
+        AppsFlyerLib.shared().logEvent(event, withValues: params)
     }
     
     public func logSubscription(product: SKProduct) {
@@ -44,7 +44,7 @@ public class AppsFlyerAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
         params[AFEventParamRevenue] = product.price.stringValue
         params[AFEventParamCurrency] = (product.priceLocale.currencyCode ?? "")!
         
-        AppsFlyerTracker.shared().trackEvent(AFEventSubscribe, withValues: params)
+        AppsFlyerLib.shared().logEvent(AFEventSubscribe, withValues: params)
     }
     
     public func logPurchase(product: SKProduct) {
@@ -58,7 +58,7 @@ public class AppsFlyerAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
         params[AFEventParamRevenue] = product.price.stringValue
         params[AFEventParamCurrency] = (product.priceLocale.currencyCode ?? "")!
         
-        AppsFlyerTracker.shared().trackEvent(AFEventPurchase, withValues: params)
+        AppsFlyerLib.shared().logEvent(AFEventPurchase, withValues: params)
     }
     
 }

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		002B8ED4247E59BF0075D255 /* DTCoreComponents.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 002B8ED2247E59BF0075D255 /* DTCoreComponents.podspec */; };
+		00850F752514B3BA00ECE3DC /* DTCoreComponents.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 00850F742514B3BA00ECE3DC /* DTCoreComponents.podspec */; };
 		0099861A2514AD1B00BAD617 /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009985D42514AD1B00BAD617 /* UserDefaultsWrapper.swift */; };
 		0099861B2514AD1B00BAD617 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009985D62514AD1B00BAD617 /* SubscriptionManager.swift */; };
 		0099861C2514AD1B00BAD617 /* SubscriptionManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009985D72514AD1B00BAD617 /* SubscriptionManagerProtocol.swift */; };
@@ -65,7 +65,7 @@
 /* Begin PBXFileReference section */
 		002B8DDC247E591B0075D255 /* DTCoreComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DTCoreComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		002B8DE0247E591B0075D255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		002B8ED2247E59BF0075D255 /* DTCoreComponents.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DTCoreComponents.podspec; sourceTree = "<group>"; };
+		00850F742514B3BA00ECE3DC /* DTCoreComponents.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DTCoreComponents.podspec; path = ../DTCoreComponents.podspec; sourceTree = "<group>"; };
 		009985D42514AD1B00BAD617 /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		009985D62514AD1B00BAD617 /* SubscriptionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
 		009985D72514AD1B00BAD617 /* SubscriptionManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionManagerProtocol.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 		002B8ED1247E59A50075D255 /* podspec */ = {
 			isa = PBXGroup;
 			children = (
-				002B8ED2247E59BF0075D255 /* DTCoreComponents.podspec */,
+				00850F742514B3BA00ECE3DC /* DTCoreComponents.podspec */,
 			);
 			name = podspec;
 			sourceTree = "<group>";
@@ -466,7 +466,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				002B8ED4247E59BF0075D255 /* DTCoreComponents.podspec in Resources */,
+				00850F752514B3BA00ECE3DC /* DTCoreComponents.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

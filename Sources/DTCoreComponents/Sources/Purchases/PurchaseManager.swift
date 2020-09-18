@@ -124,7 +124,9 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
     fileprivate func validateLocalReceipt(completion: @escaping (_ valid: Bool, _ error: Error?) -> Void) {
         do {
             let receipt = try InAppReceipt.localReceipt()
-            print("expiration date: \(receipt.expirationDate ?? "")")
+            receipt.expirationDate != nil
+                ? print("expiration date: \(receipt.expirationDate!))")
+                : print("expiration date: nil")
             for productId in purchasedProductIdentifiers {
                 if let _ = nonConsumableIdentifiers?.first(where: { receipt.containsPurchase(ofProductIdentifier: $0) }) {
                     os_log("9.Local receipt has active non-consumable purchase", log: OSLog.default, type: .info)

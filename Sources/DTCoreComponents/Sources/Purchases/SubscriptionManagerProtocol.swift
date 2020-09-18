@@ -15,7 +15,7 @@ public protocol SubscriptionManagerProtocol {
 
     var hasActiveSubscription: Bool { get }
 
-    func loadProducts(completion: ((_ products: [SKProduct]?, _ error: Error?) -> Void)?)
+    func loadProducts(withSubscriptionCheck: Bool, completion: ((_ products: [SKProduct]?, _ error: Error?) -> Void)?)
 
     func checkSubscription(enableSecondCheck: Bool, completion: ((Bool, Error?) -> Void)?)
 

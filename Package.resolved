@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/facebook/facebook-ios-sdk.git",
         "state": {
           "branch": null,
-          "revision": "634f95aed56f8b77a82a4f73ebc4c1975408dff4",
-          "version": "5.15.0"
+          "revision": "9398d30089c2c14e0f0026e24388ca0829f8f1c5",
+          "version": "5.15.1"
         }
       },
       {
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
         "state": {
           "branch": null,
-          "revision": "b920ad7df3c73189dcdd4aa05c540849b2010dbf",
-          "version": "4.1.0"
+          "revision": "3d0ea2c0806791abcc5d7f0d9f62f1cfd4a7264d",
+          "version": "4.2.0"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/tikhop/TPInAppReceipt.git",
         "state": {
           "branch": null,
-          "revision": "a10347ae5dcafbacc36b418bf4a87b9eba742650",
-          "version": "2.3.3"
+          "revision": "61591a73792280d73baade63f2429b87e0659125",
+          "version": "2.6.2"
         }
       }
     ]

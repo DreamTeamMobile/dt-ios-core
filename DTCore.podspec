@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'DTCore'
-  s.version = '1.3.2.9'
+  s.version = '1.3.2.10'
   s.license = 'MIT'
   s.summary = 'The set of extensions, frames, sources and other things that could be useful in iOS app development.'
   s.homepage = 'https://github.com/DreamTeamMobile/dt-ios-core'
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 
   s.swift_versions = ['5.0', '5.1']
 
-  s.source_files = 'Sources/**/*.swift'
+  s.source_files = 'DTCore/Sources/**/*.swift'
 
 end
 

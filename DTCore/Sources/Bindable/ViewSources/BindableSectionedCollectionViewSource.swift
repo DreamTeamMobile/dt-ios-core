@@ -71,6 +71,10 @@ open class BindableSectionedCollectionViewSource<ItemType, SectionType> : NSObje
         }
         return cell
     }
+    
+    open func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        return .init()
+    }
 
     // MARK: UICollectionViewDelegate implementation
 
@@ -82,6 +86,10 @@ open class BindableSectionedCollectionViewSource<ItemType, SectionType> : NSObje
     }
 
     open func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    open func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return true
     }
 
@@ -102,6 +110,14 @@ open class BindableSectionedCollectionViewSource<ItemType, SectionType> : NSObje
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return (collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize ?? .zero
     }
+    
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return (collectionViewLayout as? UICollectionViewFlowLayout)?.headerReferenceSize ?? .zero
+    }
+    
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return (collectionViewLayout as? UICollectionViewFlowLayout)?.footerReferenceSize ?? .zero
+    }
 
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return (collectionViewLayout as? UICollectionViewFlowLayout)?.sectionInset ?? .zero
@@ -114,5 +130,5 @@ open class BindableSectionedCollectionViewSource<ItemType, SectionType> : NSObje
     open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return (collectionViewLayout as? UICollectionViewFlowLayout)?.minimumLineSpacing ?? 0.0
     }
-
+    
 }

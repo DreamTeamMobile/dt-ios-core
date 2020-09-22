@@ -54,7 +54,7 @@
 		0016B4302514AC43005FEA94 /* BViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0016B4002514AC43005FEA94 /* BViewController.swift */; };
 		0016B4312514AC43005FEA94 /* BaseNibLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0016B4022514AC43005FEA94 /* BaseNibLoadableView.swift */; };
 		0016B4322514AC43005FEA94 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0016B4032514AC43005FEA94 /* BaseView.swift */; };
-		002B8ED5247E59BF0075D255 /* DTCore.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 002B8ED3247E59BF0075D255 /* DTCore.podspec */; };
+		00850F792514B3E600ECE3DC /* DTCore.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 00850F782514B3E600ECE3DC /* DTCore.podspec */; };
 		8D83AF67781D723E33DDD4DE /* Pods_DTCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E5ED33AF0648ADC1971C62 /* Pods_DTCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -108,7 +108,7 @@
 		0016B4032514AC43005FEA94 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		002B8DDC247E591B0075D255 /* DTCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DTCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		002B8DE0247E591B0075D255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		002B8ED3247E59BF0075D255 /* DTCore.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DTCore.podspec; sourceTree = "<group>"; };
+		00850F782514B3E600ECE3DC /* DTCore.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DTCore.podspec; path = ../DTCore.podspec; sourceTree = "<group>"; };
 		0B67ADBACD728525FD94E5B7 /* Pods-DTCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DTCore.debug.xcconfig"; path = "Target Support Files/Pods-DTCore/Pods-DTCore.debug.xcconfig"; sourceTree = "<group>"; };
 		7CC285F038322D87A403CDD0 /* Pods-DTCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DTCore.release.xcconfig"; path = "Target Support Files/Pods-DTCore/Pods-DTCore.release.xcconfig"; sourceTree = "<group>"; };
 		F4E5ED33AF0648ADC1971C62 /* Pods_DTCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DTCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -331,7 +331,7 @@
 		002B8ED1247E59A50075D255 /* podspec */ = {
 			isa = PBXGroup;
 			children = (
-				002B8ED3247E59BF0075D255 /* DTCore.podspec */,
+				00850F782514B3E600ECE3DC /* DTCore.podspec */,
 			);
 			name = podspec;
 			sourceTree = "<group>";
@@ -350,7 +350,6 @@
 				0B67ADBACD728525FD94E5B7 /* Pods-DTCore.debug.xcconfig */,
 				7CC285F038322D87A403CDD0 /* Pods-DTCore.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -423,7 +422,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				002B8ED5247E59BF0075D255 /* DTCore.podspec in Resources */,
+				00850F792514B3E600ECE3DC /* DTCore.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

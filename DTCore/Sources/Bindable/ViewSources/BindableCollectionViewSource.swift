@@ -67,6 +67,10 @@ open class BindableCollectionViewSource<T> : NSObject, UICollectionViewDataSourc
         }
         return cell
     }
+    
+    open func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        return .init()
+    }
 
     // MARK: UICollectionViewDelegate implementation
 
@@ -79,29 +83,7 @@ open class BindableCollectionViewSource<T> : NSObject, UICollectionViewDataSourc
     open func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-
-    // MARK: UICollectionViewDelegateFlowLayout implementation
-
-    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .zero
-       }
-
-    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .zero
-    }
-
-    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.0
-    }
-
-    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.0
-    }
-
-    open func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-
+    
     open func scrollViewDidScroll(_ scrollView: UIScrollView) {
 
     }
@@ -112,6 +94,32 @@ open class BindableCollectionViewSource<T> : NSObject, UICollectionViewDataSourc
     
     open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
+    }
+
+    // MARK: UICollectionViewDelegateFlowLayout implementation
+
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return (collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize ?? .zero
+    }
+    
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return (collectionViewLayout as? UICollectionViewFlowLayout)?.headerReferenceSize ?? .zero
+    }
+    
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return (collectionViewLayout as? UICollectionViewFlowLayout)?.footerReferenceSize ?? .zero
+    }
+
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return (collectionViewLayout as? UICollectionViewFlowLayout)?.sectionInset ?? .zero
+    }
+
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return (collectionViewLayout as? UICollectionViewFlowLayout)?.minimumInteritemSpacing ?? 0.0
+    }
+
+    open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return (collectionViewLayout as? UICollectionViewFlowLayout)?.minimumLineSpacing ?? 0.0
     }
     
 }

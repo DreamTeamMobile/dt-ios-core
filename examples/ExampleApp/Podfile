@@ -8,5 +8,7 @@ target 'ExampleApp' do
   # Pods for ExampleApp
   pod 'Guise'
   pod 'Fakery'
+  pod 'DTCore'
+  pod 'DTCoreComponents'
 
 end

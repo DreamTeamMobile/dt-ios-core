@@ -14,8 +14,8 @@ public class BindableEquatable<T: Equatable> {
     public typealias Listener = (_ oldValue: T, _ newValue: T) -> ()
     
     // MARK: Fields
-    
-    private var listener: Listener?
+
+    private var listeners: [UUID: Listener] = [:]
     
     // MARK: Properties
     
@@ -42,13 +42,33 @@ public class BindableEquatable<T: Equatable> {
         self.notifyOnEachChange = notifyOnEachChange
     }
     
-    // MARK: Private methods
+    deinit {
+        self.listeners = [:]
+    }
     
+    // MARK: Private methods
+
+    private func setListener(_ listener: @escaping Listener) {
+        self.listeners.removeAll()
+        self.listeners[UUID()] = listener
+    }
+
+    private func addListener(_ listener: @escaping Listener) -> UUID {
+        let uuid = UUID()
+        self.listeners[uuid] = listener
+        return uuid
+    }
+
+    private func removeListener(_ uuid: UUID) {
+        self.listeners.removeValue(forKey: uuid)
+    }
+        
     private func _fire(_ oldValue: T, force: Bool) {
-        let value = wrappedValue
-        if let action = self.listener {
-            if self.notifyOnEachChange || oldValue != value || force {
-                DispatchQueue.main.async { action(oldValue, value) }
+        let value = self.wrappedValue
+        if self.notifyOnEachChange || oldValue != value || force {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.listeners.forEach { $0.value(oldValue, value) }
             }
         }
     }
@@ -59,13 +79,21 @@ public class BindableEquatable<T: Equatable> {
         _fire(oldValue, force: false)
     }
     
-    public func bind(_ listener: Listener?) {
-        self.listener = listener
+    public func bind(_ listener: @escaping Listener) {
+        setListener(listener)
     }
 
-    public func bindAndFire(_ listener: Listener?) {
-        self.listener = listener
+    public func bindAndFire(_ listener: @escaping Listener) {
+        setListener(listener)
         _fire(self.wrappedValue, force: true)
+    }
+    
+    public func subscribe(_ listener: @escaping Listener) -> UUID {
+        return addListener(listener)
+    }
+
+    public func unsubscribe(_ uuid: UUID) {
+        removeListener(uuid)
     }
 
 }

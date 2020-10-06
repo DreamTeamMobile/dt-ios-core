@@ -33,7 +33,9 @@ open class BindableTextFieldDelegate : NSObject, UITextFieldDelegate {
         self.textField.text = self.inputFrame.text
         self.textField.addTarget(self, action: #selector(onTextFieldValueChanged), for: .editingChanged)
         self.textField.addTarget(self, action: #selector(onTextFieldValueChanged), for: .editingDidEnd)
+        
         self.inputFrame.$text.bindAndFire(self.onTextChanged)
+        self.inputFrame.$isHidden.bindAndFire(self.onHiddenChanged)
     }
     
     @objc private func onTextFieldValueChanged(_ sender: UITextField) {
@@ -44,6 +46,10 @@ open class BindableTextFieldDelegate : NSObject, UITextFieldDelegate {
         if newValue != self.textField.text {
             self.textField.text = newValue
         }
+    }
+    
+    private func onHiddenChanged(_ oldValue: Bool, _ newValue: Bool) {
+        self.textField.isHidden = newValue
     }
     
     // MARK: UITextFieldDelegate implementation

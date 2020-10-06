@@ -1,0 +1,20 @@
+PODS:
+  - Fakery (4.1.1)
+  - Guise (9.1)
+
+DEPENDENCIES:
+  - Fakery
+  - Guise
+
+SPEC REPOS:
+  trunk:
+    - Fakery
+    - Guise
+
+SPEC CHECKSUMS:
+  Fakery: d3380c4aa1efe7631c0831d7e26aa9db4491f014
+  Guise: 80829a3020fd38c93be8d42b4ed56ce7401b0615
+
+PODFILE CHECKSUM: b6c91aeb384f0107f5ca8fd0bd2893fcdaaa40a9
+
+COCOAPODS: 1.9.3

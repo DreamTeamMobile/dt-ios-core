@@ -5,19 +5,19 @@
 //  Copyright © 2019 DreamTeamMobile. All rights reserved.
 //
 
-import Foundation
 import Fakery
+import Foundation
 
 class TableProvider: TableProviderProtocol {
-    
+
     // MARK: Fields
-    
+
     private let itemsCount: Int = 30
-    
+
     private let array: [String]
-    
+
     // MARK: Init
-    
+
     init() {
         var arr = [String]()
         let faker = Faker()
@@ -26,13 +26,13 @@ class TableProvider: TableProviderProtocol {
         }
         self.array = arr
     }
-    
+
     // MARK: Methods
-    
+
     func getItems(searchRequest: String) -> [String] {
         return searchRequest.isEmpty
             ? array
             : array.filter { $0.contains(searchRequest) }
     }
-    
+
 }

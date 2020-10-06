@@ -8,7 +8,7 @@
 import Foundation
 
 protocol TableProviderProtocol {
-    
+
     func getItems(searchRequest: String) -> [String]
-    
+
 }

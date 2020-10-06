@@ -13,6 +13,9 @@ extension UILabel {
         frame.$text.bindAndFire { oldValue, newValue in
             self.text = newValue
         }
+        frame.$isHidden.bindAndFire {oldValue, newValue in
+            self.isHidden = newValue            
+        }
     }
     
 }

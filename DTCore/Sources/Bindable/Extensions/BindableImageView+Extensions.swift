@@ -17,6 +17,9 @@ extension UIImageView {
                 self.image = nil
             }
         }
+        frame.$isHidden.bindAndFire { old, new in
+            self.isHidden = new
+        }
     }
     
 }

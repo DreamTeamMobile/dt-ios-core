@@ -36,9 +36,9 @@ class MainViewModel: BaseViewModel<MainInitObject> {
 
         super.init()
 
-        self.searchAndTableButton = ButtonFrame(onExecute: self.onSearchAndTableExecute)
-        self.inputButton = ButtonFrame(onExecute: self.onInputExecute)
-        self.multipleButton = ButtonFrame(onExecute: self.onMultipleExecute)
+        self.searchAndTableButton = ButtonFrame(title: "Search and table view", onExecute: self.onSearchAndTableExecute)
+        self.inputButton = ButtonFrame(title: "Input and switch", onExecute: self.onInputExecute)
+        self.multipleButton = ButtonFrame(title: "Multiple binding", onExecute: self.onMultipleExecute)
     }
 
     // MARK: Private methods

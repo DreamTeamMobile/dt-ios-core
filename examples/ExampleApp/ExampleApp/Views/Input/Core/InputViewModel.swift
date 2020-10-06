@@ -37,7 +37,7 @@ class InputViewModel: BaseViewModel<InputInitObj> {
         super.init()
         self.inputFrame = InputFrame(onTextChanged: self.onTextChanged, textValidator: nil)
         self.switchFrame = SwitchFrame(value: false, onValueChanged: self.onValueChanged)
-        self.buttonFrame = ButtonFrame(onExecute: self.onButtonExecute)
+        self.buttonFrame = ButtonFrame(title: "Button", onExecute: self.onButtonExecute)
     }
 
     // MARK: Private methods

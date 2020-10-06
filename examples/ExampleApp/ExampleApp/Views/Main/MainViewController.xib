@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="ExampleApp" customModuleProvider="target">
             <connections>
                 <outlet property="inputBtn" destination="DsS-QS-MVH" id="vV5-1E-Fp4"/>
+                <outlet property="multipleBtn" destination="c3n-ZL-mXx" id="SRH-mS-cjs"/>
                 <outlet property="searchAndTableBtn" destination="fQY-T5-PJb" id="vGJ-PT-wBP"/>
                 <outlet property="view" destination="iN0-l3-epB" id="r6Y-jw-b53"/>
             </connections>
@@ -23,9 +25,9 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6HH-hA-US8">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="144"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQY-T5-PJb">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQY-T5-PJb">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="48" id="Xoo-PL-Sw6"/>
@@ -33,13 +35,21 @@
                                     <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="Search and table view"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsS-QS-MVH">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsS-QS-MVH">
                                     <rect key="frame" x="0.0" y="48" width="414" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="48" id="QA5-w8-exU"/>
                                     </constraints>
                                     <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <state key="normal" title="Input and switch"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3n-ZL-mXx">
+                                    <rect key="frame" x="0.0" y="96" width="414" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="48" id="hIR-3t-dmT"/>
+                                    </constraints>
+                                    <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="Multiple binding"/>
                                 </button>
                             </subviews>
                         </stackView>
@@ -53,6 +63,7 @@
                     </constraints>
                 </scrollView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="J4L-hV-kf7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="BzU-Nj-ozq"/>
@@ -60,7 +71,6 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="J4L-hV-kf7" secondAttribute="trailing" id="Hxf-WU-tIP"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="J4L-hV-kf7" secondAttribute="bottom" id="fec-PP-kyv"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="139" y="154"/>
         </view>
     </objects>

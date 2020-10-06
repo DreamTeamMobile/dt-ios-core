@@ -8,7 +8,7 @@
 import Foundation
 
 struct TableItemVm {
-    
+
     let title: String
-    
+
 }

@@ -26,6 +26,7 @@ class App {
         provider.register(viewType: MainViewController.self, vmType: MainViewModel.self)
         provider.register(viewType: InputViewController.self, vmType: InputViewModel.self)
         provider.register(viewType: TableViewController.self, vmType: TableViewModel.self)
+        provider.register(viewType: MultipleViewController.self, vmType: MultipleViewModel.self)
     }
     
     static func registerAppDependencies() {

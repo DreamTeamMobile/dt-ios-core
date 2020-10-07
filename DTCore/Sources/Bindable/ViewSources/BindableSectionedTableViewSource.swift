@@ -9,12 +9,11 @@ import UIKit
 open class BindableSectionedTableViewSource<ItemType, SectionType>: NSObject, UITableViewDataSource,
     UITableViewDelegate
 {
-
     // MARK: Fields
 
-    public let tableView: UITableView
+    public weak var tableView: UITableView?
 
-    public let tableFrame: SectionedCollectionFrame<ItemType, SectionType>
+    public weak var tableFrame: SectionedCollectionFrame<ItemType, SectionType>?
 
     public let cellIdentifier: String
 
@@ -35,14 +34,16 @@ open class BindableSectionedTableViewSource<ItemType, SectionType>: NSObject, UI
         self.tableView = tableView
         self.tableFrame = tableFrame
         self.cellIdentifier = cellIdentifier
+        
         super.init()
+        
         setupBindings()
     }
 
     // MARK: Private methods
 
     private func setupBindings() {
-        self.tableFrame.$itemsSource.bindAndFire(onItemsSourceChanged)
+        self.tableFrame?.$itemsSource.bindAndFire(onItemsSourceChanged)
     }
 
     // MARK: Methods
@@ -51,29 +52,29 @@ open class BindableSectionedTableViewSource<ItemType, SectionType>: NSObject, UI
         return self.cellIdentifier
     }
 
-    open func getItemAt(_ indexPath: IndexPath) -> ItemType {
-        return getSectionAt(indexPath.section).itemsSource[indexPath.row]
+    open func getItemAt(_ indexPath: IndexPath) -> ItemType? {
+        return getSectionAt(indexPath.section)?.itemsSource[indexPath.row]
     }
 
-    open func getSectionAt(_ section: Int) -> Section<ItemType, SectionType> {
-        return self.tableFrame.itemsSource[section]
+    open func getSectionAt(_ section: Int) -> Section<ItemType, SectionType>? {
+        return self.tableFrame?.itemsSource[section]
     }
 
     open func onItemsSourceChanged(
         _ oldItems: [Section<ItemType, SectionType>],
         _ newItems: [Section<ItemType, SectionType>]
     ) {
-        self.tableView.reloadData()
+        self.tableView?.reloadData()
     }
 
     // MARK: UITableViewDataSource implementation
 
     open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return getSectionAt(section).itemsSource.count
+        return getSectionAt(section)?.itemsSource.count ?? 0
     }
 
     open func numberOfSections(in tableView: UITableView) -> Int {
-        return self.tableFrame.itemsSource.count
+        return self.tableFrame?.itemsSource.count ?? 0
     }
 
     open func tableView(
@@ -113,15 +114,14 @@ open class BindableSectionedTableViewSource<ItemType, SectionType>: NSObject, UI
         _ tableView: UITableView,
         editActionsForRowAt indexPath: IndexPath
     ) -> [UITableViewRowAction]? {
-        if let actions = self.tableFrame.actions {
+        if let actions = self.tableFrame?.actions {
             return actions.map { act in
                 UITableViewRowAction(
                     style: act.type == .normal ? .normal : .destructive,
                     title: act.title,
                     handler: { [weak self] action, indexPath in
                         guard let strongSelf = self else { return }
-                        let section = strongSelf.getSectionAt(indexPath.section)
-                        let item = strongSelf.getItemAt(indexPath)
+                        guard let section = strongSelf.getSectionAt(indexPath.section), let item = strongSelf.getItemAt(indexPath) else { return }
                         act.action(
                             Section<ItemType, SectionType>(type: section.type, items: [item])
                         )
@@ -129,7 +129,7 @@ open class BindableSectionedTableViewSource<ItemType, SectionType>: NSObject, UI
                 )
             }
         }
-        return [UITableViewRowAction]()
+        return []
     }
 
     @available(iOS 11.0, *)
@@ -138,15 +138,14 @@ open class BindableSectionedTableViewSource<ItemType, SectionType>: NSObject, UI
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
 
-        if let actions = self.tableFrame.actions {
+        if let actions = self.tableFrame?.actions {
             let actions = actions.map { act in
                 UIContextualAction(
                     style: act.type == .normal ? .normal : .destructive,
                     title: act.title
                 ) { [weak self] action, sourceView, completion in
                     guard let strongSelf = self else { return }
-                    let section = strongSelf.getSectionAt(indexPath.section)
-                    let item = strongSelf.getItemAt(indexPath)
+                    guard let section = strongSelf.getSectionAt(indexPath.section), let item = strongSelf.getItemAt(indexPath) else { return }
                     act.action(Section<ItemType, SectionType>(type: section.type, items: [item]))
                 }
             }
@@ -171,9 +170,8 @@ open class BindableSectionedTableViewSource<ItemType, SectionType>: NSObject, UI
 
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let section = getSectionAt(indexPath.section)
-        let item = getItemAt(indexPath)
-        self.tableFrame.onItemSelected(item: item, sectionType: section.type)
+        guard let section = getSectionAt(indexPath.section), let item = getItemAt(indexPath) else { return }
+        self.tableFrame?.onItemSelected(item: item, sectionType: section.type)
     }
 
     open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

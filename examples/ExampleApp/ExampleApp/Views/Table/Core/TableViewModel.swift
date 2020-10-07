@@ -31,13 +31,15 @@ class TableViewModel: BaseViewModel<TableInitObject> {
         provider: TableProviderProtocol
     ) {
         self.provider = provider
+        
         super.init()
+        
         self.searchFrame = SearchFrame(
-            searchingHandler: self.onSearchExecute,
-            cancellationHandler: self.onCancelExecute,
-            clearingHandler: self.onCancelExecute
+            searchingHandler: { [weak self] request in self?.onSearchExecute(request) },
+            cancellationHandler: { [weak self] in self?.onCancelExecute() },
+            clearingHandler: { [weak self] in self?.onCancelExecute() }
         )
-        self.collectionFrame = CollectionFrame<TableItemVm>(itemSelection: self.onItemSelected)
+        self.collectionFrame = CollectionFrame<TableItemVm>(itemSelection: { [weak self] item in self?.onItemSelected(item) })
     }
 
     // MARK: Private methods

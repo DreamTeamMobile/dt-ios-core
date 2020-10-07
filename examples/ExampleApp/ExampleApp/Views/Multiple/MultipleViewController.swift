@@ -33,13 +33,15 @@ class MultipleViewController: BaseViewController<MultipleViewModel> {
         super.viewDidLoad()
 
         guard let viewModel = self.viewModel else { return }
-        self.delegate = self.textField.bind(viewModel.inputFrame)
+        
+        self.delegate = BindableTextFieldDelegate(inputFrame: viewModel.inputFrame, textField: self.textField)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         guard let viewModel = self.viewModel else { return }
+                
         self.token1 = viewModel.enteredText.$text.subscribe { [weak self] (old, new) in
             self?.label1.text = new
         }
@@ -52,6 +54,7 @@ class MultipleViewController: BaseViewController<MultipleViewModel> {
         super.viewDidDisappear(animated)
 
         guard let viewModel = self.viewModel else { return }
+                
         if let t = self.token1 {
             viewModel.enteredText.$text.unsubscribe(t)
         }

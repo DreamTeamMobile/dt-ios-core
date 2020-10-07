@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Frame: NSObject {
+open class Frame: NSObject {
     
     @BindableEquatable(false, false)
     public var isHidden: Bool

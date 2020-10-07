@@ -10,12 +10,13 @@ open class BindableSearchBarDelegate: NSObject, UISearchBarDelegate {
     
     // MARK: Fields
     
-    public let searchFrame: SearchFrame
+    public weak var searchFrame: SearchFrame?
     
     // MARK: Init
     
     public init(searchFrame: SearchFrame) {
         self.searchFrame = searchFrame
+        
         super.init()
     }
     
@@ -31,19 +32,19 @@ open class BindableSearchBarDelegate: NSObject, UISearchBarDelegate {
     
     open func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = nil
-        self.searchFrame.cancelButton.execute(nil)
+        self.searchFrame?.cancelButton.execute(nil)
         searchBar.resignFirstResponder()
     }
     
     open func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            self.searchFrame.clearButton.execute(nil)
+            self.searchFrame?.clearButton.execute(nil)
         }
-        self.searchFrame.searchText = searchText
+        self.searchFrame?.searchText = searchText
     }
     
     open func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.searchFrame.searchButton.execute(nil)
+        self.searchFrame?.searchButton.execute(nil)
         searchBar.resignFirstResponder()
     }
     

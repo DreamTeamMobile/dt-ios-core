@@ -10,9 +10,9 @@ open class BindableCollectionViewSource<T> : NSObject, UICollectionViewDataSourc
 
     // MARK: Fields
 
-    public let collectionView: UICollectionView
+    public weak var collectionView: UICollectionView?
 
-    public let collectionFrame: CollectionFrame<T>
+    public weak var collectionFrame: CollectionFrame<T>?
 
     public let cellIdentifier: String
 
@@ -26,24 +26,26 @@ open class BindableCollectionViewSource<T> : NSObject, UICollectionViewDataSourc
         self.collectionView = collectionView
         self.collectionFrame = collectionFrame
         self.cellIdentifier = cellIdentifier
+        
         super.init()
+        
         setupBindings()
     }
 
     // MARK: Private methods
 
     private func setupBindings() {
-        self.collectionFrame.$itemsSource.bindAndFire(onItemsSourceChanged)
+        self.collectionFrame?.$itemsSource.bindAndFire(onItemsSourceChanged)
     }
 
     // MARK: Methods
     
-    open func getItemAt(_ indexPath: IndexPath) -> T {
-        return self.collectionFrame.itemsSource[indexPath.row]
+    open func getItemAt(_ indexPath: IndexPath) -> T? {
+        return self.collectionFrame?.itemsSource[indexPath.row]
     }
     
     open func onItemsSourceChanged(_ oldItems: [T], _ newItems: [T]) {
-        self.collectionView.reloadData()
+        self.collectionView?.reloadData()
     }
 
     open func getCellIdentifier(_ indexPath: IndexPath) -> String {
@@ -57,7 +59,7 @@ open class BindableCollectionViewSource<T> : NSObject, UICollectionViewDataSourc
     }
 
     open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.collectionFrame.itemsSource.count
+        return self.collectionFrame?.itemsSource.count ?? 0
     }
 
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -76,8 +78,8 @@ open class BindableCollectionViewSource<T> : NSObject, UICollectionViewDataSourc
 
     open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        let item = getItemAt(indexPath)
-        self.collectionFrame.onItemSelected(item: item)
+        guard let item = getItemAt(indexPath) else { return }
+        self.collectionFrame?.onItemSelected(item: item)
     }
 
     open func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {

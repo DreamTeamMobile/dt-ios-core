@@ -11,24 +11,12 @@ public class PageIndicationFrame: Frame {
     // MARK: Properties
     
     @Bindable(0)
-    public var currentPage: Int {
-        didSet {
-            print("currentPage: \(currentPage)")
-        }
-    }
+    public var currentPage: Int
     
     @Bindable(0)
-    public var pagesCount: Int {
-        didSet {
-            print("pagesCount: \(pagesCount)")
-        }
-    }
+    public var pagesCount: Int
     
     @Bindable(0)
-    public var pageProgress: Float {
-        didSet {
-            print("pageProgress: \(pageProgress)")
-        }
-    }
+    public var pageProgress: Float
     
 }

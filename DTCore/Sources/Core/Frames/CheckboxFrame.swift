@@ -10,16 +10,14 @@ public class CheckboxFrame: Frame {
     
     // MARK: Fields
     
-    private var valueChanged: (Bool) -> Void
+    private var valueChanged: ((Bool) -> Void)?
     
     // MARK: Properties
     
     @BindableEquatable(false, false)
     public var isSelected: Bool {
         didSet {
-            if oldValue != self.isSelected {
-                self.valueChanged(self.isSelected)
-            }
+            self.valueChanged?(self.isSelected)
         }
     }
     
@@ -28,17 +26,7 @@ public class CheckboxFrame: Frame {
         
     // MARK: Init
     
-    // MARK: Init
-    
-    public init(value: Bool) {
-        self.valueChanged = { _ in }
-        super.init()
-        self.text = ""
-        self.isSelected = value
-    }
-    
-    public init(value: Bool, onValueChanged: @escaping (Bool) -> Void) {
-        self.valueChanged = { _ in }
+    public init(value: Bool, onValueChanged: ((Bool) -> Void)?) {
         super.init()
         self.text = ""
         self.isSelected = value

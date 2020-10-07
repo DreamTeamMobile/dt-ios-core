@@ -10,16 +10,16 @@ public class SectionedCollectionFrame<ItemType, SectionType>: CollectionFrame<Se
     
     // MARK: Actions
     
-    private let handleItemSelection: (ItemType, SectionType) -> Void
+    private var handleItemSelection: ((ItemType, SectionType) -> Void)?
     
     // MARK: Init
     
     required public init() {
-        self.handleItemSelection = { _, _ in }
+        self.handleItemSelection = nil
         super.init()
     }
     
-    public init(itemSelection: @escaping (ItemType, SectionType) -> Void) {
+    public init(itemSelection: ((ItemType, SectionType) -> Void)?) {
         self.handleItemSelection = itemSelection
         super.init()
     }
@@ -27,13 +27,13 @@ public class SectionedCollectionFrame<ItemType, SectionType>: CollectionFrame<Se
     // MARK: Methods
     
     public func onItemSelected(item: ItemType, sectionType: SectionType) {
-        self.handleItemSelection(item, sectionType)
+        self.handleItemSelection?(item, sectionType)
     }
     
     public func setItemsSource(_ itemsSource: [(SectionType, [ItemType])]) {
         self.itemsSource = itemsSource.map {
             let section = Section<ItemType, SectionType>(type: $0.0, items: $0.1)
-            section.handleItemSelection = self.handleItemSelection
+            section.handleItemSelection = { [weak self] item, sectionType in self?.handleItemSelection?(item, sectionType) }
             return section
         }
     }

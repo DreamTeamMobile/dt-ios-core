@@ -10,11 +10,11 @@ public class SearchFrame: Frame {
     
     // MARK: Fields
     
-    private let searchingHandler: (String) -> Void
+    private let searchingHandler: ((String) -> Void)?
     
-    private let cancellationHandler: () -> Void
+    private let cancellationHandler: (() -> Void)?
     
-    private let clearingHandler: () -> Void
+    private let clearingHandler: (() -> Void)?
     
     // MARK: Properties
     
@@ -23,7 +23,7 @@ public class SearchFrame: Frame {
     public var searchText: String = "" {
         didSet {
             if searchOnEveryTextChanging {
-                self.searchingHandler(self.searchText)
+                self.searchingHandler?(self.searchText)
             }
         }
     }
@@ -36,31 +36,31 @@ public class SearchFrame: Frame {
     
     // MARK: Init
     
-    public init(searchingHandler: @escaping (String) -> Void, cancellationHandler: @escaping () -> Void, clearingHandler: @escaping () -> Void) {
+    public init(searchingHandler: ((String) -> Void)?, cancellationHandler: (() -> Void)?, clearingHandler: (() -> Void)?) {
         self.searchingHandler = searchingHandler
         self.cancellationHandler = cancellationHandler
         self.clearingHandler = clearingHandler
         
         super.init()
                 
-        self.searchButton = ButtonFrame(onExecute: onSearchExecute)
-        self.cancelButton = ButtonFrame(onExecute: onCancelExecute)
-        self.clearButton = ButtonFrame(onExecute: onClearExecute)
+        self.searchButton = ButtonFrame(onExecute: { [weak self] in self?.onSearchExecute() })
+        self.cancelButton = ButtonFrame(onExecute: { [weak self] in self?.onCancelExecute() })
+        self.clearButton = ButtonFrame(onExecute: { [weak self] in self?.onClearExecute() })
     }
     
     // MARK: Private methods
     
     private func onSearchExecute() {
-        self.searchingHandler(self.searchText)
+        self.searchingHandler?(self.searchText)
     }
     
     private func onCancelExecute() {
         self.searchText = ""
-        self.cancellationHandler()
+        self.cancellationHandler?()
     }
     
     private func onClearExecute() {
         self.searchText = ""
-        self.clearingHandler()
+        self.clearingHandler?()
     }
 }

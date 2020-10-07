@@ -10,15 +10,15 @@ import UIKit
 extension UIImageView {
     
     public func bind(_ frame: ImageFrame) {
-        frame.$data.bindAndFire { old, new in
+        frame.$data.bindAndFire { [weak self] old, new in
             if let data = new {
-                self.image = UIImage(data: data)
+                self?.image = UIImage(data: data)
             } else {
-                self.image = nil
+                self?.image = nil
             }
         }
-        frame.$isHidden.bindAndFire { old, new in
-            self.isHidden = new
+        frame.$isHidden.bindAndFire { [weak self] old, new in
+            self?.isHidden = new
         }
     }
     

@@ -20,14 +20,14 @@ class MultipleViewModel: BaseViewModel<MultipleInitObject> {
 
     required init() {
         super.init()
-        self.inputFrame = InputFrame(onTextChanged: { [weak self] text in
-            self?.enteredText.text = text
-        }, textValidator: nil)
+        self.inputFrame = InputFrame(onTextChanged: { [weak self] txt in self?.onTextChanged(txt) }, textValidator: nil)
         self.enteredText = LabelFrame()
     }
+    
+    // MARK: Private methods
     
     private func onTextChanged( _ text: String) {
         self.enteredText.text = text
     }
-
+    
 }

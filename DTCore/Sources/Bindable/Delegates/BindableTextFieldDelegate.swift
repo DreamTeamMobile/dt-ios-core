@@ -10,9 +10,9 @@ open class BindableTextFieldDelegate : NSObject, UITextFieldDelegate {
     
     // MARK: Fields
     
-    public let inputFrame: InputFrame
+    public weak var inputFrame: InputFrame?
     
-    public let textField: UITextField
+    public weak var textField: UITextField?
     
     // MARK: Properties
     
@@ -23,33 +23,35 @@ open class BindableTextFieldDelegate : NSObject, UITextFieldDelegate {
     public init(inputFrame: InputFrame, textField: UITextField) {
         self.inputFrame = inputFrame
         self.textField = textField
+        
         super.init()
-        setupBindings()
+        
+        setupBindings(inputFrame, textField)
     }
     
     // MARK: Private methods
     
-    private func setupBindings() {
-        self.textField.text = self.inputFrame.text
-        self.textField.addTarget(self, action: #selector(onTextFieldValueChanged), for: .editingChanged)
-        self.textField.addTarget(self, action: #selector(onTextFieldValueChanged), for: .editingDidEnd)
+    private func setupBindings(_ inputFrame: InputFrame, _ textField: UITextField) {
+        textField.text = inputFrame.text
+        textField.addTarget(self, action: #selector(onTextFieldValueChanged), for: .editingChanged)
+        textField.addTarget(self, action: #selector(onTextFieldValueChanged), for: .editingDidEnd)
         
-        self.inputFrame.$text.bindAndFire(self.onTextChanged)
-        self.inputFrame.$isHidden.bindAndFire(self.onHiddenChanged)
+        inputFrame.$text.bindAndFire(self.onTextChanged)
+        inputFrame.$isHidden.bindAndFire(self.onHiddenChanged)
     }
     
     @objc private func onTextFieldValueChanged(_ sender: UITextField) {
-        self.inputFrame.text = sender.text ?? ""
+        self.inputFrame?.text = sender.text ?? ""
     }
     
     private func onTextChanged(_ oldValue: String, _ newValue: String) {
-        if newValue != self.textField.text {
-            self.textField.text = newValue
+        if newValue != self.textField?.text {
+            self.textField?.text = newValue
         }
     }
     
     private func onHiddenChanged(_ oldValue: Bool, _ newValue: Bool) {
-        self.textField.isHidden = newValue
+        self.textField?.isHidden = newValue
     }
     
     // MARK: UITextFieldDelegate implementation
@@ -82,7 +84,7 @@ open class BindableTextFieldDelegate : NSObject, UITextFieldDelegate {
     
     /// return NO to not change text
     open func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString text: String) -> Bool {
-        return self.inputFrame.shouldChangeCharactersIn(range: range, replacementString: text)
+        return self.inputFrame?.shouldChangeCharactersIn(range: range, replacementString: text) ?? true
     }
     
     @available(iOS 13.0, *)
@@ -103,3 +105,4 @@ open class BindableTextFieldDelegate : NSObject, UITextFieldDelegate {
     }
     
 }
+

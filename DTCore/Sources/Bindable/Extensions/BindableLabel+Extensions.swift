@@ -10,11 +10,11 @@ import UIKit
 extension UILabel {
     
     public func bind(_ frame: LabelFrame) {
-        frame.$text.bindAndFire { oldValue, newValue in
-            self.text = newValue
+        frame.$text.bindAndFire { [weak self] oldValue, newValue in
+            self?.text = newValue
         }
-        frame.$isHidden.bindAndFire {oldValue, newValue in
-            self.isHidden = newValue            
+        frame.$isHidden.bindAndFire { [weak self] oldValue, newValue in
+            self?.isHidden = newValue            
         }
     }
     

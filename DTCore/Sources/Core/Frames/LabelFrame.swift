@@ -1,7 +1,6 @@
 //
 //  LabelFrame.swift
 //  
-//
 //  Copyright © 2019 DreamTeamMobile. All rights reserved.
 //
 
@@ -14,6 +13,7 @@ public class LabelFrame: Frame {
     
     public override init() {
         super.init()
+        self.text = ""
     }
     
     public convenience init(text: String) {

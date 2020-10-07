@@ -10,9 +10,9 @@ open class BindableTableViewSource<T> : NSObject, UITableViewDataSource, UITable
     
     // MARK: Fields
     
-    public let tableView: UITableView
+    public weak var tableView: UITableView?
     
-    public let tableFrame: CollectionFrame<T>
+    public weak var tableFrame: CollectionFrame<T>?
     
     public let cellIdentifier: String
     
@@ -26,24 +26,26 @@ open class BindableTableViewSource<T> : NSObject, UITableViewDataSource, UITable
         self.tableView = tableView
         self.tableFrame = tableFrame
         self.cellIdentifier = cellIdentifier
+        
         super.init()
+        
         setupBindings()
     }
     
     // MARK: Private methods
     
     private func setupBindings() {
-        self.tableFrame.$itemsSource.bindAndFire(onItemsSourceChanged)
+        self.tableFrame?.$itemsSource.bindAndFire(onItemsSourceChanged)
     }
         
     // MARK: Methods
     
-    open func getItemAt(_ indexPath: IndexPath) -> T {
-        return self.tableFrame.itemsSource[indexPath.row]
+    open func getItemAt(_ indexPath: IndexPath) -> T? {
+        return self.tableFrame?.itemsSource[indexPath.row]
     }
     
     open func onItemsSourceChanged(_ oldItems: [T], _ newItems: [T]) {
-        self.tableView.reloadData()
+        self.tableView?.reloadData()
     }
     
     open func getCellIdentifier(_ indexPath: IndexPath) -> String {
@@ -53,7 +55,7 @@ open class BindableTableViewSource<T> : NSObject, UITableViewDataSource, UITable
     // MARK: UITableViewDataSource implementation
     
     open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.tableFrame.itemsSource.count
+        return self.tableFrame?.itemsSource.count ?? 0
     }
     
     open func numberOfSections(in tableView: UITableView) -> Int {
@@ -81,19 +83,19 @@ open class BindableTableViewSource<T> : NSObject, UITableViewDataSource, UITable
     }
     
     open func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        if let actions = self.tableFrame.actions {
+        if let actions = self.tableFrame?.actions {
             return actions.map { act in
                 UITableViewRowAction(
                     style: act.type == .normal ? .normal : .destructive,
                     title: act.title,
                     handler: { [weak self] action, indexPath in
                         guard let strongSelf = self else { return }
-                        let item = strongSelf.getItemAt(indexPath)
+                        guard let item = strongSelf.getItemAt(indexPath) else { return }
                         act.action(item)
                 })
             }
         }
-        return [UITableViewRowAction]()
+        return []
     }
     
     open func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -108,8 +110,8 @@ open class BindableTableViewSource<T> : NSObject, UITableViewDataSource, UITable
     
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let item = getItemAt(indexPath)
-        self.tableFrame.onItemSelected(item: item)
+        guard let item = getItemAt(indexPath) else { return }
+        self.tableFrame?.onItemSelected(item: item)
     }
     
     open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -1,8 +1,7 @@
 //
-//  File.swift
-//  
+//  Frame.swift
 //
-//  Created by Максим Евтух on 20.02.2020.
+//  Copyright © 2019 DreamTeamMobile. All rights reserved.
 //
 
 import Foundation

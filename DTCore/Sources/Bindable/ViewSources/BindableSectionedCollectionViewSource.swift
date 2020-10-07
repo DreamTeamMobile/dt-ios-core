@@ -10,9 +10,9 @@ open class BindableSectionedCollectionViewSource<ItemType, SectionType> : NSObje
 
     // MARK: Fields
 
-    public let collectionView: UICollectionView
+    public weak var collectionView: UICollectionView?
 
-    public let collectionFrame: SectionedCollectionFrame<ItemType, SectionType>
+    public weak var collectionFrame: SectionedCollectionFrame<ItemType, SectionType>?
 
     public let cellIdentifier: String
 
@@ -26,28 +26,30 @@ open class BindableSectionedCollectionViewSource<ItemType, SectionType> : NSObje
         self.collectionView = collectionView
         self.collectionFrame = collectionFrame
         self.cellIdentifier = cellIdentifier
+        
         super.init()
+        
         setupBindings()
     }
 
     // MARK: Private methods
 
     private func setupBindings() {
-        self.collectionFrame.$itemsSource.bindAndFire(onItemsSourceChanged)
+        self.collectionFrame?.$itemsSource.bindAndFire(onItemsSourceChanged)
     }
 
     // MARK: Methods
 
-    open func getItemAt(_ indexPath: IndexPath) -> ItemType {
-        return getSectionAt(indexPath.section).itemsSource[indexPath.item]
+    open func getItemAt(_ indexPath: IndexPath) -> ItemType? {
+        return getSectionAt(indexPath.section)?.itemsSource[indexPath.item]
     }
 
-    open func getSectionAt(_ section: Int) -> Section<ItemType, SectionType> {
-        return self.collectionFrame.itemsSource[section]
+    open func getSectionAt(_ section: Int) -> Section<ItemType, SectionType>? {
+        return self.collectionFrame?.itemsSource[section]
     }
 
     open func onItemsSourceChanged(_ oldItems: [Section<ItemType, SectionType>], _ newItems: [Section<ItemType, SectionType>]) {
-        self.collectionView.reloadData()
+        self.collectionView?.reloadData()
     }
 
     open func getCellIdentifier(_ indexPath: IndexPath) -> String {
@@ -57,11 +59,11 @@ open class BindableSectionedCollectionViewSource<ItemType, SectionType> : NSObje
     // MARK: UICollectionViewDataSource implementation
 
     open func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.collectionFrame.itemsSource.count
+        return self.collectionFrame?.itemsSource.count ?? 0
     }
 
     open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return getSectionAt(section).itemsSource.count
+        return getSectionAt(section)?.itemsSource.count ?? 0
     }
 
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -80,9 +82,8 @@ open class BindableSectionedCollectionViewSource<ItemType, SectionType> : NSObje
 
     open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        let section = getSectionAt(indexPath.section)
-        let item = getItemAt(indexPath)
-        self.collectionFrame.onItemSelected(item: item, sectionType: section.type)
+        guard let section = getSectionAt(indexPath.section), let item = getItemAt(indexPath) else { return }
+        self.collectionFrame?.onItemSelected(item: item, sectionType: section.type)
     }
 
     open func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {

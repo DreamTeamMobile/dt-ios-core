@@ -160,20 +160,20 @@
 		0016B3CA2514AC43005FEA94 /* Frames */ = {
 			isa = PBXGroup;
 			children = (
+				0016B3D82514AC43005FEA94 /* ButtonFrame.swift */,
 				0016B3CB2514AC43005FEA94 /* CheckboxFrame.swift */,
-				0016B3CC2514AC43005FEA94 /* ProgressFrame.swift */,
 				0016B3CD2514AC43005FEA94 /* CollectionFrame.swift */,
-				0016B3CE2514AC43005FEA94 /* SearchFrame.swift */,
+				0016B3D72514AC43005FEA94 /* Frame.swift */,
 				0016B3CF2514AC43005FEA94 /* ImageFrame.swift */,
 				0016B3D02514AC43005FEA94 /* InputFrame.swift */,
-				0016B3D12514AC43005FEA94 /* Models */,
-				0016B3D32514AC43005FEA94 /* PageIndicationFrame.swift */,
-				0016B3D42514AC43005FEA94 /* SwitchFrame.swift */,
-				0016B3D52514AC43005FEA94 /* SectionedCollectionFrame.swift */,
 				0016B3D62514AC43005FEA94 /* LabelFrame.swift */,
-				0016B3D72514AC43005FEA94 /* Frame.swift */,
-				0016B3D82514AC43005FEA94 /* ButtonFrame.swift */,
+				0016B3D32514AC43005FEA94 /* PageIndicationFrame.swift */,
+				0016B3CC2514AC43005FEA94 /* ProgressFrame.swift */,
+				0016B3CE2514AC43005FEA94 /* SearchFrame.swift */,
+				0016B3D52514AC43005FEA94 /* SectionedCollectionFrame.swift */,
+				0016B3D42514AC43005FEA94 /* SwitchFrame.swift */,
 				0016B3D92514AC43005FEA94 /* ViewFrame.swift */,
+				0016B3D12514AC43005FEA94 /* Models */,
 			);
 			path = Frames;
 			sourceTree = "<group>";

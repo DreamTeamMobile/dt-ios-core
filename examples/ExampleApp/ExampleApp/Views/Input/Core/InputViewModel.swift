@@ -35,9 +35,9 @@ class InputViewModel: BaseViewModel<InputInitObj> {
     ) {
         self.alertManager = alertManager
         super.init()
-        self.inputFrame = InputFrame(onTextChanged: self.onTextChanged, textValidator: nil)
-        self.switchFrame = SwitchFrame(value: false, onValueChanged: self.onValueChanged)
-        self.buttonFrame = ButtonFrame(title: "Button", onExecute: self.onButtonExecute)
+        self.inputFrame = InputFrame(onTextChanged: { [weak self] txt in self?.onTextChanged(txt) }, textValidator: nil)
+        self.switchFrame = SwitchFrame(value: false, onValueChanged: { [weak self] value in self?.onValueChanged(value) })
+        self.buttonFrame = ButtonFrame(title: "Button", onExecute: { [weak self] in self?.onButtonExecute() })
     }
 
     // MARK: Private methods

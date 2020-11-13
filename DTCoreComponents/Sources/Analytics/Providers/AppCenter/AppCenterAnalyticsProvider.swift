@@ -15,7 +15,7 @@ public class AppCenterAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
     }
 
     public func logEvent(event: String, parameters: [String: Any]?) {
-        MSAnalytics.trackEvent(event, withProperties: parameters as? [String: String])
+        Analytics.trackEvent(event, withProperties: parameters as? [String: String])
     }
 
     public func logPurchaseEvent(product: SKProduct, event: String) {
@@ -29,7 +29,7 @@ public class AppCenterAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
         params["price"] = product.price.stringValue
         params["currency"] = product.priceLocale.currencyCode ?? ""
 
-        MSAnalytics.trackEvent(event, withProperties: params as? [String: String])
+        Analytics.trackEvent(event, withProperties: params as? [String: String])
     }
     
     public func logSubscription(product: SKProduct) {

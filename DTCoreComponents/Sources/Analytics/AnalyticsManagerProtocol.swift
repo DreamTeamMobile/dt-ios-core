@@ -8,6 +8,8 @@ import StoreKit
 
 public protocol AnalyticsManagerProtocol {
     
+    var settings: AnalyticsSettings { get set }
+    
     func registerProviders(_ providers: Set<AnalyticsType>)
     
     func getProviders() -> [(AnalyticsType, AnalyticsProviderProtocol)]

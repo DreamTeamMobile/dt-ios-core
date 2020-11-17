@@ -8,7 +8,7 @@ import FBSDKCoreKit
 import Foundation
 import StoreKit
 
-public class FacebookAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
+public class FacebookAnalyticsProvider: AnalyticsProvider, AnalyticsProviderProtocol {
 
     public func logEvent(_ event: String) {
         self.logEvent(event: event, parameters: nil)
@@ -26,8 +26,11 @@ public class FacebookAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
         var params = parameters ?? [String: Any]()
 
         params["productId"] = product.productIdentifier
-        params["price"] = product.price.stringValue
-        params["currency"] = product.priceLocale.currencyCode ?? ""
+
+        if shouldLogPrice() {
+            params["price"] = product.price.stringValue
+            params["currency"] = product.priceLocale.currencyCode ?? ""
+        }
 
         AppEvents.logEvent(AppEvents.Name(rawValue: event), parameters: params)
     }
@@ -40,22 +43,25 @@ public class FacebookAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
         var params = parameters ?? [String: Any]()
 
         params["productId"] = product.productIdentifier
-        params["price"] = product.price.stringValue
-        params["currency"] = product.priceLocale.currencyCode ?? ""
+
+        if shouldLogPrice() {
+            params["price"] = product.price.stringValue
+            params["currency"] = product.priceLocale.currencyCode ?? ""
+        }
 
         AppEvents.logEvent(AppEvents.Name(rawValue: "Subscribe"), parameters: params)
     }
-    
+
     public func logPurchase(product: SKProduct) {
         self.logPurchase(product: product, parameters: nil)
     }
-    
-    public func logPurchase(product: SKProduct, parameters: [String : Any]?) {
+
+    public func logPurchase(product: SKProduct, parameters: [String: Any]?) {
         var params = parameters ?? [String: Any]()
         params["productId"] = product.productIdentifier
         AppEvents.logPurchase(
-            Double(truncating: product.price),
-            currency: product.priceLocale.currencyCode ?? "",
+            shouldLogPrice() ? Double(truncating: product.price) : 0,
+            currency: shouldLogPrice() ? (product.priceLocale.currencyCode ?? "") : "",
             parameters: params
         )
     }

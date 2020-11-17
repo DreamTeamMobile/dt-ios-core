@@ -9,31 +9,49 @@ import StoreKit
 
 public class AnalyticsManager: NSObject, AnalyticsManagerProtocol {
     
+    enum MethodType
+    {
+        case event
+        case iap
+    }
+    
     // MARK: Fields
     
     private var providers = [AnalyticsLazyRef]()
     
+    // MARK: Properties
+    
+    public var settings: AnalyticsSettings = AnalyticsSettings()
+    
     // MARK: Private methods
     
     private func getLazyRef(for type: AnalyticsType) -> AnalyticsLazyRef {
+        let settings = self.settings.providersSettings?[type]
         switch type {
         case .firebase:
-            return AnalyticsLazyRef(type: type, action: { FirebaseAnalyticsProvider() })
+            return AnalyticsLazyRef(type: type, action: { FirebaseAnalyticsProvider(settings: settings) })
         case .facebook:
-            return AnalyticsLazyRef(type: type, action: { FacebookAnalyticsProvider() })
+            return AnalyticsLazyRef(type: type, action: { FacebookAnalyticsProvider(settings: settings) })
         case .appsFlyer:
-            return AnalyticsLazyRef(type: type, action: { AppsFlyerAnalyticsProvider() })
+            return AnalyticsLazyRef(type: type, action: { AppsFlyerAnalyticsProvider(settings: settings) })
         case .appCenter:
-            return AnalyticsLazyRef(type: type, action: { AppCenterAnalyticsProvider() })
+            return AnalyticsLazyRef(type: type, action: { AppCenterAnalyticsProvider(settings: settings) })
         case .appMetrica:
-            return AnalyticsLazyRef(type: type, action: { AppMetricaAnalyticsProvider() })
+            return AnalyticsLazyRef(type: type, action: { AppMetricaAnalyticsProvider(settings: settings) })
         }
     }
     
-    private func executeIfNotExcluded(_ tuple: (AnalyticsType, AnalyticsProviderProtocol), exclude: Set<AnalyticsType>?, completion: (AnalyticsProviderProtocol) -> Void) {
+    private func executeIfNotExcluded(_ tuple: (AnalyticsType, AnalyticsProviderProtocol), exclude: Set<AnalyticsType>?, logType: MethodType, completion: (AnalyticsProviderProtocol) -> Void) {
         let type = tuple.0
         let provider = tuple.1
+        
+        if (logType == .event && !provider.settings.isEventsTrackingEnabled)
+            || (logType == .iap && !provider.settings.isIapTrackingEnabled) {
+            return
+        }
+        
         guard !(exclude?.contains(type) ?? false) else { return }
+        
         completion(provider)
     }
     
@@ -47,7 +65,7 @@ public class AnalyticsManager: NSObject, AnalyticsManagerProtocol {
     
     public func logEvent(event: String, parameters: [String: Any]?, exclude: Set<AnalyticsType>?) {
         for tuple in getProviders() {
-            executeIfNotExcluded(tuple, exclude: exclude) { provider in
+            executeIfNotExcluded(tuple, exclude: exclude, logType: .event) { provider in
                 provider.logEvent(event: event, parameters: parameters)
             }
         }
@@ -59,7 +77,7 @@ public class AnalyticsManager: NSObject, AnalyticsManagerProtocol {
     
     public func logPurchaseEvent(product: SKProduct, event: String, parameters: [String: Any]?, exclude: Set<AnalyticsType>?) {
         for tuple in getProviders() {
-            executeIfNotExcluded(tuple, exclude: exclude) { provider in
+            executeIfNotExcluded(tuple, exclude: exclude, logType: .iap) { provider in
                 provider.logPurchaseEvent(product: product, event: event, parameters: parameters)
             }
         }
@@ -71,7 +89,7 @@ public class AnalyticsManager: NSObject, AnalyticsManagerProtocol {
     
     public func logSubscription(product: SKProduct, parameters: [String: Any]?, exclude: Set<AnalyticsType>?) {
         for tuple in getProviders() {
-            executeIfNotExcluded(tuple, exclude: exclude) { provider in
+            executeIfNotExcluded(tuple, exclude: exclude, logType: .iap) { provider in
                 provider.logSubscription(product: product, parameters: parameters)
             }
         }
@@ -83,7 +101,7 @@ public class AnalyticsManager: NSObject, AnalyticsManagerProtocol {
     
     public func logPurchase(product: SKProduct, parameters: [String : Any]?, exclude: Set<AnalyticsType>?) {
         for tuple in getProviders() {
-            executeIfNotExcluded(tuple, exclude: exclude) { provider in
+            executeIfNotExcluded(tuple, exclude: exclude, logType: .iap) { provider in
                 provider.logPurchase(product: product, parameters: parameters)
             }
         }

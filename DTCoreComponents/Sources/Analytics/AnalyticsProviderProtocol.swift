@@ -9,6 +9,8 @@ import StoreKit
 
 public protocol AnalyticsProviderProtocol: class {
     
+    var settings: AnalyticsProviderSettings { get }
+    
     func logEvent(_ event: String)
     
     func logEvent(event: String, parameters: [String: Any]?)

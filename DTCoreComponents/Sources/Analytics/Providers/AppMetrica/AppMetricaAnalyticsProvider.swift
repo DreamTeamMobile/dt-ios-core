@@ -10,7 +10,7 @@ import Foundation
 import StoreKit
 import YandexMobileMetrica
 
-public class AppMetricaAnalyticsProvider: AnalyticsProviderProtocol {
+public class AppMetricaAnalyticsProvider: AnalyticsProvider, AnalyticsProviderProtocol {
 
     private var apiKey: String = ""
 
@@ -45,8 +45,11 @@ public class AppMetricaAnalyticsProvider: AnalyticsProviderProtocol {
         var params = parameters ?? [String: Any]()
 
         params["productId"] = product.productIdentifier
-        params["price"] = product.price.stringValue
-        params["currency"] = product.priceLocale.currencyCode ?? ""
+
+        if shouldLogPrice() {
+            params["price"] = product.price.stringValue
+            params["currency"] = product.priceLocale.currencyCode ?? ""
+        }
 
         self.logEvent(event: event, parameters: params)
     }
@@ -87,8 +90,8 @@ public class AppMetricaAnalyticsProvider: AnalyticsProviderProtocol {
         guard let reporter = YMMYandexMetrica.reporter(forApiKey: self.apiKey) else { return }
 
         let revenueInfo = YMMMutableRevenueInfo.init(
-            priceDecimal: product.price,
-            currency: product.priceLocale.currencyCode ?? ""
+            priceDecimal: shouldLogPrice() ? product.price : 0,
+            currency: shouldLogPrice() ? (product.priceLocale.currencyCode ?? "") : ""
         )
         revenueInfo.productID = product.productIdentifier
         revenueInfo.quantity = 1

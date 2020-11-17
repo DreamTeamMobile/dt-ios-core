@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0065B7B32563DEFD003C5A55 /* AnalyticsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0065B7B22563DEFD003C5A55 /* AnalyticsSettings.swift */; };
+		0065B7DF2563DFED003C5A55 /* AnalyticsProviderSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0065B7DE2563DFED003C5A55 /* AnalyticsProviderSettings.swift */; };
+		0065B7E22563E152003C5A55 /* AnalyticsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0065B7E12563E152003C5A55 /* AnalyticsProvider.swift */; };
 		00850F752514B3BA00ECE3DC /* DTCoreComponents.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 00850F742514B3BA00ECE3DC /* DTCoreComponents.podspec */; };
 		0099861A2514AD1B00BAD617 /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009985D42514AD1B00BAD617 /* UserDefaultsWrapper.swift */; };
 		0099861B2514AD1B00BAD617 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009985D62514AD1B00BAD617 /* SubscriptionManager.swift */; };
@@ -65,6 +68,9 @@
 /* Begin PBXFileReference section */
 		002B8DDC247E591B0075D255 /* DTCoreComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DTCoreComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		002B8DE0247E591B0075D255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0065B7B22563DEFD003C5A55 /* AnalyticsSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsSettings.swift; sourceTree = "<group>"; };
+		0065B7DE2563DFED003C5A55 /* AnalyticsProviderSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsProviderSettings.swift; sourceTree = "<group>"; };
+		0065B7E12563E152003C5A55 /* AnalyticsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsProvider.swift; sourceTree = "<group>"; };
 		00850F742514B3BA00ECE3DC /* DTCoreComponents.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DTCoreComponents.podspec; path = ../DTCoreComponents.podspec; sourceTree = "<group>"; };
 		009985D42514AD1B00BAD617 /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		009985D62514AD1B00BAD617 /* SubscriptionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
@@ -327,6 +333,7 @@
 				0099860E2514AD1B00BAD617 /* Facebook */,
 				009986102514AD1B00BAD617 /* AppsFlyer */,
 				009986122514AD1B00BAD617 /* AppCenter */,
+				0065B7E12563E152003C5A55 /* AnalyticsProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -376,6 +383,8 @@
 			children = (
 				009986152514AD1B00BAD617 /* AnalyticsType.swift */,
 				009986162514AD1B00BAD617 /* AnalyticsLazyRef.swift */,
+				0065B7B22563DEFD003C5A55 /* AnalyticsSettings.swift */,
+				0065B7DE2563DFED003C5A55 /* AnalyticsProviderSettings.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -513,6 +522,7 @@
 				009986332514AD1B00BAD617 /* UIColor+Extensions.swift in Sources */,
 				0099862F2514AD1B00BAD617 /* StoreReviewManager.swift in Sources */,
 				0099862A2514AD1B00BAD617 /* LimitsConfig.swift in Sources */,
+				0065B7E22563E152003C5A55 /* AnalyticsProvider.swift in Sources */,
 				0099862E2514AD1B00BAD617 /* StoreReviewProtocol.swift in Sources */,
 				009986312514AD1B00BAD617 /* UIView+Extensions.swift in Sources */,
 				009986452514AD1B00BAD617 /* FacebookAnalyticsProvider.swift in Sources */,
@@ -527,6 +537,7 @@
 				009986372514AD1B00BAD617 /* Sequence+Extensions.swift in Sources */,
 				0099861D2514AD1B00BAD617 /* PurchaseManagerProtocol.swift in Sources */,
 				009986382514AD1B00BAD617 /* Dictionary+Extensions.swift in Sources */,
+				0065B7DF2563DFED003C5A55 /* AnalyticsProviderSettings.swift in Sources */,
 				0099864B2514AD1B00BAD617 /* AnalyticsProviderProtocol.swift in Sources */,
 				0099861B2514AD1B00BAD617 /* SubscriptionManager.swift in Sources */,
 				0099861F2514AD1B00BAD617 /* AlertManager.swift in Sources */,
@@ -545,6 +556,7 @@
 				009986412514AD1B00BAD617 /* InteractionManager.swift in Sources */,
 				009986222514AD1B00BAD617 /* Control.swift in Sources */,
 				009986202514AD1B00BAD617 /* AlertProtocol.swift in Sources */,
+				0065B7B32563DEFD003C5A55 /* AnalyticsSettings.swift in Sources */,
 				0099861A2514AD1B00BAD617 /* UserDefaultsWrapper.swift in Sources */,
 				009986242514AD1B00BAD617 /* AchievementsConfig.swift in Sources */,
 				0099864C2514AD1B00BAD617 /* AnalyticsManager.swift in Sources */,

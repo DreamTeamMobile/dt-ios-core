@@ -7,5 +7,5 @@
 import Foundation
 
 public struct AnalyticsSettings {
-    var providersSettings: [AnalyticsType: AnalyticsProviderSettings]? = nil
+    public var providersSettings: [AnalyticsType: AnalyticsProviderSettings]? = nil
 }

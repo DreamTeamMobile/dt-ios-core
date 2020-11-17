@@ -4,12 +4,12 @@
 //  Copyright © 2019 DreamTeamMobile. All rights reserved.
 //
 
-import Foundation
 import AppCenterAnalytics
+import Foundation
 import StoreKit
 
-public class AppCenterAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
-    
+public class AppCenterAnalyticsProvider: AnalyticsProvider, AnalyticsProviderProtocol {
+
     public func logEvent(_ event: String) {
         self.logEvent(event: event, parameters: nil)
     }
@@ -26,12 +26,15 @@ public class AppCenterAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
         var params = parameters ?? [String: Any]()
 
         params["productId"] = product.productIdentifier
-        params["price"] = product.price.stringValue
-        params["currency"] = product.priceLocale.currencyCode ?? ""
+
+        if shouldLogPrice() {
+            params["price"] = product.price.stringValue
+            params["currency"] = product.priceLocale.currencyCode ?? ""
+        }
 
         Analytics.trackEvent(event, withProperties: params as? [String: String])
     }
-    
+
     public func logSubscription(product: SKProduct) {
         self.logSubscription(product: product, parameters: nil)
     }
@@ -39,12 +42,12 @@ public class AppCenterAnalyticsProvider: NSObject, AnalyticsProviderProtocol {
     public func logSubscription(product: SKProduct, parameters: [String: Any]?) {
         // nothing here because AppCenter tracks subscription automatically
     }
-    
+
     public func logPurchase(product: SKProduct) {
         self.logPurchase(product: product, parameters: nil)
     }
-    
-    public func logPurchase(product: SKProduct, parameters: [String : Any]?) {
+
+    public func logPurchase(product: SKProduct, parameters: [String: Any]?) {
         // nothing here because AppCenter tracks purchases automatically
     }
 

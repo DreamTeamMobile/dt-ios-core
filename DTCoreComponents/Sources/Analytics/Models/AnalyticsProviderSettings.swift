@@ -9,7 +9,7 @@
 import Foundation
 
 public struct AnalyticsProviderSettings {
-    var isEventsTrackingEnabled: Bool = true
-    var isIapTrackingEnabled: Bool = true
-    var shouldIncludePriceInfoInPurchaseEvent: Bool = true
+    public var isEventsTrackingEnabled: Bool = true
+    public var isIapTrackingEnabled: Bool = true
+    public var shouldIncludePriceInfoInPurchaseEvent: Bool = true
 }

@@ -340,14 +340,20 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
 
                                 return false
                             })
-                            activeSubscription != nil
-                                ? os_log("7.Active: TRUE", log: OSLog.default, type: .info)
-                                : os_log("7.Active: FALSE", log: OSLog.default, type: .info)
+                            
+                            if activeSubscription != nil {
+                                os_log("7.Active: TRUE", log: OSLog.default, type: .info)
+                                print("7.Active: TRUE")
+                            } else {
+                                os_log("7.Active: FALSE", log: OSLog.default, type: .info)
+                                print("7.Active: FALSE")
+                            }
 
                             completion(activeSubscription != nil, nil)
                         }
                         else {
                             os_log("7.Active: TRUE", log: OSLog.default, type: .info)
+                            print("7.Active: TRUE")
                             completion(true, nil)
                         }
                     }
@@ -376,12 +382,14 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                     }
                 }
                 else {
+                    print("6.Status: UNKNOWN")
                     os_log("6.Status: UNKNOWN", log: OSLog.default, type: .info)
                     hasValidReceipt = false
                     completion(false, nil)
                 }
             }
             else {
+                print("5.checkStatus. Response. FAILED")
                 os_log("5.checkStatus. Response. FAILED", log: OSLog.default, type: .info)
                 hasValidReceipt = false
                 completion(false, nil)

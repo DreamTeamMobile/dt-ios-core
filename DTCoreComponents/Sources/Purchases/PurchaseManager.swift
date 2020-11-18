@@ -261,14 +261,12 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                 ) as? [String: AnyObject]
             {
                 os_log("5.checkStatus. Response. OK", log: OSLog.default, type: .info)
-
+                                
                 if let status = jsonResponse["status"] as? Int {
                     if status == 0 {
                         print("Status: VALID")
                         hasValidReceipt = true
                         os_log("6.Status: VALID", log: OSLog.default, type: .info)
-
-                        // MARK: non-consumable validation
 
                         if let latestReceipt = jsonResponse["latest_receipt"] as? String,
                             let data = Data(base64Encoded: latestReceipt),
@@ -285,9 +283,21 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                                 )
                                 completion(true, nil)
                                 return
+                            } else if receipt.hasActiveAutoRenewablePurchases {
+                                let purchases = receipt.activeAutoRenewableSubscriptionPurchases.map { $0.productIdentifier }.joined(separator: ", ")
+                                print("Found auto-renewable purchases \(purchases)")
+                                os_log(
+                                    "6.Status: VALID. Found auto-renewable purchases",
+                                    log: OSLog.default,
+                                    type: .info
+                                )
+                                completion(true, nil)
+                                return
                             }
                         }
-
+                        
+                        // MARK: manual non-consumable validation
+                        
                         if let receipt = jsonResponse["receipt"] as? [String: AnyObject] {
                             if let inApps = receipt["in_app"] as? NSArray {
                                 if let inApp = inApps.first(where: { (element) -> Bool in
@@ -317,7 +327,7 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                             }
                         }
 
-                        // MARK: autorenewable subscriptions verification
+                        // MARK: manual auto-renewable subscriptions verification
 
                         if let array =
                             (jsonResponse["pending_renewal_info"] as? [[String: AnyObject]])
@@ -345,8 +355,9 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                                 os_log("7.Active: TRUE", log: OSLog.default, type: .info)
                                 print("7.Active: TRUE")
                             } else {
+                                let json = (try? JSONEncoder().encode((array as? [[String: String]]) ?? [])) ?? Data()
                                 os_log("7.Active: FALSE", log: OSLog.default, type: .info)
-                                print("7.Active: FALSE")
+                                print("7.Active: FALSE \ndata: \(String(data: json, encoding: .utf8) ?? "null")")
                             }
 
                             completion(activeSubscription != nil, nil)

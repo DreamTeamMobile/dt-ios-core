@@ -272,22 +272,20 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                             let data = Data(base64Encoded: latestReceipt),
                             let receipt = try? InAppReceipt.receipt(from: data)
                         {
-                            if let purchaseId = nonConsumableIdentifiers?.first(where: {
-                                receipt.containsPurchase(ofProductIdentifier: $0)
-                            }) {
-                                print("Found non-consumable purchase \(purchaseId)")
+                            if receipt.hasActiveAutoRenewablePurchases {
+                                let purchases = receipt.activeAutoRenewableSubscriptionPurchases.map { $0.productIdentifier }.joined(separator: ", ")
+                                print("Found auto-renewable purchases \(purchases)")
                                 os_log(
-                                    "6.Status: VALID. Found non-consumable purchase",
+                                    "6.Status: VALID. Found auto-renewable purchases",
                                     log: OSLog.default,
                                     type: .info
                                 )
                                 completion(true, nil)
                                 return
-                            } else if receipt.hasActiveAutoRenewablePurchases {
-                                let purchases = receipt.activeAutoRenewableSubscriptionPurchases.map { $0.productIdentifier }.joined(separator: ", ")
-                                print("Found auto-renewable purchases \(purchases)")
+                            } else if let purchase = receipt.purchases.first(where: { (nonConsumableIdentifiers?.contains($0.productIdentifier) ?? false) && $0.cancellationDateString == nil }) {
+                                print("Found non-consumable purchase \(purchase.productIdentifier)")
                                 os_log(
-                                    "6.Status: VALID. Found auto-renewable purchases",
+                                    "6.Status: VALID. Found non-consumable purchase",
                                     log: OSLog.default,
                                     type: .info
                                 )
@@ -302,22 +300,16 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                             if let inApps = receipt["in_app"] as? NSArray {
                                 if let inApp = inApps.first(where: { (element) -> Bool in
                                     if let iap = element as? [String: AnyObject],
-                                        let product_id = iap["product_id"] as? String
-                                    {
-                                        return self.nonConsumableIdentifiers?.contains(product_id)
-                                            ?? false
+                                       let product_id = iap["product_id"] as? String {
+                                        return (self.nonConsumableIdentifiers?.contains(product_id)
+                                            ?? false) && iap["cancellation_date"] == nil
                                     }
                                     return false
                                 }) {
-                                    #if DEBUG
-                                        if let purchaseId = (inApp as? [String: AnyObject])?[
-                                            "product_id"
-                                        ] {
-                                            print("Found non-consumable purchase \(purchaseId)")
-                                        }
-                                    #endif
+                                    let purchaseId = ((inApp as? [String: AnyObject])?["product_id"] as? String) ?? ""
+                                    print("Found non-consumable purchase \(purchaseId)")
                                     os_log(
-                                        "6.Status: VALID. Found non-consumable purchase",
+                                        "6.Status: VALID. Found ACTIVE non-consumable purchase",
                                         log: OSLog.default,
                                         type: .info
                                     )
@@ -381,7 +373,27 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                             ) {
                                 print("Status: TEST VALID")
                                 os_log("6.Status: TEST VALID", log: OSLog.default, type: .info)
-                                completion(true, nil)
+                                if let receipt = try? InAppReceipt.localReceipt() {
+                                    if receipt.hasActiveAutoRenewablePurchases {
+                                        print("Status: TEST hasActiveAutoRenewablePurchases")
+                                        os_log("7.Status: TEST hasActiveAutoRenewablePurchases", log: OSLog.default, type: .info)
+                                        hasValidReceipt = true
+                                        completion(true, nil)
+                                    } else if let purchase = receipt.purchases.first(where: { (nonConsumableIdentifiers?.contains($0.productIdentifier) ?? false) && $0.cancellationDateString == nil }) {
+                                        print("Status: TEST found active purchase \(purchase.productIdentifier)")
+                                        os_log("7.Status: TEST found active purchase", log: OSLog.default, type: .info)
+                                        hasValidReceipt = true
+                                        completion(true, nil)
+                                    } else {
+                                        print("Status: TEST FALSE")
+                                        os_log("7.Status: TEST FALSE", log: OSLog.default, type: .info)
+                                        completion(false, nil)
+                                    }
+                                } else {
+                                    print("Status: TEST can't read local receipt")
+                                    os_log("7.Status: TEST can't read local receipt", log: OSLog.default, type: .info)
+                                    completion(false, nil)
+                                }
                                 return
                             }
                         #endif

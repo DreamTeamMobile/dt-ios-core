@@ -306,13 +306,17 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                                     }
                                     return false
                                 }) {
-                                    let purchaseId = ((inApp as? [String: AnyObject])?["product_id"] as? String) ?? ""
-                                    print("Found non-consumable purchase \(purchaseId)")
+                                    if let dict = inApp as? [String: AnyObject],
+                                       let purchaseId = dict["product_id"] as? String  {
+                                        print("Found non-consumable purchase \(purchaseId)")
+                                    }
+                                    
                                     os_log(
                                         "6.Status: VALID. Found ACTIVE non-consumable purchase",
                                         log: OSLog.default,
                                         type: .info
                                     )
+                                    
                                     completion(true, nil)
                                     return
                                 }

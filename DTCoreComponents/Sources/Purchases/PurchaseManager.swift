@@ -11,7 +11,6 @@ import os.log
 public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserver,
     PurchaseManagerProtocol
 {
-
     fileprivate var restoreCompletion: ((Error?) -> Void)? = nil
     fileprivate var purchaseCompletion: ((String?, Error?) -> Void)? = nil
 
@@ -20,10 +19,10 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
     var productIdentifiers: Set<String>?
     var nonConsumableIdentifiers: Set<String>?
     var productsRequest: SKProductsRequest?
-
     var completionHandler: ((_ products: [SKProduct]?, _ error: Error?) -> Void)?
-
     var purchasedProductIdentifiers = Set<String>()
+
+    public var defaultPurchaseCompletion: ((String?, Error?) -> Void)? = nil
 
     fileprivate var hasValidReceipt = false
 
@@ -261,7 +260,7 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                 ) as? [String: AnyObject]
             {
                 os_log("5.checkStatus. Response. OK", log: OSLog.default, type: .info)
-                                
+
                 if let status = jsonResponse["status"] as? Int {
                     if status == 0 {
                         print("Status: VALID")
@@ -273,7 +272,8 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                             let receipt = try? InAppReceipt.receipt(from: data)
                         {
                             if receipt.hasActiveAutoRenewablePurchases {
-                                let purchases = receipt.activeAutoRenewableSubscriptionPurchases.map { $0.productIdentifier }.joined(separator: ", ")
+                                let purchases = receipt.activeAutoRenewableSubscriptionPurchases.map
+                                { $0.productIdentifier }.joined(separator: ", ")
                                 print("Found auto-renewable purchases \(purchases)")
                                 os_log(
                                     "6.Status: VALID. Found auto-renewable purchases",
@@ -282,7 +282,11 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                                 )
                                 completion(true, nil)
                                 return
-                            } else if let purchase = receipt.purchases.first(where: { (nonConsumableIdentifiers?.contains($0.productIdentifier) ?? false) && $0.cancellationDateString == nil }) {
+                            }
+                            else if let purchase = receipt.purchases.first(where: {
+                                (nonConsumableIdentifiers?.contains($0.productIdentifier) ?? false)
+                                    && $0.cancellationDateString == nil
+                            }) {
                                 print("Found non-consumable purchase \(purchase.productIdentifier)")
                                 os_log(
                                     "6.Status: VALID. Found non-consumable purchase",
@@ -293,30 +297,30 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                                 return
                             }
                         }
-                        
+
                         // MARK: manual non-consumable validation
-                        
+
                         if let receipt = jsonResponse["receipt"] as? [String: AnyObject] {
                             if let inApps = receipt["in_app"] as? NSArray {
                                 if let inApp = inApps.first(where: { (element) -> Bool in
                                     if let iap = element as? [String: AnyObject],
-                                       let product_id = iap["product_id"] as? String {
-                                        return (self.nonConsumableIdentifiers?.contains(product_id)
+                                        let product_id = iap["product_id"] as? String
+                                    {
+                                        return
+                                            (self.nonConsumableIdentifiers?.contains(product_id)
                                             ?? false) && iap["cancellation_date"] == nil
                                     }
                                     return false
                                 }) {
-                                    if let dict = inApp as? [String: AnyObject],
-                                       let purchaseId = dict["product_id"] as? String  {
-                                        print("Found non-consumable purchase \(purchaseId)")
-                                    }
-                                    
+                                    let purchaseId =
+                                        ((inApp as? [String: AnyObject])?["product_id"] as? String)
+                                        ?? ""
+                                    print("Found non-consumable purchase \(purchaseId)")
                                     os_log(
                                         "6.Status: VALID. Found ACTIVE non-consumable purchase",
                                         log: OSLog.default,
                                         type: .info
                                     )
-                                    
                                     completion(true, nil)
                                     return
                                 }
@@ -346,14 +350,19 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
 
                                 return false
                             })
-                            
+
                             if activeSubscription != nil {
                                 os_log("7.Active: TRUE", log: OSLog.default, type: .info)
                                 print("7.Active: TRUE")
-                            } else {
-                                let json = (try? JSONEncoder().encode((array as? [[String: String]]) ?? [])) ?? Data()
+                            }
+                            else {
+                                let json =
+                                    (try? JSONEncoder().encode((array as? [[String: String]]) ?? []))
+                                    ?? Data()
                                 os_log("7.Active: FALSE", log: OSLog.default, type: .info)
-                                print("7.Active: FALSE \ndata: \(String(data: json, encoding: .utf8) ?? "null")")
+                                print(
+                                    "7.Active: FALSE \ndata: \(String(data: json, encoding: .utf8) ?? "null")"
+                                )
                             }
 
                             completion(activeSubscription != nil, nil)
@@ -380,22 +389,46 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                                 if let receipt = try? InAppReceipt.localReceipt() {
                                     if receipt.hasActiveAutoRenewablePurchases {
                                         print("Status: TEST hasActiveAutoRenewablePurchases")
-                                        os_log("7.Status: TEST hasActiveAutoRenewablePurchases", log: OSLog.default, type: .info)
+                                        os_log(
+                                            "7.Status: TEST hasActiveAutoRenewablePurchases",
+                                            log: OSLog.default,
+                                            type: .info
+                                        )
                                         hasValidReceipt = true
                                         completion(true, nil)
-                                    } else if let purchase = receipt.purchases.first(where: { (nonConsumableIdentifiers?.contains($0.productIdentifier) ?? false) && $0.cancellationDateString == nil }) {
-                                        print("Status: TEST found active purchase \(purchase.productIdentifier)")
-                                        os_log("7.Status: TEST found active purchase", log: OSLog.default, type: .info)
+                                    }
+                                    else if let purchase = receipt.purchases.first(where: {
+                                        (nonConsumableIdentifiers?.contains($0.productIdentifier)
+                                            ?? false) && $0.cancellationDateString == nil
+                                    }) {
+                                        print(
+                                            "Status: TEST found active purchase \(purchase.productIdentifier)"
+                                        )
+                                        os_log(
+                                            "7.Status: TEST found active purchase",
+                                            log: OSLog.default,
+                                            type: .info
+                                        )
                                         hasValidReceipt = true
                                         completion(true, nil)
-                                    } else {
+                                    }
+                                    else {
                                         print("Status: TEST FALSE")
-                                        os_log("7.Status: TEST FALSE", log: OSLog.default, type: .info)
+                                        os_log(
+                                            "7.Status: TEST FALSE",
+                                            log: OSLog.default,
+                                            type: .info
+                                        )
                                         completion(false, nil)
                                     }
-                                } else {
+                                }
+                                else {
                                     print("Status: TEST can't read local receipt")
-                                    os_log("7.Status: TEST can't read local receipt", log: OSLog.default, type: .info)
+                                    os_log(
+                                        "7.Status: TEST can't read local receipt",
+                                        log: OSLog.default,
+                                        type: .info
+                                    )
                                     completion(false, nil)
                                 }
                                 return
@@ -457,7 +490,7 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
 
      - Parameter product: The product you want to purchase
      */
-    public func purchase(_ product: SKProduct, _ completion: @escaping (String?, Error?) -> Void) {
+    public func purchase(_ product: SKProduct, _ completion: ((String?, Error?) -> Void)?) {
         print("Purchasing product: \(product.productIdentifier)")
 
         purchaseCompletion = completion
@@ -492,13 +525,18 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
     fileprivate func completeTransaction(_ transaction: SKPaymentTransaction) {
         print("Complete Transaction...")
 
-        provideContentForProductIdentifier(transaction.payment.productIdentifier, isRestore: false)
+        savePuchasedIdentifier(transaction.payment.productIdentifier)
+        provideContentForProductIdentifier(
+            transaction.original?.payment.productIdentifier,
+            isRestore: false
+        )
         SKPaymentQueue.default().finishTransaction(transaction)
     }
 
     fileprivate func restoreTransaction(_ transaction: SKPaymentTransaction) {
         print("Restore Transaction...")
 
+        savePuchasedIdentifier(transaction.original?.payment.productIdentifier)
         provideContentForProductIdentifier(
             transaction.original?.payment.productIdentifier,
             isRestore: true
@@ -510,27 +548,30 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
         print("Failed Transaction...")
         SKPaymentQueue.default().finishTransaction(transaction)
 
-        if let pc = purchaseCompletion {
+        if let pc = (self.purchaseCompletion ?? self.defaultPurchaseCompletion) {
             pc(nil, transaction.error)
         }
 
-        purchaseCompletion = nil
+        self.purchaseCompletion = nil
     }
 
     fileprivate func provideContentForProductIdentifier(
         _ productIdentifier: String?,
         isRestore: Bool
     ) {
+
+        if !isRestore, let pc = (self.purchaseCompletion ?? self.defaultPurchaseCompletion) {
+            pc(productIdentifier, nil)
+            self.purchaseCompletion = nil
+        }
+    }
+
+    fileprivate func savePuchasedIdentifier(_ productIdentifier: String?) {
         if let prodId = productIdentifier {
             purchasedProductIdentifiers.insert(prodId)
 
             UserDefaults.standard.set(true, forKey: prodId)
             UserDefaults.standard.synchronize()
-
-            if !isRestore, let pc = purchaseCompletion {
-                pc(productIdentifier, nil)
-                purchaseCompletion = nil
-            }
         }
     }
 
@@ -570,6 +611,15 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
         restoreCompletion = nil
     }
 
+    public func paymentQueue(
+        _ queue: SKPaymentQueue,
+        shouldAddStorePayment payment: SKPayment,
+        for product: SKProduct
+    ) -> Bool {
+        return (productIdentifiers?.contains(product.productIdentifier) ?? false)
+            || (nonConsumableIdentifiers?.contains(product.productIdentifier) ?? false)
+    }
+
     public func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
         for transaction in queue.transactions {
             switch transaction.transactionState {
@@ -582,6 +632,7 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                     productIdentifier = transaction.payment.productIdentifier
                 }
 
+                savePuchasedIdentifier(productIdentifier)
                 provideContentForProductIdentifier(productIdentifier, isRestore: true)
                 break
             default:

@@ -9,6 +9,8 @@ import StoreKit
 
 public protocol PurchaseManagerProtocol {
 
+    var defaultPurchaseCompletion: ((String?, Error?) -> Void)? { get set }
+    
     func addProducts(_ ids: Set<String>)
 
     func addNonConsumables(_ ids: Set<String>)
@@ -23,7 +25,7 @@ public protocol PurchaseManagerProtocol {
 
     func canMakePurchase() -> Bool
 
-    func purchase(_ product: SKProduct, _ completion: @escaping (String?, Error?) -> Void)
+    func purchase(_ product: SKProduct, _ completion: ((String?, Error?) -> Void)?)
 
     func registerObserver()
 

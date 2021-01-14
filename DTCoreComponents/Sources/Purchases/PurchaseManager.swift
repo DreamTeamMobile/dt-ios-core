@@ -15,14 +15,15 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
     fileprivate var purchaseCompletion: ((String?, Error?) -> Void)? = nil
 
     private let purchasesSecret: String
-
+    private var handleAppStoreRequest: Bool = false
+    
     var productIdentifiers: Set<String>?
     var nonConsumableIdentifiers: Set<String>?
     var productsRequest: SKProductsRequest?
     var completionHandler: ((_ products: [SKProduct]?, _ error: Error?) -> Void)?
     var purchasedProductIdentifiers = Set<String>()
 
-    public var defaultPurchaseCompletion: ((String?, Error?) -> Void)? = nil
+    public var appStorePurchaseCompletion: ((String?, Error?) -> Void)? = nil
 
     fileprivate var hasValidReceipt = false
 
@@ -548,7 +549,13 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
         print("Failed Transaction...")
         SKPaymentQueue.default().finishTransaction(transaction)
 
-        if let pc = (self.purchaseCompletion ?? self.defaultPurchaseCompletion) {
+        if handleAppStoreRequest {
+            if let pc = self.appStorePurchaseCompletion {
+                pc(nil, transaction.error)
+            }
+            handleAppStoreRequest = false
+        }
+        else if let pc = self.purchaseCompletion {
             pc(nil, transaction.error)
         }
 
@@ -559,10 +566,17 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
         _ productIdentifier: String?,
         isRestore: Bool
     ) {
-
-        if !isRestore, let pc = (self.purchaseCompletion ?? self.defaultPurchaseCompletion) {
-            pc(productIdentifier, nil)
-            self.purchaseCompletion = nil
+        if !isRestore {
+            if handleAppStoreRequest {
+                if let pc = self.appStorePurchaseCompletion {
+                    pc(productIdentifier, nil)
+                }
+                handleAppStoreRequest = false
+            }
+            else if let pc = self.purchaseCompletion {
+                pc(productIdentifier, nil)
+                self.purchaseCompletion = nil
+            }
         }
     }
 
@@ -616,8 +630,9 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
         shouldAddStorePayment payment: SKPayment,
         for product: SKProduct
     ) -> Bool {
-        return (productIdentifiers?.contains(product.productIdentifier) ?? false)
+        self.handleAppStoreRequest = (productIdentifiers?.contains(product.productIdentifier) ?? false)
             || (nonConsumableIdentifiers?.contains(product.productIdentifier) ?? false)
+        return self.handleAppStoreRequest
     }
 
     public func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'DTCoreComponents'
-  s.version = '1.3.2.21'
+  s.version = '1.3.2.22'
   s.license = 'MIT'
   s.summary = 'The set of extensions, frames, sources and other things that could be useful in iOS app development.'
   s.homepage = 'https://github.com/DreamTeamMobile/dt-ios-core'
@@ -26,10 +26,10 @@ Pod::Spec.new do |s|
   s.dependency 'KeychainAccess'
   s.dependency 'TPInAppReceipt'
   
-  s.pod_target_xcconfig = {
-    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
-  }
-  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  # s.pod_target_xcconfig = {
+  #   'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
+  # }
+  # s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
 end
 

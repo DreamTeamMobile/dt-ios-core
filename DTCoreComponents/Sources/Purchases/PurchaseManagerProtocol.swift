@@ -9,7 +9,7 @@ import StoreKit
 
 public protocol PurchaseManagerProtocol {
 
-    var defaultPurchaseCompletion: ((String?, Error?) -> Void)? { get set }
+    var appStorePurchaseCompletion: ((String?, Error?) -> Void)? { get set }
     
     func addProducts(_ ids: Set<String>)
 

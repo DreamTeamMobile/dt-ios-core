@@ -8,30 +8,60 @@ import UIKit
 import MessageUI
 
 public class InteractionManager: NSObject, InteractionProtocol {
-        
+    
+    // MARK: Fields
+    
+    private let subscription: SubscriptionManagerProtocol
+    
     // MARK: Properties
     
-    var emailSubject: String {
+    public var emailSubject: String {
         get {
-            return (Bundle.main.infoDictionary?["CFBundleName"] as? String) ?? ""
+            return (Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String) ?? ""
         }
     }
     
-    var emailBody: String {
+    public var emailBody: String {
         get {
             return """
 
 
 ---------------
-Application: \(Bundle.main.infoDictionary?["CFBundleName"] ?? "")
+Application: \(Bundle.main.infoDictionary?["CFBundleDisplayName"] ?? "")
 Device: \(UIDevice.current.modelName)
 iOS version: \(UIDevice.current.systemVersion)
 App version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "") (\(Bundle.main.infoDictionary?[kCFBundleVersionKey as String] ?? ""))
+Products: \(getPurchasedProductsIds())
 """
             }
         }
     
+    // MARK: Init
+    
+    public init(subscription: SubscriptionManagerProtocol) {
+        self.subscription = subscription
+        
+        super.init()
+    }
+    
     // MARK: Private methods
+    
+    private func getPurchasedProductsIds() -> String {
+        var purchasedProductIdentifiers = [String]()
+        
+        self.subscription.products.map({ $0.productIdentifier }).forEach { productIdentifier in
+            let isPurchased = UserDefaults.standard.bool(forKey: productIdentifier)
+            if isPurchased {
+                purchasedProductIdentifiers.append(productIdentifier)
+                print("Purchased: \(productIdentifier)")
+            }
+            else {
+                print("Not purchased: \(productIdentifier)")
+            }
+        }
+        
+        return purchasedProductIdentifiers.joined(separator: ", ")
+    }
         
     private func getLastPresentedControllerFor(_ viewController: UIViewController) -> UIViewController {
         if let presented = viewController.presentedViewController {
@@ -94,24 +124,36 @@ App version: \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "") 
         return false
     }
     
-    public func composeEmail(email: String, subject: String, body: String) {
+    public func composeEmail(email: String, subject: String, body: String, attachment: AttachmentModel?) {
         if MFMailComposeViewController.canSendMail() {
             let mailComposerVC = MFMailComposeViewController()
+            
             mailComposerVC.mailComposeDelegate = self
             mailComposerVC.setToRecipients([email])
             mailComposerVC.setSubject(subject)
             mailComposerVC.setMessageBody(body, isHTML: false)
+            
+            if let a = attachment {
+                mailComposerVC.addAttachmentData(a.data, mimeType: a.mimeType, fileName: a.fileName)
+            }
+            
             self.present(controller: mailComposerVC)
         }
     }
     
-    public func composeSupportEmail(email: String) {
+    public func composeSupportEmail(email: String, attachment: AttachmentModel?) {
         if MFMailComposeViewController.canSendMail() {
             let mailComposerVC = MFMailComposeViewController()
+            
             mailComposerVC.mailComposeDelegate = self
             mailComposerVC.setToRecipients([email])
             mailComposerVC.setSubject(self.emailSubject)
             mailComposerVC.setMessageBody(self.emailBody, isHTML: false)
+            
+            if let a = attachment {
+                mailComposerVC.addAttachmentData(a.data, mimeType: a.mimeType, fileName: a.fileName)
+            }
+            
             present(controller: mailComposerVC)
         }
     }

@@ -21,10 +21,10 @@ public class Device: NSObject {
                 case 1920, 2208:
                     return .iPhonePlus
                     
-                case 2436:
+                case 2436, 2532:
                     return .iPhoneX
                     
-                case 2688:
+                case 2688, 2778:
                     return .iPhoneXMax
                     
                 case 1792:

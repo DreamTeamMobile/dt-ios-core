@@ -25,12 +25,12 @@ public enum DeviceModel {
     case iPhonePlus
     
     /**
-     iPhone X/XS/11 Pro
+     iPhone X/XS/11 Pro / 12 / 12 Pro
      */
     case iPhoneX
     
     /**
-     iPhone X Max / 11 Pro Max
+     iPhone X Max / 11 Pro Max / 12 Pro Max
      */
     case iPhoneXMax
     

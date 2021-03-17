@@ -20,9 +20,9 @@ public protocol InteractionProtocol {
         
     func createEmail(email: String) -> Bool
     
-    func composeEmail(email: String, subject: String, body: String, attachment: AttachmentModel?)
+    func composeEmail(email: String, subject: String, body: String, attachment: AttachmentModel?) -> Bool
     
-    func composeSupportEmail(email: String, attachment: AttachmentModel?)
+    func composeSupportEmail(email: String, attachment: AttachmentModel?) -> Bool
     
     func changeIcon(_ name: String)
     

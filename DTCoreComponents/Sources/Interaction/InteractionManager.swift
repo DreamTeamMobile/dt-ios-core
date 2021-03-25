@@ -76,6 +76,12 @@ public class InteractionManager: NSObject, InteractionProtocol {
             return
         }
         let viewController = getLastPresentedControllerFor(rootViewController)
+        
+        if let activityController = controller as? UIActivityViewController, let popover = activityController.popoverPresentationController {
+            popover.sourceView = viewController.view
+            popover.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
+            popover.permittedArrowDirections = .any
+        }
 
         DispatchQueue.main.async {
             viewController.present(controller, animated: true, completion: nil)

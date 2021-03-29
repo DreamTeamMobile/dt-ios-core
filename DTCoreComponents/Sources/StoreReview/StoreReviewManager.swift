@@ -24,6 +24,15 @@ public class StoreReviewManager: NSObject, StoreReviewProtocol {
         self.lastRequestReviewDate = nil
     }
     
+    public func writeReview(appID: String, completion: ((Bool) -> Void)? = nil) -> Bool {
+        guard let url = URL(string: "https://apps.apple.com/app/id\(appID)?action=write-review") else { return false }
+        guard UIApplication.shared.canOpenURL(url) else { return false }
+        
+        UIApplication.shared.open(url, options: [:], completionHandler: completion)
+        
+        return true
+    }
+    
     public func requestReview() {
         DispatchQueue.main.async {
             SKStoreReviewController.requestReview()

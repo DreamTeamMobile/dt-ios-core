@@ -286,7 +286,7 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                             }
                             else if let purchase = receipt.purchases.first(where: {
                                 (nonConsumableIdentifiers?.contains($0.productIdentifier) ?? false)
-                                    && $0.cancellationDateString == nil
+                                    && $0.cancellationDate == nil
                             }) {
                                 print("Found non-consumable purchase \(purchase.productIdentifier)")
                                 os_log(
@@ -400,7 +400,7 @@ public class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTran
                                     }
                                     else if let purchase = receipt.purchases.first(where: {
                                         (nonConsumableIdentifiers?.contains($0.productIdentifier)
-                                            ?? false) && $0.cancellationDateString == nil
+                                            ?? false) && $0.cancellationDate == nil
                                     }) {
                                         print(
                                             "Status: TEST found active purchase \(purchase.productIdentifier)"

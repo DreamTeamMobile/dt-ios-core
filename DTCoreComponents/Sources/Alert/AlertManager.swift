@@ -48,15 +48,19 @@ open class AlertManager: NSObject, AlertProtocol {
                 message: message,
                 preferredStyle: UIAlertController.Style.alert
             )
-            alert.addAction(
-                UIAlertAction.init(
-                    title: AlertLocale.ok.localized,
-                    style: UIAlertAction.Style.default,
-                    handler: { alertAction -> Void in
-                        predicate?()
-                    }
-                )
+            
+            let okAction = UIAlertAction.init(
+                title: AlertLocale.ok.localized,
+                style: UIAlertAction.Style.default,
+                handler: { alertAction -> Void in
+                    predicate?()
+                }
             )
+            
+            okAction.accessibilityIdentifier = okAction.title
+            
+            alert.addAction(okAction)
+            
             return alert
         })
     }
@@ -73,28 +77,35 @@ open class AlertManager: NSObject, AlertProtocol {
                 message: message,
                 preferredStyle: UIAlertController.Style.alert
             )
-            alert.addAction(
-                UIAlertAction.init(
-                    title: AlertLocale.cancel.localized,
-                    style: UIAlertAction.Style.cancel,
-                    handler: nil
-                )
+            
+            let cancelAction = UIAlertAction.init(
+                title: AlertLocale.cancel.localized,
+                style: UIAlertAction.Style.cancel,
+                handler: nil
             )
+            
+            cancelAction.accessibilityIdentifier = cancelAction.title
+            
+            alert.addAction(cancelAction)
 
             let okStyle =
                 (isDestructive ?? false)
                 ? UIAlertAction.Style.destructive : UIAlertAction.Style.default
             let title =
                 (isDestructive ?? false) ? AlertLocale.delete.localized : AlertLocale.ok.localized
-            alert.addAction(
-                UIAlertAction.init(
-                    title: title,
-                    style: okStyle,
-                    handler: { alertAction -> Void in
-                        predicate()
-                    }
-                )
+            
+            let okAction = UIAlertAction.init(
+                title: title,
+                style: okStyle,
+                handler: { alertAction -> Void in
+                    predicate()
+                }
             )
+            
+            okAction.accessibilityIdentifier = okAction.title
+            
+            alert.addAction(okAction)
+            
             return alert
         })
     }
@@ -117,7 +128,11 @@ open class AlertManager: NSObject, AlertProtocol {
                         predicate(action.title ?? "")
                     }
                 )
+                
+                action.accessibilityIdentifier = action.title
+                
                 preferredAction = option.isPreferred ? action : nil
+                
                 alert.addAction(action)
             }
 
@@ -143,18 +158,22 @@ open class AlertManager: NSObject, AlertProtocol {
             )
 
             for option in options {
-                alert.addAction(
-                    UIAlertAction(
-                        title: option.0,
-                        style: option.1 ? .destructive : .default,
-                        handler: { (action) in predicate(action.title ?? "") }
-                    )
+                let action = UIAlertAction(
+                    title: option.0,
+                    style: option.1 ? .destructive : .default,
+                    handler: { (action) in predicate(action.title ?? "") }
                 )
+                
+                action.accessibilityIdentifier = action.title
+                
+                alert.addAction(action)
             }
 
-            alert.addAction(
-                UIAlertAction(title: AlertLocale.cancel.localized, style: .cancel, handler: nil)
-            )
+            let cancelAction = UIAlertAction(title: AlertLocale.cancel.localized, style: .cancel, handler: nil)
+            
+            cancelAction.accessibilityIdentifier = cancelAction.title
+            
+            alert.addAction(cancelAction)
 
             if let tintColor = self.tintColor {
                 alert.view.tintColor = tintColor
@@ -178,6 +197,7 @@ open class AlertManager: NSObject, AlertProtocol {
             )
 
             let datePicker = UIDatePicker()
+            datePicker.accessibilityIdentifier = "datePicker"
             datePicker.translatesAutoresizingMaskIntoConstraints = false
             datePicker.datePickerMode = .time
             datePicker.minuteInterval = 5
@@ -216,6 +236,7 @@ open class AlertManager: NSObject, AlertProtocol {
             }
 
             alert.view.addSubview(datePicker)
+            
             if let tintColor = self.tintColor {
                 alert.view.tintColor = tintColor
             }
@@ -231,27 +252,30 @@ open class AlertManager: NSObject, AlertProtocol {
             alert.view.translatesAutoresizingMaskIntoConstraints = false
             alert.view.heightAnchor.constraint(equalToConstant: 382).isActive = true
 
-            alert.addAction(
-                UIAlertAction(
-                    title: AlertLocale.confirm.localized,
-                    style: .default,
-                    handler: { (action) in
-                        predicate(datePicker.date)
-                    }
-                )
+            let confirmAction = UIAlertAction(
+                title: AlertLocale.confirm.localized,
+                style: .default,
+                handler: { (action) in
+                    predicate(datePicker.date)
+                }
             )
-            alert.addAction(
-                UIAlertAction(
-                    title: AlertLocale.clear.localized,
-                    style: .destructive,
-                    handler: { (action) in
-                        predicate(nil)
-                    }
-                )
+            confirmAction.accessibilityIdentifier = confirmAction.title
+            
+            let clearAction = UIAlertAction(
+                title: AlertLocale.clear.localized,
+                style: .destructive,
+                handler: { (action) in
+                    predicate(nil)
+                }
             )
-            alert.addAction(
-                UIAlertAction(title: AlertLocale.cancel.localized, style: .cancel, handler: nil)
-            )
+            clearAction.accessibilityIdentifier = clearAction.title
+            
+            let cancelAction = UIAlertAction(title: AlertLocale.cancel.localized, style: .cancel, handler: nil)
+            cancelAction.accessibilityIdentifier = cancelAction.title
+            
+            alert.addAction(confirmAction)
+            alert.addAction(clearAction)
+            alert.addAction(cancelAction)
 
             return alert
         })

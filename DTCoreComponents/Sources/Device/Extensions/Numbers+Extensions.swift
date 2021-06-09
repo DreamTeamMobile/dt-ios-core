@@ -8,6 +8,18 @@ import UIKit
 
 public extension CGFloat {
     
+    func setUp(by groups: [DevicesGroup: CGFloat]) -> CGFloat {
+        guard let value = groups[Device.devicesGroup] else { return self }
+        
+        return value
+    }
+    
+    func setUp(by models: [DeviceModel: CGFloat]) -> CGFloat {
+        guard let value = models[Device.current] else { return self }
+        
+        return value
+    }
+    
     func isSeModel(_ value: CGFloat) -> CGFloat {
         return Device.current == .iPhoneSE ? value : self
     }

@@ -63,6 +63,7 @@
 		0099864A2514AD1B00BAD617 /* AnalyticsManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009986172514AD1B00BAD617 /* AnalyticsManagerProtocol.swift */; };
 		0099864B2514AD1B00BAD617 /* AnalyticsProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009986182514AD1B00BAD617 /* AnalyticsProviderProtocol.swift */; };
 		0099864C2514AD1B00BAD617 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009986192514AD1B00BAD617 /* AnalyticsManager.swift */; };
+		00C6814526709648000EC9A4 /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C6814426709648000EC9A4 /* NSLayoutConstraint+Extensions.swift */; };
 		5108C98D91916DC6352D3FD6 /* Pods_DTCoreComponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8CDC0218E7548C2D89578C6 /* Pods_DTCoreComponents.framework */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +126,7 @@
 		009986172514AD1B00BAD617 /* AnalyticsManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsManagerProtocol.swift; sourceTree = "<group>"; };
 		009986182514AD1B00BAD617 /* AnalyticsProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsProviderProtocol.swift; sourceTree = "<group>"; };
 		009986192514AD1B00BAD617 /* AnalyticsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
+		00C6814426709648000EC9A4 /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
 		2A7C060AF82DDC45D32CA19C /* Pods-DTCoreComponents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DTCoreComponents.debug.xcconfig"; path = "Target Support Files/Pods-DTCoreComponents/Pods-DTCoreComponents.debug.xcconfig"; sourceTree = "<group>"; };
 		490833A0E40A429D6BFA9145 /* Pods-DTCoreComponents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DTCoreComponents.release.xcconfig"; path = "Target Support Files/Pods-DTCoreComponents/Pods-DTCoreComponents.release.xcconfig"; sourceTree = "<group>"; };
 		F8CDC0218E7548C2D89578C6 /* Pods_DTCoreComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DTCoreComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -310,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				009986032514AD1B00BAD617 /* Numbers+Extensions.swift */,
+				00C6814426709648000EC9A4 /* NSLayoutConstraint+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				009986382514AD1B00BAD617 /* Dictionary+Extensions.swift in Sources */,
 				0065B7DF2563DFED003C5A55 /* AnalyticsProviderSettings.swift in Sources */,
 				0099864B2514AD1B00BAD617 /* AnalyticsProviderProtocol.swift in Sources */,
+				00C6814526709648000EC9A4 /* NSLayoutConstraint+Extensions.swift in Sources */,
 				0099861B2514AD1B00BAD617 /* SubscriptionManager.swift in Sources */,
 				0099861F2514AD1B00BAD617 /* AlertManager.swift in Sources */,
 				0099864A2514AD1B00BAD617 /* AnalyticsManagerProtocol.swift in Sources */,

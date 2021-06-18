@@ -28,29 +28,8 @@ public class Router: NSObject, RouterProtocol {
     // MARK: Private methods
     
     private func present(vc: UIViewController, completion: (() -> Void)? = nil) {
-        guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
-        
-        let lastPresented = getLastPresentedControllerFor(rootViewController)
-        lastPresented.present(vc, animated: true, completion: completion)
-    }
-    
-    private func getLastPresentedControllerFor(_ viewController: UIViewController) -> UIViewController {
-        if let presented = viewController.presentedViewController {
-            return getLastPresentedControllerFor(presented)
-        }
-        
-        return viewController
-    }
-    
-    private func getLastPresentedControllerFor<ViewModel: BViewModel>(_ viewController: UIViewController, _ vmType: ViewModel.Type) -> UIViewController {
-        if let presented = viewController.presentedViewController {
-            if let bViCo = presented as? BaseViCoProtocol, let _ = bViCo.getViewModel() as? ViewModel {
-                return presented
-            }
-            return getLastPresentedControllerFor(presented)
-        }
-        
-        return viewController
+        let lastPresented = UIApplication.getLastPresentedControllerFor()
+        lastPresented?.present(vc, animated: true, completion: completion)
     }
     
     private func popViewController<ViewModel: BViewModel>(naviCon: UINavigationController, presented: Bool, vmType: ViewModel.Type, completion: (() -> Void)?) {
@@ -139,11 +118,11 @@ public class Router: NSObject, RouterProtocol {
         guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
         
         if let presented = rootViewController.presentedViewController {
-            let lastPresented = getLastPresentedControllerFor(presented, vmType)
+            let lastPresented = UIApplication.getLastPresentedControllerFor(presented, vmType)
             if let naviCon = lastPresented as? UINavigationController {
                 popViewController(naviCon: naviCon, presented: true, vmType: vmType, completion: completion)
             } else {
-                lastPresented.dismiss(animated: true) {
+                lastPresented?.dismiss(animated: true) {
                     completion?()
                 }
             }

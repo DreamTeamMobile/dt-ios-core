@@ -18,9 +18,14 @@ public class SwitchFrame: Frame {
     @BindableEquatable(false, false)
     public var isOn: Bool {
         didSet {
-            self.valueChanged?(self.isOn)
+            if oldValue != self.isOn {
+                self.valueChanged?(self.isOn)
+            }
         }
     }
+    
+    @Bindable(true)
+    public var enabled: Bool
     
     // MARK: Init
     

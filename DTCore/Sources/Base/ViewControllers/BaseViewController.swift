@@ -12,14 +12,22 @@ open class BaseViewController<T: BViewModel>: BViewController {
 
     // MARK: Methods
         
-    open func bindLoadingState() {
-        self.viewModel?.$isLoading.bindAndFire { [weak self] old, new in
-            if new {
-                self?.showLoader()
-            } else {
-                self?.hideLoader()
-            }
+    open func bindLoadingState(_ viewModel: T) {
+        viewModel.$isLoading.bindAndFire { [weak self] _, isLoading in
+            guard let self = self else { return }
+            
+            isLoading
+                ? self.showLoader()
+                : self.hideLoader()
         }
+    }
+    
+    open func setupControls() {
+        
+    }
+    
+    open func bindControls(_ viewModel: T) {
+        
     }
 
     // MARK: BaseViCoProtocol
@@ -36,27 +44,38 @@ open class BaseViewController<T: BViewModel>: BViewController {
 
     override open func viewDidLoad() {
         super.viewDidLoad()
-        bindLoadingState()
-        self.viewModel?.start()
+                
+        guard let viewModel = self.viewModel else { return }
+        
+        bindLoadingState(viewModel)
+        
+        viewModel.start()
+        
+        setupControls()
+        bindControls(viewModel)
     }
     
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.viewModel?.viewAppearing()
     }
     
     override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         self.viewModel?.viewAppeared()
     }
     
     override open func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         self.viewModel?.viewDisappearing()
     }
     
     override open func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        
         self.viewModel?.viewDisappeared()
     }
 

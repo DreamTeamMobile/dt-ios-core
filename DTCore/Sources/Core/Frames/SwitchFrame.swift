@@ -24,6 +24,9 @@ public class SwitchFrame: Frame {
         }
     }
     
+    @Bindable(true)
+    public var enabled: Bool
+    
     // MARK: Init
     
     public init(value: Bool) {

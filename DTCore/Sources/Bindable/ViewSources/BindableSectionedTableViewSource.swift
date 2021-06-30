@@ -116,7 +116,7 @@ open class BindableSectionedTableViewSource<ItemType, SectionType>: NSObject, UI
     ) -> [UITableViewRowAction]? {
         if let actions = self.tableFrame?.actions {
             return actions.map { act in
-                UITableViewRowAction(
+                let rowAction = UITableViewRowAction(
                     style: act.type == .normal ? .normal : .destructive,
                     title: act.title,
                     handler: { [weak self] action, indexPath in
@@ -127,6 +127,10 @@ open class BindableSectionedTableViewSource<ItemType, SectionType>: NSObject, UI
                         )
                     }
                 )
+                
+                rowAction.backgroundColor = act.backgroundColor
+                
+                return rowAction
             }
         }
         return []
@@ -139,8 +143,8 @@ open class BindableSectionedTableViewSource<ItemType, SectionType>: NSObject, UI
     ) -> UISwipeActionsConfiguration? {
 
         if let actions = self.tableFrame?.actions {
-            let actions = actions.map { act in
-                UIContextualAction(
+            let actions: [UIContextualAction] = actions.map { act in
+                let contextAct = UIContextualAction(
                     style: act.type == .normal ? .normal : .destructive,
                     title: act.title
                 ) { [weak self] action, sourceView, completion in
@@ -148,6 +152,16 @@ open class BindableSectionedTableViewSource<ItemType, SectionType>: NSObject, UI
                     guard let section = strongSelf.getSectionAt(indexPath.section), let item = strongSelf.getItemAt(indexPath) else { return }
                     act.action(Section<ItemType, SectionType>(type: section.type, items: [item]))
                 }
+                
+                if let img = act.image {
+                    contextAct.image = img
+                }
+                
+                if let color = act.backgroundColor {
+                    contextAct.backgroundColor = color
+                }
+                
+                return contextAct
             }
             return UISwipeActionsConfiguration(actions: actions)
         }

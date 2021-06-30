@@ -134,6 +134,10 @@ open class BindableTableViewSource<T> : NSObject, UITableViewDataSource, UITable
         return nil
     }
     
+    open func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        
+    }
+    
     open func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return false
     }

@@ -5,6 +5,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class CollectionFrame<T>: Frame {
     
@@ -46,16 +47,22 @@ public class CollectionFrame<T>: Frame {
 }
 
 public class CollectionActionFrame<T>: Frame {
-        
+    
+    public let image: UIImage?
+    
+    public let backgroundColor: UIColor?
+    
     public let type: ActionType
     
     public let title: String
     
     public let action: (T) -> Void
     
-    public init(type: ActionType, title: String, action: @escaping (T) -> Void) {
+    public init(type: ActionType, title: String, image: UIImage?, backgroundColor: UIColor?, action: @escaping (T) -> Void) {
         self.type = type
         self.title = title
+        self.image = image
+        self.backgroundColor = backgroundColor
         self.action = action
     }
     

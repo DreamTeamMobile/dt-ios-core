@@ -85,7 +85,7 @@ open class BindableTableViewSource<T> : NSObject, UITableViewDataSource, UITable
     open func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         if let actions = self.tableFrame?.actions {
             return actions.map { act in
-                UITableViewRowAction(
+                let rowAction = UITableViewRowAction(
                     style: act.type == .normal ? .normal : .destructive,
                     title: act.title,
                     handler: { [weak self] action, indexPath in
@@ -93,9 +93,45 @@ open class BindableTableViewSource<T> : NSObject, UITableViewDataSource, UITable
                         guard let item = strongSelf.getItemAt(indexPath) else { return }
                         act.action(item)
                 })
+                
+                rowAction.backgroundColor = act.backgroundColor
+                
+                return rowAction
             }
         }
         return []
+    }
+    
+    @available(iOS 11.0, *)
+    open func tableView(
+        _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+
+        if let actions = self.tableFrame?.actions {
+            let actions: [UIContextualAction] = actions.map { act in
+                let contextAct = UIContextualAction(
+                    style: act.type == .normal ? .normal : .destructive,
+                    title: act.title
+                ) { [weak self] action, sourceView, completion in
+                    guard let strongSelf = self else { return }
+                    guard let item = strongSelf.getItemAt(indexPath) else { return }
+                    act.action(item)
+                }
+                
+                if let img = act.image {
+                    contextAct.image = img
+                }
+                
+                if let color = act.backgroundColor {
+                    contextAct.backgroundColor = color
+                }
+                
+                return contextAct
+            }
+            return UISwipeActionsConfiguration(actions: actions)
+        }
+        return nil
     }
     
     open func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {

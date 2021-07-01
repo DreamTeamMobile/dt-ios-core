@@ -14,7 +14,7 @@ open class BindableTableViewSource<T> : NSObject, UITableViewDataSource, UITable
     
     public weak var tableFrame: CollectionFrame<T>?
     
-    public let cellIdentifier: String
+    public let cellIdentifiers: [String]
     
     // MARK: Init
         
@@ -22,17 +22,32 @@ open class BindableTableViewSource<T> : NSObject, UITableViewDataSource, UITable
         self.init(tableView: tableView, tableFrame: tableFrame, cellIdentifier: "")
     }
     
-    public init(tableView: UITableView, tableFrame: CollectionFrame<T>, cellIdentifier: String) {
+    convenience public init(tableView: UITableView, tableFrame: CollectionFrame<T>, cellIdentifier: String) {
+        self.init(tableView: tableView, tableFrame: tableFrame, cellIdentifiers: [cellIdentifier])
+    }
+    
+    public init(tableView: UITableView, tableFrame: CollectionFrame<T>, cellIdentifiers: [String]) {
         self.tableView = tableView
         self.tableFrame = tableFrame
-        self.cellIdentifier = cellIdentifier
+        self.cellIdentifiers = cellIdentifiers
         
         super.init()
         
+        registerCells()
+        setupCollectionView()
         setupBindings()
     }
     
     // MARK: Private methods
+    
+    private func registerCells() {
+        self.tableView?.register(identifiers: self.cellIdentifiers)
+    }
+    
+    private func setupCollectionView() {
+        self.tableView?.dataSource = self
+        self.tableView?.delegate = self
+    }
     
     private func setupBindings() {
         self.tableFrame?.$itemsSource.bindAndFire(onItemsSourceChanged)
@@ -49,7 +64,7 @@ open class BindableTableViewSource<T> : NSObject, UITableViewDataSource, UITable
     }
     
     open func getCellIdentifier(_ indexPath: IndexPath) -> String {
-        return self.cellIdentifier
+        return self.cellIdentifiers.first!
     }
     
     // MARK: UITableViewDataSource implementation

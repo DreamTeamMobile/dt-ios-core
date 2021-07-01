@@ -15,7 +15,7 @@ open class BindableSectionedTableViewSource<ItemType, SectionType>: NSObject, UI
 
     public weak var tableFrame: SectionedCollectionFrame<ItemType, SectionType>?
 
-    public let cellIdentifier: String
+    public let cellIdentifiers: [String]
 
     // MARK: Init
 
@@ -26,22 +26,33 @@ open class BindableSectionedTableViewSource<ItemType, SectionType>: NSObject, UI
         self.init(tableView: tableView, tableFrame: tableFrame, cellIdentifier: "")
     }
 
-    public init(
-        tableView: UITableView,
-        tableFrame: SectionedCollectionFrame<ItemType, SectionType>,
-        cellIdentifier: String
-    ) {
+    convenience public init(tableView: UITableView, tableFrame: SectionedCollectionFrame<ItemType, SectionType>, cellIdentifier: String) {
+        self.init(tableView: tableView, tableFrame: tableFrame, cellIdentifiers: [cellIdentifier])
+    }
+    
+    public init(tableView: UITableView, tableFrame: SectionedCollectionFrame<ItemType, SectionType>, cellIdentifiers: [String]) {
         self.tableView = tableView
         self.tableFrame = tableFrame
-        self.cellIdentifier = cellIdentifier
+        self.cellIdentifiers = cellIdentifiers
         
         super.init()
         
+        registerCells()
+        setupCollectionView()
         setupBindings()
     }
 
     // MARK: Private methods
 
+    private func registerCells() {
+        self.tableView?.register(identifiers: self.cellIdentifiers)
+    }
+    
+    private func setupCollectionView() {
+        self.tableView?.dataSource = self
+        self.tableView?.delegate = self
+    }
+    
     private func setupBindings() {
         self.tableFrame?.$itemsSource.bindAndFire(onItemsSourceChanged)
     }
@@ -49,7 +60,7 @@ open class BindableSectionedTableViewSource<ItemType, SectionType>: NSObject, UI
     // MARK: Methods
 
     open func getCellIdentifier(_ indexPath: IndexPath) -> String {
-        return self.cellIdentifier
+        return self.cellIdentifiers.first!
     }
 
     open func getItemAt(_ indexPath: IndexPath) -> ItemType? {

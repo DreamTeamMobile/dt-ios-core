@@ -54,6 +54,10 @@
 		0016B4302514AC43005FEA94 /* BViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0016B4002514AC43005FEA94 /* BViewController.swift */; };
 		0016B4312514AC43005FEA94 /* BaseNibLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0016B4022514AC43005FEA94 /* BaseNibLoadableView.swift */; };
 		0016B4322514AC43005FEA94 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0016B4032514AC43005FEA94 /* BaseView.swift */; };
+		005E791F268E0665000CFB40 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E791E268E0665000CFB40 /* UITableView+Extensions.swift */; };
+		005E7921268E06F9000CFB40 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E7920268E06F9000CFB40 /* UICollectionView+Extensions.swift */; };
+		005E7923268E0999000CFB40 /* BindableTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E7922268E0999000CFB40 /* BindableTextViewDelegate.swift */; };
+		005E7925268E0B61000CFB40 /* BindableTextView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E7924268E0B61000CFB40 /* BindableTextView+Extensions.swift */; };
 		00850F792514B3E600ECE3DC /* DTCore.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 00850F782514B3E600ECE3DC /* DTCore.podspec */; };
 		00C4ABC1267C92C20027DDE6 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C4ABC0267C92C20027DDE6 /* UIApplication+Extensions.swift */; };
 		00C4ABC4267C96080027DDE6 /* BindableSwitch+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C4ABC2267C96080027DDE6 /* BindableSwitch+Extensions.swift */; };
@@ -111,6 +115,10 @@
 		0016B4032514AC43005FEA94 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		002B8DDC247E591B0075D255 /* DTCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DTCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		002B8DE0247E591B0075D255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		005E791E268E0665000CFB40 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		005E7920268E06F9000CFB40 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		005E7922268E0999000CFB40 /* BindableTextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableTextViewDelegate.swift; sourceTree = "<group>"; };
+		005E7924268E0B61000CFB40 /* BindableTextView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BindableTextView+Extensions.swift"; sourceTree = "<group>"; };
 		00850F782514B3E600ECE3DC /* DTCore.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DTCore.podspec; path = ../DTCore.podspec; sourceTree = "<group>"; };
 		00C4ABC0267C92C20027DDE6 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		00C4ABC2267C96080027DDE6 /* BindableSwitch+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BindableSwitch+Extensions.swift"; sourceTree = "<group>"; };
@@ -220,6 +228,8 @@
 			children = (
 				0016B3E52514AC43005FEA94 /* UIViewController+Extensions.swift */,
 				00C4ABC0267C92C20027DDE6 /* UIApplication+Extensions.swift */,
+				005E791E268E0665000CFB40 /* UITableView+Extensions.swift */,
+				005E7920268E06F9000CFB40 /* UICollectionView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -258,13 +268,14 @@
 		0016B3EF2514AC43005FEA94 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				00C4ABC2267C96080027DDE6 /* BindableSwitch+Extensions.swift */,
-				00C4ABC3267C96080027DDE6 /* BindableTap+Extensions.swift */,
 				0016B3F02514AC43005FEA94 /* BindableButton+Extensions.swift */,
-				0016B3F12514AC43005FEA94 /* BindableTextField+Extensions.swift */,
 				0016B3F22514AC43005FEA94 /* BindableImageView+Extensions.swift */,
 				0016B3F32514AC43005FEA94 /* BindableLabel+Extensions.swift */,
 				0016B3F42514AC43005FEA94 /* BindableSearchBar+Extensions.swift */,
+				00C4ABC2267C96080027DDE6 /* BindableSwitch+Extensions.swift */,
+				00C4ABC3267C96080027DDE6 /* BindableTap+Extensions.swift */,
+				0016B3F12514AC43005FEA94 /* BindableTextField+Extensions.swift */,
+				005E7924268E0B61000CFB40 /* BindableTextView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -272,8 +283,9 @@
 		0016B3F52514AC43005FEA94 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				0016B3F62514AC43005FEA94 /* BindableTextFieldDelegate.swift */,
 				0016B3F72514AC43005FEA94 /* BindableSearchBarDelegate.swift */,
+				0016B3F62514AC43005FEA94 /* BindableTextFieldDelegate.swift */,
+				005E7922268E0999000CFB40 /* BindableTextViewDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -482,6 +494,7 @@
 				0016B4212514AC43005FEA94 /* BindableSectionedCollectionViewSource.swift in Sources */,
 				0016B42B2514AC43005FEA94 /* BaseTableViewCell.swift in Sources */,
 				0016B40B2514AC43005FEA94 /* ImageFrame.swift in Sources */,
+				005E7923268E0999000CFB40 /* BindableTextViewDelegate.swift in Sources */,
 				0016B4192514AC43005FEA94 /* RoutingProvider.swift in Sources */,
 				0016B4042514AC43005FEA94 /* Bindable.swift in Sources */,
 				0016B4152514AC43005FEA94 /* NavigationControllerHolder.swift in Sources */,
@@ -502,13 +515,16 @@
 				0016B4052514AC43005FEA94 /* BindableEquatable.swift in Sources */,
 				0016B4252514AC43005FEA94 /* BindableTextField+Extensions.swift in Sources */,
 				0016B41E2514AC43005FEA94 /* BindableCollectionViewCell.swift in Sources */,
+				005E7925268E0B61000CFB40 /* BindableTextView+Extensions.swift in Sources */,
 				0016B41A2514AC43005FEA94 /* Router.swift in Sources */,
+				005E7921268E06F9000CFB40 /* UICollectionView+Extensions.swift in Sources */,
 				0016B4172514AC43005FEA94 /* Transaction.swift in Sources */,
 				0016B41B2514AC43005FEA94 /* RouterProtocol.swift in Sources */,
 				0016B41F2514AC43005FEA94 /* BindableTableViewCell.swift in Sources */,
 				0016B4062514AC43005FEA94 /* BaseViewModel.swift in Sources */,
 				00C4ABC1267C92C20027DDE6 /* UIApplication+Extensions.swift in Sources */,
 				0016B40C2514AC43005FEA94 /* InputFrame.swift in Sources */,
+				005E791F268E0665000CFB40 /* UITableView+Extensions.swift in Sources */,
 				0016B4142514AC43005FEA94 /* ViewFrame.swift in Sources */,
 				0016B4232514AC43005FEA94 /* BindableTableViewSource.swift in Sources */,
 				0016B4262514AC43005FEA94 /* BindableImageView+Extensions.swift in Sources */,

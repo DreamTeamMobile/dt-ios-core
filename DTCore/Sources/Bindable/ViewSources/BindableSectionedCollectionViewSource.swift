@@ -14,7 +14,7 @@ open class BindableSectionedCollectionViewSource<ItemType, SectionType> : NSObje
 
     public weak var collectionFrame: SectionedCollectionFrame<ItemType, SectionType>?
 
-    public let cellIdentifier: String
+    public let cellIdentifiers: [String]
 
     // MARK: Init
         
@@ -22,17 +22,32 @@ open class BindableSectionedCollectionViewSource<ItemType, SectionType> : NSObje
         self.init(collectionView: collectionView, collectionFrame: collectionFrame, cellIdentifier: "")
     }
     
-    public init(collectionView: UICollectionView, collectionFrame: SectionedCollectionFrame<ItemType, SectionType>, cellIdentifier: String) {
+    convenience public init(collectionView: UICollectionView, collectionFrame: SectionedCollectionFrame<ItemType, SectionType>, cellIdentifier: String) {
+        self.init(collectionView: collectionView, collectionFrame: collectionFrame, cellIdentifiers: [cellIdentifier])
+    }
+    
+    public init(collectionView: UICollectionView, collectionFrame: SectionedCollectionFrame<ItemType, SectionType>, cellIdentifiers: [String]) {
         self.collectionView = collectionView
         self.collectionFrame = collectionFrame
-        self.cellIdentifier = cellIdentifier
+        self.cellIdentifiers = cellIdentifiers
         
         super.init()
         
+        registerCells()
+        setupCollectionView()
         setupBindings()
     }
 
     // MARK: Private methods
+
+    private func registerCells() {
+        self.collectionView?.register(identifiers: self.cellIdentifiers)
+    }
+    
+    private func setupCollectionView() {
+        self.collectionView?.dataSource = self
+        self.collectionView?.delegate = self
+    }
 
     private func setupBindings() {
         self.collectionFrame?.$itemsSource.bindAndFire(onItemsSourceChanged)
@@ -53,7 +68,7 @@ open class BindableSectionedCollectionViewSource<ItemType, SectionType> : NSObje
     }
 
     open func getCellIdentifier(_ indexPath: IndexPath) -> String {
-        return self.cellIdentifier
+        return self.cellIdentifiers.first!
     }
 
     // MARK: UICollectionViewDataSource implementation

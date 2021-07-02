@@ -19,7 +19,7 @@ open class BindableSectionedCollectionViewSource<ItemType, SectionType> : NSObje
     // MARK: Init
         
     convenience public init(collectionView: UICollectionView, collectionFrame: SectionedCollectionFrame<ItemType, SectionType>) {
-        self.init(collectionView: collectionView, collectionFrame: collectionFrame, cellIdentifier: "")
+        self.init(collectionView: collectionView, collectionFrame: collectionFrame, cellIdentifiers: [])
     }
     
     convenience public init(collectionView: UICollectionView, collectionFrame: SectionedCollectionFrame<ItemType, SectionType>, cellIdentifier: String) {

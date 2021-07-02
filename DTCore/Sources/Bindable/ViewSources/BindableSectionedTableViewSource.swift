@@ -23,7 +23,7 @@ open class BindableSectionedTableViewSource<ItemType, SectionType>: NSObject, UI
         tableView: UITableView,
         tableFrame: SectionedCollectionFrame<ItemType, SectionType>
     ) {
-        self.init(tableView: tableView, tableFrame: tableFrame, cellIdentifier: "")
+        self.init(tableView: tableView, tableFrame: tableFrame, cellIdentifiers: [])
     }
 
     convenience public init(tableView: UITableView, tableFrame: SectionedCollectionFrame<ItemType, SectionType>, cellIdentifier: String) {

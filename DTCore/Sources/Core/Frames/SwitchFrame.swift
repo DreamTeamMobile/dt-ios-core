@@ -4,7 +4,6 @@
 //  Copyright © 2019 DreamTeamMobile. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 public class SwitchFrame: Frame {

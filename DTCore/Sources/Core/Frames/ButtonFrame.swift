@@ -12,7 +12,7 @@ public protocol ButtonProtocol {
     
     var isSelected: Bool { get set }
     
-    func execute(_ parameter: AnyObject?)
+    func execute(_ parameter: Any?)
     
 }
 
@@ -45,7 +45,7 @@ public class ButtonFrame: Frame, ButtonProtocol {
     
     // MARK: Methods
     
-    @objc public func execute(_ parameter: AnyObject?) {
+    @objc public func execute(_ parameter: Any?) {
         self.onExecute()
     }
 }
@@ -71,7 +71,7 @@ public class TButtonFrame<T>: Frame, ButtonProtocol {
     
     // MARK: Methods
     
-    public func execute(_ parameter: AnyObject?) {
+    public func execute(_ parameter: Any?) {
         if let value = parameter as? T {
             self.onExecute(value)
         }

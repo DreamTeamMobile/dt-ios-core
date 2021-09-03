@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  ExampleApp
+
+  Created by Максим Евтух on 03.09.2021.
+  Copyright © 2021 DreamTeam Apps. All rights reserved.
+*/
+
+// MARK: Main
+
+"main.buttons.search" = "Search and table view";
+"main.buttons.input" = "Input and switch";
+"main.buttons.multiple" = "Multiple binding";

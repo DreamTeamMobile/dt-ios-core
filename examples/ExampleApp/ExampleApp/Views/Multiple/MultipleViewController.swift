@@ -26,14 +26,10 @@ class MultipleViewController: BaseViewController<MultipleViewModel> {
     @IBOutlet weak var label1: UILabel!
 
     @IBOutlet weak var label2: UILabel!
-
+    
     // MARK: Overrides
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        guard let viewModel = self.viewModel else { return }
-        
+    override func bindControls(_ viewModel: MultipleViewModel) {
         self.delegate = BindableTextFieldDelegate(inputFrame: viewModel.inputFrame, textField: self.textField)
     }
 

@@ -26,3 +26,7 @@
 // MARK: Search
 
 "search.selectionFormatter" = "%@ item selected";
+
+// MARK: Input
+
+"input.button" = "Button";

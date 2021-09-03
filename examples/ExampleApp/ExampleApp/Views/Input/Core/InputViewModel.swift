@@ -35,9 +35,18 @@ class InputViewModel: BaseViewModel<InputInitObj> {
     ) {
         self.alertManager = alertManager
         super.init()
-        self.inputFrame = InputFrame(onTextChanged: { [weak self] txt in self?.onTextChanged(txt) }, textValidator: nil)
-        self.switchFrame = SwitchFrame(value: false, onValueChanged: { [weak self] value in self?.onValueChanged(value) })
-        self.buttonFrame = ButtonFrame(title: "Button", onExecute: { [weak self] in self?.onButtonExecute() })
+        self.inputFrame = InputFrame(
+            onTextChanged: { [weak self] txt in self?.onTextChanged(txt) },
+            textValidator: nil
+        )
+        self.switchFrame = SwitchFrame(
+            value: false,
+            onValueChanged: { [weak self] value in self?.onValueChanged(value) }
+        )
+        self.buttonFrame = ButtonFrame(
+            title: InputLocale.button.localized,
+            onExecute: { [weak self] in self?.onButtonExecute() }
+        )
     }
 
     // MARK: Private methods
@@ -55,7 +64,7 @@ class InputViewModel: BaseViewModel<InputInitObj> {
     }
 
     private func onButtonExecute() {
-        self.alertManager.showAlert(message: "Success", predicate: nil)
+        self.alertManager.showAlert(message: AlertLocale.ok.localized, predicate: nil)
     }
 
     // MARK: Overrides

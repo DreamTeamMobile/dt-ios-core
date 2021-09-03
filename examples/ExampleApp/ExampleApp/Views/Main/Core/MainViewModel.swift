@@ -36,9 +36,18 @@ class MainViewModel: BaseViewModel<MainInitObject> {
 
         super.init()
 
-        self.searchAndTableButton = ButtonFrame(title: "Search and table view", onExecute: { [weak self] in self?.onSearchAndTableExecute() })
-        self.inputButton = ButtonFrame(title: "Input and switch", onExecute: { [weak self] in self?.onInputExecute() })
-        self.multipleButton = ButtonFrame(title: "Multiple binding", onExecute: { [weak self] in self?.onMultipleExecute() })
+        self.searchAndTableButton = ButtonFrame(
+            title: MainLocale.Buttons.search.localized,
+            onExecute: { [weak self] in self?.onSearchAndTableExecute() }
+        )
+        self.inputButton = ButtonFrame(
+            title: MainLocale.Buttons.input.localized,
+            onExecute: { [weak self] in self?.onInputExecute() }
+        )
+        self.multipleButton = ButtonFrame(
+            title: MainLocale.Buttons.multiple.localized,
+            onExecute: { [weak self] in self?.onMultipleExecute() }
+        )
     }
 
     // MARK: Private methods

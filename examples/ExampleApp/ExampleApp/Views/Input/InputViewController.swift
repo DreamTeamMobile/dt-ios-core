@@ -23,26 +23,12 @@ class InputViewController: BaseViewController<InputViewModel> {
     @IBOutlet weak var button: UIButton!
 
     // MARK: Overrides
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        guard let viewModel = self.viewModel else { return }
-
+    
+    override func bindControls(_ viewModel: InputViewModel) {
         self.textFieldDelegate = self.textField.bind(viewModel.inputFrame)
 
-        viewModel.switchFrame.$isOn.bindAndFire { [weak self] oldValue, newValue in
-            self?.switchControl.isOn = newValue
-        }
+        self.switchControl.bind(viewModel.switchFrame)
 
         self.button.bind(viewModel.buttonFrame)
     }
-
-    // MARK: Actions
-
-    @IBAction func switch_onValueChanged(_ sender: Any) {
-        guard let viewModel = self.viewModel else { return }
-        viewModel.switchFrame.isOn = self.switchControl.isOn
-    }
-
 }

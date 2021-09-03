@@ -24,24 +24,14 @@ class TableViewController: BaseViewController<TableViewModel> {
 
     // MARK: Overrides
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        guard let viewModel = self.viewModel else { return }
-
+    override func bindControls(_ viewModel: TableViewModel) {
         self.searchBarDelegate = self.searchBar.bind(viewModel.searchFrame)
-
-        self.tableView.register(TableViewCell.nib, forCellReuseIdentifier: TableViewCell.identifier)
 
         self.tableViewSource = TableViewSource(
             tableView: self.tableView,
             tableFrame: viewModel.collectionFrame,
             cellIdentifier: TableViewCell.identifier
         )
-
-        self.tableView.dataSource = self.tableViewSource
-        self.tableView.delegate = self.tableViewSource
-        self.tableView.reloadData()
     }
-
+    
 }

@@ -20,10 +20,7 @@ class MainViewController: BaseViewController<MainViewModel> {
     
     // MARK: Overrides
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        guard let viewModel = self.viewModel else { return }
+    override func bindControls(_ viewModel: MainViewModel) {
         self.searchAndTableBtn.bind(viewModel.searchAndTableButton)
         self.inputBtn.bind(viewModel.inputButton)
         self.multipleBtn.bind(viewModel.multipleButton)

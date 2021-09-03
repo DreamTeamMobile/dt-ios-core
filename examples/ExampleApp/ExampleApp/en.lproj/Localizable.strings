@@ -1,0 +1,32 @@
+/* 
+  Localizable.strings
+  ExampleApp
+
+  Created by Максим Евтух on 03.09.2021.
+  Copyright © 2021 DreamTeam Apps. All rights reserved.
+*/
+
+// MARK: Alert
+
+"alert.confirm" = "Confirm";
+"alert.cancel" = "Cancel";
+"alert.delete" = "Delete";
+"alert.ok" = "Ok";
+"alert.clear" = "Clear";
+"alert.edit" = "Edit";
+"alert.yes" = "Yes";
+"alert.no" = "No";
+
+// MARK: Main
+
+"main.buttons.search" = "Search and table view";
+"main.buttons.input" = "Input and switch";
+"main.buttons.multiple" = "Multiple binding";
+
+// MARK: Search
+
+"search.selectionFormatter" = "%@ item selected";
+
+// MARK: Input
+
+"input.button" = "Button";

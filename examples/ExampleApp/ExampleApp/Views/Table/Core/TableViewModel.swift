@@ -6,6 +6,7 @@
 //
 
 import DTCore
+import DTCoreComponents
 import Foundation
 import Guise
 
@@ -21,31 +22,45 @@ class TableViewModel: BaseViewModel<TableInitObject> {
 
     private let provider: TableProviderProtocol
 
+    private let alert: AlertProtocol
+
     // MARK: Init
 
     convenience required init() {
-        self.init(provider: Guise.resolve()!)
+        self.init(
+            provider: Guise.resolve()!,
+            alert: Guise.resolve()!
+        )
     }
 
     init(
-        provider: TableProviderProtocol
+        provider: TableProviderProtocol,
+        alert: AlertProtocol
     ) {
         self.provider = provider
-        
+        self.alert = alert
+
         super.init()
-        
+
         self.searchFrame = SearchFrame(
             searchingHandler: { [weak self] request in self?.onSearchExecute(request) },
             cancellationHandler: { [weak self] in self?.onCancelExecute() },
             clearingHandler: { [weak self] in self?.onCancelExecute() }
         )
-        self.collectionFrame = CollectionFrame<TableItemVm>(itemSelection: { [weak self] item in self?.onItemSelected(item) })
+        self.searchFrame.searchOnEveryTextChanging = true
+        
+        self.collectionFrame = CollectionFrame<TableItemVm>(itemSelection: { [weak self] item in
+            self?.onItemSelected(item)
+        })
     }
 
     // MARK: Private methods
 
     private func onItemSelected(_ item: TableItemVm) {
-
+        self.alert.showAlert(
+            message: String(format: SearchLocale.selectionFormatter.localized, item.title),
+            predicate: nil
+        )
     }
 
     private func onSearchExecute(_ searchRequest: String) {

@@ -6,6 +6,17 @@
   Copyright © 2021 DreamTeam Apps. All rights reserved.
 */
 
+// MARK: Alert
+
+"alert.confirm" = "Confirm";
+"alert.cancel" = "Cancel";
+"alert.delete" = "Delete";
+"alert.ok" = "Ok";
+"alert.clear" = "Clear";
+"alert.edit" = "Edit";
+"alert.yes" = "Yes";
+"alert.no" = "No";
+
 // MARK: Main
 
 "main.buttons.search" = "Search and table view";

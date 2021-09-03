@@ -13,6 +13,7 @@
 		009B59E3252CA52600DF93F9 /* MultipleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009B59E2252CA52600DF93F9 /* MultipleViewController.xib */; };
 		00F86E8A26E20D620038646A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00F86E8C26E20D620038646A /* Localizable.strings */; };
 		00F86E8F26E20DA00038646A /* MainLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F86E8E26E20DA00038646A /* MainLocale.swift */; };
+		00F86E9126E20F950038646A /* SearchLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F86E9026E20F950038646A /* SearchLocale.swift */; };
 		082389E123A75EE80080EE8B /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082389E023A75EE80080EE8B /* App.swift */; };
 		082389E623A75F500080EE8B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082389E523A75F500080EE8B /* MainViewModel.swift */; };
 		082389E823A75F5E0080EE8B /* MainInitObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082389E723A75F5E0080EE8B /* MainInitObject.swift */; };
@@ -59,6 +60,7 @@
 		009B59E2252CA52600DF93F9 /* MultipleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MultipleViewController.xib; sourceTree = "<group>"; };
 		00F86E8B26E20D620038646A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		00F86E8E26E20DA00038646A /* MainLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLocale.swift; sourceTree = "<group>"; };
+		00F86E9026E20F950038646A /* SearchLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocale.swift; sourceTree = "<group>"; };
 		02252D4A3FBE64B30FD45C74 /* Pods-ExampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleApp.release.xcconfig"; path = "Target Support Files/Pods-ExampleApp/Pods-ExampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		082389E023A75EE80080EE8B /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		082389E523A75F500080EE8B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				00F86E8E26E20DA00038646A /* MainLocale.swift */,
+				00F86E9026E20F950038646A /* SearchLocale.swift */,
 			);
 			name = Locale;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				082389FD23A773A30080EE8B /* InputViewController.swift in Sources */,
 				082389E623A75F500080EE8B /* MainViewModel.swift in Sources */,
 				08CB62D623AA06E10058C212 /* TableViewSource.swift in Sources */,
+				00F86E9126E20F950038646A /* SearchLocale.swift in Sources */,
 				082389E823A75F5E0080EE8B /* MainInitObject.swift in Sources */,
 				08CB62C023A9FB090058C212 /* TableViewModel.swift in Sources */,
 				08CB62CA23AA00E80058C212 /* TableProvider.swift in Sources */,

@@ -11,3 +11,7 @@
 "main.buttons.search" = "Search and table view";
 "main.buttons.input" = "Input and switch";
 "main.buttons.multiple" = "Multiple binding";
+
+// MARK: Search
+
+"search.selectionFormatter" = "%@ item selected";

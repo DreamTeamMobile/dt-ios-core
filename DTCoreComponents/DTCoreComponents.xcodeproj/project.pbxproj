@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0025032125F73AF700BF4492 /* AttachmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0025032025F73AF700BF4492 /* AttachmentModel.swift */; };
+		003DAE8926F1CCF5008D3BE7 /* AmplitudeAnalyticsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003DAE8826F1CCF5008D3BE7 /* AmplitudeAnalyticsProvider.swift */; };
 		0065B7B32563DEFD003C5A55 /* AnalyticsSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0065B7B22563DEFD003C5A55 /* AnalyticsSettings.swift */; };
 		0065B7DF2563DFED003C5A55 /* AnalyticsProviderSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0065B7DE2563DFED003C5A55 /* AnalyticsProviderSettings.swift */; };
 		0065B7E22563E152003C5A55 /* AnalyticsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0065B7E12563E152003C5A55 /* AnalyticsProvider.swift */; };
@@ -71,6 +72,7 @@
 		0025032025F73AF700BF4492 /* AttachmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentModel.swift; sourceTree = "<group>"; };
 		002B8DDC247E591B0075D255 /* DTCoreComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DTCoreComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		002B8DE0247E591B0075D255 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		003DAE8826F1CCF5008D3BE7 /* AmplitudeAnalyticsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplitudeAnalyticsProvider.swift; sourceTree = "<group>"; };
 		0065B7B22563DEFD003C5A55 /* AnalyticsSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsSettings.swift; sourceTree = "<group>"; };
 		0065B7DE2563DFED003C5A55 /* AnalyticsProviderSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsProviderSettings.swift; sourceTree = "<group>"; };
 		0065B7E12563E152003C5A55 /* AnalyticsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsProvider.swift; sourceTree = "<group>"; };
@@ -178,6 +180,14 @@
 				00850F742514B3BA00ECE3DC /* DTCoreComponents.podspec */,
 			);
 			name = podspec;
+			sourceTree = "<group>";
+		};
+		003DAE8726F1CCD7008D3BE7 /* Amplitude */ = {
+			isa = PBXGroup;
+			children = (
+				003DAE8826F1CCF5008D3BE7 /* AmplitudeAnalyticsProvider.swift */,
+			);
+			path = Amplitude;
 			sourceTree = "<group>";
 		};
 		009985D22514AD1B00BAD617 /* Sources */ = {
@@ -342,12 +352,13 @@
 		009986092514AD1B00BAD617 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
-				0099860A2514AD1B00BAD617 /* Firebase */,
-				0099860C2514AD1B00BAD617 /* AppMetrica */,
-				0099860E2514AD1B00BAD617 /* Facebook */,
-				009986102514AD1B00BAD617 /* AppsFlyer */,
-				009986122514AD1B00BAD617 /* AppCenter */,
 				0065B7E12563E152003C5A55 /* AnalyticsProvider.swift */,
+				003DAE8726F1CCD7008D3BE7 /* Amplitude */,
+				009986122514AD1B00BAD617 /* AppCenter */,
+				0099860C2514AD1B00BAD617 /* AppMetrica */,
+				009986102514AD1B00BAD617 /* AppsFlyer */,
+				0099860E2514AD1B00BAD617 /* Facebook */,
+				0099860A2514AD1B00BAD617 /* Firebase */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -581,6 +592,7 @@
 				0099861E2514AD1B00BAD617 /* PurchaseManager.swift in Sources */,
 				009986272514AD1B00BAD617 /* Product.swift in Sources */,
 				0099863D2514AD1B00BAD617 /* DevicesList.swift in Sources */,
+				003DAE8926F1CCF5008D3BE7 /* AmplitudeAnalyticsProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

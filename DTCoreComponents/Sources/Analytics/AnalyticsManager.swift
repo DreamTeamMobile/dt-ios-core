@@ -38,6 +38,8 @@ public class AnalyticsManager: NSObject, AnalyticsManagerProtocol {
             return AnalyticsLazyRef(type: type, action: { AppCenterAnalyticsProvider(settings: settings) })
         case .appMetrica:
             return AnalyticsLazyRef(type: type, action: { AppMetricaAnalyticsProvider(settings: settings) })
+        case .amplitude:
+            return AnalyticsLazyRef(type: type, action: { AmplitudeAnalyticsProvider(settings: settings) })
         }
     }
     

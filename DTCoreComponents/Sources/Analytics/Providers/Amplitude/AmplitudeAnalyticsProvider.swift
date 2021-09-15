@@ -8,6 +8,7 @@
 
 import Foundation
 import Amplitude
+import StoreKit
 
 class AmplitudeAnalyticsProvider: AnalyticsProvider, AnalyticsProviderProtocol {
     

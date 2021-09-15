@@ -17,7 +17,7 @@ class AmplitudeAnalyticsProvider: AnalyticsProvider, AnalyticsProviderProtocol {
     }
 
     public func logEvent(event: String, parameters: [String: Any]?) {
-        Amplitude.instance().logEvent(event, withEventProperties: params as? [String: String])
+        Amplitude.instance().logEvent(event, withEventProperties: parameters as? [String: String])
     }
 
     public func logPurchaseEvent(product: SKProduct, event: String) {

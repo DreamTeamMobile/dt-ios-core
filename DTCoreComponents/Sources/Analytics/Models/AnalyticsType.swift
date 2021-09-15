@@ -9,9 +9,10 @@
 import Foundation
 
 public enum AnalyticsType {
-    case firebase
-    case facebook
-    case appsFlyer
+    case amplitude
     case appCenter
     case appMetrica
+    case appsFlyer
+    case firebase
+    case facebook
 }

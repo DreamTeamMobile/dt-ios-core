@@ -16,6 +16,7 @@ Pod::Spec.new do |s|
 
   s.source_files = 'DTCoreComponents/Sources/**/*.swift'
   
+  s.dependency 'Amplitude'
   s.dependency 'AppCenter'
   s.dependency 'AppsFlyerFramework'
   s.dependency 'FBSDKCoreKit'

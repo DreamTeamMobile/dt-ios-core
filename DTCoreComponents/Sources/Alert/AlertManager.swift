@@ -30,14 +30,34 @@ open class AlertManager: NSObject, AlertProtocol {
 
     // MARK: Methods
 
-    public func present(alertPredicate: @escaping () -> UIViewController) {
+    public func present(alertPredicate: @escaping () -> UIAlertController) {
         guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else {
             return
         }
+
         let viewController = getLastPresentedControllerFor(rootViewController)
+        let controller = alertPredicate()
+
+        if let popover = controller.popoverPresentationController {
+            let viCo =
+                (viewController as? UINavigationController)?.topViewController ?? viewController
+            let firstResponder = viCo.view.findFirstResponder()
+
+            popover.sourceView =
+                firstResponder ?? viCo.navigationController?.navigationBar ?? viCo.view
+            popover.sourceRect =
+                popover.sourceView?.frame
+                ?? CGRect(
+                    x: UIScreen.main.bounds.width / 2,
+                    y: UIScreen.main.bounds.height / 2,
+                    width: 0,
+                    height: 0
+                )
+            popover.permittedArrowDirections = .any
+        }
 
         DispatchQueue.main.async {
-            viewController.present(alertPredicate(), animated: true, completion: nil)
+            viewController.present(controller, animated: true, completion: nil)
         }
     }
 
@@ -48,7 +68,7 @@ open class AlertManager: NSObject, AlertProtocol {
                 message: message,
                 preferredStyle: UIAlertController.Style.alert
             )
-            
+
             let okAction = UIAlertAction.init(
                 title: AlertLocale.ok.localized,
                 style: UIAlertAction.Style.default,
@@ -56,11 +76,11 @@ open class AlertManager: NSObject, AlertProtocol {
                     predicate?()
                 }
             )
-            
+
             okAction.accessibilityIdentifier = okAction.title
-            
+
             alert.addAction(okAction)
-            
+
             return alert
         })
     }
@@ -77,15 +97,15 @@ open class AlertManager: NSObject, AlertProtocol {
                 message: message,
                 preferredStyle: UIAlertController.Style.alert
             )
-            
+
             let cancelAction = UIAlertAction.init(
                 title: AlertLocale.cancel.localized,
                 style: UIAlertAction.Style.cancel,
                 handler: nil
             )
-            
+
             cancelAction.accessibilityIdentifier = cancelAction.title
-            
+
             alert.addAction(cancelAction)
 
             let okStyle =
@@ -93,7 +113,7 @@ open class AlertManager: NSObject, AlertProtocol {
                 ? UIAlertAction.Style.destructive : UIAlertAction.Style.default
             let title =
                 (isDestructive ?? false) ? AlertLocale.delete.localized : AlertLocale.ok.localized
-            
+
             let okAction = UIAlertAction.init(
                 title: title,
                 style: okStyle,
@@ -101,11 +121,11 @@ open class AlertManager: NSObject, AlertProtocol {
                     predicate()
                 }
             )
-            
+
             okAction.accessibilityIdentifier = okAction.title
-            
+
             alert.addAction(okAction)
-            
+
             return alert
         })
     }
@@ -128,11 +148,11 @@ open class AlertManager: NSObject, AlertProtocol {
                         predicate(action.title ?? "")
                     }
                 )
-                
+
                 action.accessibilityIdentifier = action.title
-                
+
                 preferredAction = option.isPreferred ? action : nil
-                
+
                 alert.addAction(action)
             }
 
@@ -157,22 +177,28 @@ open class AlertManager: NSObject, AlertProtocol {
                 preferredStyle: .actionSheet
             )
 
+            alert.popoverPresentationController
+
             for option in options {
                 let action = UIAlertAction(
                     title: option.0,
                     style: option.1 ? .destructive : .default,
                     handler: { (action) in predicate(action.title ?? "") }
                 )
-                
+
                 action.accessibilityIdentifier = action.title
-                
+
                 alert.addAction(action)
             }
 
-            let cancelAction = UIAlertAction(title: AlertLocale.cancel.localized, style: .cancel, handler: nil)
-            
+            let cancelAction = UIAlertAction(
+                title: AlertLocale.cancel.localized,
+                style: .cancel,
+                handler: nil
+            )
+
             cancelAction.accessibilityIdentifier = cancelAction.title
-            
+
             alert.addAction(cancelAction)
 
             if let tintColor = self.tintColor {
@@ -236,7 +262,7 @@ open class AlertManager: NSObject, AlertProtocol {
             }
 
             alert.view.addSubview(datePicker)
-            
+
             if let tintColor = self.tintColor {
                 alert.view.tintColor = tintColor
             }
@@ -260,7 +286,7 @@ open class AlertManager: NSObject, AlertProtocol {
                 }
             )
             confirmAction.accessibilityIdentifier = confirmAction.title
-            
+
             let clearAction = UIAlertAction(
                 title: AlertLocale.clear.localized,
                 style: .destructive,
@@ -269,10 +295,14 @@ open class AlertManager: NSObject, AlertProtocol {
                 }
             )
             clearAction.accessibilityIdentifier = clearAction.title
-            
-            let cancelAction = UIAlertAction(title: AlertLocale.cancel.localized, style: .cancel, handler: nil)
+
+            let cancelAction = UIAlertAction(
+                title: AlertLocale.cancel.localized,
+                style: .cancel,
+                handler: nil
+            )
             cancelAction.accessibilityIdentifier = cancelAction.title
-            
+
             alert.addAction(confirmAction)
             alert.addAction(clearAction)
             alert.addAction(cancelAction)

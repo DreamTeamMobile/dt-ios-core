@@ -14,7 +14,7 @@ open class ConfigModel {
 
     public let subscrLimit: SubscriptionConfig?
 
-    public let products: [Product]
+    public let products: [RCProduct]
 
     public let subscrScreens: [SubscriptionScreen]
 
@@ -26,7 +26,7 @@ open class ConfigModel {
         subscrIntro: SubscriptionConfig?,
         subscrLaunch: SubscriptionConfig?,
         subscrLimit: SubscriptionConfig?,
-        products: [Product],
+        products: [RCProduct],
         subscrScreens: [SubscriptionScreen],
         limitsConfig: LimitsConfig?,
         welcomeConfig: WelcomeConfig?

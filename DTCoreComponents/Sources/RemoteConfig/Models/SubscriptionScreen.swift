@@ -15,10 +15,10 @@ open class SubscriptionScreen : Codable {
     public let achievements: AchievementsConfig?
     public let button: Control
     public let closeButton: Control
-    public let products: [ProductConfig]
+    public let products: [RCProductConfig]
     public let purchases: PurchasesControl?
     
-    public init(id: String, type: String, title: Control?, subtitle: Control?, desc: Control?, achievements: AchievementsConfig?, button: Control, closeButton: Control, products: [ProductConfig], purchases: PurchasesControl?) {
+    public init(id: String, type: String, title: Control?, subtitle: Control?, desc: Control?, achievements: AchievementsConfig?, button: Control, closeButton: Control, products: [RCProductConfig], purchases: PurchasesControl?) {
         self.id = id
         self.type = type
         self.title = title

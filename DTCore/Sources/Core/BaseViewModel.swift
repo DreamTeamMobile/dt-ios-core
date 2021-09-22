@@ -18,7 +18,7 @@ public protocol BaseVmProtocol: class {
     
     func viewDisappearing()
     
-    func viewDisappeared()
+    func viewDisappeared()  
     
 }
 

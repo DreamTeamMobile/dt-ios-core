@@ -6,7 +6,7 @@
 
 import Foundation
 
-open class ProductConfig : Codable {
+open class RCProductConfig : Codable {
     public let id: String
     public let selected: Bool
     

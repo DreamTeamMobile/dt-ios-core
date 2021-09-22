@@ -6,7 +6,7 @@
 
 import Foundation
 
-open class Product : Codable {
+open class RCProduct : Codable {
     
     public let id: String
     public let productId: String
@@ -16,7 +16,7 @@ open class Product : Codable {
     public let trial: [String: String]?
     public let promotion: [String: String]?
     
-    public init(id: String, productId: String, title: [String : String]?, subtitle: [String : String]?, price: Product.Price?, trial: [String : String]?, promotion: [String : String]?) {
+    public init(id: String, productId: String, title: [String : String]?, subtitle: [String : String]?, price: RCProduct.Price?, trial: [String : String]?, promotion: [String : String]?) {
         self.id = id
         self.productId = productId
         self.title = title

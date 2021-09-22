@@ -25,8 +25,8 @@
 		009986232514AD1B00BAD617 /* SubscriptionConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009985E12514AD1B00BAD617 /* SubscriptionConfig.swift */; };
 		009986242514AD1B00BAD617 /* AchievementsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009985E22514AD1B00BAD617 /* AchievementsConfig.swift */; };
 		009986252514AD1B00BAD617 /* WelcomeConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009985E32514AD1B00BAD617 /* WelcomeConfig.swift */; };
-		009986262514AD1B00BAD617 /* ProductConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009985E42514AD1B00BAD617 /* ProductConfig.swift */; };
-		009986272514AD1B00BAD617 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009985E52514AD1B00BAD617 /* Product.swift */; };
+		009986262514AD1B00BAD617 /* RCProductConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009985E42514AD1B00BAD617 /* RCProductConfig.swift */; };
+		009986272514AD1B00BAD617 /* RCProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009985E52514AD1B00BAD617 /* RCProduct.swift */; };
 		009986282514AD1B00BAD617 /* SubscriptionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009985E62514AD1B00BAD617 /* SubscriptionScreen.swift */; };
 		009986292514AD1B00BAD617 /* PurchasesControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009985E72514AD1B00BAD617 /* PurchasesControl.swift */; };
 		0099862A2514AD1B00BAD617 /* LimitsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009985E82514AD1B00BAD617 /* LimitsConfig.swift */; };
@@ -89,8 +89,8 @@
 		009985E12514AD1B00BAD617 /* SubscriptionConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionConfig.swift; sourceTree = "<group>"; };
 		009985E22514AD1B00BAD617 /* AchievementsConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementsConfig.swift; sourceTree = "<group>"; };
 		009985E32514AD1B00BAD617 /* WelcomeConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeConfig.swift; sourceTree = "<group>"; };
-		009985E42514AD1B00BAD617 /* ProductConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductConfig.swift; sourceTree = "<group>"; };
-		009985E52514AD1B00BAD617 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		009985E42514AD1B00BAD617 /* RCProductConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCProductConfig.swift; sourceTree = "<group>"; };
+		009985E52514AD1B00BAD617 /* RCProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCProduct.swift; sourceTree = "<group>"; };
 		009985E62514AD1B00BAD617 /* SubscriptionScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionScreen.swift; sourceTree = "<group>"; };
 		009985E72514AD1B00BAD617 /* PurchasesControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesControl.swift; sourceTree = "<group>"; };
 		009985E82514AD1B00BAD617 /* LimitsConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LimitsConfig.swift; sourceTree = "<group>"; };
@@ -253,8 +253,8 @@
 				009985E12514AD1B00BAD617 /* SubscriptionConfig.swift */,
 				009985E22514AD1B00BAD617 /* AchievementsConfig.swift */,
 				009985E32514AD1B00BAD617 /* WelcomeConfig.swift */,
-				009985E42514AD1B00BAD617 /* ProductConfig.swift */,
-				009985E52514AD1B00BAD617 /* Product.swift */,
+				009985E42514AD1B00BAD617 /* RCProductConfig.swift */,
+				009985E52514AD1B00BAD617 /* RCProduct.swift */,
 				009985E62514AD1B00BAD617 /* SubscriptionScreen.swift */,
 				009985E72514AD1B00BAD617 /* PurchasesControl.swift */,
 				009985E82514AD1B00BAD617 /* LimitsConfig.swift */,
@@ -552,7 +552,7 @@
 				009986312514AD1B00BAD617 /* UIView+Extensions.swift in Sources */,
 				009986452514AD1B00BAD617 /* FacebookAnalyticsProvider.swift in Sources */,
 				0099863A2514AD1B00BAD617 /* Locale+Extensions.swift in Sources */,
-				009986262514AD1B00BAD617 /* ProductConfig.swift in Sources */,
+				009986262514AD1B00BAD617 /* RCProductConfig.swift in Sources */,
 				0025032125F73AF700BF4492 /* AttachmentModel.swift in Sources */,
 				009986392514AD1B00BAD617 /* Date+Extensions.swift in Sources */,
 				009986442514AD1B00BAD617 /* AppMetricaAnalyticsProvider.swift in Sources */,
@@ -590,7 +590,7 @@
 				0099862D2514AD1B00BAD617 /* RemoteConfigManager.swift in Sources */,
 				009986342514AD1B00BAD617 /* UIImage+Extensions.swift in Sources */,
 				0099861E2514AD1B00BAD617 /* PurchaseManager.swift in Sources */,
-				009986272514AD1B00BAD617 /* Product.swift in Sources */,
+				009986272514AD1B00BAD617 /* RCProduct.swift in Sources */,
 				0099863D2514AD1B00BAD617 /* DevicesList.swift in Sources */,
 				003DAE8926F1CCF5008D3BE7 /* AmplitudeAnalyticsProvider.swift in Sources */,
 			);

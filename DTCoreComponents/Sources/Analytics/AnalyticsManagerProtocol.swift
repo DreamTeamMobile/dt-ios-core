@@ -5,6 +5,7 @@
 //
 
 import StoreKit
+import FBSDKCoreKit
 
 public protocol AnalyticsManagerProtocol {
     

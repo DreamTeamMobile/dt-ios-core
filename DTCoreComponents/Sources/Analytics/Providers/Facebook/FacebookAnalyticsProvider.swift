@@ -15,7 +15,7 @@ public class FacebookAnalyticsProvider: AnalyticsProvider, AnalyticsProviderProt
     }
 
     public func logEvent(event: String, parameters: [String: Any]?) {
-        let newParams: [AppEvents.ParameterName: Any] = parameters?.map{ key, value in (AppEvents.ParameterName(key), value)
+        let newParams: [AppEvents.ParameterName: Any] = parameters?.map<[AppEvents.ParameterName: Any]>{ key, value in (AppEvents.ParameterName(key), value)
         })
         AppEvents.logEvent(AppEvents.Name(rawValue: event), parameters: newParams ?? [:])
     }

@@ -138,6 +138,7 @@ public class Router: NSObject, RouterProtocol {
     public func resolveRequestedNavigations() {
         if let transaction = self.requestedTransactions.first {
             self.requestedTransactions.removeFirst()
+            
             DispatchQueue.main.async {
                 self.navigateTo(vmType: transaction.vmType, initObj: transaction.initObj, navigationType: transaction.navigationType) {
                     self.resolveRequestedNavigations()

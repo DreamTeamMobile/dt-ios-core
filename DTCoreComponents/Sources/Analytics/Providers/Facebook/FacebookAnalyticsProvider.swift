@@ -18,7 +18,7 @@ public class FacebookAnalyticsProvider: AnalyticsProvider, AnalyticsProviderProt
         let newParams: [AppEvents.ParameterName: Any]? = Dictionary(uniqueKeysWithValues: parameters?.map{ key, value in
             (AppEvents.ParameterName(key), value)
         } ?? [])
-        AppEvents.logEvent(AppEvents.Name(rawValue: event), parameters: newParams ?? [:])
+        AppEvents.shared.logEvent(AppEvents.Name(rawValue: event), parameters: newParams ?? [:])
     }
 
     public func logPurchaseEvent(product: SKProduct, event: String) {
@@ -38,7 +38,7 @@ public class FacebookAnalyticsProvider: AnalyticsProvider, AnalyticsProviderProt
         let newParams: [AppEvents.ParameterName: Any]? = Dictionary(uniqueKeysWithValues: parameters?.map{ key, value in
             (AppEvents.ParameterName(key), value)
         } ?? [])
-        AppEvents.logEvent(AppEvents.Name(rawValue: event), parameters: newParams ?? [:])
+        AppEvents.shared.logEvent(AppEvents.Name(rawValue: event), parameters: newParams ?? [:])
     }
 
     public func logSubscription(product: SKProduct) {
@@ -58,7 +58,7 @@ public class FacebookAnalyticsProvider: AnalyticsProvider, AnalyticsProviderProt
         let newParams: [AppEvents.ParameterName: Any]? = Dictionary(uniqueKeysWithValues: parameters?.map{ key, value in
             (AppEvents.ParameterName(key), value)
         } ?? [])
-        AppEvents.logEvent(AppEvents.Name(rawValue: "Subscribe"), parameters: newParams ?? [:])
+        AppEvents.shared.logEvent(AppEvents.Name(rawValue: "Subscribe"), parameters: newParams ?? [:])
     }
 
     public func logPurchase(product: SKProduct) {
@@ -69,10 +69,13 @@ public class FacebookAnalyticsProvider: AnalyticsProvider, AnalyticsProviderProt
         var params = parameters ?? [String: Any]()
         params["productId"] = product.productIdentifier
         
-        AppEvents.logPurchase(
-            shouldLogPrice() ? Double(truncating: product.price) : 0,
+        let newParams: [AppEvents.ParameterName: Any]? = Dictionary(uniqueKeysWithValues: params.map{ key, value in
+            (AppEvents.ParameterName(key), value)
+        } ?? [])
+        AppEvents.shared.logPurchase(
+            amount: shouldLogPrice() ? Double(truncating: product.price) : 0,
             currency: shouldLogPrice() ? (product.priceLocale.currencyCode ?? "") : "",
-            parameters: parameters ?? [:])
+            parameters: newParams ?? [:])
     }
 
 }

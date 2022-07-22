@@ -76,7 +76,7 @@
 		0065B7B22563DEFD003C5A55 /* AnalyticsSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsSettings.swift; sourceTree = "<group>"; };
 		0065B7DE2563DFED003C5A55 /* AnalyticsProviderSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsProviderSettings.swift; sourceTree = "<group>"; };
 		0065B7E12563E152003C5A55 /* AnalyticsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsProvider.swift; sourceTree = "<group>"; };
-		00850F742514B3BA00ECE3DC /* DTCoreComponents.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DTCoreComponents.podspec; path = ../DTCoreComponents.podspec; sourceTree = "<group>"; };
+		00850F742514B3BA00ECE3DC /* DTCoreComponents.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = DTCoreComponents.podspec; path = ../DTCoreComponents.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		009985D42514AD1B00BAD617 /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		009985D62514AD1B00BAD617 /* SubscriptionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
 		009985D72514AD1B00BAD617 /* SubscriptionManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionManagerProtocol.swift; sourceTree = "<group>"; };

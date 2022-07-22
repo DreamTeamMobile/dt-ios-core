@@ -73,7 +73,7 @@ open class AlertManager: NSObject, AlertProtocol {
                 message: message,
                 preferredStyle: UIAlertController.Style.alert
             )
-            if self.interfaceStyle != nil {
+            if #available(iOS 13.0, *), self.interfaceStyle != nil  {
                 alert.overrideUserInterfaceStyle = self.interfaceStyle!
             }
             let okAction = UIAlertAction.init(
@@ -104,7 +104,7 @@ open class AlertManager: NSObject, AlertProtocol {
                 message: message,
                 preferredStyle: UIAlertController.Style.alert
             )
-            if self.interfaceStyle != nil {
+            if #available(iOS 13.0, *), self.interfaceStyle != nil  {
                 alert.overrideUserInterfaceStyle = self.interfaceStyle!
             }
 
@@ -148,7 +148,7 @@ open class AlertManager: NSObject, AlertProtocol {
     ) {
         present(alertPredicate: {
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            if self.interfaceStyle != nil {
+            if #available(iOS 13.0, *), self.interfaceStyle != nil  {
                 alert.overrideUserInterfaceStyle = self.interfaceStyle!
             }
             
@@ -189,7 +189,7 @@ open class AlertManager: NSObject, AlertProtocol {
                 message: message,
                 preferredStyle: .actionSheet
             )
-            if self.interfaceStyle != nil {
+            if #available(iOS 13.0, *), self.interfaceStyle != nil  {
                 alert.overrideUserInterfaceStyle = self.interfaceStyle!
             }
             
@@ -237,7 +237,7 @@ open class AlertManager: NSObject, AlertProtocol {
                 message: message,
                 preferredStyle: .actionSheet
             )
-            if self.interfaceStyle != nil {
+            if #available(iOS 13.0, *), self.interfaceStyle != nil  {
                 alert.overrideUserInterfaceStyle = self.interfaceStyle!
             }
 

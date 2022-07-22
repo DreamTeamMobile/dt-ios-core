@@ -35,7 +35,13 @@ public class StoreReviewManager: NSObject, StoreReviewProtocol {
     
     public func requestReview() {
         DispatchQueue.main.async {
-            SKStoreReviewController.requestReview()
+            if #available(iOS 14.0, *) {
+                if let scene = UIApplication.shared.firstForegroundScene as? UIWindowScene {
+                    SKStoreReviewController.requestReview(in: scene)
+                }
+            } else {
+                SKStoreReviewController.requestReview()
+            }
         }
     }
     
@@ -50,5 +56,14 @@ public class StoreReviewManager: NSObject, StoreReviewProtocol {
                 self.lastRequestReviewDate = Date()
             }
         }
+    }
+}
+
+private extension UIApplication {
+    @available(iOS 13.0, *)
+    var firstForegroundScene: UIScene? {
+        connectedScenes.first{ $0.activationState == .foregroundActive }
+        ??
+        connectedScenes.first{ $0.activationState == .foregroundInactive }
     }
 }

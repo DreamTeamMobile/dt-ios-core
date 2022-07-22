@@ -15,6 +15,7 @@ open class AlertManager: NSObject, AlertProtocol {
     // MARK: Properties
 
     open var tintColor: UIColor?
+    open var interfaceStyle: UIUserInterfaceStyle?
 
     // MARK: Private methods
 
@@ -60,6 +61,10 @@ open class AlertManager: NSObject, AlertProtocol {
             viewController.present(controller, animated: true, completion: nil)
         }
     }
+    
+    public func changeUserInterfaceStyle(interfaceStyle: UIUserInterfaceStyle) {
+        self.interfaceStyle = interfaceStyle
+    }
 
     public func showAlert(message: String, predicate: (() -> Void)? = nil) {
         present(alertPredicate: {
@@ -68,7 +73,9 @@ open class AlertManager: NSObject, AlertProtocol {
                 message: message,
                 preferredStyle: UIAlertController.Style.alert
             )
-
+            if self.interfaceStyle != nil {
+                alert.overrideUserInterfaceStyle = self.interfaceStyle!
+            }
             let okAction = UIAlertAction.init(
                 title: AlertLocale.ok.localized,
                 style: UIAlertAction.Style.default,
@@ -97,6 +104,9 @@ open class AlertManager: NSObject, AlertProtocol {
                 message: message,
                 preferredStyle: UIAlertController.Style.alert
             )
+            if self.interfaceStyle != nil {
+                alert.overrideUserInterfaceStyle = self.interfaceStyle!
+            }
 
             let cancelAction = UIAlertAction.init(
                 title: AlertLocale.cancel.localized,
@@ -138,7 +148,10 @@ open class AlertManager: NSObject, AlertProtocol {
     ) {
         present(alertPredicate: {
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-
+            if self.interfaceStyle != nil {
+                alert.overrideUserInterfaceStyle = self.interfaceStyle!
+            }
+            
             var preferredAction: UIAlertAction? = nil
             for option in options {
                 let action = UIAlertAction(
@@ -176,7 +189,10 @@ open class AlertManager: NSObject, AlertProtocol {
                 message: message,
                 preferredStyle: .actionSheet
             )
-
+            if self.interfaceStyle != nil {
+                alert.overrideUserInterfaceStyle = self.interfaceStyle!
+            }
+            
             alert.popoverPresentationController
 
             for option in options {
@@ -221,6 +237,9 @@ open class AlertManager: NSObject, AlertProtocol {
                 message: message,
                 preferredStyle: .actionSheet
             )
+            if self.interfaceStyle != nil {
+                alert.overrideUserInterfaceStyle = self.interfaceStyle!
+            }
 
             let datePicker = UIDatePicker()
             datePicker.accessibilityIdentifier = "datePicker"

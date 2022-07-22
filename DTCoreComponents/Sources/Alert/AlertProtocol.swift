@@ -8,6 +8,8 @@ import Foundation
 
 public protocol AlertProtocol {
 
+    func changeUserInterfaceStyle(interfaceStyle: UIUserInterfaceStyle)
+    
     func showAlert(message: String, predicate: (() -> Void)?)
 
     func showConfirm(

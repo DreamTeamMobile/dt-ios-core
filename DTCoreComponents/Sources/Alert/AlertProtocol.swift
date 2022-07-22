@@ -7,7 +7,8 @@
 import Foundation
 
 public protocol AlertProtocol {
-
+    
+    @available(iOS 13, *)
     func changeUserInterfaceStyle(interfaceStyle: UIUserInterfaceStyle)
     
     func showAlert(message: String, predicate: (() -> Void)?)

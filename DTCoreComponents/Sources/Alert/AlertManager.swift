@@ -15,6 +15,7 @@ open class AlertManager: NSObject, AlertProtocol {
     // MARK: Properties
 
     open var tintColor: UIColor?
+    @available(iOS 13, *)
     open var interfaceStyle: UIUserInterfaceStyle?
 
     // MARK: Private methods
@@ -62,6 +63,7 @@ open class AlertManager: NSObject, AlertProtocol {
         }
     }
     
+    @available(iOS 13, *)
     public func changeUserInterfaceStyle(interfaceStyle: UIUserInterfaceStyle) {
         self.interfaceStyle = interfaceStyle
     }

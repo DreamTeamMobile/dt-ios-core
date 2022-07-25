@@ -16,7 +16,7 @@ open class AlertManager: NSObject, AlertProtocol {
 
     open var tintColor: UIColor?
     @available(iOS 13, *)
-    open var interfaceStyle: UIUserInterfaceStyle?
+    private(set) lazy var interfaceStyle: UIUserInterfaceStyle?
 
     // MARK: Private methods
 

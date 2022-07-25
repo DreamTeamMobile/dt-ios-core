@@ -16,7 +16,7 @@ open class AlertManager: NSObject, AlertProtocol {
 
     open var tintColor: UIColor?
     @available(iOS 13, *)
-    open var interfaceStyle: UIUserInterfaceStyle?
+    private(set) lazy var interfaceStyle: UIUserInterfaceStyle = .unspecified
 
     // MARK: Private methods
 
@@ -75,8 +75,8 @@ open class AlertManager: NSObject, AlertProtocol {
                 message: message,
                 preferredStyle: UIAlertController.Style.alert
             )
-            if #available(iOS 13.0, *), self.interfaceStyle != nil  {
-                alert.overrideUserInterfaceStyle = self.interfaceStyle!
+            if #available(iOS 13.0, *), self.interfaceStyle != .unspecified  {
+                alert.overrideUserInterfaceStyle = self.interfaceStyle
             }
             let okAction = UIAlertAction.init(
                 title: AlertLocale.ok.localized,
@@ -106,8 +106,8 @@ open class AlertManager: NSObject, AlertProtocol {
                 message: message,
                 preferredStyle: UIAlertController.Style.alert
             )
-            if #available(iOS 13.0, *), self.interfaceStyle != nil  {
-                alert.overrideUserInterfaceStyle = self.interfaceStyle!
+            if #available(iOS 13.0, *), self.interfaceStyle != .unspecified  {
+                alert.overrideUserInterfaceStyle = self.interfaceStyle
             }
 
             let cancelAction = UIAlertAction.init(
@@ -150,8 +150,8 @@ open class AlertManager: NSObject, AlertProtocol {
     ) {
         present(alertPredicate: {
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            if #available(iOS 13.0, *), self.interfaceStyle != nil  {
-                alert.overrideUserInterfaceStyle = self.interfaceStyle!
+            if #available(iOS 13.0, *), self.interfaceStyle != .unspecified  {
+                alert.overrideUserInterfaceStyle = self.interfaceStyle
             }
             
             var preferredAction: UIAlertAction? = nil
@@ -191,8 +191,8 @@ open class AlertManager: NSObject, AlertProtocol {
                 message: message,
                 preferredStyle: .actionSheet
             )
-            if #available(iOS 13.0, *), self.interfaceStyle != nil  {
-                alert.overrideUserInterfaceStyle = self.interfaceStyle!
+            if #available(iOS 13.0, *), self.interfaceStyle != .unspecified  {
+                alert.overrideUserInterfaceStyle = self.interfaceStyle
             }
             
             alert.popoverPresentationController
@@ -239,8 +239,8 @@ open class AlertManager: NSObject, AlertProtocol {
                 message: message,
                 preferredStyle: .actionSheet
             )
-            if #available(iOS 13.0, *), self.interfaceStyle != nil  {
-                alert.overrideUserInterfaceStyle = self.interfaceStyle!
+            if #available(iOS 13.0, *), self.interfaceStyle != .unspecified  {
+                alert.overrideUserInterfaceStyle = self.interfaceStyle
             }
 
             let datePicker = UIDatePicker()

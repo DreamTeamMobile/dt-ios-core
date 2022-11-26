@@ -15,10 +15,13 @@ public class FacebookAnalyticsProvider: AnalyticsProvider, AnalyticsProviderProt
     }
 
     public func logEvent(event: String, parameters: [String: Any]?) {
-        let newParams: [AppEvents.ParameterName: Any]? = Dictionary(uniqueKeysWithValues: parameters?.map{ key, value in
-            (AppEvents.ParameterName(key), value)
-        } ?? [])
-        AppEvents.shared.logEvent(AppEvents.Name(rawValue: event), parameters: newParams ?? [:])
+        let eventName = AppEvents.Name(event)
+        
+        if let parameters = parameters {
+            AppEvents.logEvent(eventName, parameters: parameters ?? [:])
+        } else {
+            AppEvents.logEvent(eventName)
+        }
     }
 
     public func logPurchaseEvent(product: SKProduct, event: String) {
@@ -35,10 +38,7 @@ public class FacebookAnalyticsProvider: AnalyticsProvider, AnalyticsProviderProt
             params["currency"] = product.priceLocale.currencyCode ?? ""
         }
         
-        let newParams: [AppEvents.ParameterName: Any]? = Dictionary(uniqueKeysWithValues: parameters?.map{ key, value in
-            (AppEvents.ParameterName(key), value)
-        } ?? [])
-        AppEvents.shared.logEvent(AppEvents.Name(rawValue: event), parameters: newParams ?? [:])
+        AppEvents.logEvent(AppEvents.Name(event), parameters: params)
     }
 
     public func logSubscription(product: SKProduct) {
@@ -55,10 +55,7 @@ public class FacebookAnalyticsProvider: AnalyticsProvider, AnalyticsProviderProt
             params["currency"] = product.priceLocale.currencyCode ?? ""
         }
         
-        let newParams: [AppEvents.ParameterName: Any]? = Dictionary(uniqueKeysWithValues: parameters?.map{ key, value in
-            (AppEvents.ParameterName(key), value)
-        } ?? [])
-        AppEvents.shared.logEvent(AppEvents.Name(rawValue: "Subscribe"), parameters: newParams ?? [:])
+        AppEvents.logEvent(AppEvents.Name("Subscribe"), parameters: params)
     }
 
     public func logPurchase(product: SKProduct) {
@@ -69,13 +66,10 @@ public class FacebookAnalyticsProvider: AnalyticsProvider, AnalyticsProviderProt
         var params = parameters ?? [String: Any]()
         params["productId"] = product.productIdentifier
         
-        let newParams: [AppEvents.ParameterName: Any]? = Dictionary(uniqueKeysWithValues: params.map{ key, value in
-            (AppEvents.ParameterName(key), value)
-        } ?? [])
-        AppEvents.shared.logPurchase(
-            amount: shouldLogPrice() ? Double(truncating: product.price) : 0,
+        AppEvents.logPurchase(
+            shouldLogPrice() ? Double(truncating: product.price) : 0,
             currency: shouldLogPrice() ? (product.priceLocale.currencyCode ?? "") : "",
-            parameters: newParams ?? [:])
+            parameters: params)
     }
 
 }

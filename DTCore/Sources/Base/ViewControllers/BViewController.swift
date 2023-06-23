@@ -96,7 +96,7 @@ open class BViewController: UIViewController, BaseViCoProtocol {
         loaderView.backgroundColor = self.loaderBackgroundColor
         loaderView.translatesAutoresizingMaskIntoConstraints = false
 
-        let loader = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
+        let loader = UIActivityIndicatorView(style: .whiteLarge)
         loader.color = self.loaderColor
 
         loaderView.addSubview(loader)

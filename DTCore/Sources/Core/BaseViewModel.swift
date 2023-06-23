@@ -6,7 +6,7 @@
 
 import Foundation
 
-public protocol BaseVmProtocol: class {
+public protocol BaseVmProtocol: AnyObject {
 
     func initialize(initObject: Any)
 

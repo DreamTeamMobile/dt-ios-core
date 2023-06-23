@@ -33,7 +33,7 @@ open class AlertManager: NSObject, AlertProtocol {
     // MARK: Methods
 
     public func present(alertPredicate: @escaping () -> UIAlertController) {
-        guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else {
+        guard let rootViewController = UIApplication.shared.windows.first(where: \.isKeyWindow)?.rootViewController else {
             return
         }
 
@@ -195,7 +195,7 @@ open class AlertManager: NSObject, AlertProtocol {
                 alert.overrideUserInterfaceStyle = self.interfaceStyle
             }
             
-            alert.popoverPresentationController
+            _ = alert.popoverPresentationController
 
             for option in options {
                 let action = UIAlertAction(

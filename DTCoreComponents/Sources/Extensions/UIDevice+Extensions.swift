@@ -9,7 +9,7 @@ import UIKit
 public extension UIDevice {
 
     static var hasNotch: Bool {
-        guard let window = UIApplication.shared.keyWindow else {
+        guard let window = UIApplication.shared.windows.first(where: \.isKeyWindow) else {
             return false
         }
         let inset = window.safeAreaInsets.top
@@ -20,7 +20,7 @@ public extension UIDevice {
     }
 
     static var safeAreaInsets: UIEdgeInsets? {
-        guard let window = UIApplication.shared.keyWindow else {
+        guard let window = UIApplication.shared.windows.first(where: \.isKeyWindow) else {
             return nil
         }
         let insets = window.safeAreaInsets

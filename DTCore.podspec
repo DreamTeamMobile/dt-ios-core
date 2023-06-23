@@ -1,18 +1,14 @@
 Pod::Spec.new do |s|
-  s.name = 'DTCore'
-  s.version = '1.3.2.53'
-  s.license = 'MIT'
-  s.summary = 'The set of extensions, frames, sources and other things that could be useful in iOS app development.'
-  s.homepage = 'https://github.com/DreamTeamMobile/dt-ios-core'
-  s.authors = { 'DreamTeam Mobile' => 'dta@dreamteam-mobile.com' }
-  s.source = { :git => 'https://github.com/DreamTeamMobile/dt-ios-core.git', :tag => s.version }
-  s.documentation_url = 'https://github.com/DreamTeamMobile/dt-ios-core/blob/master/README.md'
-
-  s.ios.deployment_target = '12.0'
-
-  s.swift_versions = ['5.0', '5.1']
-
+  s.name         = 'DTCore'
+  s.version      = '1.4.0'
+  s.summary      = 'Shared code between applications'
+  s.homepage     = 'https://github.com/DreamTeamMobile/dt-ios-core'
+  s.license      = { :type => 'MIT', :text => 'Copyright 2022 Dream Team Apps' }
+  s.platform     = :ios, '14.0'
+  s.authors      = 'Dream Team Apps'
+  s.source       = { :git => 'git@github.com:DreamTeamMobile/dt-ios-core.git', :tag => s.version.to_s }
+  s.swift_version = '5.0'
+  
   s.source_files = 'DTCore/Sources/**/*.swift'
-
 end
 

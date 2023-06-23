@@ -10,7 +10,7 @@ import UIKit
 
 public extension UIApplication {
     
-    class func getCurrentViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+    class func getCurrentViewController(base: UIViewController? = UIApplication.shared.windows.first(where: \.isKeyWindow)?.rootViewController) -> UIViewController? {
         if let nav = base as? UINavigationController {
             return getCurrentViewController(base: nav.visibleViewController)
         } else if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
@@ -21,7 +21,7 @@ public extension UIApplication {
         return base
     }
     
-    class func getLastPresentedControllerFor(_ viewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+    class func getLastPresentedControllerFor(_ viewController: UIViewController? = UIApplication.shared.windows.first(where: \.isKeyWindow)?.rootViewController) -> UIViewController? {
         if let presented = viewController?.presentedViewController {
             return getLastPresentedControllerFor(presented)
         }
@@ -29,7 +29,7 @@ public extension UIApplication {
         return viewController
     }
     
-    class func getLastPresentedControllerFor<ViewModel: BViewModel>(_ viewController: UIViewController? = UIApplication.shared.keyWindow?.rootViewController, _ vmType: ViewModel.Type) -> UIViewController? {
+    class func getLastPresentedControllerFor<ViewModel: BViewModel>(_ viewController: UIViewController? = UIApplication.shared.windows.first(where: \.isKeyWindow)?.rootViewController, _ vmType: ViewModel.Type) -> UIViewController? {
         if let presented = viewController?.presentedViewController {
             if let bViCo = presented as? BaseViCoProtocol, let _ = bViCo.getViewModel() as? ViewModel {
                 return presented

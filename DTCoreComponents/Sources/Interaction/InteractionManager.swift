@@ -72,7 +72,7 @@ public class InteractionManager: NSObject, InteractionProtocol {
     }
 
     private func present(controller: UIViewController) {
-        guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else {
+        guard let rootViewController = UIApplication.shared.windows.first(where: \.isKeyWindow)?.rootViewController else {
             return
         }
         let viewController = getLastPresentedControllerFor(rootViewController)

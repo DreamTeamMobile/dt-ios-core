@@ -67,6 +67,8 @@ public class Router: NSObject, RouterProtocol {
                 baseViCo.navigationControllerHolder = strongSelf.holder
             }
             
+            let keyWindow = UIApplication.shared.windows.first(where: \.isKeyWindow)
+            
             switch navigationType {
             case .present:
                 strongSelf.present(vc: viewController, completion: completion)
@@ -79,20 +81,20 @@ public class Router: NSObject, RouterProtocol {
                 strongSelf.holder.getCurrentNavigationController()?.pushViewController(viewController, animated: true)
                 completion?()
             case .pushRoot:
-                if let navCon = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                if let navCon = keyWindow?.rootViewController as? UINavigationController {
                     navCon.pushViewController(viewController, animated: true)
                     completion?()
                 }
             case .changeRoot:
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                UIApplication.shared.keyWindow?.makeKeyAndVisible()
+                keyWindow?.rootViewController = viewController
+                keyWindow?.makeKeyAndVisible()
                 completion?()
             case .changeRootInNav:
-                UIApplication.shared.keyWindow?.rootViewController = UINavigationController(rootViewController: viewController)
-                UIApplication.shared.keyWindow?.makeKeyAndVisible()
+                keyWindow?.rootViewController = UINavigationController(rootViewController: viewController)
+                keyWindow?.makeKeyAndVisible()
                 completion?()
             case .switchTab:
-                if let tabController = (UIApplication.shared.keyWindow?.rootViewController as? UITabBarController) ?? (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController)?.topViewController as? UITabBarController
+                if let tabController = (keyWindow?.rootViewController as? UITabBarController) ?? (keyWindow?.rootViewController as? UINavigationController)?.topViewController as? UITabBarController
                 {
                     if let navigationController = tabController.viewControllers?.first(where: {
                         let rootViCo = ($0 as? UINavigationController)?.viewControllers.first ?? $0
@@ -115,7 +117,7 @@ public class Router: NSObject, RouterProtocol {
     }
     
     public func close<ViewModel: BViewModel>(vmType: ViewModel.Type, completion: (() -> Void)?) {
-        guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else { return }
+        guard let rootViewController = UIApplication.shared.windows.first(where: \.isKeyWindow)?.rootViewController else { return }
         
         if let presented = rootViewController.presentedViewController {
             let lastPresented = UIApplication.getLastPresentedControllerFor(presented, vmType)
